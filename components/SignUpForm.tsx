@@ -13,7 +13,7 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
     const [startDate, setStartDate] = useState(new Date());
     return(
         <div className=' flex items-center justify-center  '>
-            <div className='border py-10 rounded bg-white px-20 '>
+            <div className='border-2 border-gray-400 py-10 rounded bg-white px-20 '>
                 <div>
                     <h2 className='my-6 text-center text-4xl font-bold text-gray-900'>{title}</h2>
                     <form className='py-6' >

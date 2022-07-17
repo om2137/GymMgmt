@@ -39,7 +39,7 @@ const cardStyle= {
   maxWidth: '260px',
   maxHeight: '400px',
   boxShadow: "5px 5px #a2b2c9",
-  backgroundColor: "#203655",
+  backgroundColor: "#d4d4d4",
 }
 const contentStyle = {
   maxHigh: '200px',
@@ -50,26 +50,27 @@ const ActionStyle={
 
 export default function MediaCard( {image, title, description, GHlink, blog}: Props ) {
   return (
-    <Card style={cardStyle} >
+    <Card style={cardStyle}>
       <CardMedia
         style={imgStyle}
         component="img"
         image={image}
+        className="aspect-square"
       />
       <CardContent >
-        <Typography gutterBottom variant="h6" component="div" color="white">
+        <Typography gutterBottom variant="h6" component="div" color="" fontWeight="bold" >
           {title}
         </Typography>
-        <Typography variant="body2" color="white">
+        {/* <Typography variant="body2" color="white">
           {description}
-        </Typography>
+        </Typography> */}
       </CardContent>
-      <CardActions style={ActionStyle} >
+      {/* <CardActions style={ActionStyle} >
         <ThemeProvider theme={theme}>
           <Button size="small" color='success' href={GHlink} target="_blank">Github</Button>
           <Button size="small" color='warning' href={blog} target="_blank">Blog</Button> 
         </ThemeProvider>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 }
