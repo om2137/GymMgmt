@@ -5,7 +5,9 @@ import Image from 'next/image'
 import MediaCard from '../components/cards'
 import Navbar from '../components/Navbar'
 import SignUpForm from '../components/SignUpForm'
-import User from '../components/User'
+import Modal from '../components/Modal'
+
+
 
 const profiles: NextPage = () => {
   return (
@@ -123,8 +125,17 @@ const profiles: NextPage = () => {
                   </Grid>
         </div> */}
       </div>
+      {/* modal */}
       <div>
-        <User/>
+        {/* <User/> */}
+        <div>
+        <MediaCard 
+          image='https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4'
+          title='Om Raut'                           
+        />
+            
+        </div>
+
       </div>
     </main>
     

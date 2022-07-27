@@ -7,6 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { createTheme,ThemeProvider  } from '@mui/material/styles';
+import Modal from './Modal';
 
 
 const theme = createTheme({
@@ -27,19 +28,18 @@ const theme = createTheme({
 interface Props {
   image: string;
   title: string;
-  description: string;
-  GHlink: string;
-  blog: string;
 }
 const imgStyle = {
-  minWidth: '60px',
-  minHeight: '100px',
+  minWidth: '30px',
+  minHeight: '10px',
+  maxWidth: '200px',
+  maxHeight: '170px',
 };
 const cardStyle= {
-  maxWidth: '260px',
-  maxHeight: '400px',
-  boxShadow: "5px 5px #a2b2c9",
-  backgroundColor: "#d4d4d4",
+  maxWidth: '200px',
+  maxHeight: '300px',
+  boxShadow: "5px 5px #a0d3b2",
+  backgroundColor: "#bbf7d0",
 }
 const contentStyle = {
   maxHigh: '200px',
@@ -48,7 +48,7 @@ const ActionStyle={
   display: 'flex',
 }
 
-export default function MediaCard( {image, title, description, GHlink, blog}: Props ) {
+export default function MediaCard( {image, title}: Props ) {
   return (
     <Card style={cardStyle}>
       <CardMedia
@@ -58,19 +58,19 @@ export default function MediaCard( {image, title, description, GHlink, blog}: Pr
         className="aspect-square"
       />
       <CardContent >
-        <Typography gutterBottom variant="h6" component="div" color="" fontWeight="bold" >
+        <Typography gutterBottom component="div" color="" fontWeight="bold" fontSize={'30px'}>
           {title}
+          <Modal 
+            image={image}
+            title='Om Raut'
+          />
         </Typography>
-        {/* <Typography variant="body2" color="white">
-          {description}
-        </Typography> */}
       </CardContent>
-      {/* <CardActions style={ActionStyle} >
-        <ThemeProvider theme={theme}>
-          <Button size="small" color='success' href={GHlink} target="_blank">Github</Button>
-          <Button size="small" color='warning' href={blog} target="_blank">Blog</Button> 
+      <CardActions style={ActionStyle} >
+        <ThemeProvider theme={theme} >
+          
         </ThemeProvider>
-      </CardActions> */}
+      </CardActions>
     </Card>
   );
 }
