@@ -72,15 +72,11 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
                                         </div>
 
                                         <div>
-                                            {/* <label htmlFor="" className='mr-2'>Age:</label> */}
-                                            {/* <input type="tel" autoComplete='none' required 
-                                                    className='py-2 rounded relative block w-full px-3 
-                                                    border border-gray-600 placeholder-gray-500 text-gray-900 rounded-t-md mb-2
-                                                    focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Date of birth'/> */}
                                             
-                                            <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(date)} className="py-2 rounded relative block w-full px-3 
+                                            <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(date)} 
+                                                className="py-2 rounded relative block w-full px-3 
                                                 border border-gray-600 placeholder-gray-500 text-gray-900 rounded-t-md mb-2
-                                                focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" />
+                                                focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholderText='date of birth' />
                                             
                                             <input type="tel" autoComplete='none' required 
                                                 className='py-2 rounded relative block w-full px-3 

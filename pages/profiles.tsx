@@ -5,6 +5,7 @@ import Image from 'next/image'
 import MediaCard from '../components/cards'
 import Navbar from '../components/Navbar'
 import SignUpForm from '../components/SignUpForm'
+import User from '../components/User'
 
 const profiles: NextPage = () => {
   return (
@@ -14,7 +15,7 @@ const profiles: NextPage = () => {
     />
     <main className='px-6'>
       <div className='py-5'>
-        <div className='flex content-center justify-center pb-10 xsm:hidden sm:flex'>
+        {/* <div className='flex content-center justify-center pb-10 xsm:hidden sm:flex'>
                   <Grid
                     container 
                     spacing="40px" 
@@ -120,7 +121,10 @@ const profiles: NextPage = () => {
                       
                       
                   </Grid>
-        </div>
+        </div> */}
+      </div>
+      <div>
+        <User/>
       </div>
     </main>
     
