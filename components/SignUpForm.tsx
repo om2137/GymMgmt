@@ -44,15 +44,15 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
                                                 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder=''/>
                                         </div>
                                         <div>
-                                            <input type="radio" name="male" id="" className='mr-2'/>
+                                            <input type="radio" name="gender" id="" className='mr-2'/>
                                             <label htmlFor="" className='mr-2'>male</label>
-                                            <input type="radio" name="male" id="" className='mr-2'/>
+                                            <input type="radio" name="gender" id="" className='mr-2'/>
                                             <label htmlFor="" className='mr-2'>female</label>
                                         </div>
                                         <div>
-                                            <input type="radio" name="male" id="" className='mr-2'/>
+                                            <input type="radio" name="marriage" id="" className='mr-2'/>
                                             <label htmlFor="" className='mr-2'>married</label>
-                                            <input type="radio" name="male" id="" className='mr-2'/>
+                                            <input type="radio" name="marriage" id="" className='mr-2'/>
                                             <label htmlFor="" className='mr-2'>unmarried</label>
                                         </div>
                                     </div>

@@ -38,8 +38,9 @@ const imgStyle = {
 const cardStyle= {
   maxWidth: '200px',
   maxHeight: '300px',
-  boxShadow: "5px 5px #a0d3b2",
-  backgroundColor: "#bbf7d0",
+  boxShadow: "5px 5px #e2e8f0",
+  backgroundColor: "#cbd5e1",
+  
 }
 const contentStyle = {
   maxHigh: '200px',
@@ -58,7 +59,7 @@ export default function MediaCard( {image, title}: Props ) {
         className="aspect-square"
       />
       <CardContent >
-        <Typography gutterBottom component="div" color="" fontWeight="bold" fontSize={'30px'}>
+        <Typography gutterBottom component="div" color="" fontWeight="bold" fontSize={'32px'}>
           {title}
           <Modal 
             image={image}

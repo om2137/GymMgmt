@@ -15,11 +15,8 @@ const Home: NextPage = () => {
         title="Admission Form"
       />
       <main className="flex w-full flex-1 flex-col items-top justify-top px-20 text-center">
-        <h1 className="text-6xl font-bold py-10">
-          Welcome to ...
-        </h1>
-        
-        <div className='flex w-full flex-1 flex-col items-center drop-shadow-2xl justify-center '>
+
+        <div className='flex w-full flex-1 flex-col items-center drop-shadow-2xl justify-center p-10'>
           <SignUpForm title="Admission Form"/>
         </div>
         
