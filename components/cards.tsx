@@ -25,7 +25,11 @@ const theme = createTheme({
 
 interface Props {
   image: string;
-  title: string;
+  first: string;
+  middle: string;
+  last: string;
+  address: string;
+  phone: number;
 }
 const imgStyle = {
   minWidth: '200px',
@@ -52,7 +56,7 @@ const typoStyle={
   textTransform: 'capitalize',
 }
 
-export default function MediaCard( {image, title}: Props ) {
+export default function MediaCard( {image, first,middle,last,address,phone}: Props ) {
   return (
     <Card style={cardStyle}>
       <CardMedia
@@ -62,16 +66,22 @@ export default function MediaCard( {image, title}: Props ) {
         className="aspect-square"
       />
       <CardContent >
-        <h1 className='text-3xl font-bold capitalize'>
-          <div className='pb-1'>
-            {title}
+        <div className='text-3xl font-bold capitalize'>
+          <h1 className='pb-1'>
+            {first} {last}
+          </h1>
+          <div className='pt-2'>
+            <Modal 
+              image={image}
+              first={first}
+              middle={middle}
+              last={last}
+              address={address}
+              phone={phone}
+            />
           </div>
           
-          <Modal 
-              image={image}
-              title={title}
-          />
-        </h1>
+        </div>
       </CardContent>
       <CardActions style={ActionStyle} >
         <ThemeProvider theme={theme} >

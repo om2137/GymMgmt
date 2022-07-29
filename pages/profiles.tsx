@@ -1,10 +1,6 @@
-import { Grid } from '@mui/material'
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
 import MediaCard from '../components/cards'
 import Navbar from '../components/Navbar'
-import SignUpForm from '../components/SignUpForm'
 const axios = require('axios').default;
 
 export async function getStaticProps(context: any) {
@@ -146,7 +142,11 @@ const profiles: NextPage = ({members}:any) => {
                   <div className=' text-black'>
                     <MediaCard
                       image="https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4"
-                      title={member.Firstname + " " + member.Lastname}
+                      first={member.Firstname}
+                      middle={member.Middlename}
+                      last={member.Lastname}
+                      address={member.Address}
+                      phone={member.Contact}
                     />
                   </div>
                 </div>

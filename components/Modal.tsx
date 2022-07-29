@@ -2,7 +2,6 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
-import MediaCard from './cards';
 const axios = require('axios').default;
 
 export async function getStaticProps(context: any) {
@@ -19,7 +18,11 @@ export async function getStaticProps(context: any) {
 
 interface Props {
     image: string;
-    title: string;
+    first: string;
+    middle: string;
+    last: string;
+    address: string;
+    phone: number;
   }
 
 const style = {
@@ -100,7 +103,7 @@ function ChildModal() {
   );
 }
 // main modal
-export default function NestedModal( {title,image}:Props ) {
+export default function NestedModal( {first,middle,last,image,address,phone}:Props ) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -143,22 +146,52 @@ export default function NestedModal( {title,image}:Props ) {
                 </div>
             </div>
             
-            <div className='flex  align-middle justify-between'>
-                <div className='flex'>
-                    <div className='drop-shadow-2xl'>
-                        <img src={image} className="w-48 border-4 border-gray-400 rounded-xl"/>
+            <div className='sm:flex  align-middle justify-between'>
+                <div className='flex flex-col sm:flex-row justify-center'>
+                    <div className='flex justify-center mt-6 px-4 drop-shadow-2xl'>
+                        <div>
+                          <img src={image} className=" 
+                            min-w-full md:w-48
+                            md:border-4 border-gray-400 rounded-xl md:mt-4 xl:mx-6"/>
+                        </div>
+                        
+                        {/* <div className='p-3 mt-4 text-center'>
+                          <h1 className='text-2xl font-semibold'>Plan Expires</h1>
+                          <div className='pt-2 text-center'>
+                            <span className=''>28(days)</span>
+                          </div>
+                          
+                        </div> */}
+                        <div>
+                            <h2 id="parent-modal-title" className='sm:hidden text-5xl md:text-6xl font-bold capitalize pl-4'>
+                                {first} {last}
+                            </h2>
+                        </div>
+                        
                     </div>
                     
-                    <div className='flex flex-col p-1 ml-10 2xl:ml-20'>
-                        <div>
+                    <div className='flex flex-col text-center p-1 mx-10 '>
+                        <div className='hidden sm:flex '>
                             <h2 id="parent-modal-title" className=' text-6xl font-bold capitalize'>
-                                {title}
+                                {first} {last}
                             </h2>
                         </div>
                         <div className='p-2'>
                             <div className='mt-2'>
-                                <span className='font-semibold'>Address:</span>
+                                <span className='font-semibold'>Full Name:</span><br/>
+                                <span className='ml-2'>{first} {middle} {last}</span>
                             </div>
+
+                            <div className='mt-2'>
+                                <span className='font-semibold' >Phone number:</span><br/>
+                                <span className='ml-2'>{phone}</span>
+                            </div>
+                            
+                            <div className='mt-2'>
+                                <span className='font-semibold'>Address:</span><br/>
+                                <span className='ml-2'>{address}</span>
+                            </div>
+
                             <div className='mt-2'>
                                 <span className='font-semibold' >gender:</span>
                             </div>
@@ -167,9 +200,6 @@ export default function NestedModal( {title,image}:Props ) {
                             </div>
                             <div className='mt-2'>
                                 <span className='font-semibold' >Age:</span>
-                            </div>
-                            <div className='mt-2'>
-                                <span className='font-semibold' >Phone number:</span>
                             </div>
                             
                             <div className='mt-2'>
@@ -181,14 +211,14 @@ export default function NestedModal( {title,image}:Props ) {
                     </div>
                 </div>
                 
-                <div >
+                <div className='hidden md:block'>
                     <Button onClick={handleClose} className='text-black  bg-gray-300'>Close </Button>
                 </div>
                 
             </div>
-            <div className='p-4 '>                
+            <div className='p-4 align-center'>                
                 <label id="countries" className="block mb-2 text-sm font-medium text-black ">Select an plans</label>
-                <div className='sm:flex'>
+                <div className='sm:flex justify-center'>
                     <div className='pr-5 pb-4 sm:pb-0'>
                        <select id="countries" required className="bg-white border border-gray-300 rounded-lg text-gray-900 
                         text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
