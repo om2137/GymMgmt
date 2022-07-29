@@ -17,7 +17,7 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
                 <div>
                     <h2 className='my-6 text-center text-4xl font-bold text-gray-900'>{title}</h2>
                     <form className='py-6' >
-                        <div className='rounded-md shadow-sm -space-y-px text-left'>
+                        <div className='rounded-md shadow-sm  text-left'>
                             <div>
                                 <div className='flex pb-3'>
                                     <div>
@@ -44,9 +44,9 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
                                                 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder=''/>
                                         </div>
                                         <div>
-                                            <input type="radio" name="gender" id="" className='mr-2'/>
+                                            <input type="radio" name="gender" id="" value="male"  className='mr-2'/>
                                             <label htmlFor="" className='mr-2'>male</label>
-                                            <input type="radio" name="gender" id="" className='mr-2'/>
+                                            <input type="radio" name="gender" id="" value="female"  className='mr-2'/>
                                             <label htmlFor="" className='mr-2'>female</label>
                                         </div>
                                         <div>

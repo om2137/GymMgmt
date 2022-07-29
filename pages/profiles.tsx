@@ -5,11 +5,21 @@ import Image from 'next/image'
 import MediaCard from '../components/cards'
 import Navbar from '../components/Navbar'
 import SignUpForm from '../components/SignUpForm'
-import Modal from '../components/Modal'
+const axios = require('axios').default;
 
+export async function getStaticProps(context: any) {
+  
+  const res = await axios('http://localhost:3000/api/member');
+  const {member} = res.data;
+  return {
+    props: {
+      members: member,
+    }, // will be passed to the page component as props
+  }
+}
 
+const profiles: NextPage = ({members}:any) => {
 
-const profiles: NextPage = () => {
   return (
     <>
     <Navbar 
@@ -128,13 +138,24 @@ const profiles: NextPage = () => {
       {/* modal */}
       <div>
         {/* <User/> */}
-        <div>
-        <MediaCard 
-          image='https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4'
-          title='Om Raut'                           
-        />
-            
+        <div className='flex '>
+          {
+            members.map((member : any) => {
+              return (
+                <div className='p-5'>
+                  <div className=' text-black'>
+                    <MediaCard
+                      image="https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4"
+                      title={member.Firstname + " " + member.Lastname}
+                    />
+                  </div>
+                </div>
+                
+              )
+            })
+          }  
         </div>
+        
 
       </div>
     </main>

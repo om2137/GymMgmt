@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import SignUpForm from '../components/SignUpForm'
 import Navbar from '../components/Navbar'
+const axios = require('axios').default;
 
 const Home: NextPage = () => {
   return (
@@ -31,5 +32,15 @@ const Home: NextPage = () => {
     </div>
   )
 }
+
+export async function getStaticProps(context: any) {
+  
+  const res = await axios('http://localhost:3000/api/member');
+  console.log(res.data.member);
+  return {
+    props: {}, // will be passed to the page component as props
+  }
+}
+
 
 export default Home

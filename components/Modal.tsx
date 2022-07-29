@@ -3,6 +3,19 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import MediaCard from './cards';
+const axios = require('axios').default;
+
+export async function getStaticProps(context: any) {
+  
+  const res = await axios('http://localhost:3000/api/member');
+  const {member} = res.data;
+  return {
+    props: {
+      members: member,
+    }, // will be passed to the page component as props
+  }
+}
+
 
 interface Props {
     image: string;
@@ -87,7 +100,7 @@ function ChildModal() {
   );
 }
 // main modal
-export default function NestedModal( {image, title}: Props ) {
+export default function NestedModal( {title,image}:Props ) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -112,6 +125,18 @@ export default function NestedModal( {image, title}: Props ) {
       >
         <Box sx={{ ...style }} className='w-2/3 xl:w-2/5'>
             
+        <div id='member'>
+          {/* {
+            members.map((member : any) => {
+              return (
+                <div className='text-black text-6xl'>
+                  {member.Firstname}
+                </div>
+              )
+            })
+          }   */}
+        </div>
+
             <div className="relative hidden">
                 <div className="absolute top-0 right-0 h-16 w-16 text-black text-end">
                     <Button onClick={handleClose} className='text-black bg-gray-300'>Close </Button>
@@ -126,7 +151,7 @@ export default function NestedModal( {image, title}: Props ) {
                     
                     <div className='flex flex-col p-1 ml-10 2xl:ml-20'>
                         <div>
-                            <h2 id="parent-modal-title" className=' text-6xl font-bold'>
+                            <h2 id="parent-modal-title" className=' text-6xl font-bold capitalize'>
                                 {title}
                             </h2>
                         </div>
@@ -198,3 +223,5 @@ export default function NestedModal( {image, title}: Props ) {
     </div>
   );
 }
+
+
