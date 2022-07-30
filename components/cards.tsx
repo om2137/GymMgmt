@@ -38,7 +38,7 @@ const imgStyle = {
   maxHeight: '170px',
 };
 const cardStyle= {
-  maxWidth: '250px',
+  maxWidth: '200px',
   maxHeight: '300px',
   minWidth: '200px',
 
@@ -48,6 +48,7 @@ const cardStyle= {
 }
 const contentStyle = {
   maxHigh: '200px',
+  
 }
 const ActionStyle={
   display: 'flex',
@@ -66,20 +67,20 @@ export default function MediaCard( {image, first,middle,last,address,phone}: Pro
         className="aspect-square"
       />
       <CardContent >
-        <div className='text-3xl font-bold capitalize'>
+        <div className='text-xl font-bold capitalize'>
           <h1 className='pb-1'>
             {first} {last}
           </h1>
-          <div className='pt-2'>
-            <Modal 
-              image={image}
-              first={first}
-              middle={middle}
-              last={last}
-              address={address}
-              phone={phone}
-            />
-          </div>
+           <div className=' pt-2 relative'>
+              <Modal 
+                image={image}
+                first={first}
+                middle={middle}
+                last={last}
+                address={address}
+                phone={phone}
+              />
+           </div>
           
         </div>
       </CardContent>

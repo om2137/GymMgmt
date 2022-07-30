@@ -116,9 +116,12 @@ export default function NestedModal( {first,middle,last,image,address,phone}:Pro
   };
   return (
     <div>
-      <Button 
+      <div className=''>
+        <Button 
         onClick={handleOpen} 
         className='text-white bg-slate-600 border-2 border-sky-500 hover:bg-slate-500'>Details</Button>
+      </div>
+      
       
       <Modal
         open={open}
@@ -126,7 +129,7 @@ export default function NestedModal( {first,middle,last,image,address,phone}:Pro
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style }} className='w-2/3 xl:w-2/5'>
+        <Box sx={{ ...style }} className='w-3/4 max-w-2xl h-fit'>
             
         <div id='member'>
           {/* {
@@ -139,33 +142,35 @@ export default function NestedModal( {first,middle,last,image,address,phone}:Pro
             })
           }   */}
         </div>
-
-            <div className="relative hidden">
-                <div className="absolute top-0 right-0 h-16 w-16 text-black text-end">
-                    <Button onClick={handleClose} className='text-black bg-gray-300'>Close </Button>
-                </div>
+            <div className='sm:flex w-full justify-end hidden '>
+                <Button onClick={handleClose} className='text-white bg-red-500 hover:bg-red-400'>Close </Button>
             </div>
-            
             <div className='sm:flex  align-middle justify-between'>
                 <div className='flex flex-col sm:flex-row justify-center'>
                     <div className='flex justify-center mt-6 px-4 drop-shadow-2xl'>
                         <div>
                           <img src={image} className=" 
                             min-w-full md:w-48
-                            md:border-4 border-gray-400 rounded-xl md:mt-4 xl:mx-6"/>
+                            md:border-2 border-gray-400 rounded-xl md:mt-4 xl:mx-6"/>
+                          <div className='hidden sm:inline p-3 mt-4 text-center'>
+                            <h1 className='text-2xl font-semibold'>Plan Expires</h1>
+                            <div className='pt-2 text-center'>
+                              <span className=''>28(days)</span>
+                            </div>
+                          </div>
                         </div>
                         
-                        {/* <div className='p-3 mt-4 text-center'>
-                          <h1 className='text-2xl font-semibold'>Plan Expires</h1>
-                          <div className='pt-2 text-center'>
-                            <span className=''>28(days)</span>
-                          </div>
-                          
-                        </div> */}
+                        
                         <div>
-                            <h2 id="parent-modal-title" className='sm:hidden text-5xl md:text-6xl font-bold capitalize pl-4'>
+                            <h2 id="parent-modal-title" className='sm:hidden text-4xl font-bold capitalize pl-4'>
                                 {first} {last}
                             </h2>
+                            <div className='sm:hidden pl-4 p-1 mt-1 text-start'>
+                              <h1 className='text-2xl font-semibold'>Plan Expires</h1>
+                              <div className='pt-2 text-start'>
+                                <span className=''>28(days)</span>
+                              </div>
+                            </div>
                         </div>
                         
                     </div>
@@ -179,7 +184,7 @@ export default function NestedModal( {first,middle,last,image,address,phone}:Pro
                         <div className='p-2'>
                             <div className='mt-2'>
                                 <span className='font-semibold'>Full Name:</span><br/>
-                                <span className='ml-2'>{first} {middle} {last}</span>
+                                <span className='ml-2 capitalize'>{first} {middle} {last}</span>
                             </div>
 
                             <div className='mt-2'>
@@ -209,16 +214,17 @@ export default function NestedModal( {first,middle,last,image,address,phone}:Pro
                         
                         
                     </div>
+                    
                 </div>
                 
-                <div className='hidden md:block'>
-                    <Button onClick={handleClose} className='text-black  bg-gray-300'>Close </Button>
-                </div>
                 
+            </div>
+            <div>
+              
             </div>
             <div className='p-4 align-center'>                
                 <label id="countries" className="block mb-2 text-sm font-medium text-black ">Select an plans</label>
-                <div className='sm:flex justify-center'>
+                <div className='sm:flex '>
                     <div className='pr-5 pb-4 sm:pb-0'>
                        <select id="countries" required className="bg-white border border-gray-300 rounded-lg text-gray-900 
                         text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
@@ -228,7 +234,7 @@ export default function NestedModal( {first,middle,last,image,address,phone}:Pro
                             <option value="">Cardio + Weight</option>
                         </select> 
                     </div>
-                    <div className='pr-5 pb-4 md:pb-0'>
+                    <div className='pr-5 pb-4 sm:pb-0'>
                        <select id="countries" required className="bg-white border border-gray-300 rounded-lg text-gray-900 
                         text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option className='hidden' >Choose Time Frame</option>
@@ -238,12 +244,20 @@ export default function NestedModal( {first,middle,last,image,address,phone}:Pro
                             <option value="DE">Annually</option>
                         </select> 
                     </div>
-                    <Button className="text-white bg-green-400 text-xsm hover:bg-green-300" onClick={log}>Invoice</Button>
+                    <div className='flex flex-wrap pb-4'>
+                      <div className='sm:pb-4'>
+                        <Button className="text-white bg-green-400 text-xsm hover:bg-green-300" onClick={log}>Invoice</Button>
+                      </div>
+                      <div className='sm:pb-4 sm:pl-10 pr-5 sm:pr-0'>
+                      <Button onClick={handleClose} className='text-white bg-yellow-500 hover:bg-yellow-400'>edit </Button>
+                      </div>
+                    </div>
                 </div>
-                
-
+                <div className='flex justify-center sm:hidden '>
+                  <Button onClick={handleClose} className='text-white bg-red-500 hover:bg-red-400'>Close </Button>
+                </div>
             </div>
-          
+            
             {/* <div className='py-5 '>
                 <ChildModal />
             </div> */}

@@ -20,8 +20,8 @@ const MemberSchema = new mongoose.Schema({
         type: Number,
         required: [true,'Contact is required'],
         unique: [true,'Contact is already taken'],
-        minlength: 10,
-        maxlength: [10,'Contact must be 10 digits'],
+        min: 1000000000,
+        max: 9999999999
     },
     // // DateOfBirth: {
     //     type: Date,
