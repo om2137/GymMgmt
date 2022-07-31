@@ -52,13 +52,13 @@ export default function Navbar({ title }: Props) {
               <div className="w-full block flex- md:flex lg:items-center hidden lg:w-auto " id='menu'>
                 <div className="text-sm lg:flex-">
                   <a className="inline-block border border-gray-500 text-sm px-6 py-3 mr-2 rounded  mt-4 lg:inline-block lg:mt-0 "
-                       href="../"
+                       href="../admission"
                   >
                     Admission
                   </a>
 
                   <a className="inline-block border border-gray-500 text-sm px-6 py-3 mr-2 rounded  mt-4 lg:inline-block lg:mt-0 "
-                      href="../profiles"
+                      href="../"
                   >
                     Profiles
                   </a>

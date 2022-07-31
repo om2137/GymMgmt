@@ -175,7 +175,7 @@ export default function NestedModal( {first,middle,last,image,address,phone}:Pro
                         
                     </div>
                     
-                    <div className='flex flex-col text-center p-1 mx-10 '>
+                    <div className='flex flex-col text-center p-1 mx-14 '>
                         <div className='hidden sm:flex '>
                             <h2 id="parent-modal-title" className=' text-6xl font-bold capitalize'>
                                 {first} {last}
@@ -249,7 +249,7 @@ export default function NestedModal( {first,middle,last,image,address,phone}:Pro
                         <Button className="text-white bg-green-400 text-xsm hover:bg-green-300" onClick={log}>Invoice</Button>
                       </div>
                       <div className='sm:pb-4 sm:pl-10 pr-5 sm:pr-0'>
-                      <Button onClick={handleClose} className='text-white bg-yellow-500 hover:bg-yellow-400'>edit </Button>
+                        <Button onClick={handleClose} className='text-white bg-yellow-500 hover:bg-yellow-400'>edit </Button>
                       </div>
                     </div>
                 </div>

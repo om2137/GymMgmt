@@ -4,43 +4,176 @@ import Image from 'next/image'
 import SignUpForm from '../components/SignUpForm'
 import Navbar from '../components/Navbar'
 const axios = require('axios').default;
-
-const Home: NextPage = () => {
-  return (
-    <div className="flex min-h-screen flex-col items-center justify-center ">
-      <Head>
-        <title>fitness care</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Navbar 
-        title="Admission Form"
-      />
-      <main className="flex w-full flex-1 flex-col items-top justify-top px-20 text-center">
-
-        <div className='flex w-full flex-1 flex-col items-center drop-shadow-2xl justify-center p-10'>
-          <SignUpForm title="Admission Form"/>
-        </div>
-        
-        
-        
-      </main>
-      <div className='text-2xl font-bold py-10'>
-          <footer>
-            <h2>Thank you</h2>
-          </footer>
-        </div>
-    </div>
-  )
-}
+import MediaCard from '../components/cards'
 
 export async function getStaticProps(context: any) {
   
   const res = await axios('http://localhost:3000/api/member');
-  console.log(res.data.member);
+  const {member} = res.data;
   return {
-    props: {}, // will be passed to the page component as props
+    props: {
+      members: member,
+    }, // will be passed to the page component as props
   }
 }
+
+const Home: NextPage = ({members}:any) => {
+  return (
+    <>
+    <Navbar 
+      title="Profiles"
+    />
+    <main className='px-6'>
+      <div className='py-5'>
+        {/* <div className='flex content-center justify-center pb-10 xsm:hidden sm:flex'>
+                  <Grid
+                    container 
+                    spacing="40px" 
+                    marginLeft="10px"
+                    marginRight="20px"
+                  >
+                      <Grid item xs={12} sm={6} md={3} xl={2} >
+                        <MediaCard image='https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4'
+                          title='Om Raut' 
+                          description='description' 
+                          GHlink='https://github.com/om2137/Thoughts'
+                          blog='https://easydev.tech/thoughts-decentralized-twitter-like-app-web3'
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6} md={3} xl={2} >
+                        <MediaCard image='https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4'
+                          title='Om Raut' 
+                          description='description' 
+                          GHlink='https://github.com/om2137/Thoughts'
+                          blog='https://easydev.tech/thoughts-decentralized-twitter-like-app-web3'
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6} md={3} xl={2} >
+                        <MediaCard image='https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4'
+                          title='Om Raut' 
+                          description='description' 
+                          GHlink='https://github.com/om2137/Thoughts'
+                          blog='https://easydev.tech/thoughts-decentralized-twitter-like-app-web3'
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6} md={3} xl={2} >
+                        <MediaCard image='https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4'
+                          title='Om Raut' 
+                          description='description' 
+                          GHlink='https://github.com/om2137/Thoughts'
+                          blog='https://easydev.tech/thoughts-decentralized-twitter-like-app-web3'
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6} md={3} xl={2} >
+                        <MediaCard image='https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4'
+                          title='Om Raut' 
+                          description='description' 
+                          GHlink='https://github.com/om2137/Thoughts'
+                          blog='https://easydev.tech/thoughts-decentralized-twitter-like-app-web3'
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6} md={3} xl={2} >
+                        <MediaCard image='https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4'
+                          title='Om Raut' 
+                          description='description' 
+                          GHlink='https://github.com/om2137/Thoughts'
+                          blog='https://easydev.tech/thoughts-decentralized-twitter-like-app-web3'
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6} md={3} xl={2} >
+                        <MediaCard image='https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4'
+                          title='Om Raut' 
+                          description='description' 
+                          GHlink='https://github.com/om2137/Thoughts'
+                          blog='https://easydev.tech/thoughts-decentralized-twitter-like-app-web3'
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6} md={3} xl={2} >
+                        <MediaCard image='https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4'
+                          title='Om Raut' 
+                          description='description' 
+                          GHlink='https://github.com/om2137/Thoughts'
+                          blog='https://easydev.tech/thoughts-decentralized-twitter-like-app-web3'
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6} md={3} xl={2} >
+                        <MediaCard image='https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4'
+                          title='Om Raut' 
+                          description='description' 
+                          GHlink='https://github.com/om2137/Thoughts'
+                          blog='https://easydev.tech/thoughts-decentralized-twitter-like-app-web3'
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6} md={3} xl={2} >
+                        <MediaCard image='https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4'
+                          title='Om Raut' 
+                          description='description' 
+                          GHlink='https://github.com/om2137/Thoughts'
+                          blog='https://easydev.tech/thoughts-decentralized-twitter-like-app-web3'
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6} md={3} xl={2} >
+                        <MediaCard image='https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4'
+                          title='Om Raut' 
+                          description='description' 
+                          GHlink='https://github.com/om2137/Thoughts'
+                          blog='https://easydev.tech/thoughts-decentralized-twitter-like-app-web3'
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6} md={3} xl={2} >
+                        <MediaCard image='https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4'
+                          title='Om Raut' 
+                          description='description' 
+                          GHlink='https://github.com/om2137/Thoughts'
+                          blog='https://easydev.tech/thoughts-decentralized-twitter-like-app-web3'
+                        />
+                      </Grid>
+                      
+                      
+                  </Grid>
+        </div> */}
+      </div>
+      {/* modal */}
+      <div>
+        {/* <User/> */}
+        <div className='flex '>
+          {
+            members.map((member : any) => {
+              return (
+                <div className='p-5'>
+                  <div className=' text-black'>
+                    <MediaCard
+                      image="https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4"
+                      first={member.Firstname}
+                      middle={member.Middlename}
+                      last={member.Lastname}
+                      address={member.Address}
+                      phone={member.Contact}
+                    />
+                  </div>
+                </div>
+                
+              )
+            })
+          }  
+        </div>
+        
+
+      </div>
+    </main>
+    
+    </>
+  )
+}
+
+// export async function getStaticProps(context: any) {
+  
+//   const res = await axios('http://localhost:3000/api/member');
+//   console.log(res.data.member);
+//   return {
+//     props: {}, // will be passed to the page component as props
+//   }
+// }
 
 
 export default Home
