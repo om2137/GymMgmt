@@ -129,7 +129,7 @@ export default function NestedModal( {first,middle,last,image,address,phone}:Pro
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style }} className='w-3/4 max-w-2xl h-fit'>
+        <Box sx={{ ...style }} className='w-3/4 max-w-2xl overflow-auto sm:h-fit h-[40rem]'>
             
         <div id='member'>
           {/* {
@@ -153,7 +153,7 @@ export default function NestedModal( {first,middle,last,image,address,phone}:Pro
                             min-w-full md:w-48
                             md:border-2 border-gray-400 rounded-xl md:mt-4 xl:mx-6"/>
                           <div className='hidden sm:inline p-3 mt-4 text-center'>
-                            <h1 className='text-2xl font-semibold'>Plan Expires</h1>
+                            <h1 className='text-2xl font-semibold text-center'>Plan Expires</h1>
                             <div className='pt-2 text-center'>
                               <span className=''>28(days)</span>
                             </div>
@@ -224,32 +224,36 @@ export default function NestedModal( {first,middle,last,image,address,phone}:Pro
             </div>
             <div className='p-4 align-center'>                
                 <label id="countries" className="block mb-2 text-sm font-medium text-black ">Select an plans</label>
-                <div className='sm:flex '>
-                    <div className='pr-5 pb-4 sm:pb-0'>
-                       <select id="countries" required className="bg-white border border-gray-300 rounded-lg text-gray-900 
-                        text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                            <option className='hidden'>Choose Facility</option>
-                            <option value="US">Cardio</option>
-                            <option value="CA">Weight</option>
-                            <option value="">Cardio + Weight</option>
-                        </select> 
-                    </div>
-                    <div className='pr-5 pb-4 sm:pb-0'>
-                       <select id="countries" required className="bg-white border border-gray-300 rounded-lg text-gray-900 
-                        text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                            <option className='hidden' >Choose Time Frame</option>
-                            <option value="US">Montly</option>
-                            <option value="CA">Quarterly</option>
-                            <option value="FR">Half Yearly</option>
-                            <option value="DE">Annually</option>
-                        </select> 
-                    </div>
-                    <div className='flex flex-wrap pb-4'>
-                      <div className='sm:pb-4'>
+                <div className='md:flex justify-between'>
+                    <div className='sm:flex pb-2'>
+                      <div className='pr-5 pb-4 sm:pb-0'>
+                        <select id="countries" required className="bg-white border border-gray-300 rounded-lg text-gray-900 
+                          text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                              <option className='hidden'>Choose Facility</option>
+                              <option value="US">Cardio</option>
+                              <option value="CA">Weight</option>
+                              <option value="">Cardio + Weight</option>
+                          </select> 
+                      </div>
+                      <div className='pr-5 pb-4 sm:pb-0'>
+                        <select id="countries" required className="bg-white border border-gray-300 rounded-lg text-gray-900 
+                          text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                              <option className='hidden' >Choose Time Frame</option>
+                              <option value="US">Montly</option>
+                              <option value="CA">Quarterly</option>
+                              <option value="FR">Half Yearly</option>
+                              <option value="DE">Annually</option>
+                          </select> 
+                      </div>
+                      <div className='pb-4 '>
                         <Button className="text-white bg-green-400 text-xsm hover:bg-green-300" onClick={log}>Invoice</Button>
                       </div>
-                      <div className='sm:pb-4 sm:pl-10 pr-5 sm:pr-0'>
-                        <Button onClick={handleClose} className='text-white bg-yellow-500 hover:bg-yellow-400'>edit </Button>
+                    </div>
+                    
+                    <div className='flex justify-between pb-4'>
+                      
+                      <div className='sm:pb-4  md:ml-5 '>
+                        <Button onClick={handleClose} className='text-white bg-yellow-500 hover:bg-yellow-400 '>edit </Button>
                       </div>
                     </div>
                 </div>

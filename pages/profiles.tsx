@@ -134,11 +134,11 @@ const profiles: NextPage = ({members}:any) => {
       {/* modal */}
       <div>
         {/* <User/> */}
-        <div className='flex '>
+        <div className='flex flex-wrap'>
           {
             members.map((member : any) => {
               return (
-                <div className='p-5'>
+                <div className='p-5 '>
                   <div className=' text-black'>
                     <MediaCard
                       image="https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4"

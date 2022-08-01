@@ -136,7 +136,7 @@ const Home: NextPage = ({members}:any) => {
       {/* modal */}
       <div>
         {/* <User/> */}
-        <div className='flex '>
+        <div className='flex flex-wrap'>
           {
             members.map((member : any) => {
               return (
