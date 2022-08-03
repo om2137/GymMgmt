@@ -44,7 +44,8 @@ const profiles: NextPage = ({members}:any) => {
                       phone={member.Contact}
                       Dob={birth.toDateString()}
                       age={0}  
-                      gender={member.Gender}                   />
+                      gender={member.Gender}                   
+                    />
                   </div>
                 </div>
                 

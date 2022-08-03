@@ -28,7 +28,8 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
         Address: '',
         Contact:'',
         DoB: '',
-        Gender:''
+        Gender:'',
+        Mstat:''
     })
     
     const handleChange = (e: React.ChangeEvent<any>) => {
@@ -110,14 +111,15 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
                                 onChange={handleChange} 
                                 value={"male"}                               
                                 className='mr-2'/>
-                            <label htmlFor="" className='mr-2'>male</label>
+                            <label className='mr-2'>male</label>
                             <input type="radio" 
                                 name="gender" id="" 
                                 onChange={handleChange} 
                                 value={"female"}
                                 className='mr-2'/>
-                            <label htmlFor="" className='mr-2'>female</label>
-                        </div>                   
+                            <label className='mr-2'>female</label>
+                        </div>   
+                                        
                         
                                             
                         <Button type="submit" className='bg-red-500 hover:bg-red-400 text-white'>Add</Button>

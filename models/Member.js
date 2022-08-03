@@ -32,9 +32,9 @@ const MemberSchema = new mongoose.Schema({
     Gender: {
         type: String,
     },
-//     marriedStatus: {
-//         type: String,
-//     }
+    Mstat: {
+        type: String,
+    }
 })
 
 module.exports = mongoose.models.Member || mongoose.model('Member',MemberSchema) 
