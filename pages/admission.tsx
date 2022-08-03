@@ -3,7 +3,6 @@ import Head from 'next/head'
 import SignUpForm from '../components/SignUpForm'
 import Navbar from '../components/Navbar'
 import Test from '../components/Testsign'
-
 const axios = require('axios').default;
 
 

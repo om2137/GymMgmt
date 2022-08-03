@@ -139,6 +139,13 @@ const Home: NextPage = ({members}:any) => {
         <div className='flex flex-wrap'>
           {
             members.map((member : any) => {
+              const birth = new Date(member.DoB);
+              const age = new Date().getFullYear() - birth.getFullYear();
+              const month = birth.getMonth();
+              const day = birth.getDate();
+              const year = birth.getFullYear();
+              console.log(member.Gender);
+              console.log(birth);
               return (
                 <div className='p-5'>
                   <div className=' text-black'>
@@ -149,6 +156,9 @@ const Home: NextPage = ({members}:any) => {
                       last={member.Lastname}
                       address={member.Address}
                       phone={member.Contact}
+                      Dob={day+'/'+month+'/'+year}
+                      age={age}
+                      gender={member.Gender}
                     />
                   </div>
                 </div>

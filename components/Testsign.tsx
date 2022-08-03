@@ -20,20 +20,21 @@ export async function getStaticProps(context: any) {
   }
 
 const SignUpForm: React.FC<Props> = ( {title} ) => {
-    console.log("call");
-    const [startDate, setStartDate] = useState(new Date());
 
     const [form, setForm] = useState({
         Firstname:'',
         Middlename: '',
         Lastname: '',
         Address: '',
-        Contact:''
+        Contact:'',
+        DoB: '',
+        Gender:''
     })
+    
     const handleChange = (e: React.ChangeEvent<any>) => {
         setForm({
             ...form,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
         })
     }
     const handleForm = async(e: React.ChangeEvent<any>) => {
@@ -45,12 +46,16 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
                     "Content-Type": "application/json"
                 },
                 data: JSON.stringify(form)
+                
             })
             Router.push('/')
+            
         }catch(err){
             console.log(err)
         }
   }
+
+    console.log(form.Gender);
     return(
         <div className=' flex items-center justify-center  '>
             <div className='border-2 border-gray-400 py-10 rounded bg-white px-20 '>
@@ -92,6 +97,29 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Contact' 
                         />
+                        <input type="date" autoComplete='none' required 
+                            onChange={handleChange} 
+                            name='DoB' value={form.DoB}
+                            className='py-2 rounded relative block w-full px-3 
+                            border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
+                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Date of birth' 
+                        />
+                        <div>
+                            <input type="radio" 
+                                name="gender" id="" 
+                                onChange={handleChange} 
+                                value={"male"}                               
+                                className='mr-2'/>
+                            <label htmlFor="" className='mr-2'>male</label>
+                            <input type="radio" 
+                                name="gender" id="" 
+                                onChange={handleChange} 
+                                value={"female"}
+                                className='mr-2'/>
+                            <label htmlFor="" className='mr-2'>female</label>
+                        </div>                   
+                        
+                                            
                         <Button type="submit" className='bg-red-500 hover:bg-red-400 text-white'>Add</Button>
                         
                     </form>

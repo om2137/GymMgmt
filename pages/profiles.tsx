@@ -15,7 +15,7 @@ export async function getStaticProps(context: any) {
 }
 
 const profiles: NextPage = ({members}:any) => {
-
+  
   return (
     <>
     <Navbar 
@@ -137,7 +137,10 @@ const profiles: NextPage = ({members}:any) => {
         <div className='flex flex-wrap'>
           {
             members.map((member : any) => {
+              const birth = new Date(member.DoB);
+              
               return (
+                
                 <div className='p-5 '>
                   <div className=' text-black'>
                     <MediaCard
@@ -147,7 +150,9 @@ const profiles: NextPage = ({members}:any) => {
                       last={member.Lastname}
                       address={member.Address}
                       phone={member.Contact}
-                    />
+                      Dob={birth.toDateString()}
+                      age={0}  
+                      gender={member.Gender}                   />
                   </div>
                 </div>
                 

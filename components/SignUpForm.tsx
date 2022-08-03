@@ -28,7 +28,7 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
         Middlename: '',
         Lastname: '',
         Address: '',
-        // Contact:''
+        Contact:''
       })
       const handleChange = (e: React.ChangeEvent<any>) => {
         setForm({
@@ -148,7 +148,7 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
                                         
                                 </div>
 
-                                {/* <div>
+                                <div>
                                     <label className=''>Phone Number:</label>
                                     <input type="tel" autoComplete='none' required 
                                         onChange={handleChange} 
@@ -156,7 +156,7 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
                                     className='appearance-none py-2 rounded relative block w-full px-3 
                                         border border-gray-600 placeholder-gray-500 rounded-t-md mb-2
                                         focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder=''/>
-                                </div> */}
+                                </div>
                                 
                                 
                                 

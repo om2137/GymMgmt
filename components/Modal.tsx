@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
+import { Date } from 'mongoose';
 const axios = require('axios').default;
 
 export async function getStaticProps(context: any) {
@@ -23,6 +24,9 @@ interface Props {
     last: string;
     address: string;
     phone: number;
+    birthdate: string;
+    age: number;
+    gender: string;
   }
 
 const style = {
@@ -103,10 +107,11 @@ function ChildModal() {
   );
 }
 // main modal
-export default function NestedModal( {first,middle,last,image,address,phone}:Props ) {
+export default function NestedModal( {first,middle,last,image,address,phone,birthdate,age,gender}:Props ) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
+    console.log("dob:"+birthdate);
   };
   const handleClose = () => {
     setOpen(false);
@@ -129,7 +134,7 @@ export default function NestedModal( {first,middle,last,image,address,phone}:Pro
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style }} className='w-3/4 max-w-2xl overflow-auto sm:h-fit h-[40rem]'>
+        <Box sx={{ ...style }} className='w-3/4 max-w-2xl overflow-auto 2xl:h-[46rem] h-[40rem]'>
             
         <div id='member'>
           {/* {
@@ -183,32 +188,35 @@ export default function NestedModal( {first,middle,last,image,address,phone}:Pro
                         </div>
                         <div className='p-2'>
                             <div className='mt-2'>
-                                <span className='font-semibold'>Full Name:</span><br/>
+                                <span className='font-semibold text-lg'>Full Name:</span><br/>
                                 <span className='ml-2 capitalize'>{first} {middle} {last}</span>
                             </div>
 
                             <div className='mt-2'>
-                                <span className='font-semibold' >Phone number:</span><br/>
+                                <span className='font-semibold text-lg' >Phone number:</span><br/>
                                 <span className='ml-2'>{phone}</span>
                             </div>
                             
                             <div className='mt-2'>
-                                <span className='font-semibold'>Address:</span><br/>
+                                <span className='font-semibold text-lg'>Address:</span><br/>
                                 <span className='ml-2'>{address}</span>
                             </div>
 
                             <div className='mt-2'>
-                                <span className='font-semibold' >gender:</span>
+                                <span className='font-semibold text-lg' >gender:</span> <br />
+                                <span className='ml-2'>{gender}</span>
                             </div>
                             <div className='mt-2'>
-                                <span className='font-semibold' >Date of birth:</span>
+                                <span className='font-semibold text-lg' >Date of birth:</span><br />
+                                <span className='ml-2'>{birthdate}</span>
                             </div>
                             <div className='mt-2'>
-                                <span className='font-semibold' >Age:</span>
+                                <span className='font-semibold text-lg' >Age:</span><br />
+                                <span className='ml-2'>{age}</span>
                             </div>
                             
                             <div className='mt-2'>
-                                <span className='font-semibold' >marriage status:</span>
+                                <span className='font-semibold text-lg' >marriage status:</span>
                             </div>
                         </div>
                         

@@ -23,15 +23,15 @@ const MemberSchema = new mongoose.Schema({
         min: 1000000000,
         max: 9999999999
     },
-    // // DateOfBirth: {
-    //     type: Date,
-    // },
+    DoB: {
+        type: Date,
+    },
     // age:{
     //     type: Number,
     // },
-//     gender: {
-//         type: String,
-//     },
+    Gender: {
+        type: String,
+    },
 //     marriedStatus: {
 //         type: String,
 //     }
