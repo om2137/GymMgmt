@@ -35,7 +35,7 @@ const profiles: NextPage = ({members}:any) => {
                 
                 <div className='p-5 '>
                   <div className=' text-black'>
-                    <MediaCard
+                    {/* <MediaCard
                       image="https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4"
                       first={member.Firstname}
                       middle={member.Middlename}
@@ -44,8 +44,9 @@ const profiles: NextPage = ({members}:any) => {
                       phone={member.Contact}
                       Dob={birth.toDateString()}
                       age={0}  
-                      gender={member.Gender}                   
-                    />
+                      gender={member.Gender}  
+
+                    /> */}
                   </div>
                 </div>
                 

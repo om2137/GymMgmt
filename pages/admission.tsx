@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import SignUpForm from '../components/SignUpForm'
 import Navbar from '../components/Navbar'
-import Test from '../components/Testsign'
+import Testsign from '../components/Testsign'
 const axios = require('axios').default;
 
 
@@ -22,7 +22,7 @@ function admission() {
 
         <div className='flex w-full flex-1 flex-col items-center drop-shadow-2xl justify-center p-10'>
           {/* <SignUpForm title="Admission Form"/> */}
-          <Test title="Admission Form"/>
+          <Testsign title="Admission Form" gender={''} Gender={''} mst={''}/>
         </div>
       </main>
       <div className='text-2xl font-bold py-10'>

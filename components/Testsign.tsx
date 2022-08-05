@@ -1,5 +1,4 @@
 import React from 'react'
-import DatePicker from "react-datepicker";
 import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 const axios = require('axios').default;
@@ -128,18 +127,18 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
                         </div>      
                         <div>
                             <input type="radio" 
-                                name="gender" id="" 
+                                name="mariage" id="" 
                                 onChange={(e) => setMst(e.target.value)}
                                 value="married"                           
                                 className='mr-2'/>
                             <label className='mr-2'>married</label>
                             <input type="radio" 
-                                name="gender" id="" 
+                                name="mariage" id="" 
                                 onChange={(e) => setMst(e.target.value)}
                                 value="unmarried"
                                 className='mr-2'/>
                             <label className='mr-2'>unmarried</label>
-                            <p className='hidden'>{form.Mstat = gender}</p>
+                            <p className='hidden'>{form.Mstat = mst}</p>
                         </div>                          
                         
                         <Button type="submit" className='bg-red-500 hover:bg-red-400 text-white'>Add</Button>

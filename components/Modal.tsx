@@ -27,6 +27,7 @@ interface Props {
     birthdate: string;
     age: number;
     gender: string;
+    mstatus: string;
   }
 
 const style = {
@@ -107,7 +108,7 @@ function ChildModal() {
   );
 }
 // main modal
-export default function NestedModal( {first,middle,last,image,address,phone,birthdate,age,gender}:Props ) {
+export default function NestedModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus}:Props ) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -216,7 +217,8 @@ export default function NestedModal( {first,middle,last,image,address,phone,birt
                             </div>
                             
                             <div className='mt-2'>
-                                <span className='font-semibold text-lg' >marriage status:</span>
+                                <span className='font-semibold text-lg' >marriage status:</span> <br />
+                                <span className='ml-2'>{mstatus}</span>
                             </div>
                         </div>
                         

@@ -33,6 +33,7 @@ interface Props {
   Dob: string;
   age: number;
   gender: string;
+  marriage: string;
 }
 const imgStyle = {
   minWidth: '200px',
@@ -60,7 +61,7 @@ const typoStyle={
   textTransform: 'capitalize',
 }
 
-export default function MediaCard( {image, first,middle,last,address,phone,Dob,age,gender}: Props ) {
+export default function MediaCard( {image, first,middle,last,address,phone,Dob,age,gender,marriage}: Props ) {
   
   return (
     <Card style={cardStyle}>
@@ -86,6 +87,7 @@ export default function MediaCard( {image, first,middle,last,address,phone,Dob,a
                 birthdate={Dob}
                 age={age}
                 gender={gender}
+                mstatus={marriage}
               />
            </div>
           

@@ -159,6 +159,7 @@ const Home: NextPage = ({members}:any) => {
                       Dob={day+'/'+month+'/'+year}
                       age={age}
                       gender={member.Gender}
+                      marriage={member.Mstat}
                     />
                   </div>
                 </div>
