@@ -6,9 +6,7 @@ const axios = require('axios').default;
 import Router, {useRouter} from 'next/router'
 import Button from '@mui/material/Button';
 
-type Props = {
-    title: string;
-}
+
 
 export async function getStaticProps(context: any) {
   
@@ -18,7 +16,11 @@ export async function getStaticProps(context: any) {
       props: {}, // will be passed to the page component as props
     }
   }
-
+type Props = {
+    title: string;
+    gender: string;
+    Gender: string;
+}
 const SignUpForm: React.FC<Props> = ( {title} ) => {
 
     const [form, setForm] = useState({
@@ -28,8 +30,7 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
         Address: '',
         Contact:'',
         DoB: '',
-        Gender:'',
-        Mstat:''
+        Gender:''
     })
     
     const handleChange = (e: React.ChangeEvent<any>) => {
@@ -55,8 +56,9 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
             console.log(err)
         }
   }
-
     console.log(form.Gender);
+    
+    const [gender, setGender] = useState('');
     return(
         <div className=' flex items-center justify-center  '>
             <div className='border-2 border-gray-400 py-10 rounded bg-white px-20 '>
@@ -105,23 +107,23 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Date of birth' 
                         />
+                        {/* <input type="file"  /> */}
                         <div>
                             <input type="radio" 
                                 name="gender" id="" 
-                                onChange={handleChange} 
-                                value={"male"}                               
-                                className='mr-2'/>
-                            <label className='mr-2'>male</label>
-                            <input type="radio" 
-                                name="gender" id="" 
-                                onChange={handleChange} 
-                                value={"female"}
+                                onChange={(e) => setGender(e.target.value)}
+                                value="Female"                           
                                 className='mr-2'/>
                             <label className='mr-2'>female</label>
-                        </div>   
-                                        
+                            <input type="radio" 
+                                name="gender" id="" 
+                                onChange={(e) => setGender(e.target.value)}
+                                value="male"
+                                className='mr-2'/>
+                            <label className='mr-2'>male</label>
+                            <p className='hidden'>{form.Gender = gender}</p>
+                        </div>                               
                         
-                                            
                         <Button type="submit" className='bg-red-500 hover:bg-red-400 text-white'>Add</Button>
                         
                     </form>
