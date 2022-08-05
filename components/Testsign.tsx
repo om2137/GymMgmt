@@ -20,6 +20,7 @@ type Props = {
     title: string;
     gender: string;
     Gender: string;
+    mst: string;
 }
 const SignUpForm: React.FC<Props> = ( {title} ) => {
 
@@ -30,7 +31,8 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
         Address: '',
         Contact:'',
         DoB: '',
-        Gender:''
+        Gender:'',
+        Mstat:''
     })
     
     const handleChange = (e: React.ChangeEvent<any>) => {
@@ -59,6 +61,7 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
     console.log(form.Gender);
     
     const [gender, setGender] = useState('');
+    const [mst, setMst] = useState('');
     return(
         <div className=' flex items-center justify-center  '>
             <div className='border-2 border-gray-400 py-10 rounded bg-white px-20 '>
@@ -122,7 +125,22 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
                                 className='mr-2'/>
                             <label className='mr-2'>male</label>
                             <p className='hidden'>{form.Gender = gender}</p>
-                        </div>                               
+                        </div>      
+                        <div>
+                            <input type="radio" 
+                                name="gender" id="" 
+                                onChange={(e) => setMst(e.target.value)}
+                                value="married"                           
+                                className='mr-2'/>
+                            <label className='mr-2'>married</label>
+                            <input type="radio" 
+                                name="gender" id="" 
+                                onChange={(e) => setMst(e.target.value)}
+                                value="unmarried"
+                                className='mr-2'/>
+                            <label className='mr-2'>unmarried</label>
+                            <p className='hidden'>{form.Mstat = gender}</p>
+                        </div>                          
                         
                         <Button type="submit" className='bg-red-500 hover:bg-red-400 text-white'>Add</Button>
                         
