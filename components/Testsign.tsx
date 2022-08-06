@@ -5,16 +5,13 @@ const axios = require('axios').default;
 import Router, {useRouter} from 'next/router'
 import Button from '@mui/material/Button';
 
-
-
 export async function getStaticProps(context: any) {
-  
     const res = await axios('http://localhost:3000/api/member');
     console.log(res.data.member);
     return {
-      props: {}, // will be passed to the page component as props
+      props: {}, 
     }
-  }
+}
 type Props = {
     title: string;
     gender: string;
