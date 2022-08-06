@@ -34,7 +34,11 @@ const MemberSchema = new mongoose.Schema({
     },
     Mstat: {
         type: String,
-    }
+    },
+    // Avatar: {
+    //     data: Buffer,
+    //     contentType: String,
+    // }
 })
 
 module.exports = mongoose.models.Member || mongoose.model('Member',MemberSchema) 

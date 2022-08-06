@@ -28,7 +28,8 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
         Contact:'',
         DoB: '',
         Gender:'',
-        Mstat:''
+        Mstat:'',
+        Avatar:''
     })
     
     const handleChange = (e: React.ChangeEvent<any>) => {
