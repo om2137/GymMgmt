@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/member/index.js", "components/Testsign.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/member/index.js", "components/Testsign.tsx", "components/cloudinary.jsx"],
   "exclude": ["node_modules"]
 }

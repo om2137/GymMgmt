@@ -62,7 +62,11 @@ export default function Navbar({ title }: Props) {
                   >
                     Admission
                   </a>
-                  
+                  <a className="inline-block border border-gray-500 text-sm px-6 py-3 mr-2 rounded  mt-4 lg:inline-block lg:mt-0 "
+                      href="../cloud"
+                  >
+                    Image upload
+                  </a>
                 </div>
                 
               </div>

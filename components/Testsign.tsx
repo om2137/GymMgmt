@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 const axios = require('axios').default;
-import Router, {useRouter} from 'next/router'
+import Router from 'next/router'
 import Button from '@mui/material/Button';
 
 export async function getStaticProps(context: any) {
@@ -17,6 +17,10 @@ type Props = {
     gender: string;
     Gender: string;
     mst: string;
+    selectedFile: string;
+}
+interface  Avatar {
+    image: string | Blob;
 }
 const SignUpForm: React.FC<Props> = ( {title} ) => {
 
@@ -29,33 +33,37 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
         DoB: '',
         Gender:'',
         Mstat:'',
-        Avatar:''
+        Avatar: '',
     })
     
     const handleChange = (e: React.ChangeEvent<any>) => {
         setForm({
             ...form,
             [e.target.name]: e.target.value,
+            
         })
+        
     }
     const handleForm = async(e: React.ChangeEvent<any>) => {
         e.preventDefault()
         try{
+            
             const res = await axios('http://localhost:3000/api/member', {
                 method: "POST",
                 headers:{
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 },
-                data: JSON.stringify(form)
-                
+                data: JSON.stringify(form),
             })
             Router.push('/')
             
         }catch(err){
             console.log(err)
         }
+        
   }
-    console.log(form.Gender);
+    
+    // console.log(form.Gender);
     
     const [gender, setGender] = useState('');
     const [mst, setMst] = useState('');
@@ -107,8 +115,8 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Date of birth' 
                         />
-                        {/* <input type="file"  /> */}
-                        <div>
+                        {/*  <input type="file"  /> */}
+                        <div> 
                             <input type="radio" 
                                 name="gender" id="" 
                                 onChange={(e) => setGender(e.target.value)}
@@ -136,11 +144,10 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
                                 value="unmarried"
                                 className='mr-2'/>
                             <label className='mr-2'>unmarried</label>
-                            <p className='hidden'>{form.Mstat = mst}</p>
-                        </div>                          
-                        
+                            <p className='hidden' >{form.Mstat = mst}</p>
+                        </div>   
+                                             
                         <Button type="submit" className='bg-red-500 hover:bg-red-400 text-white'>Add</Button>
-                        
                     </form>
 
                 </div>

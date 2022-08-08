@@ -36,8 +36,9 @@ const MemberSchema = new mongoose.Schema({
         type: String,
     },
     // Avatar: {
-    //     data: Buffer,
-    //     contentType: String,
+    //     // data: Buffer,
+    //     // contentType: String
+    //     type : String,
     // }
 })
 

@@ -3,10 +3,11 @@ import Head from 'next/head'
 import SignUpForm from '../components/SignUpForm'
 import Navbar from '../components/Navbar'
 import Testsign from '../components/Testsign'
+import Cloudi from '../components/cloudinary'
 const axios = require('axios').default;
 
 
-function admission() {
+function cloud() {
   
 
   return (
@@ -21,8 +22,8 @@ function admission() {
       <main className="flex w-full flex-1 flex-col items-top justify-top px-20 text-center">
 
         <div className='flex w-full flex-1 flex-col items-center drop-shadow-2xl justify-center p-10'>
-          {/* <SignUpForm title="Admission Form"/> */}
-          <Testsign title="Admission Form" gender={''} Gender={''} mst={''} selectedFile={''}/>
+          
+          <Cloudi />
         </div>
       </main>
       <div className='text-2xl font-bold py-10'>
@@ -44,4 +45,5 @@ export async function getStaticProps(context: any) {
 }
 
 
-export default admission
+export default cloud
+
