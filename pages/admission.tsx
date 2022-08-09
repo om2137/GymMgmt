@@ -22,7 +22,7 @@ function admission() {
 
         <div className='flex w-full flex-1 flex-col items-center drop-shadow-2xl justify-center p-10'>
           {/* <SignUpForm title="Admission Form"/> */}
-          <Testsign title="Admission Form" gender={''} Gender={''} mst={''} selectedFile={''}/>
+          <Testsign title="Admission Form" Gender={''} mst={''} selectedFile={''} avatar={''}/>
         </div>
       </main>
       <div className='text-2xl font-bold py-10'>

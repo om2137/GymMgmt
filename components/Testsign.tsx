@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 const axios = require('axios').default;
 import Router from 'next/router'
 import Button from '@mui/material/Button';
+import Cloudi from '../components/cloudinary'
 
 export async function getStaticProps(context: any) {
     const res = await axios('http://localhost:3000/api/member');
@@ -14,15 +15,13 @@ export async function getStaticProps(context: any) {
 }
 type Props = {
     title: string;
-    gender: string;
+    avatar: string;
     Gender: string;
     mst: string;
     selectedFile: string;
 }
-interface  Avatar {
-    image: string | Blob;
-}
-const SignUpForm: React.FC<Props> = ( {title} ) => {
+
+const SignUpForm: React.FC<Props> = (  ) => {
 
     const [form, setForm] = useState({
         Firstname:'',
@@ -67,11 +66,20 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
     
     const [gender, setGender] = useState('');
     const [mst, setMst] = useState('');
+    form.Avatar = '';
+    const [avatar, setAvatar] = useState('');
+    const printUrl = (arg: string) => {
+        // console.log(arg)
+        setAvatar(arg)
+    }
+    form.Avatar = avatar;
     return(
         <div className=' flex items-center justify-center  '>
-            <div className='border-2 border-gray-400 py-10 rounded bg-white px-20 '>
+            <div className='border-2 border-gray-400 py-10 rounded bg-white sm:px-20 px-5'>
                 <div>
-                    <h2 className='my-6 text-center text-4xl font-bold text-gray-900'>{title}</h2>
+                    <h2 className='my-6 text-center text-4xl font-bold text-gray-900'>{}</h2>
+                    
+                    
                     <form className='py-6' onSubmit={handleForm} >
                         <input type="text" autoComplete='none' required 
                             onChange={handleChange} 
@@ -146,10 +154,12 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
                             <label className='mr-2'>unmarried</label>
                             <p className='hidden' >{form.Mstat = mst}</p>
                         </div>   
-                                             
+                        {/* image component */}
+                        
+                        {/* image component end */}
                         <Button type="submit" className='bg-red-500 hover:bg-red-400 text-white'>Add</Button>
                     </form>
-
+                    <Cloudi  theurl={printUrl}/>
                 </div>
             </div>
         </div>
@@ -158,4 +168,4 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
     
 }
 
-export default SignUpForm
+export default SignUpForm;
