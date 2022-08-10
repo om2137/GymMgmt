@@ -69,7 +69,7 @@ export default function MediaCard( {image, first,middle,last,address,phone,Dob,a
         style={imgStyle}
         component="img"
         image={image}
-        className="aspect-square"
+        className="aspect-square object-cover"
       />
       <CardContent >
         <div className='text-xl font-bold capitalize'>

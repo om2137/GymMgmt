@@ -155,8 +155,8 @@ export default function NestedModal( {first,middle,last,image,address,phone,birt
                 <div className='flex flex-col sm:flex-row justify-center'>
                     <div className='flex justify-center mt-6 px-4 drop-shadow-2xl'>
                         <div>
-                          <img src={image} className=" 
-                            min-w-full md:w-48
+                          <img src={image} 
+                          className="min-w-full md:w-48 aspect-square object-cover
                             md:border-2 border-gray-400 rounded-xl md:mt-4 xl:mx-6"/>
                           <div className='hidden sm:inline p-3 mt-4 text-center'>
                             <h1 className='text-2xl font-semibold text-center'>Plan Expires</h1>
