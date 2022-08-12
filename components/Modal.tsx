@@ -2,7 +2,6 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
-import { Date } from 'mongoose';
 const axios = require('axios').default;
 
 export async function getStaticProps(context: any) {
@@ -41,7 +40,7 @@ const style = {
   borderRadius: '8px',
   boxShadow: 24,
   pt: 3,
-  px: 3,
+  px: 2,
   pb: 3,
 };
 const style2 = {
@@ -136,29 +135,21 @@ export default function NestedModal( {first,middle,last,image,address,phone,birt
         aria-describedby="parent-modal-description"
       >
         <Box sx={{ ...style }} className='w-3/4 max-w-2xl overflow-auto 2xl:h-[46rem] h-[40rem]'>
-            
-        <div id='member'>
-          {/* {
-            members.map((member : any) => {
-              return (
-                <div className='text-black text-6xl'>
-                  {member.Firstname}
-                </div>
-              )
-            })
-          }   */}
-        </div>
-            <div className='sm:flex w-full justify-end hidden '>
-                <Button onClick={handleClose} className='text-white bg-red-500 hover:bg-red-400'>Close </Button>
+          
+            <div className='sm:flex w-full justify-end hidden pb-2'>
+                <Button onClick={handleClose} className='text-white bg-red-500 hover:bg-red-400 '>Close </Button>
             </div>
-            <div className='sm:flex  align-middle justify-between'>
-                <div className='flex flex-col sm:flex-row justify-center'>
-                    <div className='flex justify-center mt-6 px-4 drop-shadow-2xl'>
+            <div className='md:flex  align-middle justify-between'>
+                <div className='flex flex-col md:flex-row justify-center'>
+                    <div className='md:flex  justify-center mt-6 px-4 drop-shadow-2xl ml:ml-12'>
                         <div>
-                          <img src={image} 
-                          className="min-w-full md:w-48 aspect-square object-cover
-                            md:border-2 border-gray-400 rounded-xl md:mt-4 xl:mx-6"/>
-                          <div className='hidden sm:inline p-3 mt-4 text-center'>
+                          <div className='p-5 md:p-0 flex justify-center'>
+                            <img src={image } 
+                            className=" w-48 aspect-square object-cover
+                            md:border-2 border-gray-400 rounded-xl  md:p-0" />
+                          </div>
+                          
+                          <div className='hidden md:inline p-3 mt-4 text-center'>
                             <h1 className='text-2xl font-semibold text-center'>Plan Expires</h1>
                             <div className='pt-2 text-center'>
                               <span className=''>28(days)</span>
@@ -167,13 +158,13 @@ export default function NestedModal( {first,middle,last,image,address,phone,birt
                         </div>
                         
                         
-                        <div>
-                            <h2 id="parent-modal-title" className='sm:hidden text-4xl font-bold capitalize pl-4'>
+                        <div className='text-center '>
+                            <h2 id="parent-modal-title" className='md:hidden text-4xl font-bold capitalize'>
                                 {first} {last}
                             </h2>
-                            <div className='sm:hidden pl-4 p-1 mt-1 text-start'>
-                              <h1 className='text-2xl font-semibold'>Plan Expires</h1>
-                              <div className='pt-2 text-start'>
+                            <div className='sm:hidden text-center  p-1 mt-1 text-start'>
+                              <h1 className='text-2xl text-center font-semibold'>Plan Expires</h1>
+                              <div className='pt-2 text-center '>
                                 <span className=''>28(days)</span>
                               </div>
                             </div>
@@ -181,8 +172,8 @@ export default function NestedModal( {first,middle,last,image,address,phone,birt
                         
                     </div>
                     
-                    <div className='flex flex-col text-center p-1 mx-14 '>
-                        <div className='hidden sm:flex '>
+                    <div className='flex flex-col text-center p-1 mx-10 '>
+                        <div className='hidden md:flex '>
                             <h2 id="parent-modal-title" className=' text-6xl font-bold capitalize'>
                                 {first} {last}
                             </h2>
@@ -240,19 +231,19 @@ export default function NestedModal( {first,middle,last,image,address,phone,birt
                         <select id="countries" required className="bg-white border border-gray-300 rounded-lg text-gray-900 
                           text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                               <option className='hidden'>Choose Facility</option>
-                              <option value="US">Cardio</option>
-                              <option value="CA">Weight</option>
-                              <option value="">Cardio + Weight</option>
+                              <option value="900">Cardio</option>
+                              <option value="500">Weight</option>
+                              <option value="1200">Cardio + Weight</option>
                           </select> 
                       </div>
                       <div className='pr-5 pb-4 sm:pb-0'>
                         <select id="countries" required className="bg-white border border-gray-300 rounded-lg text-gray-900 
                           text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                               <option className='hidden' >Choose Time Frame</option>
-                              <option value="US">Montly</option>
-                              <option value="CA">Quarterly</option>
-                              <option value="FR">Half Yearly</option>
-                              <option value="DE">Annually</option>
+                              <option value={1}>Montly</option>
+                              <option value={3}>Quarterly</option>
+                              <option value={6}>Half Yearly</option>
+                              <option value={12}>Annually</option>
                           </select> 
                       </div>
                       <div className='pb-4 '>

@@ -141,7 +141,7 @@ const Home: NextPage = ({members}:any) => {
             members.map((member : any) => {
               const birth = new Date(member.DoB);
               const age = new Date().getFullYear() - birth.getFullYear();
-              const month = birth.getMonth();
+              const month = birth.getMonth()+1;
               const day = birth.getDate();
               const year = birth.getFullYear();
               console.log(member.Gender);
