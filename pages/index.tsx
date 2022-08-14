@@ -13,7 +13,7 @@ export async function getStaticProps(context: any) {
   return {
     props: {
       members: member,
-    }, // will be passed to the page component as props
+    },
   }
 }
 
@@ -176,15 +176,5 @@ const Home: NextPage = ({members}:any) => {
     </>
   )
 }
-
-// export async function getStaticProps(context: any) {
-  
-//   const res = await axios('http://localhost:3000/api/member');
-//   console.log(res.data.member);
-//   return {
-//     props: {}, // will be passed to the page component as props
-//   }
-// }
-
 
 export default Home
