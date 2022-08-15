@@ -3,6 +3,7 @@ import Button from '@mui/material/Button'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import { useState } from 'react'
+import { signIn } from 'next-auth/react'
 import { Paper, styled, SvgIcon, Theme } from '@mui/material';
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -62,6 +63,11 @@ export default function Navbar({ title }: Props) {
                   >
                     Admission
                   </a>
+                  <button onClick={() => {
+                    signIn()
+                  }}>
+                    login
+                  </button>
                 </div>
                 
               </div>

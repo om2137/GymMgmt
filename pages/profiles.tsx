@@ -1,6 +1,9 @@
 import type { NextPage } from 'next'
 import MediaCard from '../components/cards'
 import Navbar from '../components/Navbar'
+import { useSession } from 'next-auth/react';
+import { useEffect } from 'react';
+import Router from 'next/router'
 const axios = require('axios').default;
 
 export async function getStaticProps(context: any) {
@@ -15,52 +18,63 @@ export async function getStaticProps(context: any) {
 }
 
 const profiles: NextPage = ({members}:any) => {
-  
-  return (
-    <>
-    <Navbar 
-      title="Profiles"
-    />
-    <main className='px-6'>
-      
-      {/* modal */}
-      <div>
-        {/* <User/> */}
-        <div className='flex flex-wrap'>
-          {
-            members.map((member : any) => {
-              const birth = new Date(member.DoB);
-              
-              return (
-                
-                <div className='p-5 '>
-                  <div className=' text-black'>
-                    {/* <MediaCard
-                      image="https://avatars.githubusercontent.com/u/33827410?s=400&u=d7fa33a6aba54a8748942939d48217d9ba0fcf84&v=4"
-                      first={member.Firstname}
-                      middle={member.Middlename}
-                      last={member.Lastname}
-                      address={member.Address}
-                      phone={member.Contact}
-                      Dob={birth.toDateString()}
-                      age={0}  
-                      gender={member.Gender}  
-
-                    /> */}
-                  </div>
-                </div>
-                
-              )
-            })
-          }  
-        </div>
+  const {status, data} = useSession();
+  useEffect(() => {
+    if( status === 'unauthenticated'){
+      Router.replace('/auth/login');
+    }
+  } , [status]);
+  if(status === 'authenticated'){
+    return (
+      <>
+      <Navbar 
+        title="Profiles"
+      />
+      <main className='px-6'>
         
+        {/* modal */}
+        <div>
+          {/* <User/> */}
+          <div className='flex flex-wrap'>
+            {
+              members.map((member : any) => {
+                const birth = new Date(member.DoB);
+                const age = new Date().getFullYear() - birth.getFullYear();
+                const month = birth.getMonth()+1;
+                const day = birth.getDate();
+                const year = birth.getFullYear();
+                return (
+                  
+                  <div className='p-5 '>
+                    <div className=' text-black'>
+                    <MediaCard
+                        image={member.Avatar}
+                        first={member.Firstname}
+                        middle={member.Middlename}
+                        last={member.Lastname}
+                        address={member.Address}
+                        phone={member.Contact}
+                        Dob={day+'/'+month+'/'+year}
+                        age={age}
+                        gender={member.Gender}
+                        marriage={member.Mstat}
+                      />
+                    </div>
+                  </div>
+                  
+                )
+              })
+            }  
+          </div>
+          
 
-      </div>
-    </main>
-    
-    </>
-  )
+        </div>
+      </main>
+      
+      </>
+    )
+  }
+  return <div>loading</div>
 }
 
 export default profiles
