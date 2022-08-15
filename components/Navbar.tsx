@@ -63,11 +63,6 @@ export default function Navbar({ title }: Props) {
                   >
                     Admission
                   </a>
-                  <button onClick={() => {
-                    signIn()
-                  }}>
-                    login
-                  </button>
                 </div>
                 
               </div>
