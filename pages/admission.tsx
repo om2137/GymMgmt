@@ -5,9 +5,17 @@ import Navbar from '../components/Navbar'
 import Testsign from '../components/Testsign'
 const axios = require('axios').default;
 
+export async function getStaticProps(context: any) {
+  
+  const res = await axios('http://localhost:3000/api/member');
+  console.log(res.data.member);
+  return {
+    props: {}, // will be passed to the page component as props
+  }
+}
+
 
 function admission() {
-  
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center ">
@@ -33,15 +41,5 @@ function admission() {
     </div>
   )
 }
-
-export async function getStaticProps(context: any) {
-  
-  const res = await axios('http://localhost:3000/api/member');
-  console.log(res.data.member);
-  return {
-    props: {}, // will be passed to the page component as props
-  }
-}
-
 
 export default admission

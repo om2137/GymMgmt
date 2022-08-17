@@ -43,6 +43,7 @@ export default function login() {
       redirect: false,
       body: JSON.stringify({ username, password }),
     })
+    console.log(res);
     if ( res?.status === 200) {
       Router.replace("/");
     }else{

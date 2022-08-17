@@ -36,8 +36,7 @@ const Home: NextPage = ({members}:any) => {
               const month = birth.getMonth()+1;
               const day = birth.getDate();
               const year = birth.getFullYear();
-              console.log(member.Gender);
-              console.log(birth);
+
               return (
                 <div className='p-5'>
                   <div className=' text-black'>
