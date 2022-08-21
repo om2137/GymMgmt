@@ -6,6 +6,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { createTheme,ThemeProvider  } from '@mui/material/styles';
 import Modal from './Modal';
+import Link from 'next/link';
+import Button from '@mui/material/Button';
 
 
 const theme = createTheme({
@@ -34,6 +36,7 @@ interface Props {
   age: number;
   gender: string;
   marriage: string;
+  id: number;
 }
 const imgStyle = {
   minWidth: '200px',
@@ -61,7 +64,7 @@ const typoStyle={
   textTransform: 'capitalize',
 }
 
-export default function MediaCard( {image, first,middle,last,address,phone,Dob,age,gender,marriage}: Props ) {
+export default function MediaCard( {image, first,middle,last,address,phone,Dob,age,gender,marriage,id}: Props ) {
   
   return (
     <Card style={cardStyle}>
@@ -76,7 +79,7 @@ export default function MediaCard( {image, first,middle,last,address,phone,Dob,a
           <h1 className='pb-1'>
             {first} {last}
           </h1>
-           <div className=' pt-2 relative'>
+           <div className='flex pt-2  relative'>
               <Modal 
                 image={image}
                 first={first}
@@ -89,6 +92,13 @@ export default function MediaCard( {image, first,middle,last,address,phone,Dob,a
                 gender={gender}
                 mstatus={marriage}
               />
+              <div className='pl-4'>
+                <Link href={`/${id}`}>
+                  <Button className='text-white bg-sky-500 border-2 border-sky-500 hover:bg-sky-400 '>
+                    view
+                  </Button>
+                </Link>
+              </div>
            </div>
           
         </div>

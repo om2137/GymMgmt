@@ -5,8 +5,11 @@ import SignUpForm from '../components/SignUpForm'
 import Navbar from '../components/Navbar'
 const axios = require('axios').default;
 import MediaCard from '../components/cards'
+import { Button } from '@mui/material'
+import Link from 'next/link'
 
-export async function getStaticProps(context: any) {
+
+export async function getServerSideProps(context: any) {
   
   const res = await axios('http://localhost:3000/api/member');
   const {member} = res.data;
@@ -51,7 +54,9 @@ const Home: NextPage = ({members}:any) => {
                       age={age}
                       gender={member.Gender}
                       marriage={member.Mstat}
+                      id={member._id}
                     />
+                    
                   </div>
                 </div>
                 

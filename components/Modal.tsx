@@ -2,18 +2,8 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
+import { useRouter } from 'next/router';
 const axios = require('axios').default;
-
-export async function getStaticProps(context: any) {
-  
-  const res = await axios('http://localhost:3000/api/member');
-  const {member} = res.data;
-  return {
-    props: {
-      members: member,
-    }, // will be passed to the page component as props
-  }
-}
 
 
 interface Props {
@@ -57,57 +47,9 @@ const style2 = {
     px: 3,
     pb: 3,
   };
-// child modal
-function ChildModal() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
 
-  return (
-    <React.Fragment>
-        <div></div>
-      <Button onClick={handleOpen} className="text-black bg-slate-300">Plans</Button>
-      <Modal
-        hideBackdrop
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="child-modal-title"
-        aria-describedby="child-modal-description"
-      >
-        <Box sx={{ ...style2, width: 400 }}>
-            <div className='flex justify-between'>
-                <h2 id="child-modal-title" className='text-4xl font-bold pb-4'>Select plans</h2>
-                <div>
-                    <Button onClick={handleClose} className="bg-blue-200 text-right">Close</Button>
-                </div>
-                
-            </div>
-          
-          <div>                
-            <label id="countries" className="block mb-2 text-sm font-medium text-black ">Select an option</label>
-            <select id="countries" className="bg-white border border-gray-300 rounded-lg text-gray-900 
-                text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                <option className=''>Choose a country</option>
-                <option value="US">Montly</option>
-                <option value="CA">Quarterly</option>
-                <option value="FR">Half Yearly</option>
-                <option value="DE">Annually</option>
-            </select>                
-          </div>
-          
-
-          
-        </Box>
-      </Modal>
-    </React.Fragment>
-  );
-}
 // main modal
-export default function NestedModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus}:Props ) {
+export default function TestModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus}:Props ) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -119,6 +61,7 @@ export default function NestedModal( {first,middle,last,image,address,phone,birt
   const log = () => {
     console.log('invoice sent');
   };
+  
   return (
     <div>
       <div className=''>
@@ -256,16 +199,16 @@ export default function NestedModal( {first,middle,last,image,address,phone,birt
                       <div className='sm:pb-4  md:ml-5 '>
                         <Button onClick={handleClose} className='text-white bg-yellow-500 hover:bg-yellow-400 '>edit </Button>
                       </div>
+                      <div className='sm:pb-4  md:ml-5 '>
+                        <Button onClick={handleClose} className='text-white bg-red-500 hover:bg-red-400 '>delete </Button>
+                      </div>
                     </div>
                 </div>
                 <div className='flex justify-center sm:hidden '>
                   <Button onClick={handleClose} className='text-white bg-red-500 hover:bg-red-400'>Close </Button>
                 </div>
+
             </div>
-            
-            {/* <div className='py-5 '>
-                <ChildModal />
-            </div> */}
             
         </Box>
       </Modal>
