@@ -54,10 +54,10 @@ const profiles: NextPage = ({members}:any) => {
                         last={member.Lastname}
                         address={member.Address}
                         phone={member.Contact}
-                        Dob={day+'/'+month+'/'+year}
+                        Dob={day + '/' + month + '/' + year}
                         age={age}
                         gender={member.Gender}
-                        marriage={member.Mstat}
+                        marriage={member.Mstat} id={0}                      
                       />
                     </div>
                   </div>

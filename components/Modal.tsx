@@ -2,8 +2,6 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
-import { useRouter } from 'next/router';
-const axios = require('axios').default;
 
 
 interface Props {
@@ -53,7 +51,6 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
-    console.log("dob:"+birthdate);
   };
   const handleClose = () => {
     setOpen(false);
@@ -61,7 +58,6 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
   const log = () => {
     console.log('invoice sent');
   };
-  
   return (
     <div>
       <div className=''>

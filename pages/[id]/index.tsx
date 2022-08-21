@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import MediaCard from '../../components/cards';
 import Navbar from '../../components/Navbar';
+import { useRouter } from 'next/router';
+import Button from '@mui/material/Button';
 const axios = require('axios').default;
 
 export async function getServerSideProps(context: any) {
@@ -13,13 +15,28 @@ export async function getServerSideProps(context: any) {
     },
   }
 }
-export default function EachHero({members}: any) {
+export default function EachMember({members}: any) {
   console.log(members)
+
   const birth = new Date(members.DoB);
   const age = new Date().getFullYear() - birth.getFullYear();
   const month = birth.getMonth()+1;
   const day = birth.getDate();
   const year = birth.getFullYear();
+  
+  const router = useRouter();
+  const memberId = router.query.id;
+  console.log(memberId);
+  const handleDelete = async() => {
+    try{
+        const deleteMember = await axios(`http://localhost:3000/api/member/${memberId}`, {
+          method: "DELETE",
+        });
+        router.push('/');
+    }catch(err){
+      console.log(err);
+    }
+  }
   
   return (
     <>
@@ -42,6 +59,11 @@ export default function EachHero({members}: any) {
                             <div className='pt-2 text-center'>
                               <span className=''>28(days)</span>
                             </div>
+                            <div className='text-center py-4'>
+                                <Button onClick={handleDelete} className='text-white bg-red-500 hover:bg-red-400 '>
+                                  Delete
+                                </Button>
+                              </div>
                           </div>
                         </div>
                         
@@ -54,6 +76,11 @@ export default function EachHero({members}: any) {
                               <h1 className='text-2xl text-center font-semibold'>Plan Expires</h1>
                               <div className='pt-2 text-center '>
                                 <span className=''>28(days)</span>
+                              </div>
+                              <div className='text-center py-4'>
+                                <Button onClick={handleDelete} className='text-white bg-red-500 hover:bg-red-400 '>
+                                  Delete
+                                </Button>
                               </div>
                             </div>
                         </div>
