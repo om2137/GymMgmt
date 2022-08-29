@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
+import Link from 'next/link';
 
 
 interface Props {
@@ -15,6 +16,7 @@ interface Props {
     age: number;
     gender: string;
     mstatus: string;
+    id: number;
   }
 
 const style = {
@@ -47,7 +49,7 @@ const style2 = {
   };
 
 // main modal
-export default function TestModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus}:Props ) {
+export default function TestModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus,id}:Props ) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -193,7 +195,11 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                     <div className='flex justify-between pb-4'>
                       
                       <div className='sm:pb-4  md:ml-5 '>
-                        <Button onClick={handleClose} className='text-white bg-yellow-500 hover:bg-yellow-400 '>edit </Button>
+                        <Link href={`/${id}/edit`}>
+                          <Button className='text-white bg-yellow-400 hover:bg-yellow-300 '>
+                            edit
+                          </Button>
+                        </Link>
                       </div>
                       <div className='sm:pb-4  md:ml-5 '>
                         <Button onClick={handleClose} className='text-white bg-red-500 hover:bg-red-400 '>delete </Button>
