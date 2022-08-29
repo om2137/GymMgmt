@@ -68,18 +68,20 @@ export default function MediaCard( {image, first,middle,last,address,phone,Dob,a
   
   return (
     <Card style={cardStyle}>
-      <CardMedia
-        style={imgStyle}
-        component="img"
-        image={image}
-        className="aspect-square object-cover"
-      />
+      <Link href={`/${id}`}>
+        <CardMedia
+          style={imgStyle}
+          component="img"
+          image={image}
+          className="aspect-square object-cover"
+        />
+      </Link>
       <CardContent >
         <div className='text-xl font-bold capitalize'>
           <h1 className='pb-1'>
             {first} {last}
           </h1>
-           <div className='flex pt-2  relative'>
+           <div className='flex relative'>
               <Modal 
                 image={image}
                 first={first}
@@ -91,6 +93,7 @@ export default function MediaCard( {image, first,middle,last,address,phone,Dob,a
                 age={age}
                 gender={gender}
                 mstatus={marriage}
+                id={id}
               />
               <div className='pl-4'>
                 <Link href={`/${id}`}>
@@ -100,7 +103,7 @@ export default function MediaCard( {image, first,middle,last,address,phone,Dob,a
                 </Link>
               </div>
            </div>
-          
+           
         </div>
       </CardContent>
       <CardActions style={ActionStyle} >
