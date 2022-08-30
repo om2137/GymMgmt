@@ -59,11 +59,19 @@ export default function EachMember({members}: any) {
                             <div className='pt-2 text-center'>
                               <span className=''>28(days)</span>
                             </div>
-                            <div className='text-center py-4'>
-                                <Button onClick={handleDelete} className='text-white bg-red-500 hover:bg-red-400 '>
-                                  Delete
-                                </Button>
+                            <div className="flex">
+                              <div className='text-center p-4'>
+                                  <Button onClick={handleDelete} className='text-white bg-red-500 hover:bg-red-400 '>
+                                    Delete
+                                  </Button>
                               </div>
+                              <div className='text-center p-4'>
+                                  <Button href='/' className='text-white bg-slate-500 hover:bg-slate-400 '>
+                                    back
+                                  </Button>
+                              </div>
+                            </div>
+                            
                           </div>
                         </div>
                         
@@ -81,6 +89,11 @@ export default function EachMember({members}: any) {
                                 <Button onClick={handleDelete} className='text-white bg-red-500 hover:bg-red-400 '>
                                   Delete
                                 </Button>
+                              </div>
+                              <div className='text-center py-4'>
+                                  <Button href='/' className='text-white bg-slate-500 hover:bg-slate-400 '>
+                                    back
+                                  </Button>
                               </div>
                             </div>
                         </div>
