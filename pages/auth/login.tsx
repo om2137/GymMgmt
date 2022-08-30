@@ -12,29 +12,7 @@ export default function login() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [message, setMessage] = useState<string>("Not logged in");
-  async function submitForm() {
-    console.log(username, password);
-    const res = await fetch("api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    }).then((t) => t.json());
-
-    const token = res.token;
-    if (token) {
-      const json = jwt.decode(token) as { [key: string]: string };
-      console.log(json);
-      setMessage(
-        `welcome ${json.username} and you are ${
-          json.admin ? "admin" : "normal user"
-        }`
-      );
-    } else {
-      setMessage("Invalid username or password");
-    }
-  }
+  
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const res = await signIn("credentials", {
