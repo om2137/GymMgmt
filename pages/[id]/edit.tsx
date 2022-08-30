@@ -2,17 +2,21 @@ import React from 'react'
 import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 const axios = require('axios').default;
-import Router from 'next/router'
+import Router, { useRouter } from 'next/router'
 import Button from '@mui/material/Button';
 import Cloudi from '../../components/cloudinary'
+import Navbar from '../../components/Navbar';
 
-export async function getStaticProps(context: any) {
-    const res = await axios('http://localhost:3000/api/member');
-    console.log(res.data.member);
+export async function getServerSideProps(context: any) {
+    const id = context.query.id;
+    const res = await axios(`http://localhost:3000/api/member/${id}`);
+    const {member} = res.data;
     return {
-      props: {}, 
+      props: {
+        members: member,
+      },
     }
-}
+  }
 type Props = {
     title: string;
     avatar: string;
@@ -21,18 +25,18 @@ type Props = {
     selectedFile: string;
 }
 
-const EditForm: React.FC<Props> = (  ) => {
+const EditForm: React.FC<Props> = ( {members}:any ) => {
 
     const [form, setForm] = useState({
-        Firstname:'',
-        Middlename: '',
-        Lastname: '',
-        Address: '',
-        Contact:'',
-        DoB: '',
-        Gender:'',
-        Mstat:'',
-        Avatar: '',
+        Firstname: members.Firstname,
+        Middlename: members.Middlename,
+        Lastname: members.Lastname,
+        Address: members.Address,
+        Contact:members.Contact,
+        DoB: members.DoB,
+        Gender: members.Gender,
+        Mstat: members.Mstat,
+        Avatar: members.Avatar,
     })
     
     const handleChange = (e: React.ChangeEvent<any>) => {
@@ -43,12 +47,17 @@ const EditForm: React.FC<Props> = (  ) => {
         })
         
     }
+
+    const router = useRouter();
+    const memberId = router.query.id;
+    console.log(memberId);
+
     const handleForm = async(e: React.ChangeEvent<any>) => {
         e.preventDefault()
         try{
             
-            const res = await axios('http://localhost:3000/api/member', {
-                method: "POST",
+            const res = await axios(`http://localhost:3000/api/member/${memberId}`, {
+                method: "PUT",
                 headers:{
                     "Content-Type": "application/json",
                 },
@@ -64,59 +73,63 @@ const EditForm: React.FC<Props> = (  ) => {
     
     // console.log(form.Gender);
     
-    const [gender, setGender] = useState('');
+    const [gender, setGender] = useState(members.Gender);
     const [mst, setMst] = useState('');
     form.Avatar = '';
-    const [avatar, setAvatar] = useState('');
+    const [avatar, setAvatar] = useState(members.Avatar);
     const printUrl = (arg: string) => {
         // console.log(arg)
         setAvatar(arg)
     }
     form.Avatar = avatar;
     return(
-        <div className=' flex items-center justify-center  '>
+        <>
+        <Navbar 
+        title="Edit Profiles"
+        />
+        <div className=' flex items-center justify-center pt-10 '>
             <div className='border-2 border-gray-400 py-10 rounded bg-white sm:px-20 px-5'>
                 <div>
                     <h2 className='my-6 text-center text-4xl font-bold text-gray-900'>{}</h2>
                     
                     
                     <form className='py-6' onSubmit={handleForm} >
-                        <input type="text" autoComplete='none' required 
+                        <input type="text" autoComplete='none'  
                             onChange={handleChange} 
                             name='Firstname' value={form.Firstname}
                             className='py-2 rounded relative block w-full px-3 
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='firstname' 
                         />
-                        <input type="text" autoComplete='none' required 
+                        <input type="text" autoComplete='none'  
                             onChange={handleChange} 
                             name='Middlename' value={form.Middlename}
                             className='py-2 rounded relative block w-full px-3 
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Middlename' 
                         />
-                        <input type="text" autoComplete='none' required 
+                        <input type="text" autoComplete='none'  
                             onChange={handleChange} 
                             name='Lastname' value={form.Lastname}
                             className='py-2 rounded relative block w-full px-3 
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Lastname' 
                         />
-                        <input type="text" autoComplete='none' required 
+                        <input type="text" autoComplete='none'  
                             onChange={handleChange} 
                             name='Address' value={form.Address}
                             className='py-2 rounded relative block w-full px-3 
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Address' 
                         />
-                        <input type="tel" autoComplete='none' required 
+                        <input type="tel" autoComplete='none'  
                             onChange={handleChange} 
                             name='Contact' value={form.Contact}
                             className='py-2 rounded relative block w-full px-3 
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Contact' 
                         />
-                        <input type="date" autoComplete='none' required 
+                        <input type="date" autoComplete='none'  
                             onChange={handleChange} 
                             name='DoB' value={form.DoB}
                             className='py-2 rounded relative block w-full px-3 
@@ -124,7 +137,7 @@ const EditForm: React.FC<Props> = (  ) => {
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Date of birth' 
                         />
                         {/*  <input type="file"  /> */}
-                        <div> 
+                        <div className='pt-2'> 
                             <input type="radio" 
                                 name="gender" id="" 
                                 onChange={(e) => setGender(e.target.value)}
@@ -139,7 +152,7 @@ const EditForm: React.FC<Props> = (  ) => {
                             <label className='mr-2'>male</label>
                             <p className='hidden'>{form.Gender = gender}</p>
                         </div>      
-                        <div>
+                        <div className='pt-2'>
                             <input type="radio" 
                                 name="mariage" id="" 
                                 onChange={(e) => setMst(e.target.value)}
@@ -157,13 +170,24 @@ const EditForm: React.FC<Props> = (  ) => {
                         {/* image component */}
                         
                         {/* image component end */}
-                        <Button type="submit" className='bg-red-500 hover:bg-red-400 text-white'>Add</Button>
+                        <div className="flex">
+                            <div className='text-center p-4'>
+                                <Button type="submit" className='bg-red-500 hover:bg-red-400 text-white '>Save</Button>
+                            </div>
+                            
+                            <div className='text-center p-4'>
+                                <Button href='/' className='text-white bg-slate-500 hover:bg-slate-400 '>
+                                    back
+                                </Button>
+                            </div>
+                        </div>
+                        
                     </form>
                     <Cloudi  theurl={printUrl}/>
                 </div>
             </div>
         </div>
-        
+        </>
     )
     
 }
