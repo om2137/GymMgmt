@@ -7,7 +7,7 @@ const axios = require('axios').default;
 import MediaCard from '../components/cards'
 import { Button } from '@mui/material'
 import Link from 'next/link'
-
+const burl = process.env.BASE_URL;
 
 export async function getServerSideProps(context: any) {
   
@@ -64,8 +64,6 @@ const Home: NextPage = ({members}:any) => {
             })
           }  
         </div>
-        
-
       </div>
     </main>
     
