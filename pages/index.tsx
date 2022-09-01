@@ -8,10 +8,11 @@ import MediaCard from '../components/cards'
 import { Button } from '@mui/material'
 import Link from 'next/link'
 const burl = process.env.BASE_URL;
+const bul = process.env.APP_NAME;
 
 export async function getServerSideProps(context: any) {
-  
-  const res = await axios('http://localhost:3000/api/member');
+  console.log("server",process.env.APP_NAME);
+  const res = await axios(`${bul}/api/member`);
   const {member} = res.data;
   return {
     props: {
@@ -21,6 +22,8 @@ export async function getServerSideProps(context: any) {
 }
 
 const Home: NextPage = ({members}:any) => {
+  console.log("client",process.env.CLOUDINARY_URI);
+  
   return (
     <>
     <Navbar 
