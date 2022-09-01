@@ -4,6 +4,7 @@ import { useEffect } from "react";
  function Cloudi({theurl}) {
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
+  const cloudinary = process.env.CLOUD_URI;
   
   /**
    * handleOnChange
@@ -40,7 +41,7 @@ import { useEffect } from "react";
 
     formData.append('upload_preset', 'gym-mgmt-assets');
     
-    const data = await fetch('https://api.cloudinary.com/v1_1/dqpsoptzm/image/upload', {
+    const data = await fetch( cloudinary, {
       method: 'POST',
       body: formData
     }).then(r => r.json());
@@ -62,7 +63,7 @@ import { useEffect } from "react";
         <p className="text-2xl p-8">
           Upload your image to Cloudinary!
         </p> */}
-        
+        <div></div>
         <form className="max-w-96 max-h-96 rounded p-4 text-md text-center" type="file" method="post" onChange={handleOnChange} onSubmit={handleOnSubmit} >
           
           <div className='flex mx-auto p-4 justify-center' >
