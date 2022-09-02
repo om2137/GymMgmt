@@ -7,12 +7,12 @@ const axios = require('axios').default;
 import MediaCard from '../components/cards'
 import { Button } from '@mui/material'
 import Link from 'next/link'
-const burl = process.env.BASE_URL;
-const bul = process.env.BASE_URL_ENV;
+
+const burl = process.env.BASE_URL_ENV;
 
 export async function getServerSideProps(context: any) {
   console.log("server",process.env.BASE_URL_ENV);
-  const res = await axios(`${bul}/api/member`);
+  const res = await axios(`${burl}/api/member`);
   const {member} = res.data;
   return {
     props: {

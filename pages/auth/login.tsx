@@ -5,8 +5,6 @@ import Router from 'next/router'
 import Button from "@mui/material/Button";
 import { signIn, SignInResponse } from "next-auth/react";
 
-const axios = require("axios").default;
-
 export default function login() {
   
   const [username, setUsername] = useState<string>("");

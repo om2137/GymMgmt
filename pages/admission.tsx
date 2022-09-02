@@ -7,9 +7,8 @@ const axios = require('axios').default;
 const bul = process.env.BASE_URL_ENV;
 
 export async function getStaticProps(context: any) {
-  console.log("server",process.env.BASE_URL_ENV);
+  
   const res = await axios(`${bul}/api/member`);
-  // const res = await axios('http://localhost:3000/api/member');
   console.log(res.data.member);
   return {
     props: {}, // will be passed to the page component as props
