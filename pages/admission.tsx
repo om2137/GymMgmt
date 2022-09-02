@@ -4,10 +4,10 @@ import SignUpForm from '../components/SignUpForm'
 import Navbar from '../components/Navbar'
 import Testsign from '../components/Testsign'
 const axios = require('axios').default;
-const bul = process.env.APP_NAME;
+const bul = process.env.BASE_URL_ENV;
 
 export async function getStaticProps(context: any) {
-  console.log("server",process.env.APP_NAME);
+  console.log("server",process.env.BASE_URL_ENV);
   const res = await axios(`${bul}/api/member`);
   // const res = await axios('http://localhost:3000/api/member');
   console.log(res.data.member);
