@@ -26,9 +26,6 @@ const MemberSchema = new mongoose.Schema({
     DoB: {
         type: Date,
     },
-    // age:{
-    //     type: Number,
-    // },
     Gender: {
         type: String,
     },
