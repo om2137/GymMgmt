@@ -6,8 +6,10 @@ import Router from 'next/router'
 import Button from '@mui/material/Button';
 import Cloudi from '../components/cloudinary'
 
+const burl = process.env.BASE_URL_ENV;
+
 export async function getStaticProps(context: any) {
-    const res = await axios('http://localhost:3000/api/member');
+    const res = await axios(`${burl}/api/member`);
     console.log(res.data.member);
     return {
       props: {}, 
