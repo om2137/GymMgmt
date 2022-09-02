@@ -7,9 +7,11 @@ import Button from '@mui/material/Button';
 import Cloudi from '../../components/cloudinary'
 import Navbar from '../../components/Navbar';
 
+const burl = process.env.BASE_URL_ENV;
+
 export async function getServerSideProps(context: any) {
     const id = context.query.id;
-    const res = await axios(`http://localhost:3000/api/member/${id}`);
+    const res = await axios(`${burl}/api/member/${id}`);
     const {member} = res.data;
     return {
       props: {
@@ -56,7 +58,7 @@ const EditForm: React.FC<Props> = ( {members}:any ) => {
         e.preventDefault()
         try{
             
-            const res = await axios(`http://localhost:3000/api/member/${memberId}`, {
+            const res = await axios(`${burl}/api/member/${memberId}`, {
                 method: "PUT",
                 headers:{
                     "Content-Type": "application/json",
