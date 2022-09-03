@@ -160,7 +160,7 @@ const SignUpForm: React.FC<Props> = (  ) => {
                         
                         {/* image component end */}
                         <div className="pt-2">
-                            <Button type="submit" className='bg-red-500 hover:bg-red-400 text-white '>Add</Button>
+                            <button type="submit" className='bg-red-500 hover:bg-red-400 text-white p-2 rounded'>Add</button>
                         </div>
                         
                     </form>
