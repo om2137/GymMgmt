@@ -4,22 +4,21 @@ import MenuItem from "@mui/material/MenuItem";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { styled, Theme, } from "@mui/material";
-import { makeStyles } from "@mui/styles";
 
-export const useStyles = makeStyles((theme: Theme) => ({
-  menu: {
-    "& .MuiPaper-root": {
-      backgroundColor: "#a82824",
-      color: "white",
-    },
-  },
-}));
+// export const useStyles = makeStyles((theme: Theme) => ({
+//   menu: {
+//     "& .MuiPaper-root": {
+//       backgroundColor: "#a82824",
+//       color: "white",
+//     },
+//   },
+// }));
 interface Props {
   title: string;
 }
 
 export default function Navbar({ title }: Props) {
-  const classes = useStyles();
+  // const classes = useStyles();
   const StyledMenuItem = styled(MenuItem)(
     ` 
       &:hover, &.Mui-focusVisible {
@@ -114,7 +113,7 @@ export default function Navbar({ title }: Props) {
             anchorEl={anchorEl}
             open={open}
             onClose={handleClose}
-            className={classes.menu}
+            // className={classes.menu}
             MenuListProps={{
               "aria-labelledby": "basic-button",
             }}
