@@ -4,12 +4,11 @@ import "react-datepicker/dist/react-datepicker.css";
 const axios = require('axios').default;
 import Router from 'next/router'
 import Button from '@mui/material/Button';
-import Cloudi from '../components/cloudinary'
-
-const burl = process.env.BASE_URL_ENV;
+import Cloudi from '../components/cloudinary';
+import baseUrl from '../helper/baseUrl';
 
 export async function getStaticProps(context: any) {
-    const res = await axios(`${burl}/api/member`);
+    const res = await axios(`${baseUrl}/api/member`);
     console.log(res.data.member);
     return {
       props: {}, 
@@ -49,7 +48,7 @@ const SignUpForm: React.FC<Props> = (  ) => {
         e.preventDefault()
         try{
             
-            const res = await axios('http://localhost:3000/api/member', {
+            const res = await axios(`${baseUrl}/api/member`, {
                 method: "POST",
                 headers:{
                     "Content-Type": "application/json",
@@ -126,7 +125,7 @@ const SignUpForm: React.FC<Props> = (  ) => {
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Date of birth' 
                         />
                         {/*  <input type="file"  /> */}
-                        <div> 
+                        <div className='py-2'> 
                             <input type="radio" 
                                 name="gender" id="" 
                                 onChange={(e) => setGender(e.target.value)}
@@ -141,7 +140,7 @@ const SignUpForm: React.FC<Props> = (  ) => {
                             <label className='mr-2'>male</label>
                             <p className='hidden'>{form.Gender = gender}</p>
                         </div>      
-                        <div>
+                        <div className='pb-2'>
                             <input type="radio" 
                                 name="mariage" id="" 
                                 onChange={(e) => setMst(e.target.value)}
@@ -159,7 +158,10 @@ const SignUpForm: React.FC<Props> = (  ) => {
                         {/* image component */}
                         
                         {/* image component end */}
-                        <Button type="submit" className='bg-red-500 hover:bg-red-400 text-white'>Add</Button>
+                        <div className="pt-2">
+                            <Button type="submit" className='bg-red-500 hover:bg-red-400 text-white '>Add</Button>
+                        </div>
+                        
                     </form>
                     <Cloudi  theurl={printUrl}/>
                 </div>

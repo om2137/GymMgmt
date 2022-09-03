@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 const axios = require('axios').default;
 import Router, {useRouter} from 'next/router'
 import Button from '@mui/material/Button';
+import baseUrl from '../helper/baseUrl';
 
 type Props = {
     title: string;
@@ -14,7 +15,7 @@ const burl = process.env.BASE_URL_ENV;
 
 export async function getStaticProps(context: any) {
     console.log('working');
-    const res = await axios(`${burl}/api/member`);
+    const res = await axios(`${baseUrl}/api/member`);
     console.log(res.data.member);
     return {
       props: {}, // will be passed to the page component as props

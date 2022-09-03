@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useEffect } from "react";
 
  function Cloudi({theurl}) {
   const [imageSrc, setImageSrc] = useState();
