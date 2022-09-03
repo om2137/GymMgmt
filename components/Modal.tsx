@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
+import {useState} from 'react';
 
 
 interface Props {
@@ -24,7 +25,8 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  maxWidth: 700,
+  minWidth: 350,
   bgcolor: 'background.paper',
   border: '2px solid #9e9e9e',
   borderRadius: '8px',
@@ -33,6 +35,7 @@ const style = {
   px: 2,
   pb: 3,
 };
+
 const style2 = {
     position: 'absolute' as 'absolute',
     top: '50%',
@@ -44,13 +47,13 @@ const style2 = {
     borderRadius: '8px',
     boxShadow: 24,
     pt: 3,
-    px: 3,
+    px: 2,
     pb: 3,
   };
 
 // main modal
 export default function TestModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus,id}:Props ) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
   };
@@ -66,8 +69,7 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
         <Button 
         onClick={handleOpen} 
         className='text-white bg-slate-600 border-2 border-sky-500 hover:bg-slate-500'>Details</Button>
-      </div>
-      
+      </div>      
       
       <Modal
         open={open}
@@ -75,7 +77,7 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style }} className='w-[20rem] sm:w-[50rem] max-w-2xl overflow-auto 2xl:h-[46rem] h-[40rem]'>
+        <Box sx={{ ...style }} className=' overflow-auto 2xl:h-[46rem] h-[40rem]'>
           
             <div className='sm:flex w-full justify-end hidden pb-2'>
                 <Button onClick={handleClose} className='text-white bg-red-500 hover:bg-red-400 '>Close </Button>
