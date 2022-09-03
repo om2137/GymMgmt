@@ -4,12 +4,11 @@ import Navbar from '../../components/Navbar';
 import { useRouter } from 'next/router';
 import Button from '@mui/material/Button';
 const axios = require('axios').default;
-
-const burl = process.env.BASE_URL_ENV;
+import baseUrl from '../../helper/baseUrl';
 
 export async function getServerSideProps(context: any) {
   const id = context.query.id;
-  const res = await axios(`${burl}/api/member/${id}`);
+  const res = await axios(`${baseUrl}/api/member/${id}`);
   const {member} = res.data;
   return {
     props: {
@@ -31,7 +30,7 @@ export default function EachMember({members}: any) {
   console.log(memberId);
   const handleDelete = async() => {
     try{
-        const deleteMember = await axios(`${burl}/api/member/${memberId}`, {
+        const deleteMember = await axios(`${baseUrl}/api/member/${memberId}`, {
           method: "DELETE",
         });
         router.push('/');
