@@ -4,7 +4,7 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
 import {useState} from 'react';
-
+import ButtonC from './Button';
 
 interface Props {
     image: string;
@@ -66,9 +66,7 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
   return (
     <div>
       <div className=''>
-        <Button 
-        onClick={handleOpen} 
-        className='text-white bg-slate-600 border-2 border-sky-500 hover:bg-slate-500'>Details</Button>
+        <ButtonC label="Details" onClick={handleOpen} className='bg-slate-600 hover:bg-slate-500 px-3 '/>
       </div>      
       
       <Modal
@@ -204,7 +202,9 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                         </Link>
                       </div>
                       <div className='sm:pb-4  md:ml-5 '>
-                        <Button onClick={handleClose} className='text-white bg-red-500 hover:bg-red-400 '>delete </Button>
+                        <Button onClick={handleClose} className='text-white bg-red-500 hover:bg-red-400 '>
+                          delete 
+                        </Button>
                       </div>
                     </div>
                 </div>
