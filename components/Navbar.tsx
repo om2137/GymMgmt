@@ -3,8 +3,8 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { styled, Theme } from "@mui/material";
-import { makeStyles } from "@material-ui/core/styles";
+import { styled, Theme, } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
 export const useStyles = makeStyles((theme: Theme) => ({
   menu: {
