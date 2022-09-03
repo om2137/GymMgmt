@@ -78,11 +78,11 @@ export default function MediaCard( {image, first,middle,last,address,phone,Dob,a
         />
       </Link>
       <CardContent >
-        <div className='text-xl font-bold capitalize'>
-          <h1 className='pb-1'>
+        <div className='font-bold capitalize'>
+          <h1 className='text-xl pb-1'>
             {first} {last}
           </h1>
-           <div className='flex relative'>
+           <div className='flex relative pt-2'>
               <Modal 
                 image={image}
                 first={first}
@@ -98,9 +98,7 @@ export default function MediaCard( {image, first,middle,last,address,phone,Dob,a
               />
               <div className='pl-4'>
                 <Link href={`/${id}`}>
-                  <Button className='text-white bg-sky-500 border-2 border-sky-500 hover:bg-sky-400 '>
-                    view
-                  </Button>
+                  <ButtonC label='view' className='text-white bg-sky-500 hover:bg-sky-400 px-4 '/>
                 </Link>
               </div>
            </div>
