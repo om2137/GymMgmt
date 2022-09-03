@@ -1,5 +1,3 @@
-import Link from 'next/link';
-import MediaCard from '../../components/cards';
 import Navbar from '../../components/Navbar';
 import { useRouter } from 'next/router';
 import Button from '@mui/material/Button';
