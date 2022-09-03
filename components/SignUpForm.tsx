@@ -13,15 +13,7 @@ type Props = {
 
 const burl = process.env.BASE_URL_ENV;
 
-// export async function getStaticProps(context: any) {
-//     console.log('working');
-//     const res = await axios(`${baseUrl}/api/member`);
-//     console.log(res.data.member);
-//     return {
-//       props: {}, // will be passed to the page component as props
-//     }
-//   }
-export async function getServerSideProps(context: any) {
+export async function getStaticProps(context: any) {
     console.log('working');
     const res = await axios(`${baseUrl}/api/member`);
     console.log(res.data.member);

@@ -7,17 +7,7 @@ import Router from 'next/router'
 const axios = require('axios').default;
 import baseUrl from '../helper/baseUrl';
 
-// export async function getStaticProps(context: any) {
-  
-//   const res = await axios(`${baseUrl}/api/member`);
-//   const {member} = res.data;
-//   return {
-//     props: {
-//       members: member,
-//     }, 
-//   }
-// }
-export async function getServerSideProps(context: any) {
+export async function getStaticProps(context: any) {
   
   const res = await axios(`${baseUrl}/api/member`);
   const {member} = res.data;
