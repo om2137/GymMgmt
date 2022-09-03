@@ -1,18 +1,13 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import SignUpForm from '../components/SignUpForm'
 import Navbar from '../components/Navbar'
 const axios = require('axios').default;
 import MediaCard from '../components/cards'
-import { Button } from '@mui/material'
-import Link from 'next/link'
-
-const burl = process.env.BASE_URL_ENV;
+import baseUrl from '../helper/baseUrl';
 
 export async function getServerSideProps(context: any) {
-  console.log("server",process.env.BASE_URL_ENV);
-  const res = await axios(`${burl}/api/member`);
+  
+  const res = await axios(`${baseUrl}/api/member`);
   const {member} = res.data;
   return {
     props: {
@@ -22,7 +17,6 @@ export async function getServerSideProps(context: any) {
 }
 
 const Home: NextPage = ({members}:any) => {
-  console.log("client",process.env.CLOUD_URI);
   
   return (
     <>

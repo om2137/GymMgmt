@@ -5,12 +5,11 @@ import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import Router from 'next/router'
 const axios = require('axios').default;
-
-const burl = process.env.BASE_URL_ENV;
+import baseUrl from '../helper/baseUrl';
 
 export async function getStaticProps(context: any) {
   
-  const res = await axios(`${burl}/api/member`);
+  const res = await axios(`${baseUrl}/api/member`);
   const {member} = res.data;
   return {
     props: {

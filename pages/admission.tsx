@@ -4,11 +4,11 @@ import SignUpForm from '../components/SignUpForm'
 import Navbar from '../components/Navbar'
 import Testsign from '../components/Testsign'
 const axios = require('axios').default;
-const bul = process.env.BASE_URL_ENV;
+import baseUrl from '../helper/baseUrl';
 
 export async function getStaticProps(context: any) {
   
-  const res = await axios(`${bul}/api/member`);
+  const res = await axios(`${baseUrl}/api/member`);
   console.log(res.data.member);
   return {
     props: {}, // will be passed to the page component as props
