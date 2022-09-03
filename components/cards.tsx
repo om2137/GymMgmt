@@ -8,6 +8,7 @@ import { createTheme,ThemeProvider  } from '@mui/material/styles';
 import Modal from './Modal';
 import Link from 'next/link';
 import Button from '@mui/material/Button';
+import ButtonC from './Button';
 
 
 const theme = createTheme({
