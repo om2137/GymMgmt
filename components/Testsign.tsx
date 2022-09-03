@@ -7,20 +7,14 @@ import Button from '@mui/material/Button';
 import Cloudi from '../components/cloudinary';
 import baseUrl from '../helper/baseUrl';
 
-// export async function getStaticProps(context: any) {
-//     const res = await axios(`${baseUrl}/api/member`);
-//     console.log(res.data.member);
-//     return {
-//       props: {}, 
-//     }
-// }
-export async function getServerSideProps(context: any) {
+export async function getStaticProps(context: any) {
     const res = await axios(`${baseUrl}/api/member`);
     console.log(res.data.member);
     return {
       props: {}, 
     }
 }
+
 type Props = {
     title: string;
     avatar: string;
