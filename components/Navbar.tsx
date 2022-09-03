@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useEffect, useState } from "react";
@@ -55,11 +54,13 @@ export default function Navbar({ title }: Props) {
     <div className="flex w-full flex-1 flex-col justify-top">
       <nav className="flex items-center justify-between rounded-b-lg border-b border-gray-500 flex-between p-6 xl:p-10 bg-gray-100 3xl:px-20">
         <div className="flex items-center flex-shrink-0  mr-6">
-          <a className=" inline-block border border-gray-500 rounded py-2 px-4  font-semibold">
-            {title} 
+          <a className=" inline-block border border-red-600 rounded py-2 px-4 text-red-600 font-bold"
+            href="/"
+          >
+            SFC
           </a>
         </div>
-        <div>
+        <div className="sm:flex hidden">
           <a className=" inline-block border border-gray-500 rounded py-2 px-4  font-semibold">
             session expiry {expiry}
           </a>
@@ -68,7 +69,7 @@ export default function Navbar({ title }: Props) {
 
         <div className="hidden md:flex ">
           <div
-            className="w-full block flex- md:flex lg:items-center hidden lg:w-auto "
+            className="w-full block flex- md:flex lg:items-center font-semibold hidden lg:w-auto "
             id="menu"
           >
             <div className="text-sm lg:flex-">
@@ -96,7 +97,7 @@ export default function Navbar({ title }: Props) {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
             onClick={handleClick}
-            className="!capitalize flex items-center px-3 py-2 border rounded text-green-300 border-green-300 hover:text-white hover:border-white"
+            className="!capitalize flex items-center px-3 py-2 border rounded text-gray-600 border-gray-600  "
           >
             <svg
               className="fill-current h-5 w-6 "
@@ -118,8 +119,16 @@ export default function Navbar({ title }: Props) {
               "aria-labelledby": "basic-button",
             }}
           >
-            <StyledMenuItem onClick={handleClose}>Admission</StyledMenuItem>
-            <StyledMenuItem onClick={handleClose}>Profiles</StyledMenuItem>
+            <StyledMenuItem onClick={handleClose}>
+              <a href="/admission">
+                Admission
+              </a>
+            </StyledMenuItem>
+            <StyledMenuItem onClick={handleClose}>
+            <a href="/">
+                Profiles
+              </a>
+            </StyledMenuItem>
           </Menu>
         </div>
       </nav>
