@@ -75,7 +75,7 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style }} className='w-3/4 max-w-2xl overflow-auto 2xl:h-[46rem] h-[40rem]'>
+        <Box sx={{ ...style }} className='w-[20rem] sm:w-[50rem] max-w-2xl overflow-auto 2xl:h-[46rem] h-[40rem]'>
           
             <div className='sm:flex w-full justify-end hidden pb-2'>
                 <Button onClick={handleClose} className='text-white bg-red-500 hover:bg-red-400 '>Close </Button>
