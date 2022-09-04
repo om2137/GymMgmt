@@ -3,7 +3,7 @@ import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 const axios = require('axios').default;
 import Router from 'next/router'
-import Button from '@mui/material/Button';
+import Button from './Button';
 import Cloudi from '../components/cloudinary';
 import baseUrl from '../helper/baseUrl';
 
@@ -77,9 +77,9 @@ const SignUpForm: React.FC<Props> = (  ) => {
     form.Avatar = avatar;
     return(
         <div className=' flex items-center justify-center  '>
-            <div className='border-2 border-gray-400 py-10 rounded bg-white sm:px-20 px-5'>
-                <div>
-                    <h2 className='my-6 text-center text-4xl font-bold text-gray-900'>{}</h2>
+            <div className='border-2 border-gray-400 sm:py-10 rounded bg-white sm:px-20 px-5 mx-5'>
+                <div className=''>
+                    <h2 className='my-6 text-center text-4xl font-bold text-gray-900'></h2>
                     
                     
                     <form className='py-6' onSubmit={handleForm} >
@@ -160,7 +160,7 @@ const SignUpForm: React.FC<Props> = (  ) => {
                         
                         {/* image component end */}
                         <div className="pt-2">
-                            <button type="submit" className='bg-red-500 hover:bg-red-400 text-white p-2 rounded'>Add</button>
+                            <Button label="Add" type="submit" className="bg-red-500 hover:bg-red-400 px-3"/>
                         </div>
                         
                     </form>

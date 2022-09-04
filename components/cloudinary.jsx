@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Button from './Button'
 
  function Cloudi({theurl}) {
   const [imageSrc, setImageSrc] = useState();
@@ -74,7 +75,7 @@ import { useState } from 'react';
           <div className='flex mx-auto p-4 justify-center'>
             {imageSrc && !uploadData && (
               <p className=''>
-                <button className='bg-purple-600 p-2 hover:bg-purple-500 rounded text-white'>Upload Files</button>
+                <Button label="Upload" className="bg-purple-600 hover:bg-purple-500 px-3"/>
               </p>
             )}
 
@@ -82,7 +83,6 @@ import { useState } from 'react';
               
               <code className='bg-green-500 rounded text-white p-2'>
                 <pre>
-                  {/* {JSON.stringify(uploadData, null, 2)} */}
                   Uploaded
                 </pre>
               </code>

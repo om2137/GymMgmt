@@ -4,7 +4,7 @@ import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 const axios = require('axios').default;
 import Router, {useRouter} from 'next/router'
-import Button from '@mui/material/Button';
+import Button from './Button';
 import baseUrl from '../helper/baseUrl';
 
 type Props = {
@@ -165,7 +165,7 @@ const SignUpForm: React.FC<Props> = ( {title} ) => {
                                 
                             </div>
                             <div className='py-4 text-center'>
-                                <Button type='submit' className='bg-red-500 hover:bg-red-500 text-white '>Add</Button>
+                                <Button label="Add" type="submit" className="bg-red-500 hover:bg-red-400 px-3"/>
                             </div>
                             {/* end */}
                         </div> 
