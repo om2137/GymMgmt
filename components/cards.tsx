@@ -1,5 +1,3 @@
-
-import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -7,8 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import { createTheme,ThemeProvider  } from '@mui/material/styles';
 import Modal from './Modal';
 import Link from 'next/link';
-import Button from '@mui/material/Button';
-import ButtonC from './Button';
+import Button from './Button';
 
 
 const theme = createTheme({
@@ -54,15 +51,8 @@ const cardStyle= {
   backgroundColor: "#cbd5e1",
   
 }
-const contentStyle = {
-  maxHigh: '200px',
-  
-}
 const ActionStyle={
   display: 'flex',
-}
-const typoStyle={
-  textTransform: 'capitalize',
 }
 
 export default function MediaCard( {image, first,middle,last,address,phone,Dob,age,gender,marriage,id}: Props ) {
@@ -98,7 +88,7 @@ export default function MediaCard( {image, first,middle,last,address,phone,Dob,a
               />
               <div className='pl-4'>
                 <Link href={`/${id}`}>
-                  <ButtonC label='view' className='text-white bg-sky-500 hover:bg-sky-400 px-4 '/>
+                  <Button label='view' className='text-white bg-sky-500 hover:bg-sky-400 px-4 '/>
                 </Link>
               </div>
            </div>

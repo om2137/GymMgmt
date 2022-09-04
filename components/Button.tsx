@@ -4,7 +4,7 @@ type Props = {
     onClick?: () => void;
     // typein: 'submit'
 } 
-const ButtonC: React.FC<Props> = ({label, onClick, className,}) =>{
+const Button: React.FC<Props> = ({label, onClick, className,}) =>{
     return(
         <button
             className={className+" text-white uppercase py-2 rounded font-normal text-sm "}
@@ -15,4 +15,4 @@ const ButtonC: React.FC<Props> = ({label, onClick, className,}) =>{
         </button>
     )
 }
-export default ButtonC
+export default Button

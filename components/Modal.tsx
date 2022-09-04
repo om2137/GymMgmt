@@ -1,10 +1,9 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import Button from '@mui/material/Button';
 import Link from 'next/link';
 import {useState} from 'react';
-import ButtonC from './Button';
+import Button from './Button';
 
 interface Props {
     image: string;
@@ -26,7 +25,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   maxWidth: 700,
-  minWidth: 350,
+  minWidth: 300,
   bgcolor: 'background.paper',
   border: '2px solid #9e9e9e',
   borderRadius: '8px',
@@ -66,7 +65,7 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
   return (
     <div>
       <div className=''>
-        <ButtonC label="Details" onClick={handleOpen} className='bg-slate-600 hover:bg-slate-500 px-3 '/>
+        <Button label="Details" onClick={handleOpen} className='bg-slate-600 hover:bg-slate-500 px-3 '/>
       </div>      
       
       <Modal
@@ -78,7 +77,7 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
         <Box sx={{ ...style }} className=' overflow-auto 2xl:h-[46rem] h-[40rem]'>
           
             <div className='sm:flex w-full justify-end hidden pb-2'>
-                <Button onClick={handleClose} className='text-white bg-red-500 hover:bg-red-400 '>Close </Button>
+                <Button label="Close" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
             </div>
             <div className='md:flex  align-middle justify-between'>
                 <div className='flex flex-col md:flex-row justify-center'>
@@ -188,7 +187,7 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                           </select> 
                       </div>
                       <div className='pb-4 '>
-                        <Button className="text-white bg-green-400 text-xsm hover:bg-green-300" onClick={log}>Invoice</Button>
+                        <Button label="Invoice" onClick={log} className="bg-green-500 text-xsm hover:bg-green-400 px-3"/>
                       </div>
                     </div>
                     
@@ -196,20 +195,16 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                       
                       <div className='sm:pb-4  md:ml-5 '>
                         <Link href={`/${id}/edit`}>
-                          <Button className='text-white bg-yellow-400 hover:bg-yellow-300 '>
-                            edit
-                          </Button>
+                          <Button label="edit" onClick={handleClose} className="bg-yellow-500 hover:bg-yellow-400 px-3"/>
                         </Link>
                       </div>
                       <div className='sm:pb-4  md:ml-5 '>
-                        <Button onClick={handleClose} className='text-white bg-red-500 hover:bg-red-400 '>
-                          delete 
-                        </Button>
+                        <Button label="delete" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
                       </div>
                     </div>
                 </div>
                 <div className='flex justify-center sm:hidden '>
-                  <Button onClick={handleClose} className='text-white bg-red-500 hover:bg-red-400'>Close </Button>
+                  <Button label="Close" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
                 </div>
 
             </div>
