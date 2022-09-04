@@ -2,14 +2,15 @@ type Props = {
     label: string,
     className: string
     onClick?: () => void;
-    // typein: 'submit'
+    type?: string;
+    typeIn?: 'submit'
 } 
-const Button: React.FC<Props> = ({label, onClick, className,}) =>{
+const Button: React.FC<Props> = ({label, onClick, className,typeIn}) =>{
     return(
         <button
             className={className+" text-white uppercase py-2 rounded font-normal text-sm "}
             onClick={onClick}
-            // type={typein}
+            type={typeIn}
         >
             {label}
         </button>
