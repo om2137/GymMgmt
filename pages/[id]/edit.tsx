@@ -3,10 +3,11 @@ import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 const axios = require('axios').default;
 import Router, { useRouter } from 'next/router'
-import Button from '@mui/material/Button';
+import Button from '../../components/Button';
 import Cloudi from '../../components/cloudinary'
 import Navbar from '../../components/Navbar';
 import baseUrl from '../../helper/baseUrl';
+import Link from 'next/link';
 
 export async function getServerSideProps(context: any) {
     const id = context.query.id;
@@ -173,13 +174,16 @@ const EditForm: React.FC<Props> = ( {members}:any ) => {
                         {/* image component end */}
                         <div className="flex">
                             <div className='text-center p-4'>
-                                <Button type="submit" className='bg-red-500 hover:bg-red-400 text-white '>Save</Button>
+                                <Button label="Save" type="submit" className="bg-green-500 hover:bg-green-400 px-3"/>
+
                             </div>
                             
                             <div className='text-center p-4'>
-                                <Button href='/' className='text-white bg-slate-500 hover:bg-slate-400 '>
-                                    back
-                                </Button>
+                                <Link href={'/'}>
+                                    <Button label="Close" className="bg-red-500 hover:bg-red-400 px-3"/>
+                                </Link>
+                                
+                                
                             </div>
                         </div>
                         

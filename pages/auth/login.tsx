@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import jwt from "jsonwebtoken";
 import Box from "@mui/material/Box";
 import Router from 'next/router'
-import Button from "@mui/material/Button";
-import { signIn, SignInResponse } from "next-auth/react";
+import Button from '../../components/Button';
+import { signIn } from "next-auth/react";
 
 export default function login() {
   
@@ -74,9 +73,7 @@ export default function login() {
           />
           <br />
 
-          <Button type="submit" className="flex justify-center items-center">
-            login
-          </Button>
+          <Button label="login" type="submit" className="flex justify-center items-center bg-blue-500 hover:bg-blue-400 px-3"/>
           <br />
         </form>
       </Box>

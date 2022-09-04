@@ -1,8 +1,9 @@
 import Navbar from '../../components/Navbar';
 import { useRouter } from 'next/router';
-import Button from '@mui/material/Button';
+import Button from '../../components/Button';
 const axios = require('axios').default;
 import baseUrl from '../../helper/baseUrl';
+import Link from 'next/link';
 
 export async function getServerSideProps(context: any) {
   const id = context.query.id;
@@ -60,14 +61,12 @@ export default function EachMember({members}: any) {
                             </div>
                             <div className="flex">
                               <div className='text-center p-4'>
-                                  <Button onClick={handleDelete} className='text-white bg-red-500 hover:bg-red-400 '>
-                                    Delete
-                                  </Button>
+                                  <Button label="Delete" onClick={handleDelete} className="bg-red-500 hover:bg-red-400 px-3"/>
                               </div>
                               <div className='text-center p-4'>
-                                  <Button href='/' className='text-white bg-slate-500 hover:bg-slate-400 '>
-                                    back
-                                  </Button>
+                                <Link href={'/'}>
+                                    <Button label="back" className="bg-gray-500 hover:bg-gray-400 px-3"/>
+                                </Link>
                               </div>
                             </div>
                             
@@ -85,14 +84,12 @@ export default function EachMember({members}: any) {
                                 <span className=''>28(days)</span>
                               </div>
                               <div className='text-center py-4'>
-                                <Button onClick={handleDelete} className='text-white bg-red-500 hover:bg-red-400 '>
-                                  Delete
-                                </Button>
+                                <Button label="Delete" onClick={handleDelete} className="bg-red-500 hover:bg-red-400 px-3"/>
                               </div>
                               <div className='text-center py-4'>
-                                  <Button href='/' className='text-white bg-slate-500 hover:bg-slate-400 '>
-                                    back
-                                  </Button>
+                                  <Link href={'/'}>
+                                    <Button label="back" className="bg-gray-500 hover:bg-gray-400 px-3"/>
+                                </Link>
                               </div>
                             </div>
                         </div>
