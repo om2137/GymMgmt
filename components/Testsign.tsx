@@ -76,8 +76,8 @@ const SignUpForm: React.FC<Props> = (  ) => {
     }
     form.Avatar = avatar;
     return(
-        <div className=' flex items-center justify-center  '>
-            <div className='border-2 border-gray-400 sm:py-10 rounded bg-white sm:px-20 px-5 mx-5'>
+        <div className=' flex '>
+            <div className='w-72 sm:w-[30rem] border-2 border-gray-400 sm:py-10 rounded bg-white sm:px-20 px-8 mx-4'>
                 <div className=''>
                     <h2 className='my-6 text-center text-4xl font-bold text-gray-900'></h2>
                     

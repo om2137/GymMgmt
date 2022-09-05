@@ -28,7 +28,7 @@ const Home: NextPage = ({members}:any) => {
       {/* modal */}
       <div>
         {/* <User/> */}
-        <div className='flex flex-wrap'>
+        <div className='flex flex-wrap justify-center sm:justify-start'>
           {
             members.map((member : any) => {
               const birth = new Date(member.DoB);

@@ -27,9 +27,9 @@ function admission() {
       <Navbar 
         title="Admission Form"
       />
-      <main className="flex w-full flex-1 flex-col items-top justify-top px-20 text-center">
+      <main className="flex w-full flex-1 flex-col items-top justify-top sm:px-20 text-center">
 
-        <div className='flex w-full flex-1 flex-col items-center drop-shadow-2xl justify-center p-10'>
+        <div className='flex w-full flex-1 flex-col items-center justify-center drop-shadow-2xl p-10'>
           {/* <SignUpForm title="Admission Form"/> */}
           <Testsign title="Admission Form" Gender={''} mst={''} selectedFile={''} avatar={''}/>
         </div>

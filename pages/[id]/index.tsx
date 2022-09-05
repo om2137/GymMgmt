@@ -83,14 +83,17 @@ export default function EachMember({members}: any) {
                               <div className='pt-2 text-center '>
                                 <span className=''>28(days)</span>
                               </div>
-                              <div className='text-center py-4'>
-                                <Button label="Delete" onClick={handleDelete} className="bg-red-500 hover:bg-red-400 px-3"/>
+                              <div className="flex justify-center">
+                                <div className='text-center py-4 px-2'>
+                                  <Button label="Delete" onClick={handleDelete} className="bg-red-500 hover:bg-red-400 px-3"/>
+                                </div>
+                                <div className='text-center py-4 px-2'>
+                                    <Link href={'/'}>
+                                      <Button label="back" className="bg-gray-500 hover:bg-gray-400 px-3"/>
+                                  </Link>
+                                </div>
                               </div>
-                              <div className='text-center py-4'>
-                                  <Link href={'/'}>
-                                    <Button label="back" className="bg-gray-500 hover:bg-gray-400 px-3"/>
-                                </Link>
-                              </div>
+                              
                             </div>
                         </div>
                         
