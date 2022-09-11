@@ -191,21 +191,23 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                       </div>
                     </div>
                     
-                    <div className='flex justify-between pb-4'>
-                      
+                    <div className='flex justify-between pb-4 ' >
+                      <div className='sm:pb-4  md:ml-5 '>
+                        <Button label="delete" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
+                      </div>
+
                       <div className='sm:pb-4  md:ml-5 '>
                         <Link href={`/${id}/edit`}>
                           <Button label="edit"  className="bg-yellow-500 hover:bg-yellow-400 px-3"/>
                         </Link>
                       </div>
-                      <div className='sm:pb-4  md:ml-5 '>
-                        <Button label="delete" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
+
+                      <div className='flex justify-center sm:hidden '>
+                        <Button label="Close" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
                       </div>
                     </div>
                 </div>
-                <div className='flex justify-center sm:hidden '>
-                  <Button label="Close" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
-                </div>
+                
 
             </div>
             
