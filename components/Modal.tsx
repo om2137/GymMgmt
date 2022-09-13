@@ -92,7 +92,15 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                           <div className='hidden md:inline p-3 mt-4 text-center'>
                             <h1 className='text-2xl font-semibold text-center'>Plan Expires</h1>
                             <div className='pt-2 text-center'>
-                              <span className=''>28(days)</span>
+                              <div>
+                                <a className=''>Last Paid:</a>
+                                <a>26/5/2022</a>
+                              </div>
+                              <div>
+                                <a className=''>Due Date:</a>
+                                <a>23/6/2022</a>
+                              </div>
+                              
                             </div>
                           </div>
                         </div>
@@ -104,8 +112,14 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                             </h2>
                             <div className='sm:hidden text-center  p-1 mt-1 text-start'>
                               <h1 className='text-2xl text-center font-semibold'>Plan Expires</h1>
-                              <div className='pt-2 text-center '>
-                                <span className=''>28(days)</span>
+                              <div className='flex pt-2 text-center'>
+                                <div>
+                                  <a className=''>Paid Date:</a>
+                                </div>
+                                <div>
+                                  <a className=''>Due Date:</a>
+                                </div>
+                                
                               </div>
                             </div>
                         </div>
@@ -163,40 +177,69 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
             <div>
               
             </div>
-            <div className='p-4 align-center'>                
-                <label id="countries" className="block mb-2 text-sm font-medium text-black ">Select an plans</label>
-                <div className='md:flex justify-between'>
-                    <div className='sm:flex pb-2'>
-                      <div className='pr-5 pb-4 sm:pb-0'>
-                        <select id="countries" required className="bg-white border border-gray-300 rounded-lg text-gray-900 
-                          text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                              <option className='hidden'>Choose Facility</option>
-                              <option value="900">Cardio</option>
-                              <option value="500">Weight</option>
-                              <option value="1200">Cardio + Weight</option>
-                          </select> 
+            <div className='p-4 flex justify-center '>  
+                <div className='md:flex flex-col justify-between'>
+                  <label id="countries" className="block mb-2 text-sm font-medium text-black ">Select an plans</label>
+                    <div className='sm:flex flex-col pb-2'>
+                      <div className='flex flex-col '>
+                        <div className="flex flex-col sm:flex-row">
+                          <div className='pr-5 pb-4 sm:pb-0'>
+                            <select id="countries" required className="bg-white border border-gray-600 rounded-lg text-gray-900 
+                              text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                                  <option className='hidden'>Choose Facility</option>
+                                  <option value="900">Cardio</option>
+                                  <option value="500">Weight</option>
+                                  <option value="1200">Cardio + Weight</option>
+                              </select> 
+                          </div>
+                          <div className='pr-5 pb-4 sm:pb-0'>
+                            <select id="countries" required className="bg-white border border-gray-600 rounded-lg text-gray-900 
+                              text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                                  <option className='hidden' >Choose Duration</option>
+                                  <option value={1}>Montly</option>
+                                  <option value={3}>Quarterly</option>
+                                  <option value={6}>Half Yearly</option>
+                                  <option value={12}>Annually</option>
+                              </select> 
+                          </div>
+                        </div>
+                        <div className="flex flex-col sm:flex-row py-2">
+                          <div className='pr-5 pb-4 sm:pb-0'>
+                            <input type="date" autoComplete='none' required 
+                                  // onChange={handleChange} 
+                                  // name='DoB' value={form.DoB}
+                                  className='py-2 rounded-lg relative block w-full px-3 
+                                  border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
+                                  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Paid date' 
+                              />
+                          </div>
+                          <div className='pr-5 pb-4 sm:pb-0'>
+                            <input type="date" autoComplete='none' required 
+                                  // onChange={handleChange} 
+                                  // name='DoB' value={form.DoB}
+                                  className='py-2 rounded-lg relative block w-full px-3 
+                                  border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
+                                  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='due date' 
+                              />
+                          </div>
+                        </div>
+                        <div className='sm:pb-4 sm:hidden flex sm:ml-5 '>
+                          <Button label="Invoice" onClick={log} className="bg-green-500 text-xsm hover:bg-green-400 px-3"/>
+                        </div>
                       </div>
-                      <div className='pr-5 pb-4 sm:pb-0'>
-                        <select id="countries" required className="bg-white border border-gray-300 rounded-lg text-gray-900 
-                          text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                              <option className='hidden' >Choose Time Frame</option>
-                              <option value={1}>Montly</option>
-                              <option value={3}>Quarterly</option>
-                              <option value={6}>Half Yearly</option>
-                              <option value={12}>Annually</option>
-                          </select> 
-                      </div>
-                      <div className='pb-4 '>
-                        <Button label="Invoice" onClick={log} className="bg-green-500 text-xsm hover:bg-green-400 px-3"/>
-                      </div>
+                      
+                      
                     </div>
                     
-                    <div className='flex justify-between pb-4 ' >
-                      <div className='sm:pb-4  md:ml-5 '>
+                    <div className='sm:flex justify-between sm:justify-center py-2 hidden' >
+                      <div className='sm:pb-4  sm:ml-5 '>
+                        <Button label="Invoice" onClick={log} className="bg-green-500 text-xsm hover:bg-green-400 px-3"/>
+                      </div>
+                      <div className='sm:pb-4  sm:ml-5 '>
                         <Button label="delete" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
                       </div>
 
-                      <div className='sm:pb-4  md:ml-5 '>
+                      <div className='sm:pb-4  sm:ml-5 '>
                         <Link href={`/${id}/edit`}>
                           <Button label="edit"  className="bg-yellow-500 hover:bg-yellow-400 px-3"/>
                         </Link>
@@ -205,6 +248,21 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                       <div className='flex justify-center sm:hidden '>
                         <Button label="Close" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
                       </div>
+                    </div>
+                    <div className='flex justify-center sm:justify-center py-2 sm:hidden' >
+                      <div className='pb-4  mx-2 '>
+                        <Button label="delete" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
+                      </div>
+
+                      <div className='pb-4  mx-2 '>
+                        <Link href={`/${id}/edit`}>
+                          <Button label="edit"  className="bg-yellow-500 hover:bg-yellow-400 px-3"/>
+                        </Link>
+                      </div>
+                      <div className='pb-4  mx-2 '>
+                        <Button label="close" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
+                      </div>
+                      
                     </div>
                 </div>
                 
