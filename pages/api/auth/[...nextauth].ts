@@ -2,6 +2,9 @@ import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+const user = process.env.USER; 
+const pass = process.env.PASS;
+
 const authOptions: NextAuthOptions ={
     session:{
         strategy: 'jwt',
@@ -13,7 +16,7 @@ const authOptions: NextAuthOptions ={
             credentials:{},
             authorize(credentials, req){
                 const { username, password } = credentials as { username: string, password: string };
-                if(username !== "sandy" || password !== "Sandy@4888"){
+                if(username !== user || password !== pass ){
                     throw new Error("Login Failed, boooooooo "+username+" "+password);
                 };
                 return {
