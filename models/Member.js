@@ -34,7 +34,14 @@ const MemberSchema = new mongoose.Schema({
     },
     Avatar: {
         type : String,
-    }
+    },
+    // paidDate: {
+
+    // },
+    // dueDate: {
+
+    // },
+    
 })
 
 module.exports = mongoose.models.Member || mongoose.model('Member',MemberSchema) 
