@@ -74,7 +74,7 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style }} className=' overflow-auto 2xl:h-[46rem] h-[40rem]'>
+        <Box sx={{ ...style }} className=' overflow-auto 2xl:h-[46rem] h-[35rem]'>
           
             <div className='sm:flex w-full justify-end hidden pb-2'>
                 <Button label="Close" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
@@ -89,15 +89,15 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                             md:border-2 border-gray-400 rounded-xl  md:p-0" />
                           </div>
                           
-                          <div className='hidden md:inline p-3 mt-4 text-center'>
-                            <h1 className='text-2xl font-semibold text-center'>Plan Expires</h1>
-                            <div className='pt-2 text-center'>
+                          <div className='hidden md:inline p-3 text-center'>
+                            <h1 className='text-2xl font-semibold mt-5 text-center'>Plan Expires</h1>
+                            <div className='pt-6 text-center'>
                               <div>
-                                <a className=''>Last Paid:</a>
+                                <a className='font-semibold'>Last Paid:</a>
                                 <a>26/5/2022</a>
                               </div>
                               <div>
-                                <a className=''>Due Date:</a>
+                                <a className='font-semibold'>Due Date:</a>
                                 <a>23/6/2022</a>
                               </div>
                               
@@ -110,16 +110,17 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                             <h2 id="parent-modal-title" className='md:hidden text-4xl font-bold capitalize'>
                                 {first} {last}
                             </h2>
-                            <div className='sm:hidden text-center  p-1 mt-1 text-start'>
+                            <div className='md:hidden inline text-center  p-1 mt-1 text-start'>
                               <h1 className='text-2xl text-center font-semibold'>Plan Expires</h1>
-                              <div className='flex pt-2 text-center'>
+                              <div className=' pt-6 text-center'>
                                 <div>
-                                  <a className=''>Paid Date:</a>
+                                  <a className='font-semibold'>Last Paid:</a>
+                                  <a>26/5/2022</a>
                                 </div>
                                 <div>
-                                  <a className=''>Due Date:</a>
+                                  <a className='font-semibold'>Due Date:</a>
+                                  <a>23/6/2022</a>
                                 </div>
-                                
                               </div>
                             </div>
                         </div>
@@ -210,7 +211,8 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                                   // name='DoB' value={form.DoB}
                                   className='py-2 rounded-lg relative block w-full px-3 
                                   border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
-                                  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Paid date' 
+                                  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                                  placeholder='Paid date'
                               />
                           </div>
                           <div className='pr-5 pb-4 sm:pb-0'>
@@ -219,11 +221,12 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                                   // name='DoB' value={form.DoB}
                                   className='py-2 rounded-lg relative block w-full px-3 
                                   border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
-                                  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='due date' 
+                                  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                                  placeholder='due date' 
                               />
                           </div>
                         </div>
-                        <div className='sm:pb-4 sm:hidden flex sm:ml-5 '>
+                        <div className='sm:pb-2 flex justify-center '>
                           <Button label="Invoice" onClick={log} className="bg-green-500 text-xsm hover:bg-green-400 px-3"/>
                         </div>
                       </div>
@@ -231,38 +234,23 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                       
                     </div>
                     
-                    <div className='sm:flex justify-between sm:justify-center py-2 hidden' >
-                      <div className='sm:pb-4  sm:ml-5 '>
+                    <div className='flex justify-between sm:justify-center py-2' >
+                      {/* <div className='sm:pb-4  sm:ml-5 '>
                         <Button label="Invoice" onClick={log} className="bg-green-500 text-xsm hover:bg-green-400 px-3"/>
-                      </div>
-                      <div className='sm:pb-4  sm:ml-5 '>
+                      </div> */}
+                      <div className='pb-4  mx-2 sm:pb-4  sm:mx-5 '>
                         <Button label="delete" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
                       </div>
 
-                      <div className='sm:pb-4  sm:ml-5 '>
+                      <div className='pb-4  mx-2 sm:pb-4  sm:mx-5 '>
                         <Link href={`/${id}/edit`}>
                           <Button label="edit"  className="bg-yellow-500 hover:bg-yellow-400 px-3"/>
                         </Link>
                       </div>
 
-                      <div className='flex justify-center sm:hidden '>
+                      <div className='flex justify-center sm:hidden pb-4  mx-2 '>
                         <Button label="Close" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
                       </div>
-                    </div>
-                    <div className='flex justify-center sm:justify-center py-2 sm:hidden' >
-                      <div className='pb-4  mx-2 '>
-                        <Button label="delete" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
-                      </div>
-
-                      <div className='pb-4  mx-2 '>
-                        <Link href={`/${id}/edit`}>
-                          <Button label="edit"  className="bg-yellow-500 hover:bg-yellow-400 px-3"/>
-                        </Link>
-                      </div>
-                      <div className='pb-4  mx-2 '>
-                        <Button label="close" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
-                      </div>
-                      
                     </div>
                 </div>
                 
