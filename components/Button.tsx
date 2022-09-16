@@ -8,7 +8,7 @@ type Props = {
 const Button: React.FC<Props> = ({label, onClick, className,typeIn}) =>{
     return(
         <button
-            className={className+" text-white uppercase py-2 rounded font-normal text-sm "}
+            className={className+" text-white uppercase py-2 rounded font-normal text-sm select-none"}
             onClick={onClick}
             type={typeIn}
         >
