@@ -1620,6 +1620,11 @@
   "resolved" "https://registry.npmjs.org/normalize-range/-/normalize-range-0.1.2.tgz"
   "version" "0.1.2"
 
+"number-to-words@^1.2.4":
+  "integrity" "sha512-/fYevVkXRcyBiZDg6yzZbm0RuaD6i0qRfn8yr+6D0KgBMOndFPxuW10qCHpzs50nN8qKuv78k8MuotZhcVX6Pw=="
+  "resolved" "https://registry.npmjs.org/number-to-words/-/number-to-words-1.2.4.tgz"
+  "version" "1.2.4"
+
 "oauth@^0.9.15":
   "integrity" "sha512-a5ERWK1kh38ExDEfoO6qUHJb32rd7aYmPHuyCu3Fta/cnICvYmgd2uhuKXvPD+PXB+gCEYYEaQdIRAjCOwAKNA=="
   "resolved" "https://registry.npmjs.org/oauth/-/oauth-0.9.15.tgz"
