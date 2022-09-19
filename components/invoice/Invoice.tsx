@@ -6,6 +6,8 @@ const axios = require('axios').default;
 import Router, {useRouter} from 'next/router'
 import Button from '../Button';
 import baseUrl from '../../helper/baseUrl';
+import { Hidden } from '@mui/material';
+var converter = require('number-to-words');
 
 type Props = {
     title: string;
@@ -36,6 +38,9 @@ export async function getStaticProps(context: any) {
 
 const InvoiceForm: React.FC<Props> = ( {title,first,middle,last,address,gender,fees} ) => {
     console.log("call");
+
+    // const feesWord = converter.toWords(fees);
+    const feesWord2 = converter.toWords(500);
 
     const handlePrint = () => {
         window.print();
@@ -79,9 +84,13 @@ const InvoiceForm: React.FC<Props> = ( {title,first,middle,last,address,gender,f
             <div className='w-[45rem] border-2 border-gray-400 py-10 rounded bg-white px-20 '>
                 <div>
                     <div className='my-4'>
-                        <div className="flex justify-center">
+                        <div className="flex justify-center align-end">
                             <h2 className=' text-4xl font-bold text-gray-900 p-2'>Sandy's fitness care</h2>
-                            <span className="font-semibold text-center text-xl m-auto">Recipt no:</span>
+                            <div className="font-semibold text-center text-xl m-auto">
+                                <span className="font-semibold ">Recipt no: </span>
+                                <span className="font-normal ">[9317]</span>
+                            </div>
+                            
                         </div>
                         
                         <div className="flex text-sm p-2">
@@ -93,53 +102,77 @@ const InvoiceForm: React.FC<Props> = ( {title,first,middle,last,address,gender,f
                             </div>
                             <div className='w-1/3 px-2'>
                                 <h2 className='font-semibold ' >
-                                    M: 1234567890 <br/>
-                                    M: 1234567890
+                                    M: 8888053456 <br/>
+                                    M: 7350034888
                                 </h2> 
                             </div>
                         
                         </div> 
                     </div>
                     
-                    <h3 className="pl-6">
+                    <h3 className="pl-6 text-center font-bold">
                         {/* {
                             gender === "male" ? <div>
-                                <span className='font-semibold text-2xl '>Mr. {first+" "+middle+" "+last}</span>
+                                <span className=' text-2xl '>Mr. {first+" "+middle+" "+last}</span>
                             </div> : 
                             <div>
-                                <span className='font-semibold text-2xl '>Mrs. {first+" "+middle+" "+last}</span>
+                                <span className=' text-2xl '>Mrs. {first+" "+middle+" "+last}</span>
                             </div>
                         } */}
-                        <span className='font-semibold text-2xl '>Mr. Sandeep Patil</span>
+                        <span className=' text-2xl '>Mr. Sandeep Patil</span>
                     </h3>
 
-                    <div className='p-4 ml-4'>
-                        <span className="font-semibold">
-                            A sum of Rupees (in words) : {fees}
+                    <div className='p-4 ml-8 '>
+                        <span className="font-semibold capitalize">
+                            A sum of Rupees (in words) : {fees} {feesWord2} Rupees
                         </span> 
                     </div>
                     
-                    <div className='flex'>
-                        <div className=' flex font-bold px-6 w-2/3'>
-                            <div className='px-4'>
-                                <span>
-                                    Facility 
-                                </span>
+                    <div className='flex p-2'>
+                        
+                        <div className=' flex flex-col px-6 w-2/3 '>
+                            <div className="flex">
+                                <div className='flex flex-col px-4 '>
+                                    <span className='font-bold'>
+                                        Facility 
+                                    </span>
+                                    <span >
+                                        {/* {facility} */}
+                                        cardio
+                                    </span>
+                                </div>
+                                <div  className='flex flex-col px-4'>
+                                    <span  className='font-bold'>
+                                        Due Date  
+                                    </span>
+                                    <span>
+                                        {/* {due} */}
+                                        23/2/2021
+                                    </span>
+                                </div>
+                                <div  className='flex flex-col px-4'>
+                                    <span  className='font-bold'>
+                                        Amount 
+                                    </span>
+                                    <span>
+                                        {/* {amount} */}
+                                        500
+                                    </span>
+                                </div>
                             </div>
-                            <div className='px-4'>
+                            
+                            <div className='text-center font-bold p-4'>
                                 <span>
-                                    Due Date  
-                                </span>
-                            </div>
-                            <div className='px-4'>
-                                <span>
-                                    Amount 
+                                    Total : 700 {fees}
                                 </span>
                             </div>
                         </div>
-                        <div className='w-1/3 font-bold'>
+                        <div className='w-1/3 text-xl font-bold text-center'>
                             <span>
-                                Sign: 
+                                Sign: <br /> 
+                            </span>
+                            <span>
+                                [sign]
                             </span>
                         </div>
                     </div>
