@@ -4,6 +4,10 @@ import Modal from '@mui/material/Modal';
 import Link from 'next/link';
 import {useState} from 'react';
 import Button from './Button';
+import { useRouter } from 'next/router';
+import InvoiceForm from './invoice/Invoice';
+const axios = require('axios').default;
+import baseUrl from '../helper/baseUrl';
 
 interface Props {
     image: string;
@@ -52,6 +56,27 @@ const style2 = {
 
 // main modal
 export default function TestModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus,id}:Props ) {
+
+  const router = useRouter();
+
+  const handleDelete = async() => {
+    try{
+        const deleteMember = await axios( `${baseUrl}/api/member/${id}` , {
+          method: "DELETE",
+        });
+        router.push('/');
+    }catch(err){
+      console.log(err);
+    }
+  }
+  const handleInvoice = async() => {
+    try{
+        router.push(`${baseUrl}/${id}/invoice`);
+    }catch(err){
+      console.log(err);
+    }
+  }
+
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -59,9 +84,12 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
   const handleClose = () => {
     setOpen(false);
   };
+  
   const log = () => {
     console.log('invoice sent');
+    
   };
+  
   return (
     <div>
       <div className=''>
@@ -217,8 +245,6 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                           </div>
                           <div className='pr-5 pb-4 sm:pb-0'>
                             <input type="date" autoComplete='none' required 
-                                  // onChange={handleChange} 
-                                  // name='DoB' value={form.DoB}
                                   className='py-2 rounded-lg relative block w-full px-3 
                                   border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                                   focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
@@ -227,7 +253,7 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                           </div>
                         </div>
                         <div className='sm:pb-2 flex justify-center '>
-                          <Button label="Invoice" onClick={log} className="bg-green-500 text-xsm hover:bg-green-400 px-3"/>
+                          <Button label="Invoice" onClick={handleInvoice} className="bg-green-500 text-xsm hover:bg-green-400 px-3"/>
                         </div>
                       </div>
                       
@@ -235,11 +261,9 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                     </div>
                     
                     <div className='flex justify-between sm:justify-center py-2' >
-                      {/* <div className='sm:pb-4  sm:ml-5 '>
-                        <Button label="Invoice" onClick={log} className="bg-green-500 text-xsm hover:bg-green-400 px-3"/>
-                      </div> */}
+                      
                       <div className='pb-4  mx-2 sm:pb-4  sm:mx-5 '>
-                        <Button label="delete" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
+                        <Button label="delete" onClick={handleDelete} className="bg-red-500 hover:bg-red-400 px-3"/>
                       </div>
 
                       <div className='pb-4  mx-2 sm:pb-4  sm:mx-5 '>
