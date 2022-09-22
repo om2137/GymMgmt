@@ -68,6 +68,11 @@ export default function EachMember({members}: any) {
                                     <Button label="back" className="bg-gray-500 hover:bg-gray-400 px-3"/>
                                 </Link>
                               </div>
+                              <div className='text-center p-4'>
+                                <Link href={`${memberId}/edit`}>
+                                  <Button label="edit"  className="bg-yellow-500 hover:bg-yellow-400 px-3"/>
+                                </Link>
+                              </div>
                             </div>
                             
                           </div>
