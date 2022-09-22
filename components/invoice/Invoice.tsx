@@ -7,15 +7,14 @@ import Router, {useRouter} from 'next/router'
 import Button from '../Button';
 import baseUrl from '../../helper/baseUrl';
 import { Hidden } from '@mui/material';
+import Link from 'next/link';
 var converter = require('number-to-words');
 
 type Props = {
-    title: string;
     // image: string;
     first: string;
     middle: string;
     last: string;
-    address: string;
     // phone: number;
     // birthdate: string;
     // age: number;
@@ -36,7 +35,7 @@ export async function getStaticProps(context: any) {
     }
   }
 
-const InvoiceForm: React.FC<Props> = ( {title,first,middle,last,address,gender,fees} ) => {
+const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees} ) => {
     console.log("call");
 
     // const feesWord = converter.toWords(fees);
@@ -77,8 +76,15 @@ const InvoiceForm: React.FC<Props> = ( {title,first,middle,last,address,gender,f
 
     return(
         <main className=' flex flex-col items-center justify-center '>
-            <div className="p-4">
-                <Button label="print" onClick={handlePrint} className="bg-green-500 hover:bg-green-400 px-3"/>
+            <div className="flex">
+                <div className="p-4">
+                    <Button label="print" onClick={handlePrint} className="bg-green-500 hover:bg-green-400 px-3"/>
+                </div>
+                <div className="p-4">
+                    <Link href={'/'}>
+                        <Button label="back" className="bg-gray-500 hover:bg-gray-400 px-3"/>
+                    </Link>
+                </div>
             </div>
             
             <div className='w-[45rem] border-2 border-gray-400 py-10 rounded bg-white px-20 '>
@@ -110,16 +116,16 @@ const InvoiceForm: React.FC<Props> = ( {title,first,middle,last,address,gender,f
                         </div> 
                     </div>
                     
-                    <h3 className="pl-6 text-center font-bold">
-                        {/* {
+                    <h3 className="pl-6 text-center font-bold capitalize">
+                        {
                             gender === "male" ? <div>
                                 <span className=' text-2xl '>Mr. {first+" "+middle+" "+last}</span>
                             </div> : 
                             <div>
                                 <span className=' text-2xl '>Mrs. {first+" "+middle+" "+last}</span>
                             </div>
-                        } */}
-                        <span className=' text-2xl '>Mr. Sandeep Patil</span>
+                        }
+                        {/* <span className=' text-2xl '>Mr. Sandeep Patil</span> */}
                     </h3>
 
                     <div className='p-4 ml-8 '>
