@@ -35,12 +35,15 @@ const MemberSchema = new mongoose.Schema({
     Avatar: {
         type : String,
     },
-    // paidDate: {
-
-    // },
-    // dueDate: {
-
-    // },
+    paidDate: {
+        type: Date,
+    },
+    dueDate: {
+        type: Date,
+    },
+    fees: {
+        type: Number,
+    },
     
 })
 
