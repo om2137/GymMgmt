@@ -9,7 +9,7 @@ export default function invoice() {
         {/* <Navbar title='Invoice'/> */}
         <main>
             <div className='p-10'>
-                <InvoiceForm  first=''middle=''last='' gender='' fees=''/>
+                <InvoiceForm  first='' middle='' last='' gender='' fees='' inNum={100}/>
             </div>
             
         </main>

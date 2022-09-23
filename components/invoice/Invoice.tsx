@@ -19,6 +19,7 @@ type Props = {
     // birthdate: string;
     // age: number;
     gender: string;
+    inNum : number;
     // mstatus: string;
     // id: number;
     fees : string;
@@ -35,7 +36,7 @@ export async function getStaticProps(context: any) {
     }
   }
 
-const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees} ) => {
+const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,inNum} ) => {
     console.log("call");
 
     // const feesWord = converter.toWords(fees);
@@ -94,7 +95,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees} ) => {
                             <h2 className=' text-4xl font-bold text-gray-900 p-2'>Sandy's fitness care</h2>
                             <div className="font-semibold text-center text-xl m-auto">
                                 <span className="font-semibold ">Recipt no: </span>
-                                <span className="font-normal ">[9317]</span>
+                                <span className="font-normal ">[9317]{inNum}</span>
                             </div>
                             
                         </div>
@@ -125,7 +126,6 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees} ) => {
                                 <span className=' text-2xl '>Mrs. {first+" "+middle+" "+last}</span>
                             </div>
                         }
-                        {/* <span className=' text-2xl '>Mr. Sandeep Patil</span> */}
                     </h3>
 
                     <div className='p-4 ml-8 '>

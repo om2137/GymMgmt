@@ -47,13 +47,14 @@ export default function Invoice({members}: any) {
   
   return (
     <>
-        <span>{first}name</span>
+        
         <InvoiceForm   
             first={first}
             middle={middle}
             last={last}
             gender={gender}
             fees=''
+            inNum= {100}
         />
     {/* <div className='flex items-center justify-center align-center py-20'>
     <div className='md:flex  align-middle justify-between'>
