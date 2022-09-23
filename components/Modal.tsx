@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {useState} from 'react';
 import Button from './Button';
 import { useRouter } from 'next/router';
+import  Router from 'next/router';
 import InvoiceForm from './invoice/Invoice';
 const axios = require('axios').default;
 import baseUrl from '../helper/baseUrl';
@@ -57,6 +58,69 @@ const style2 = {
 // main modal
 export default function TestModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus,id}:Props ) {
 
+  // post invoice
+  const [form, setForm] = useState({
+    Name: '',   
+    paidDate: '',
+    dueDate: '',
+    fees:0,
+  })
+
+const handleChange = (e: React.ChangeEvent<any>) => {
+    setForm({
+        ...form,
+        [e.target.name]: e.target.value,
+        
+    })
+    
+}
+const handleFormInvoice = async(e: React.ChangeEvent<any>) => {
+    e.preventDefault()
+    try{
+        
+        const res = await axios(`${baseUrl}/api/invoice`, {
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json",
+            },
+            data: JSON.stringify(form),
+        })
+        Router.push('/invoice')
+        
+    }catch(err){
+        console.log(err)
+    }
+    
+}
+const handleForm = async(e: React.ChangeEvent<any>) => {
+  e.preventDefault()
+  try{
+      
+      const res = await axios(`${baseUrl}/api/member`, {
+          method: "PUT",
+          headers:{
+              "Content-Type": "application/json",
+          },
+          data: JSON.stringify(form),
+      })
+      Router.push('/invoice')
+      
+  }catch(err){
+      console.log(err)
+  }
+  
+}
+// post invoice ended
+
+  const [facility , setFacility] = useState('');
+  const [time, setTime] = useState('');
+  var [fee, setFee] = useState(0);
+
+  const handleFee = async() => {
+    fee = (Number(facility) * Number(time));
+    console.log("fee "+fee +" facility "+facility+" time "+time);
+  }
+  
   const router = useRouter();
 
   const handleDelete = async() => {
@@ -85,10 +149,6 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
     setOpen(false);
   };
   
-  const log = () => {
-    console.log('invoice sent');
-    
-  };
   
   return (
     <div>
@@ -210,20 +270,29 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                 <div className='md:flex flex-col justify-between'>
                   <label id="countries" className="block mb-2 text-sm font-medium text-black ">Select an plans</label>
                     <div className='sm:flex flex-col pb-2'>
-                      <div className='flex flex-col '>
+                      {/* form */}
+                      <form className='flex flex-col ' onSubmit={handleForm}>
                         <div className="flex flex-col sm:flex-row">
                           <div className='pr-5 pb-4 sm:pb-0'>
-                            <select id="countries" required className="bg-white border border-gray-600 rounded-lg text-gray-900 
-                              text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                              <select id="countries" required 
+                                onChange={(e) => setFacility(e.target.value)}
+                                // name='facility' value={form.PD}
+                                // facility * time = fees
+                                className="bg-white border border-gray-600 rounded-lg text-gray-900 
+                                text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                                   <option className='hidden'>Choose Facility</option>
-                                  <option value="900">Cardio</option>
-                                  <option value="500">Weight</option>
-                                  <option value="1200">Cardio + Weight</option>
+                                  <option value={900}>Cardio</option>
+                                  <option value={500}>Weight</option>
+                                  <option value={1200}>Cardio + Weight</option>
                               </select> 
                           </div>
+                          
                           <div className='pr-5 pb-4 sm:pb-0'>
-                            <select id="countries" required className="bg-white border border-gray-600 rounded-lg text-gray-900 
-                              text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                              <select id="time" required 
+                                onChange={(e) => setTime(e.target.value)}
+                                // name='time' value={form.PD}
+                                className="bg-white border border-gray-600 rounded-lg text-gray-900 
+                                text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                                   <option className='hidden' >Choose Duration</option>
                                   <option value={1}>Montly</option>
                                   <option value={3}>Quarterly</option>
@@ -231,12 +300,20 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                                   <option value={12}>Annually</option>
                               </select> 
                           </div>
+                          <div 
+                            className="hidden"
+                            // fees and name
+                          > 
+                            {form.fees = (Number(facility) * Number(time))} 
+                            {form.Name = first + ' ' + last}
+                          </div>
                         </div>
+                        
                         <div className="flex flex-col sm:flex-row py-2">
                           <div className='pr-5 pb-4 sm:pb-0'>
                             <input type="date" autoComplete='none' required 
-                                  // onChange={handleChange} 
-                                  // name='DoB' value={form.DoB}
+                                  onChange={handleChange} 
+                                  name='paidDate' value={form.paidDate}
                                   className='py-2 rounded-lg relative block w-full px-3 
                                   border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                                   focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
@@ -245,6 +322,8 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                           </div>
                           <div className='pr-5 pb-4 sm:pb-0'>
                             <input type="date" autoComplete='none' required 
+                                  onChange={handleChange} 
+                                  name='dueDate' value={form.dueDate}
                                   className='py-2 rounded-lg relative block w-full px-3 
                                   border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                                   focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
@@ -253,10 +332,13 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
                           </div>
                         </div>
                         <div className='sm:pb-2 flex justify-center '>
-                          <Button label="Invoice" onClick={handleInvoice} className="bg-green-500 text-xsm hover:bg-green-400 px-3"/>
+                          <Button label="Invoice" type='submit' onClick={handleInvoice} className="bg-green-500 text-xsm hover:bg-green-400 px-3"/>
                         </div>
-                      </div>
-                      
+                        <div className='sm:pb-2 flex justify-center '>
+                          <Button label="fees" onClick={handleFee} className="bg-yellow-500 text-xsm hover:bg-yellow-400 px-3"/>
+                        </div>
+                      </form>
+                      {/* form end */}
                       
                     </div>
                     
