@@ -78,7 +78,12 @@ export default function Navbar({ title }: Props) {
               >
                 Profiles
               </a>
-
+              <a
+                className="inline-block border border-gray-500 text-sm px-6 py-3 mr-2 rounded  mt-4 lg:inline-block lg:mt-0 "
+                href="../invoice"
+              >
+                Invoices
+              </a>
               <a
                 className="inline-block border border-gray-500 text-sm px-6 py-3 mr-2 rounded  mt-4 lg:inline-block lg:mt-0 "
                 href="../admission"
@@ -121,6 +126,11 @@ export default function Navbar({ title }: Props) {
             <StyledMenuItem onClick={handleClose}>
               <a href="/admission">
                 Admission
+              </a>
+            </StyledMenuItem>
+            <StyledMenuItem onClick={handleClose}>
+              <a href="/invoice">
+                Invoices
               </a>
             </StyledMenuItem>
             <StyledMenuItem onClick={handleClose}>
