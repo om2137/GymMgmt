@@ -37,6 +37,17 @@ const Home: NextPage = ({members}:any) => {
               const day = birth.getDate();
               const year = birth.getFullYear();
 
+              const payDate = new Date(member.paidDate);
+              const payMonth = payDate.getMonth()+1;
+              const payDay = payDate.getDate();
+              const payYear = payDate.getFullYear();
+
+              const dueDate = new Date(member.dueDate);
+              const dueMonth = dueDate.getMonth()+1;
+              const dueDay = dueDate.getDate();
+              const dueYear = dueDate.getFullYear();
+
+
               return (
                 <div className='p-5'>
                   <div className=' text-black'>
@@ -52,6 +63,8 @@ const Home: NextPage = ({members}:any) => {
                       gender={member.Gender}
                       marriage={member.Mstat}
                       id={member._id}
+                      paid={payDay+'/'+payMonth+'/'+payYear}
+                      due={dueDay+'/'+dueMonth+'/'+dueYear}
                     />
                     
                   </div>
