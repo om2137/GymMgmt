@@ -119,6 +119,7 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
   const [time, setTime] = useState('');
   var [fee, setFee] = useState(0);
 
+
   if (facility === '900') {
     form.facility = 'cardio';
   }else if (facility === '500') {
@@ -334,6 +335,7 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                         <div className='sm:pb-2 flex justify-center '>
                           <Button label="Invoice" type='submit'  className="bg-green-500 text-xsm hover:bg-green-400 px-3"/>
                         </div>
+
                       </form>
                       {/* form end */}
                       
