@@ -88,42 +88,48 @@ const SignUpForm: React.FC<Props> = (  ) => {
                             name='Firstname' value={form.Firstname}
                             className='py-2 rounded relative block w-full px-3 
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
-                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='firstname' 
+                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                            placeholder='firstname' 
                         />
                         <input type="text" autoComplete='none' required 
                             onChange={handleChange} 
                             name='Middlename' value={form.Middlename}
                             className='py-2 rounded relative block w-full px-3 
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
-                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Middlename' 
+                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                            placeholder='Middlename' 
                         />
                         <input type="text" autoComplete='none' required 
                             onChange={handleChange} 
                             name='Lastname' value={form.Lastname}
                             className='py-2 rounded relative block w-full px-3 
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
-                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Lastname' 
+                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                            placeholder='Lastname' 
                         />
                         <input type="text" autoComplete='none' required 
                             onChange={handleChange} 
                             name='Address' value={form.Address}
                             className='py-2 rounded relative block w-full px-3 
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
-                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Address' 
+                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                            placeholder='Address' 
                         />
                         <input type="tel" autoComplete='none' required 
                             onChange={handleChange} 
                             name='Contact' value={form.Contact}
                             className='py-2 rounded relative block w-full px-3 
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
-                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Contact' 
+                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                            placeholder='Contact' 
                         />
                         <input type="date" autoComplete='none' required 
                             onChange={handleChange} 
                             name='DoB' value={form.DoB}
                             className='py-2 rounded relative block w-full px-3 
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
-                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Date of birth' 
+                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                            placeholder='Date of birth' 
                         />
                         {/*  <input type="file"  /> */}
                         <div className='py-2'> 
