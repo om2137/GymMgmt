@@ -115,11 +115,6 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
   const [facility , setFacility] = useState('');
   const [time, setTime] = useState('');
   var [fee, setFee] = useState(0);
-
-  const handleFee = async() => {
-    fee = (Number(facility) * Number(time));
-    console.log("fee "+fee +" facility "+facility+" time "+time);
-  }
   
   const router = useRouter();
 
@@ -334,9 +329,7 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                         <div className='sm:pb-2 flex justify-center '>
                           <Button label="Invoice" type='submit' onClick={handleInvoice} className="bg-green-500 text-xsm hover:bg-green-400 px-3"/>
                         </div>
-                        <div className='sm:pb-2 flex justify-center '>
-                          <Button label="fees" onClick={handleFee} className="bg-yellow-500 text-xsm hover:bg-yellow-400 px-3"/>
-                        </div>
+                        
                       </form>
                       {/* form end */}
                       
