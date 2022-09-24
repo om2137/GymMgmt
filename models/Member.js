@@ -41,6 +41,9 @@ const MemberSchema = new mongoose.Schema({
     dueDate: {
         type: Date,
     },
+    facility: {
+        type: String,
+    },
     fees: {
         type: Number,
     },

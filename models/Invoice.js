@@ -9,25 +9,23 @@ const InvoiceSchema = new mongoose.Schema({
     //     min: 1000000000,
     //     max: 9999999999
     // },
-    // Gender: {
-    //     type: String,
-    // },
     Name: {
         type: String,
         required: [true,'Firstname is required'],
     },
     paidDate: {
-        type: Date,
+        type: String,
     },
     dueDate: {
-        type: Date,
+        type: String,
     },
     fees: {
         type: Number,
     },
-    // invoiceNumber: {
-    //     type: Number,
-    // }
+    invoiceNumber: {
+        type: Number,
+        unique: [true,'Contact is already taken'],
+    }
     
 })
 
