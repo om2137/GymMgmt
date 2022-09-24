@@ -22,6 +22,8 @@ interface Props {
     gender: string;
     mstatus: string;
     id: number;
+    paid: string;
+    due: string;
   }
 
 const style = {
@@ -56,13 +58,14 @@ const style2 = {
   };
 
 // main modal
-export default function TestModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus,id}:Props ) {
+export default function TestModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus,id, paid, due}:Props ) {
 
   // post invoice
   const [form, setForm] = useState({
     Name: '',   
     paidDate: '',
     dueDate: '',
+    facility: '',
     fees:0,
   })
 
@@ -96,14 +99,14 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
   e.preventDefault()
   try{
       
-      const res = await axios(`${baseUrl}/api/member`, {
+      const res = await axios(`${baseUrl}/api/member/${id}`, {
           method: "PUT",
           headers:{
               "Content-Type": "application/json",
           },
           data: JSON.stringify(form),
       })
-      Router.push('/invoice')
+      Router.push(`${baseUrl}/${id}/invoice`)
       
   }catch(err){
       console.log(err)
@@ -116,11 +119,14 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
   const [time, setTime] = useState('');
   var [fee, setFee] = useState(0);
 
-  const handleFee = async() => {
-    fee = (Number(facility) * Number(time));
-    console.log("fee "+fee +" facility "+facility+" time "+time);
+  if (facility === '900') {
+    form.facility = 'cardio';
+  }else if (facility === '500') {
+    form.facility = 'weights';
+  }else if (facility === '1200') {
+    form.facility = 'cardio + weights';
   }
-  
+
   const router = useRouter();
 
   const handleDelete = async() => {
@@ -133,13 +139,7 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
       console.log(err);
     }
   }
-  const handleInvoice = async() => {
-    try{
-        router.push(`${baseUrl}/${id}/invoice`);
-    }catch(err){
-      console.log(err);
-    }
-  }
+  
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
@@ -152,6 +152,7 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
   
   return (
     <div>
+      
       <div className=''>
         <Button label="Details" onClick={handleOpen} className='bg-slate-600 hover:bg-slate-500 px-3 '/>
       </div>      
@@ -182,11 +183,11 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                             <div className='pt-6 text-center'>
                               <div>
                                 <a className='font-semibold'>Last Paid:</a>
-                                <a>26/5/2022</a>
+                                <a>{paid}</a>
                               </div>
                               <div>
                                 <a className='font-semibold'>Due Date:</a>
-                                <a>23/6/2022</a>
+                                <a>{due}</a>
                               </div>
                               
                             </div>
@@ -203,11 +204,11 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                               <div className=' pt-6 text-center'>
                                 <div>
                                   <a className='font-semibold'>Last Paid:</a>
-                                  <a>26/5/2022</a>
+                                  <a>{paid}</a>
                                 </div>
                                 <div>
                                   <a className='font-semibold'>Due Date:</a>
-                                  <a>23/6/2022</a>
+                                  <a>{due}</a>
                                 </div>
                               </div>
                             </div>
@@ -286,7 +287,6 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                                   <option value={1200}>Cardio + Weight</option>
                               </select> 
                           </div>
-                          
                           <div className='pr-5 pb-4 sm:pb-0'>
                               <select id="time" required 
                                 onChange={(e) => setTime(e.target.value)}
@@ -332,10 +332,7 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                           </div>
                         </div>
                         <div className='sm:pb-2 flex justify-center '>
-                          <Button label="Invoice" type='submit' onClick={handleInvoice} className="bg-green-500 text-xsm hover:bg-green-400 px-3"/>
-                        </div>
-                        <div className='sm:pb-2 flex justify-center '>
-                          <Button label="fees" onClick={handleFee} className="bg-yellow-500 text-xsm hover:bg-yellow-400 px-3"/>
+                          <Button label="Invoice" type='submit'  className="bg-green-500 text-xsm hover:bg-green-400 px-3"/>
                         </div>
                       </form>
                       {/* form end */}
