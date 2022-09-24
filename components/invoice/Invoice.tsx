@@ -16,11 +16,11 @@ type Props = {
     middle: string;
     last: string;
     // phone: number;
-    // birthdate: string;
+    facility: string;
     // age: number;
     gender: string;
-    inNum : number;
-    // mstatus: string;
+    paid : string;
+    due : string;
     // id: number;
     fees : string;
 }
@@ -36,44 +36,64 @@ export async function getStaticProps(context: any) {
     }
   }
 
-const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,inNum} ) => {
-    console.log("call");
+const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,facility} ) => {
 
-    // const feesWord = converter.toWords(fees);
-    const feesWord2 = converter.toWords(500);
+    
+    const payDate = new Date(paid);
+    const payMonth = payDate.getMonth()+1;
+    const payDay = payDate.getDate();
+    const payYear = payDate.getFullYear();
+
+    const dueDate = new Date(due);
+    const dueMonth = dueDate.getMonth()+1;
+    const dueDay = dueDate.getDate();
+    const dueYear = dueDate.getFullYear();
+
+    const feesWord = converter.toWords(fees);
+    // const feesWord2 = converter.toWords(500);
 
     const handlePrint = () => {
         window.print();
     }
 
-    const [Form, setForm]= useState({
-        Firstname: '',
-        Middlename: '',
-        Lastname: '',
-        Address: '',
-        Contact:''
+    // Invoice form
+    const [form, setForm]= useState({
+        Name: '',   
+        paidDate: '',
+        dueDate: '',
+        facility: '',
+        fees:0,
+        invoiceNumber: 0,
       })
-      const handleChange = (e: React.ChangeEvent<any>) => {
-        setForm({
-            ...Form,
-            [e.target.name]: e.target.value
-        })
-      }
       const handleForm = async(e: React.ChangeEvent<any>) => {
         e.preventDefault()
         try{
-            const res = await axios('',{
-                method: 'POST',
-                header:{
-                    "Content-Type": "application/json"
+            
+            const res = await axios(`${baseUrl}/api/invoice`, {
+                method: "POST",
+                headers:{
+                    "Content-Type": "application/json",
                 },
-                data: JSON.stringify(Form)
+                data: JSON.stringify(form),
             })
-            Router.push('/')
+            Router.push('/invoice')
+            
         }catch(err){
-            console.log("om" + err)
+            console.log(err)
         }
-      }
+        
+    }
+    const handleChange = (e: React.ChangeEvent<any>) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value,
+            
+        })
+        
+    }
+    var inNum = 0;
+    var paidDate = new Date(paid);
+    console.log(paidDate);
 
     return(
         <main className=' flex flex-col items-center justify-center '>
@@ -86,7 +106,31 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,inNum} ) =
                         <Button label="back" className="bg-gray-500 hover:bg-gray-400 px-3"/>
                     </Link>
                 </div>
+                
+                <form action="" onSubmit={handleForm} className="flex">
+                    <div className='py-4'>
+                        <input type="text" autoComplete='none' required 
+                            onChange={handleChange} 
+                            name='invoiceNumber' value={form.invoiceNumber}
+                            className='py-2 rounded relative block w-full px-3 
+                            border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
+                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                            placeholder='firstname' 
+                        />
+                    </div>
+                    <div className='hidden'>
+                        {form.Name = first+" "+middle+" "+last}
+                        {form.paidDate = paid}
+                        {form.dueDate = due}
+                        {form.facility = facility}
+                        {form.fees = Number(fees)}
+                    </div>
+                    <div className="p-4">
+                        <Button label="save" type='submit' className="bg-sky-500 hover:bg-sky-400 px-3"/>
+                    </div>
+                </form>
             </div>
+            
             
             <div className='w-[45rem] border-2 border-gray-400 py-10 rounded bg-white px-20 '>
                 <div>
@@ -95,7 +139,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,inNum} ) =
                             <h2 className=' text-4xl font-bold text-gray-900 p-2'>Sandy's fitness care</h2>
                             <div className="font-semibold text-center text-xl m-auto">
                                 <span className="font-semibold ">Recipt no: </span>
-                                <span className="font-normal ">[9317]{inNum}</span>
+                                <span className="font-normal ">{form.invoiceNumber}</span>
                             </div>
                             
                         </div>
@@ -128,10 +172,14 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,inNum} ) =
                         }
                     </h3>
 
-                    <div className='p-4 ml-8 '>
-                        <span className="font-semibold capitalize">
-                            A sum of Rupees (in words) : {fees} {feesWord2} Rupees
+                    <div className='flex justify-center p-4 ml-8 '>
+                        <span className="text-center font-bold capitalize">
+                            A sum of Rupees  <br />
+                            (in words)  
                         </span> 
+                        <span className="text-center font-semibold capitalize p-2">
+                            : {feesWord}  Rupees
+                        </span>
                     </div>
                     
                     <div className='flex p-2'>
@@ -143,8 +191,8 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,inNum} ) =
                                         Facility 
                                     </span>
                                     <span >
-                                        {/* {facility} */}
-                                        cardio
+                                        {facility}
+                                        {/* cardio */}
                                     </span>
                                 </div>
                                 <div  className='flex flex-col px-4'>
@@ -152,8 +200,8 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,inNum} ) =
                                         Due Date  
                                     </span>
                                     <span>
-                                        {/* {due} */}
-                                        23/2/2021
+                                        {due}
+                                        {/* 23/2/2021 */}
                                     </span>
                                 </div>
                                 <div  className='flex flex-col px-4'>
@@ -161,15 +209,15 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,inNum} ) =
                                         Amount 
                                     </span>
                                     <span>
-                                        {/* {amount} */}
-                                        500
+                                        {fees}
+                                        {/* 500 */}
                                     </span>
                                 </div>
                             </div>
                             
                             <div className='text-center font-bold p-4'>
                                 <span>
-                                    Total : 700 {fees}
+                                    Total : {fees}
                                 </span>
                             </div>
                         </div>
@@ -183,98 +231,11 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,inNum} ) =
                         </div>
                     </div>
                     
-
-                     <form className='' onSubmit={handleForm} >
-                         <div className='rounded-md shadow-sm  text-left'>
-                            {/* start */}
-                             {/* <div className=''>
-                                <div className='flex pb-3'>
-                                    <div>
-                                        <div className="mb-3 xl:w-48 pr-6">
-                                            <label className=''>Name:</label><br/>
-                                            <label htmlFor="">{first+" "+middle+" "+last}Temperory name</label>
-                                        </div>
-
-                                        <div>
-                                            <input type="radio" name="gender" id="" value="male"  className='mr-2'/>
-                                            <label htmlFor="" className='mr-2'>male</label>
-                                            <input type="radio" name="gender" id="" value="female"  className='mr-2'/>
-                                            <label htmlFor="" className='mr-2'>female</label>
-                                        </div>
-                                        <div>
-                                            <input type="radio" name="marriage" id="" className='mr-2'/>
-                                            <label htmlFor="" className='mr-2'>married</label>
-                                            <input type="radio" name="marriage" id="" className='mr-2'/>
-                                            <label htmlFor="" className='mr-2'>unmarried</label>
-                                        </div>
-                                    </div>
-                                   
-                                   <div>
-
-                                        <div className="flex justify-center items-center pb-5">
-                                            <label className="flex flex-col justify-center items-center px-20 w-20 h-40 rounded-lg 
-                                                border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800  hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-200">
-                                                <div className="flex flex-col justify-center items-center pt-5 pb-6">
-                                                    <svg className="mb-3 w-10 h-6 text-gray-400" fill="file" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                                                  
-                                                    <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                                                </div>
-                                                <input id="dropzone-file" type="file" className="hidden" />
-                                            </label>
-                                        </div>
-
-                                        <div>
-                                            
-                                            <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(date)} 
-                                                className="py-2 rounded relative block w-full px-3 
-                                                border border-gray-600 placeholder-gray-500 text-gray-900 rounded-t-md mb-2
-                                                focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholderText='date of birth' />
-                                            
-                                            <input type="tel" autoComplete='none' required 
-                                                className='py-2 rounded relative block w-full px-3 
-                                                border border-gray-600 placeholder-gray-500 text-gray-900 rounded-t-md mb-2
-                                                focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='age'/>
-                                        </div>
-                                   </div>
-
-                                    
-
-                                </div>
-                                     
-                                <div>
-                                    <label className=''>Address:</label>
-                                    <input type="text" autoComplete='none' required 
-                                        onChange={handleChange} 
-                                        name='Address' value={Form.Address}
-                                        className='appearance-none py-4 rounded relative block w-full px-3 
-                                        border border-gray-600 placeholder-gray-500 text-gray-900 rounded-t-md mb-2
-                                        focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder=''/>
-                                        
-                                </div>
-
-                                <div>
-                                    <label className=''>Phone Number:</label>
-                                    <input type="tel" autoComplete='none' required 
-                                        onChange={handleChange} 
-                                        name='Contact' value={Form.Contact}
-                                    className='appearance-none py-2 rounded relative block w-full px-3 
-                                        border border-gray-600 placeholder-gray-500 rounded-t-md mb-2
-                                        focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder=''/>
-                                </div>
-                                
-                                
-                                
-                            </div>
-                            <div className='py-4 text-center'>
-                                <Button label="Add" type="submit" className="bg-red-500 hover:bg-red-400 px-3"/>
-                            </div> */}
-                            {/* end */}
-                        </div> 
-                    </form> 
+                    
                     
                 </div>
             </div>
-
+            
         </main>
         
     )
