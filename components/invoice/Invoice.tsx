@@ -1,43 +1,42 @@
 import React from 'react'
-import DatePicker from "react-datepicker";
 import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 const axios = require('axios').default;
 import Router, {useRouter} from 'next/router'
 import Button from '../Button';
 import baseUrl from '../../helper/baseUrl';
-import { Hidden } from '@mui/material';
 import Link from 'next/link';
 var converter = require('number-to-words');
 
 type Props = {
-    // image: string;
+
     first: string;
     middle: string;
     last: string;
     // phone: number;
     facility: string;
-    // age: number;
     gender: string;
     paid : string;
     due : string;
-    // id: number;
+    inNumber: number;
     fees : string;
 }
 
-const burl = process.env.BASE_URL_ENV;
-
 export async function getStaticProps(context: any) {
     console.log('working');
-    const res = await axios(`${baseUrl}/api/member`);
-    console.log(res.data.member);
+    // const res = await axios(`${baseUrl}/api/member`);
+    // console.log(res.data.member);
+    const res = await axios(`${baseUrl}/api/invoice`);
+    const {invoice} = res.data;
     return {
-      props: {}, // will be passed to the page component as props
+      props: {
+        invoices : invoice,
+      }, 
     }
   }
 
-const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,facility} ) => {
 
+const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,facility,inNumber} ) => {
     
     const payDate = new Date(paid);
     const payMonth = payDate.getMonth()+1;
@@ -91,34 +90,39 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
         })
         
     }
-    var inNum = 0;
+    var inNum = inNumber + 1;
     var paidDate = new Date(paid);
     console.log(paidDate);
 
     return(
+        
         <main className=' flex flex-col items-center justify-center '>
             <div className="flex">
                 <div className="p-4">
                     <Button label="print" onClick={handlePrint} className="bg-green-500 hover:bg-green-400 px-3"/>
                 </div>
+                
                 <div className="p-4">
                     <Link href={'/'}>
                         <Button label="back" className="bg-gray-500 hover:bg-gray-400 px-3"/>
                     </Link>
                 </div>
-                
+                <div className='font-bold p-5 '>
+                    {inNumber}
+                </div>
                 <form action="" onSubmit={handleForm} className="flex">
                     <div className='py-4'>
-                        <input type="text" autoComplete='none' required 
+                        {/* <input type="text" autoComplete='none' required 
                             onChange={handleChange} 
                             name='invoiceNumber' value={form.invoiceNumber}
                             className='py-2 rounded relative block w-full px-3 
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
                             placeholder='firstname' 
-                        />
+                        /> */}
                     </div>
                     <div className='hidden'>
+                        {form.invoiceNumber = inNum}
                         {form.Name = first+" "+middle+" "+last}
                         {form.paidDate = paid}
                         {form.dueDate = due}
@@ -139,6 +143,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                             <h2 className=' text-4xl font-bold text-gray-900 p-2'>Sandy's fitness care</h2>
                             <div className="font-semibold text-center text-xl m-auto">
                                 <span className="font-semibold ">Recipt no: </span>
+                                
                                 <span className="font-normal ">{form.invoiceNumber}</span>
                             </div>
                             
@@ -230,8 +235,6 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                             </span>
                         </div>
                     </div>
-                    
-                    
                     
                 </div>
             </div>
