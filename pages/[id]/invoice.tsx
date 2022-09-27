@@ -8,16 +8,24 @@ import InvoiceForm from '../../components/invoice/Invoice';
 
 export async function getServerSideProps(context: any) {
   const id = context.query.id;
-  const res = await axios(`${baseUrl}/api/member/${id}`);
+  const res = await axios(`${baseUrl}/api/member/${id}`,);
+  const res2 = await axios(`${baseUrl}/api/invoice/`);
   const {member} = res.data;
+  const {invoice} = res2.data;
   return {
     props: {
       members: member,
+      invoices: invoice,
     },
   }
+ 
 }
-export default function Invoice({members}: any) {
-  console.log(members)
+
+
+export default function Invoice({members, invoices}: any) {
+
+  const len = invoices.length;
+  console.log("No of invoices"+len);
 
   const first = members.Firstname ;
   const middle = members.Middlename ;
@@ -38,23 +46,10 @@ export default function Invoice({members}: any) {
   const dueDay = dueDate.getDate();
   const dueYear = dueDate.getFullYear();
 
-  const router = useRouter();
-  const memberId = router.query.id;
-  console.log(memberId);
-  const handleDelete = async() => {
-    try{
-        const deleteMember = await axios(`${baseUrl}/api/member/${memberId}`, {
-          method: "DELETE",
-        });
-        router.push('/');
-    }catch(err){
-      console.log(err);
-    }
-  }
   
   return (
     <>
-        <InvoiceForm   
+        <InvoiceForm
             first={first}
             middle={middle}
             last={last}
@@ -63,6 +58,7 @@ export default function Invoice({members}: any) {
             paid={payDay + '/' + payMonth + '/' + payYear}
             due={dueDay + '/' + dueMonth + '/' + dueYear}
             facility={facility}
+            inNumber={len}
         />
     
     </>
