@@ -63,14 +63,20 @@ export default function EachMember({members}: any) {
                               <div className='text-center p-4'>
                                   <Button label="Delete" onClick={handleDelete} className="bg-red-500 hover:bg-red-400 px-3"/>
                               </div>
-                              <div className='text-center p-4'>
-                                <Link href={'/'}>
-                                    <Button label="back" className="bg-gray-500 hover:bg-gray-400 px-3"/>
-                                </Link>
-                              </div>
+                              
                               <div className='text-center p-4'>
                                 <Link href={`${memberId}/edit`}>
                                   <Button label="edit"  className="bg-yellow-500 hover:bg-yellow-400 px-3"/>
+                                </Link>
+                              </div>
+                              <div className='text-center p-4'>
+                                <Link href={`${memberId}/invoice`}>
+                                  <Button label="invoice"  className="bg-green-500 hover:bg-green-400 px-3"/>
+                                </Link>
+                              </div>
+                              <div className='text-center p-4'>
+                                <Link href={'/'}>
+                                    <Button label="back" className="bg-gray-500 hover:bg-gray-400 px-3"/>
                                 </Link>
                               </div>
                             </div>
@@ -91,6 +97,16 @@ export default function EachMember({members}: any) {
                               <div className="flex justify-center">
                                 <div className='text-center py-4 px-2'>
                                   <Button label="Delete" onClick={handleDelete} className="bg-red-500 hover:bg-red-400 px-3"/>
+                                </div>
+                                <div className='text-center py-4 px-2'>
+                                  <Link href={`${memberId}/edit`}>
+                                    <Button label="edit"  className="bg-yellow-500 hover:bg-yellow-400 px-3"/>
+                                  </Link>
+                                </div>
+                                <div className='text-center py-4 px-2'>
+                                  <Link href={`${memberId}/invoice`}>
+                                    <Button label="invoice"  className="bg-green-500 hover:bg-green-400 px-3"/>
+                                  </Link>
                                 </div>
                                 <div className='text-center py-4 px-2'>
                                     <Link href={'/'}>
