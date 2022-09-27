@@ -183,11 +183,11 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                             <h1 className='text-2xl font-semibold mt-5 text-center'>Plan Expires</h1>
                             <div className='pt-6 text-center'>
                               <div>
-                                <a className='font-semibold'>Last Paid:</a>
-                                <a>{paid}</a>
+                                <a className='font-semibold'>Last Paid: <br /> </a>
+                                <a>{paid}</a> 
                               </div>
                               <div>
-                                <a className='font-semibold'>Due Date:</a>
+                                <a className='font-semibold'>Due Date:<br /></a>
                                 <a>{due}</a>
                               </div>
                               
@@ -205,7 +205,7 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                               <div className=' pt-6 text-center'>
                                 <div>
                                   <a className='font-semibold'>Last Paid:</a>
-                                  <a>{paid}</a>
+                                  <a>{paid}</a><br />
                                 </div>
                                 <div>
                                   <a className='font-semibold'>Due Date:</a>
