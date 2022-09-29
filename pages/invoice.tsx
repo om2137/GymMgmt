@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 const axios = require('axios').default;
 import MediaCard from '../components/cards'
 import baseUrl from '../helper/baseUrl';
+import Button from '../components/Button';
 
 export async function getServerSideProps(context: any) {
   
@@ -17,9 +18,9 @@ export async function getServerSideProps(context: any) {
 }
 
 const invoice: NextPage = ({invoices }:any) => {
-  
   return (
     <>
+    
     <Navbar 
       title="Profiles"
     />
@@ -54,6 +55,11 @@ const invoice: NextPage = ({invoices }:any) => {
                     <div className="px-4">
                       <span className="font-semibold">Fees: </span> 
                       {invoice.fees}
+                    </div>
+                    <div className='pl-4'>
+                      <a href={`/invoices/${invoice._id}`} target="_blank">
+                        <Button label='view' className='text-white bg-sky-500 hover:bg-sky-400 px-4 '/>
+                      </a>
                     </div>
                   </div>
                 </div>
