@@ -1,11 +1,9 @@
-import React from 'react'
-import { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 const axios = require('axios').default;
-import Router, {useRouter} from 'next/router'
 import Button from '../../../components/Button';
 import baseUrl from '../../../helper/baseUrl';
 import Link from 'next/link';
+import ReactToPrint from 'react-to-print';
 var converter = require('number-to-words');
 
 export async function getServerSideProps(context: any) {
@@ -45,6 +43,8 @@ export default function EachInvoice({invoices}: any) {
     var paidDate = new Date(invoices.paidDate);
     console.log(paidDate);
 
+
+
     return(
         
         <main className=' flex flex-col items-center justify-center '>
@@ -65,11 +65,15 @@ export default function EachInvoice({invoices}: any) {
             </div>
             
             
-            <div className='w-[45rem] border-2 border-gray-400 py-10 rounded bg-white px-20 '>
+            <div className='w-[45rem] border shadow-2xl border-black py-10  bg-white px-16 '>
                 <div>
                     <div className='my-4'>
                         <div className="flex justify-center align-end">
-                            <h2 className=' text-4xl font-bold text-gray-900 p-2'>Sandy's fitness care</h2>
+                            {/* <h2 className=' text-4xl font-bold text-gray-900 p-2'>Sandy's fitness care</h2> */}
+                            <div className=''>
+                               <img src="../../Gym_assets/mainlogo.jpg" alt="" className='w-[24rem] content-center m-4 '/> 
+                            </div>
+                            
                             <div className="font-semibold text-center text-xl m-auto">
                                 <span className="font-semibold ">Recipt no: </span>
                                 
@@ -86,7 +90,7 @@ export default function EachInvoice({invoices}: any) {
                             </h3>
                             </div>
                             <div className='w-1/3 px-2'>
-                                <h2 className='font-semibold ' >
+                                <h2 className='font-semibold pl-12' >
                                     M: 8888053456 <br/>
                                     M: 7350034888
                                 </h2> 
@@ -96,6 +100,14 @@ export default function EachInvoice({invoices}: any) {
                     </div>
                     
                     <h3 className="pl-6 text-center font-bold capitalize">
+                        {/* {
+                            invoices.gender === "male" ? <div>
+                                <span className=' text-2xl '>Mr. {invoices.Name}</span>
+                            </div> : 
+                            <div>
+                                <span className=' text-2xl '>Mrs. {invoices.Name}</span>
+                            </div>
+                        } */}
                         <span className=' text-2xl '>Mr. {invoices.Name}</span>
                     </h3>
 
@@ -111,13 +123,13 @@ export default function EachInvoice({invoices}: any) {
                     
                     <div className='flex p-2'>
                         
-                        <div className=' flex flex-col px-6 w-2/3 '>
-                            <div className="flex">
+                        <div className=' flex flex-col px-6 w-2/3 py-3'>
+                            <div className="flex mx-auto">
                                 <div className='flex flex-col px-4 '>
                                     <span className='font-bold'>
                                         Facility 
                                     </span>
-                                    <span >
+                                    <span className='capitalize'>
                                         {/* {facility} */}
                                         cardio
                                     </span>
@@ -149,10 +161,10 @@ export default function EachInvoice({invoices}: any) {
                         </div>
                         <div className='w-1/3 text-xl font-bold text-center'>
                             <span>
-                                Sign: <br /> 
+                                Sign <br /> 
                             </span>
-                            <span>
-                                [sign]
+                            <span className='flex justify-center'>
+                                <img src="../../Gym_assets/signature.png" className='w-28 pt-2' alt="unable to load" />
                             </span>
                         </div>
                     </div>
