@@ -13,6 +13,9 @@ const InvoiceSchema = new mongoose.Schema({
         type: String,
         required: [true,'Firstname is required'],
     },
+    Gender: {
+        type: String,
+    },
     paidDate: {
         type: String,
     },
