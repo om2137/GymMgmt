@@ -195,7 +195,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                                     <span className='font-bold'>
                                         Facility 
                                     </span>
-                                    <span >
+                                    <span className='font-bold capitalize'>
                                         {facility}
                                         {/* cardio */}
                                     </span>
@@ -228,10 +228,11 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                         </div>
                         <div className='w-1/3 text-xl font-bold text-center'>
                             <span>
-                                Sign: <br /> 
+                                Sign <br /> 
                             </span>
-                            <span>
-                                [sign]
+                            <span className='flex justify-center'>
+                                {/* [sign] */}
+                                <img src="../../Gym_assets/signature.png" className='w-28 pt-2' alt="" />
                             </span>
                         </div>
                     </div>
