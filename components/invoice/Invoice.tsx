@@ -8,6 +8,8 @@ import baseUrl from '../../helper/baseUrl';
 import Link from 'next/link';
 var converter = require('number-to-words');
 
+const AccessToken = process.env.ACCESS_TOKEN;
+
 type Props = {
 
     first: string;
@@ -55,6 +57,28 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
         window.print();
     }
 
+    var data = JSON.stringify({
+        "messaging_product": "whatsapp",
+        "to": "918237610776",
+        "type": "template",
+        "template": {
+          "name": "sfc_invoice",
+          "language": {
+            "code": "en_US"
+          }
+        }
+    });
+      
+    var config = {
+        method: 'post',
+        url: 'https://graph.facebook.com/v14.0/102442929315713/messages',
+        headers: { 
+          'Authorization': `Bearer ${AccessToken}`,
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+
     // Invoice form
     const [form, setForm]= useState({
         Name: '',   
@@ -64,10 +88,35 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
         fees:0,
         invoiceNumber: 0,
       })
+      const handleSend = async() => {
+        try{
+            //whatsapp invoicing
+            axios(config)
+            .then(function (response: { data: any; }) {
+            console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error: any) {
+            console.log(error);
+            });
+            //whatsapp invoicing end
+            console.log("sent");
+        }catch(err){
+            console.log(err)
+        }
+        
+    }
       const handleForm = async(e: React.ChangeEvent<any>) => {
         e.preventDefault()
         try{
-            
+            //whatsapp invoicing
+            // axios(config)
+            // .then(function (response: { data: any; }) {
+            // console.log(JSON.stringify(response.data));
+            // })
+            // .catch(function (error: any) {
+            // console.log(error);
+            // });
+            //whatsapp invoicing end
             const res = await axios(`${baseUrl}/api/invoice`, {
                 method: "POST",
                 headers:{
@@ -92,8 +141,6 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
     }
     var inNum = inNumber + 1;
     var paidDate = new Date(paid);
-    console.log(paidDate);
-
     return(
         
         <main className=' flex flex-col items-center justify-center '>
@@ -101,7 +148,9 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                 <div className="p-4">
                     <Button label="print" onClick={handlePrint} className="bg-green-500 hover:bg-green-400 px-3"/>
                 </div>
-                
+                <div className="p-4">
+                    <Button label="Send 1" onClick={handleSend} className="bg-yellow-500 hover:bg-yellow-400 px-3"/>
+                </div>
                 <div className="p-4">
                     <Link href={'/'}>
                         <Button label="back" className="bg-gray-500 hover:bg-gray-400 px-3"/>
