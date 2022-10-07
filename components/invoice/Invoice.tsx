@@ -189,7 +189,11 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                 <div>
                     <div className='my-4'>
                         <div className="flex justify-center align-end">
-                            <h2 className=' text-4xl font-bold text-gray-900 p-2'>Sandy's fitness care</h2>
+                            {/* <h2 className=' text-4xl font-bold text-gray-900 p-2'>Sandy's fitness care</h2> */}
+                            <div className=''>
+                               <img src="../../Gym_assets/mainlogo.jpg" alt="" className='w-[24rem] content-center m-4 '/> 
+                            </div>
+                            
                             <div className="font-semibold text-center text-xl m-auto">
                                 <span className="font-semibold ">Recipt no: </span>
                                 
