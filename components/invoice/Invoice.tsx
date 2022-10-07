@@ -189,7 +189,6 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                 <div>
                     <div className='my-4'>
                         <div className="flex justify-center align-end">
-                            {/* <h2 className=' text-4xl font-bold text-gray-900 p-2'>Sandy's fitness care</h2> */}
                             <div className=''>
                                <img src="../../Gym_assets/mainlogo.jpg" alt="" className='w-[24rem] content-center m-4 '/> 
                             </div>
@@ -210,7 +209,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                             </h3>
                             </div>
                             <div className='w-1/3 px-2'>
-                                <h2 className='font-semibold ' >
+                                <h2 className='font-semibold pl-14' >
                                     M: 8888053456 <br/>
                                     M: 7350034888
                                 </h2> 
