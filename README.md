@@ -29,11 +29,12 @@ first fork and then clone the repo
 then open it in VSCode and run npm install
 make .env.local file and add following 
 replace it with your links
-CLOUDINARY_URI= "your link"
-NEXTAUTH_SECRET = ' replace '
-MONGO_URI= "your link
-USER="user"
-PASS="pass"
+
+CLOUDINARY_URI= "your link" <br/>
+NEXTAUTH_SECRET = ' replace ' <br/>
+MONGO_URI= "your link <br/>
+USER="user" <br/>
+PASS="pass" <br/>
 
 after adding the following run the project with, 
 npm run dev
