@@ -16,4 +16,8 @@ Link: https://www.youtube.com/watch?v=VYdAvcyAPDo
 2. Automated Invoice
 
 ## Architecture
-Update in process..
+This is a NextJS project. it is majorly divided into 6 main folder 
+1. components consist the major components used in the project like invoice, Button, navbar etc.
+2. db consist the database connector file which help the mongodb to connect to the project.
+3. Helper folder consist of the baseurl that will be used in different url like in production and in development
+4. 
