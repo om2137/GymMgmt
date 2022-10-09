@@ -141,7 +141,7 @@ const EditForm: React.FC<Props> = ( {members}:any ) => {
                         />
                         <input type="date" autoComplete='none'  
                             onChange={handleChange} 
-                            name='admission' value={form.AdmissionDate}
+                            name='admissionDate' value={form.AdmissionDate}
                             className='py-2 rounded relative block w-full px-3 
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Admission Date' 

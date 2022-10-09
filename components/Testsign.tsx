@@ -110,7 +110,7 @@ const SignUpForm: React.FC<Props> = (  ) => {
                         />
                         <input type="date" autoComplete='none'  
                             onChange={handleChange} 
-                            name='DoB' value={form.admissionDate}
+                            name='admissionDate' value={form.admissionDate}
                             className='py-2 rounded relative block w-full px-3 
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
