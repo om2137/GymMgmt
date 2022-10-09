@@ -24,6 +24,7 @@ interface Props {
     id: number;
     paid: string;
     due: string;
+    admission: number;
   }
 
 const style = {
@@ -58,7 +59,7 @@ const style2 = {
   };
 
 // main modal
-export default function TestModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus,id, paid, due}:Props ) {
+export default function TestModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus,id, paid, due, admission}:Props ) {
 
   // post invoice
   const [form, setForm] = useState({
@@ -182,6 +183,10 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                           <div className='hidden md:inline p-3 text-center'>
                             <h1 className='text-2xl font-semibold mt-5 text-center'>Plan Expires</h1>
                             <div className='pt-6 text-center'>
+                              <div>
+                                <a className='font-semibold'>Admission Date: <br /> </a>
+                                <a>{admission}</a> 
+                              </div>
                               <div>
                                 <a className='font-semibold'>Last Paid: <br /> </a>
                                 <a>{paid}</a> 
