@@ -70,7 +70,7 @@ const Home: NextPage = ({members}:any) => {
                       id={member._id}
                       paid={payDay+'/'+payMonth+'/'+payYear}
                       due={dueDay+'/'+dueMonth+'/'+dueYear}
-                      admission={member.admissionDate}
+                      admission={admissionDay+'/'+admissionMonth+'/'+admissionYear}
                     />
                     
                   </div>

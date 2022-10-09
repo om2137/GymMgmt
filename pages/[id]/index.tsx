@@ -57,7 +57,7 @@ export default function EachMember({members}: any) {
                           <div className='hidden md:inline p-3 mt-4 text-center'>
                             <h1 className='text-2xl font-semibold text-center'>Plan Expires</h1>
                             <div className='pt-2 text-center'>
-                              <span className=''>28(days)</span>
+                              <span className=''>28(days){members.admissionDate}</span>
                             </div>
                             <div className="flex">
                               <div className='text-center p-4'>
@@ -87,7 +87,7 @@ export default function EachMember({members}: any) {
                         
                         <div className='text-center '>
                             <h2 id="parent-modal-title" className='md:hidden text-4xl font-bold capitalize'>
-                                {members.Firstname} {members.Lastname}
+                                {members.Firstname} {members.Lastname} 
                             </h2>
                             <div className='sm:hidden text-center  p-1 mt-1 text-start'>
                               <h1 className='text-2xl text-center font-semibold'>Plan Expires</h1>
