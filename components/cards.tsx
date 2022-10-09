@@ -37,7 +37,7 @@ interface Props {
   id: number;
   paid: string;
   due: string;
-  admission: number;
+  admission: string;
 }
 const imgStyle = {
   minWidth: '200px',

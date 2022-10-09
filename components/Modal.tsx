@@ -24,7 +24,7 @@ interface Props {
     id: number;
     paid: string;
     due: string;
-    admission: number;
+    admission: string;
   }
 
 const style = {
