@@ -39,6 +39,7 @@ const EditForm: React.FC<Props> = ( {members}:any ) => {
         Gender: members.Gender,
         Mstat: members.Mstat,
         Avatar: members.Avatar,
+        AdmissionDate: members.admissionDate,
     })
     
     const handleChange = (e: React.ChangeEvent<any>) => {
@@ -137,6 +138,13 @@ const EditForm: React.FC<Props> = ( {members}:any ) => {
                             className='py-2 rounded relative block w-full px-3 
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Date of birth' 
+                        />
+                        <input type="date" autoComplete='none'  
+                            onChange={handleChange} 
+                            name='admission' value={form.AdmissionDate}
+                            className='py-2 rounded relative block w-full px-3 
+                            border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
+                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Admission Date' 
                         />
                         {/*  <input type="file"  /> */}
                         <div className='pt-2'> 
