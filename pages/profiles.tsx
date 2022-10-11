@@ -56,6 +56,10 @@ const profiles: NextPage = ({members}:any) => {
               const dueDay = dueDate.getDate();
               const dueYear = dueDate.getFullYear();
 
+              const AdmissionDate = new Date(member.admissionDate);
+              const admissionMonth = AdmissionDate.getMonth()+1;
+              const admissionDay = AdmissionDate.getDate();
+              const admissionYear = AdmissionDate.getFullYear();
                 return (
                   
                   <div className='p-5 '>
@@ -74,6 +78,7 @@ const profiles: NextPage = ({members}:any) => {
                       id={member._id}
                       paid={payDay+'/'+payMonth+'/'+payYear}
                       due={dueDay+'/'+dueMonth+'/'+dueYear}
+                      admission={admissionDay+'/'+admissionMonth+'/'+admissionYear}
                     />
                     </div>
                   </div>
