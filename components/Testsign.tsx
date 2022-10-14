@@ -132,6 +132,7 @@ const SignUpForm: React.FC<Props> = (  ) => {
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
                             placeholder='Contact' 
                         />
+                        <span className=''>Date of Birth: </span>
                         <input type="date" autoComplete='none' required 
                             onChange={handleChange} 
                             name='DoB' value={form.DoB}
