@@ -131,14 +131,14 @@ const EditForm: React.FC<Props> = ( {members}:any ) => {
                             className='py-2 rounded relative block w-full px-3 
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Contact' 
-                        />
+                        /><span className=''>Date of Birth: </span>
                         <input type="date" autoComplete='none'  
                             onChange={handleChange} 
                             name='DoB' value={form.DoB}
                             className='py-2 rounded relative block w-full px-3 
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Date of birth' 
-                        /><span className=''>Date of Birth: </span>
+                        /><span className=''>Date of Admission: </span>
                         <input type="date" autoComplete='none'  
                             onChange={handleChange} 
                             name='admissionDate' value={form.AdmissionDate}
