@@ -214,6 +214,14 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                               <h1 className='text-2xl text-center font-semibold'>Plan Expires</h1>
                               <div className=' pt-6 text-center'>
                                 <div>
+                                  <a className='font-semibold'>Card No:</a>
+                                  <a>{card}</a><br />
+                                </div>
+                                <div>
+                                  <a className='font-semibold'>Admission No:</a>
+                                  <a>{admission}</a><br />
+                                </div>
+                                <div>
                                   <a className='font-semibold'>Last Paid:</a>
                                   <a>{paid}</a><br />
                                 </div>
