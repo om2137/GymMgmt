@@ -60,7 +60,7 @@ const style2 = {
   };
 
 // main modal
-export default function TestModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus,id, paid, due, admission}:Props ) {
+export default function TestModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus,id, paid, due, admission, card}:Props ) {
 
   // post invoice
   const [form, setForm] = useState({
@@ -152,7 +152,7 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
     setOpen(false);
   };
   
-  var card = '10';
+  // var card = '10';
   return (
     <div>
       

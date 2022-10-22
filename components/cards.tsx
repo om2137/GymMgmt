@@ -38,6 +38,7 @@ interface Props {
   paid: string;
   due: string;
   admission: string;
+  cardNo: string;
 }
 const imgStyle = {
   minWidth: '200px',
@@ -58,7 +59,7 @@ const ActionStyle={
   display: 'flex',
 }
 
-export default function MediaCard( {image, first, middle, last, address, phone, Dob, age, gender, marriage, id, paid, due, admission}: Props ) {
+export default function MediaCard( {image, first, middle, last, address, phone, Dob, age, gender, marriage, id, paid, due, admission, cardNo}: Props ) {
   
   return (
     <Card style={cardStyle}>
@@ -91,6 +92,7 @@ export default function MediaCard( {image, first, middle, last, address, phone, 
                 paid={paid}
                 due={due}
                 admission={admission}
+                card={cardNo}
               />
               <div className='pl-4'>
                 <Link href={`/${id}`}>
