@@ -25,6 +25,7 @@ interface Props {
     paid: string;
     due: string;
     admission: string;
+    card: string;
   }
 
 const style = {
@@ -151,7 +152,7 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
     setOpen(false);
   };
   
-  
+  var card = '10';
   return (
     <div>
       
@@ -183,6 +184,10 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                           <div className='hidden md:inline p-3 text-center'>
                             <h1 className='text-2xl font-semibold mt-5 text-center'>Plan Expires</h1>
                             <div className='pt-6 text-center'>
+                              <div>
+                                <a className='font-semibold'>Card No: <br /> </a>
+                                <a>{card}</a> 
+                              </div>
                               <div>
                                 <a className='font-semibold'>Admission Date: <br /> </a>
                                 <a>{admission}</a> 
