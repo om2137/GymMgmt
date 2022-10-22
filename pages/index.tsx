@@ -71,6 +71,7 @@ const Home: NextPage = ({members}:any) => {
                       paid={payDay+'/'+payMonth+'/'+payYear}
                       due={dueDay+'/'+dueMonth+'/'+dueYear}
                       admission={admissionDay+'/'+admissionMonth+'/'+admissionYear}
+                      cardNo={member.cardNumber}
                     />
                     
                   </div>
