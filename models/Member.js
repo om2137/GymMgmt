@@ -49,8 +49,10 @@ const MemberSchema = new mongoose.Schema({
     },
     admissionDate: {
         type: Date,
+    },
+    cardNumber: {
+        type: String,
     }
-    
 })
 
 module.exports = mongoose.models.Member || mongoose.model('Member',MemberSchema) 
