@@ -36,6 +36,7 @@ const SignUpForm: React.FC<Props> = (  ) => {
         Mstat:'',
         Avatar: '',
         admissionDate: '',
+        cardNumber: '',
     })
     
     const handleChange = (e: React.ChangeEvent<any>) => {
@@ -115,6 +116,14 @@ const SignUpForm: React.FC<Props> = (  ) => {
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
                             placeholder='Admission Date' 
+                        />
+                        <input type="text" autoComplete='none' required 
+                            onChange={handleChange} 
+                            name='cardNumber' value={form.cardNumber}
+                            className='py-2 rounded relative block w-full px-3 
+                            border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
+                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                            placeholder='Card Number' 
                         />
                         <input type="text" autoComplete='none' required 
                             onChange={handleChange} 
