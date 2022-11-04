@@ -36,7 +36,7 @@ function admission() {
       </main>
       <div className='text-2xl font-bold py-10'>
           <footer>
-            <h2>Thank you</h2>
+            <h2></h2>
           </footer>
         </div>
     </div>
