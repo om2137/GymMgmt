@@ -169,12 +169,18 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
         <Box sx={{ ...style }} className=' overflow-auto 2xl:h-[46rem] h-[35rem]'>
           
             <div className='sm:flex w-full justify-end hidden pb-2'>
-                <Button label="Close" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
+                <Button label="Back" onClick={handleClose} className="bg-gray-500 hover:bg-gray-400 px-3"/>
             </div>
             <div className='md:flex  align-middle justify-between'>
                 <div className='flex flex-col md:flex-row justify-center'>
                     <div className='md:flex  justify-center mt-6 px-4 drop-shadow-2xl ml:ml-12'>
                         <div>
+                          
+                          <div className='sm:hidden relative'>
+                            <div className='absolute right-[-1rem] top-[-1.8rem] '>
+                              <Button label="Back" onClick={handleClose} className="bg-gray-500 hover:bg-gray-400 px-3"/>
+                            </div>
+                          </div>
                           <div className='p-5 md:p-0 flex justify-center'>
                             <img src={image } 
                             className=" w-48 aspect-square object-cover
@@ -283,18 +289,16 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                 
                 
             </div>
-            <div>
-              
-            </div>
+            
             <div className='p-4 flex justify-center '>  
                 <div className='md:flex flex-col justify-between'>
-                  <label id="countries" className="block mb-2 text-sm font-medium text-black ">Select an plans</label>
+                  <label id="fees" className="block mb-2 text-sm font-medium text-black ">Select an plans</label>
                     <div className='sm:flex flex-col pb-2'>
                       {/* form */}
                       <form className='flex flex-col ' onSubmit={handleForm}>
                         <div className="flex flex-col sm:flex-row">
                           <div className='pr-5 pb-4 sm:pb-0'>
-                              <select id="countries" required 
+                              <select id="fees" required 
                                 onChange={(e) => setFacility(e.target.value)}
                                 // name='facility' value={form.PD}
                                 // facility * time = fees
@@ -359,7 +363,7 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                       
                     </div>
                     
-                    <div className='flex justify-between sm:justify-center py-2' >
+                    <div className='flex justify-between sm:justify-center py-2 mt-2' >
                       
                       <div className='pb-4  mx-2 sm:pb-4  sm:mx-5 '>
                         <Button label="delete" onClick={handleDelete} className="bg-red-500 hover:bg-red-400 px-3"/>
@@ -371,9 +375,9 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                         </Link>
                       </div>
 
-                      <div className='flex justify-center sm:hidden pb-4  mx-2 '>
+                      {/* <div className='flex justify-center sm:hidden pb-4  mx-2 '>
                         <Button label="Close" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
-                      </div>
+                      </div> */}
                     </div>
                 </div>
                 
