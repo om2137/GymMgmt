@@ -81,7 +81,7 @@ const SignUpForm: React.FC<Props> = (  ) => {
         <div className=' flex '>
             <div className='w-72 sm:w-[30rem] border-2 border-gray-400 sm:py-10 rounded bg-white sm:px-20 px-8 mx-4'>
                 <div className=''>
-                    <h2 className='my-6 text-center text-4xl font-bold text-gray-900'></h2>
+                    <h2 className='my-6 text-center text-4xl font-bold text-gray-900'>New Member</h2>
                     
                     
                     <form className='py-6' onSubmit={handleForm} >
@@ -108,14 +108,6 @@ const SignUpForm: React.FC<Props> = (  ) => {
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
                             placeholder='Lastname' 
-                        /><span className=''>Date of Admission: </span>
-                        <input type="date" autoComplete='none'  
-                            onChange={handleChange} 
-                            name='admissionDate' value={form.admissionDate}
-                            className='py-2 rounded relative block w-full px-3 
-                            border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
-                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
-                            placeholder='Admission Date' 
                         />
                         <input type="text" autoComplete='none' required 
                             onChange={handleChange} 
@@ -141,7 +133,16 @@ const SignUpForm: React.FC<Props> = (  ) => {
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
                             placeholder='Contact' 
                         />
-                        <span className=''>Date of Birth: </span>
+                        <span className='flex text-left p-2'>Date of Admission: </span>
+                        <input type="date" autoComplete='none'  
+                            onChange={handleChange} 
+                            name='admissionDate' value={form.admissionDate}
+                            className='py-2 rounded relative block w-full px-3 
+                            border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
+                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                            placeholder='Admission Date' 
+                        />
+                        <span className='flex text-left p-2'>Date of Birth: </span>
                         <input type="date" autoComplete='none' required 
                             onChange={handleChange} 
                             name='DoB' value={form.DoB}
