@@ -23,6 +23,24 @@ export default function EachMember({members}: any) {
   const month = birth.getMonth()+1;
   const day = birth.getDate();
   const year = birth.getFullYear();
+
+  const payDate = new Date(members.paidDate);
+  const payMonth = payDate.getMonth()+1;
+  const payDay = payDate.getDate();
+  const payYear = payDate.getFullYear();
+  const paid = `${payMonth}/${payDay}/${payYear}`;
+
+  const dueDate = new Date(members.dueDate);
+  const dueMonth = dueDate.getMonth()+1;
+  const dueDay = dueDate.getDate();
+  const dueYear = dueDate.getFullYear();
+  const due = `${dueMonth}/${dueDay}/${dueYear}`;
+
+  const AdmissionDate = new Date(members.admissionDate);
+  const admissionMonth = AdmissionDate.getMonth()+1;
+  const admissionDay = AdmissionDate.getDate();
+  const admissionYear = AdmissionDate.getFullYear();
+  const admission = `${admissionMonth}/${admissionDay}/${admissionYear}`;
   
   const router = useRouter();
   const memberId = router.query.id;
@@ -64,9 +82,29 @@ export default function EachMember({members}: any) {
                           </div>
                           
                           <div className='hidden sm:inline p-3 mt-4 text-center'>
-                            <h1 className='text-2xl font-semibold text-center'>Plan Expires</h1>
-                            <div className='pt-2 text-center'>
-                              <span className=''>28(days){members.admissionDate}</span>
+                            <div className='hidden sm:inline p-3 mt-4 text-center'>
+                                <div className='hidden md:inline p-3 text-center'>
+                                <h1 className='text-2xl font-semibold mt-5 text-center'>Plan Expires</h1>
+                                <div className='pt-6 text-center'>
+                                  <div>
+                                    <a className='font-semibold'>Card No: <br /> </a>
+                                    <a>{members.cardNumber}</a> 
+                                  </div>
+                                  <div>
+                                    <a className='font-semibold'>Admission Date: <br /> </a>
+                                    <a>{admission}</a> 
+                                  </div>
+                                  <div>
+                                    <a className='font-semibold'>Last Paid: <br /> </a>
+                                    <a>{paid}</a> 
+                                  </div>
+                                  <div>
+                                    <a className='font-semibold'>Due Date:<br /></a>
+                                    <a>{due}</a>
+                                  </div>
+                                  
+                                </div>
+                              </div>
                             </div>
                             <div className="flex">
                               <div className='text-center p-4'>
@@ -96,9 +134,29 @@ export default function EachMember({members}: any) {
                             </h2>
                             <div className='sm:hidden text-center  p-1 mt-1 text-start'>
                               
-                              <h1 className='text-2xl text-center font-semibold'>Plan Expires</h1>
-                              <div className='pt-2 text-center '>
-                                <span className=''>28(days)</span>
+                              <div className='sm:hidden  p-3 mt-4 text-center'>
+                                <h1 className='text-2xl font-semibold text-center'>Plan Expires</h1>
+                                  <div className=' p-3 text-center'>
+                                  <div className='pt-0 text-center'>
+                                    <div>
+                                      <a className='font-semibold'>Card No: <br /> </a>
+                                      <a>{members.cardNumber}</a> 
+                                    </div>
+                                    <div>
+                                      <a className='font-semibold'>Admission Date: <br /> </a>
+                                      <a>{admission}</a> 
+                                    </div>
+                                    <div>
+                                      <a className='font-semibold'>Last Paid: <br /> </a>
+                                      <a>{paid}</a> 
+                                    </div>
+                                    <div>
+                                      <a className='font-semibold'>Due Date:<br /></a>
+                                      <a>{due}</a>
+                                    </div>
+                                    
+                                  </div>
+                                </div>
                               </div>
                               <div className="flex justify-center">
                                 <div className='text-center py-4 px-2'>
