@@ -8,12 +8,20 @@ MongoDB is used as a database and Cloudinary for storing files.
 ### Demo
 Link: https://www.youtube.com/watch?v=VYdAvcyAPDo
 
+## Features in pipeline
+1. UI Revamp.
+2. Invoice generation into pdf.
+3. Sending invoice as whatsapp message automated.
+
 ## Technologies used
 **NextJS, TailwindCSS, MongoDB, Cloudinary, Node**
 
-## Services
+## Functionality
 1. Client Information storage
+  1. Creating, Reading ,Updating and Deleting per client's profile.(CRUD)
 2. Automated Invoice
+  1. Invoice generation and storing as PDF.
+  2. Invoice as whatsapp message automated.
 
 ## Architecture
 This is a NextJS project. it is majorly divided into 6 main folder 
