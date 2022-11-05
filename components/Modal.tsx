@@ -334,6 +334,7 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                         
                         <div className="flex flex-col sm:flex-row py-2">
                           <div className='pr-5 pb-4 sm:pb-0'>
+                            <span className='p-1'>From:</span>
                             <input type="date" autoComplete='none' required 
                                   onChange={handleChange} 
                                   name='paidDate' value={form.paidDate}
@@ -344,6 +345,7 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                               />
                           </div>
                           <div className='pr-5 pb-4 sm:pb-0'>
+                            <span className='p-1'>To:</span>
                             <input type="date" autoComplete='none' required 
                                   onChange={handleChange} 
                                   name='dueDate' value={form.dueDate}
