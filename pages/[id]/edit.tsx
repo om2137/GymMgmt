@@ -92,9 +92,9 @@ const EditForm: React.FC<Props> = ( {members}:any ) => {
         title="Edit Profiles"
         />
         <div className=' flex items-center justify-center pt-10 '>
-            <div className='border-2 border-gray-400 py-10 rounded bg-white sm:px-20 px-5'>
+            <div className='w-72 sm:w-[30rem] border-2 border-gray-400 py-10 rounded bg-white sm:px-20 px-5'>
                 <div>
-                    <h2 className='my-6 text-center text-4xl font-bold text-gray-900'>{}</h2>
+                    <h2 className='my-6 text-center text-4xl capitalize font-bold text-gray-900'>{form.Firstname} {form.Lastname}</h2>
                     
                     
                     <form className='py-6' onSubmit={handleForm} >
@@ -139,14 +139,8 @@ const EditForm: React.FC<Props> = ( {members}:any ) => {
                             className='py-2 rounded relative block w-full px-3 
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Contact' 
-                        /><span className=''>Date of Birth: </span>
-                        <input type="date" autoComplete='none'  
-                            onChange={handleChange} 
-                            name='DoB' value={form.DoB}
-                            className='py-2 rounded relative block w-full px-3 
-                            border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
-                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Date of birth' 
-                        /><span className=''>Date of Admission: </span>
+                        />
+                        <span className='flex text-left p-2'>Date of Admission: </span>
                         <input type="date" autoComplete='none'  
                             onChange={handleChange} 
                             name='admissionDate' value={form.admissionDate}
@@ -154,6 +148,14 @@ const EditForm: React.FC<Props> = ( {members}:any ) => {
                             border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
                             focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
                             placeholder='Admission Date' 
+                        />
+                        <span className='flex text-left p-2'>Date of Birth: </span>
+                        <input type="date" autoComplete='none'  
+                            onChange={handleChange} 
+                            name='DoB' value={form.DoB}
+                            className='py-2 rounded relative block w-full px-3 
+                            border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
+                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'placeholder='Date of birth' 
                         />
                         {/*  <input type="file"  /> */}
                         <div className='pt-2'> 
@@ -189,7 +191,7 @@ const EditForm: React.FC<Props> = ( {members}:any ) => {
                         {/* image component */}
                         
                         {/* image component end */}
-                        <div className="flex">
+                        <div className="flex justify-center">
                             <div className='text-center p-4'>
                                 <Button label="Save" type="submit" className="bg-green-500 hover:bg-green-400 px-3"/>
 
@@ -208,6 +210,12 @@ const EditForm: React.FC<Props> = ( {members}:any ) => {
                     <Cloudi  theurl={printUrl}/>
                 </div>
             </div>
+            
+        </div>
+        <div className='text-2xl font-bold py-10'>
+          <footer>
+            <h2></h2>
+          </footer>
         </div>
         </>
     )
