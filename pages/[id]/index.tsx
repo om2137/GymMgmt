@@ -43,18 +43,27 @@ export default function EachMember({members}: any) {
     <Navbar 
       title="Profiles"
     />
+    
     <div className='flex items-center justify-center align-center py-20'>
     <div className='md:flex  align-middle justify-between'>
                 <div className='flex flex-col md:flex-row justify-center'>
+                  
                     <div className='md:flex  justify-center mt-6 px-4 drop-shadow-2xl ml:ml-12'>
                         <div>
                           <div className='p-5 md:p-0 flex justify-center'>
+                            <div className='md:hidden flex relative'>
+                              <div className='absolute right-[-16rem] top-[-3rem] '>
+                                <Link href={'/'}>
+                                  <Button label="back" className="bg-gray-500 hover:bg-gray-400 px-3"/>
+                                </Link>
+                              </div>
+                            </div>
                             <img src={members.Avatar } 
                             className=" w-48 aspect-square object-cover
                             md:border-2 border-gray-400 rounded-xl  md:p-0" />
                           </div>
                           
-                          <div className='hidden md:inline p-3 mt-4 text-center'>
+                          <div className='hidden sm:inline p-3 mt-4 text-center'>
                             <h1 className='text-2xl font-semibold text-center'>Plan Expires</h1>
                             <div className='pt-2 text-center'>
                               <span className=''>28(days){members.admissionDate}</span>
@@ -74,11 +83,7 @@ export default function EachMember({members}: any) {
                                   <Button label="invoice"  className="bg-green-500 hover:bg-green-400 px-3"/>
                                 </Link>
                               </div>
-                              <div className='text-center p-4'>
-                                <Link href={'/'}>
-                                    <Button label="back" className="bg-gray-500 hover:bg-gray-400 px-3"/>
-                                </Link>
-                              </div>
+                              
                             </div>
                             
                           </div>
@@ -90,6 +95,7 @@ export default function EachMember({members}: any) {
                                 {members.Firstname} {members.Lastname} 
                             </h2>
                             <div className='sm:hidden text-center  p-1 mt-1 text-start'>
+                              
                               <h1 className='text-2xl text-center font-semibold'>Plan Expires</h1>
                               <div className='pt-2 text-center '>
                                 <span className=''>28(days)</span>
@@ -108,11 +114,7 @@ export default function EachMember({members}: any) {
                                     <Button label="invoice"  className="bg-green-500 hover:bg-green-400 px-3"/>
                                   </Link>
                                 </div>
-                                <div className='text-center py-4 px-2'>
-                                    <Link href={'/'}>
-                                      <Button label="back" className="bg-gray-500 hover:bg-gray-400 px-3"/>
-                                  </Link>
-                                </div>
+                                
                               </div>
                               
                             </div>
@@ -121,6 +123,14 @@ export default function EachMember({members}: any) {
                     </div>
                     
                     <div className='flex flex-col text-center p-1 mx-10 '>
+                        <div className='hidden md:flex relative'>
+                          <div className='absolute right-[-5rem] top-[-2rem] '>
+                            <Link href={'/'}>
+                              <Button label="back" className="bg-gray-500 hover:bg-gray-400 px-3"/>
+                            </Link>
+                          </div>
+                        </div>
+                        
                         <div className='hidden md:flex '>
                             <h2 id="parent-modal-title" className=' text-6xl font-bold capitalize'>
                                 {members.Firstname} {members.Lastname}
