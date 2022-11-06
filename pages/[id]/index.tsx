@@ -28,7 +28,7 @@ export default function EachMember({members}: any) {
   const payMonth = payDate.getMonth()+1;
   const payDay = payDate.getDate();
   const payYear = payDate.getFullYear();
-  const paid = `${payMonth}/${payDay}/${payYear}`;
+  const paid = `${payDay}/${payMonth}/${payYear}`;
 
   const dueDate = new Date(members.dueDate);
   const dueMonth = dueDate.getMonth()+1;
