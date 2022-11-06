@@ -34,13 +34,13 @@ export default function EachMember({members}: any) {
   const dueMonth = dueDate.getMonth()+1;
   const dueDay = dueDate.getDate();
   const dueYear = dueDate.getFullYear();
-  const due = `${dueMonth}/${dueDay}/${dueYear}`;
+  const due = `${dueDay}/${dueMonth}/${dueYear}`;
 
   const AdmissionDate = new Date(members.admissionDate);
   const admissionMonth = AdmissionDate.getMonth()+1;
   const admissionDay = AdmissionDate.getDate();
   const admissionYear = AdmissionDate.getFullYear();
-  const admission = `${admissionMonth}/${admissionDay}/${admissionYear}`;
+  const admission = `${admissionDay}/${admissionMonth}/${admissionYear}`;
   
   const router = useRouter();
   const memberId = router.query.id;
