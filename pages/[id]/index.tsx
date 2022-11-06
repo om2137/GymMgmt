@@ -130,7 +130,7 @@ export default function EachMember({members}: any) {
                         
                         <div className='text-center '>
                             <h2 id="parent-modal-title" className='md:hidden text-4xl font-bold capitalize'>
-                                {members.Firstname} {members.Lastname} 
+                                {members.Firstname} {members.Middlename} {members.Lastname} 
                             </h2>
                             <div className='sm:hidden text-center  p-1 mt-1 text-start'>
                               
@@ -197,7 +197,7 @@ export default function EachMember({members}: any) {
                         <div className='p-2'>
                             <div className='mt-2'>
                                 <span className='font-semibold text-lg'>Full Name:</span><br/>
-                                <span className='ml-2 capitalize'>{members.Firstname} {members.middle} {members.Lastname}</span>
+                                <span className='ml-2 capitalize'>{members.Firstname} {members.Middlename} {members.Lastname}</span>
                             </div>
 
                             <div className='mt-2'>
