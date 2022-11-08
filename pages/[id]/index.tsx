@@ -62,8 +62,8 @@ export default function EachMember({members}: any) {
       title="Profiles"
     />
     
-    <div className='flex items-center justify-center align-center py-20'>
-    <div className='md:flex  align-middle justify-between'>
+    <div className='flex flex-col items-center justify-center align-center py-20'>
+      <div className='md:flex  align-middle justify-between'>
                 <div className='flex flex-col md:flex-row justify-center'>
                   
                     <div className='md:flex  justify-center mt-6 px-4 drop-shadow-2xl ml:ml-12'>
@@ -106,29 +106,12 @@ export default function EachMember({members}: any) {
                                 </div>
                               </div>
                             </div>
-                            <div className="flex">
-                              <div className='text-center p-4'>
-                                  <Button label="Delete" onClick={handleDelete} className="bg-red-500 hover:bg-red-400 px-3"/>
-                              </div>
-                              
-                              <div className='text-center p-4'>
-                                <Link href={`${memberId}/edit`}>
-                                  <Button label="edit"  className="bg-yellow-500 hover:bg-yellow-400 px-3"/>
-                                </Link>
-                              </div>
-                              <div className='text-center p-4'>
-                                <Link href={`${memberId}/invoice`}>
-                                  <Button label="invoice"  className="bg-green-500 hover:bg-green-400 px-3"/>
-                                </Link>
-                              </div>
-                              
-                            </div>
                             
                           </div>
                         </div>
                         
                         
-                        <div className='text-center '>
+                        <div className='text-center'>
                             <h2 id="parent-modal-title" className='md:hidden text-4xl font-bold capitalize'>
                                 {members.Firstname} {members.Middlename} {members.Lastname} 
                             </h2>
@@ -180,7 +163,7 @@ export default function EachMember({members}: any) {
                         
                     </div>
                     
-                    <div className='flex flex-col text-center p-1 mx-10 '>
+                    <div className='flex flex-col text-center p-1 mx-10  py-6'>
                         <div className='hidden md:flex relative'>
                           <div className='absolute right-[-5rem] top-[-2rem] '>
                             <Link href={'/'}>
@@ -235,6 +218,23 @@ export default function EachMember({members}: any) {
                 </div>
                 
                 
+            </div>
+            <div className="flex">
+              <div className='text-center p-4'>
+                  <Button label="Delete" onClick={handleDelete} className="bg-red-500 hover:bg-red-400 px-3"/>
+              </div>
+                              
+              <div className='text-center p-4'>
+                <Link href={`${memberId}/edit`}>
+                  <Button label="edit"  className="bg-yellow-500 hover:bg-yellow-400 px-3"/>
+                </Link>
+              </div>
+              <div className='text-center p-4'>
+                <Link href={`${memberId}/invoice`}>
+                  <Button label="invoice"  className="bg-green-500 hover:bg-green-400 px-3"/>
+                </Link>
+              </div>
+                              
             </div>
     </div>
     </>
