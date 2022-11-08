@@ -323,11 +323,23 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                                   <option value={12}>Annually</option>
                               </select> 
                           </div>
+                          <div className='pr-5 pb-4 sm:pb-0'>
+                              <select id="fees" required 
+                                onChange={(e) => setFacility(e.target.value)}
+                                // name='facility' value={form.PD}
+                                // facility * time = fees
+                                className="bg-white border border-gray-600 rounded-lg text-gray-900 
+                                text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                                  <option className='hidden'>Admission fee</option>
+                                  <option value={100}>100</option>
+                                  <option value={200}>200</option>
+                              </select> 
+                          </div>
                           <div 
                             className="hidden"
                             // fees and name
                           > 
-                            {form.fees = (Number(facility) * Number(time))} 
+                            {form.fees = (Number(facility) * Number(time) + Number(admission))} 
                             {form.Name = first + ' ' + last}
                           </div>
                         </div>
