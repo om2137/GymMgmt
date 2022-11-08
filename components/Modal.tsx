@@ -34,7 +34,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   maxWidth: 700,
-  minWidth: 300,
+  minWidth: 380,
   bgcolor: 'background.paper',
   border: '2px solid #9e9e9e',
   borderRadius: '8px',
@@ -43,21 +43,6 @@ const style = {
   px: 2,
   pb: 3,
 };
-
-const style2 = {
-    position: 'absolute' as 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #9e9e9e',
-    borderRadius: '8px',
-    boxShadow: 24,
-    pt: 3,
-    px: 2,
-    pb: 3,
-  };
 
 // main modal
 export default function TestModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus,id, paid, due, admission, card}:Props ) {
