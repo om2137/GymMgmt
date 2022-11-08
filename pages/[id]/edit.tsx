@@ -67,7 +67,7 @@ const EditForm: React.FC<Props> = ( {members}:any ) => {
                 },
                 data: JSON.stringify(form),
             })
-            Router.push('/')
+            Router.push(`/${memberId}`)
             
         }catch(err){
             console.log(err)
@@ -198,8 +198,8 @@ const EditForm: React.FC<Props> = ( {members}:any ) => {
                             </div>
                             
                             <div className='text-center p-4'>
-                                <Link href={'/'}>
-                                    <Button label="Close" className="bg-red-500 hover:bg-red-400 px-3"/>
+                                <Link href={`/${memberId}`}>
+                                    <Button label="back" className="bg-red-500 hover:bg-red-400 px-3"/>
                                 </Link>
                                 
                                 
