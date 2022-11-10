@@ -71,9 +71,7 @@ export default function EachMember({members}: any) {
                           <div className='p-5 md:p-0 flex justify-center'>
                             <div className='md:hidden flex relative'>
                               <div className='absolute right-[-16rem] top-[-3rem] '>
-                                <Link href={'/'}>
-                                  <Button label="back" className="bg-gray-500 hover:bg-gray-400 px-3"/>
-                                </Link>
+                                <Button label="back"  onClick={() => history.back()} className="bg-gray-500 hover:bg-gray-400 px-3"/>
                               </div>
                             </div>
                             <img src={members.Avatar } 
@@ -166,9 +164,7 @@ export default function EachMember({members}: any) {
                     <div className='flex flex-col text-center p-1 mx-10  py-6'>
                         <div className='hidden md:flex relative'>
                           <div className='absolute right-[-5rem] top-[-2rem] '>
-                            <Link href={'/'}>
-                              <Button label="back" className="bg-gray-500 hover:bg-gray-400 px-3"/>
-                            </Link>
+                            <Button label="back" onClick={() => history.back()} className="bg-gray-500 hover:bg-gray-400 px-3"/>
                           </div>
                         </div>
                         
