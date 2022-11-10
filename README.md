@@ -14,7 +14,7 @@ Link: https://www.youtube.com/watch?v=VYdAvcyAPDo
 3. Sending invoice as whatsapp message automated.
 
 ## Technologies used
-**NextJS, TailwindCSS, MongoDB, Cloudinary, Node**
+**NextJS, TailwindCSS, MongoDB, Cloudinary, Node, Prettier**
 
 ## Functionality
 1. Client Information storage
