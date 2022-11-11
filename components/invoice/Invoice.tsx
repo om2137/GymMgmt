@@ -51,7 +51,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
     const dueYear = dueDate.getFullYear();
 
     const feesWord = converter.toWords(fees);
-    // const feesWord2 = converter.toWords(500);
+    // const feesWord = converter.toWords(500);
 
     const handlePrint = () => {
         window.print();
@@ -152,9 +152,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                     <Button label="Send 1" onClick={handleSend} className="bg-yellow-500 hover:bg-yellow-400 px-3"/>
                 </div>
                 <div className="p-4">
-                    <Link href={'/'}>
-                        <Button label="back" className="bg-gray-500 hover:bg-gray-400 px-3"/>
-                    </Link>
+                    <Button label="Back" onClick={() => history.back()} className="bg-gray-500 hover:bg-gray-400 px-3"/>
                 </div>
                 <div className='font-bold p-5 '>
                     {inNumber}
