@@ -113,9 +113,9 @@ export default function EachMember({members}: any) {
                             <h2 id="parent-modal-title" className='md:hidden text-4xl font-bold capitalize'>
                                 {members.Firstname} {members.Middlename} {members.Lastname} 
                             </h2>
-                            <div className='sm:hidden text-center  p-1 mt-1 text-start'>
+                            <div className='md:hidden text-center  p-1 mt-1 text-start'>
                               
-                              <div className='sm:hidden  p-3 mt-4 text-center'>
+                              <div className='md:hidden  p-3 mt-4 text-center'>
                                 <h1 className='text-2xl font-semibold text-center'>Plan Expires</h1>
                                   <div className=' p-3 text-center'>
                                   <div className='pt-0 text-center'>
@@ -215,7 +215,7 @@ export default function EachMember({members}: any) {
                 
                 
             </div>
-            <div className="flex">
+            <div className="md:flex hidden">
               <div className='text-center p-4'>
                   <Button label="Delete" onClick={handleDelete} className="bg-red-500 hover:bg-red-400 px-3"/>
               </div>
