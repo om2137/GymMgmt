@@ -198,11 +198,7 @@ const EditForm: React.FC<Props> = ( {members}:any ) => {
                             </div>
                             
                             <div className='text-center p-4'>
-                                <Link href={`/${memberId}`}>
-                                    <Button label="back" className="bg-red-500 hover:bg-red-400 px-3"/>
-                                </Link>
-                                
-                                
+                                <Button label="back" onClick={() => history.back()} className="bg-red-500 hover:bg-red-400 px-3"/>
                             </div>
                         </div>
                         
