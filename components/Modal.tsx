@@ -64,24 +64,6 @@ const handleChange = (e: React.ChangeEvent<any>) => {
     })
     
 }
-const handleFormInvoice = async(e: React.ChangeEvent<any>) => {
-    e.preventDefault()
-    try{
-        
-        const res = await axios(`${baseUrl}/api/invoice`, {
-            method: "POST",
-            headers:{
-                "Content-Type": "application/json",
-            },
-            data: JSON.stringify(form),
-        })
-        Router.push('/invoice')
-        
-    }catch(err){
-        console.log(err)
-    }
-    
-}
 const handleForm = async(e: React.ChangeEvent<any>) => {
   e.preventDefault()
   try{
@@ -308,7 +290,7 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                                   <option value={12}>Annually</option>
                               </select> 
                           </div>
-                          <div className='pr-5 pb-4 sm:pb-0'>
+                          {/* <div className='pr-5 pb-4 sm:pb-0'>
                               <select id="fees" required 
                                 onChange={(e) => setFacility(e.target.value)}
                                 // name='facility' value={form.PD}
@@ -319,12 +301,12 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                                   <option value={100}>100</option>
                                   <option value={200}>200</option>
                               </select> 
-                          </div>
+                          </div> */}
                           <div 
                             className="hidden"
                             // fees and name
                           > 
-                            {form.fees = (Number(facility) * Number(time) + Number(admission))} 
+                            {form.fees = (Number(facility) * Number(time))} 
                             {form.Name = first + ' ' + last}
                           </div>
                         </div>
