@@ -4,8 +4,8 @@ import Button from './Button'
  function Cloudi({theurl}) {
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
-  const cloudinary = process.env.CLOUD_URI;
-  
+  const cloudinary = process.env.NEXT_PUBLIC_CLOUDINARY_URI;
+
   /**
    * handleOnChange
    * @description Triggers when the file input changes (ex: when a file is selected)
