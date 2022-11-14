@@ -9,7 +9,7 @@ import baseUrl from '../helper/baseUrl';
 export async function getStaticProps(context: any) {
   
   const res = await axios(`${baseUrl}/api/member`);
-  console.log(res.data.member);
+  // console.log(res.data.member);
   return {
     props: {}, 
   }
