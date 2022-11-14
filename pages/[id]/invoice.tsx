@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import Button from '../../components/Button';
 const axios = require('axios').default;
 import baseUrl from '../../helper/baseUrl';
-import Link from 'next/link';
 import InvoiceForm from '../../components/invoice/Invoice';
 
 export async function getServerSideProps(context: any) {
@@ -25,7 +24,7 @@ export async function getServerSideProps(context: any) {
 export default function Invoice({members, invoices}: any) {
 
   const len = invoices.length;
-  console.log("No of invoices"+len);
+  // console.log("No of invoices"+len);
 
   const first = members.Firstname ;
   const middle = members.Middlename ;

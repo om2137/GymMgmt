@@ -8,8 +8,6 @@ import baseUrl from '../../helper/baseUrl';
 import Link from 'next/link';
 var converter = require('number-to-words');
 
-const AccessToken = process.env.ACCESS_TOKEN;
-
 type Props = {
 
     first: string;
@@ -25,9 +23,7 @@ type Props = {
 }
 
 export async function getStaticProps(context: any) {
-    console.log('working');
-    // const res = await axios(`${baseUrl}/api/member`);
-    // console.log(res.data.member);
+    
     const res = await axios(`${baseUrl}/api/invoice`);
     const {invoice} = res.data;
     return {
@@ -36,7 +32,7 @@ export async function getStaticProps(context: any) {
       }, 
     }
   }
-
+    
 
 const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,facility,inNumber} ) => {
     
@@ -57,9 +53,10 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
         window.print();
     }
 
+    const token2 = process.env.NEXT_PUBLIC_ACCESSTOKEN;
     var data = JSON.stringify({
         "messaging_product": "whatsapp",
-        "to": "918237610776",
+        "to": `918237610776`,
         "type": "template",
         "template": {
           "name": "sfc_invoice",
@@ -67,18 +64,19 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
             "code": "en_US"
           }
         }
-    });
+      });
       
-    var config = {
+    //   console.log(token2);
+      var config = {
         method: 'post',
-        url: 'https://graph.facebook.com/v14.0/102442929315713/messages',
+        url: 'https://graph.facebook.com/v15.0/102442929315713/messages',
         headers: { 
-          'Authorization': `Bearer ${AccessToken}`,
+          'Authorization': `Bearer ${token2}`,
           'Content-Type': 'application/json'
         },
         data : data
       };
-
+      
     // Invoice form
     const [form, setForm]= useState({
         Name: '',   
@@ -87,13 +85,13 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
         facility: '',
         fees:0,
         invoiceNumber: 0,
-      })
-      const handleSend = async() => {
+    })
+    const handleSend = async() => {
         try{
             //whatsapp invoicing
             axios(config)
             .then(function (response: { data: any; }) {
-            console.log(JSON.stringify(response.data));
+            // console.log(JSON.stringify(response.data));
             })
             .catch(function (error: any) {
             console.log(error);
@@ -105,18 +103,9 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
         }
         
     }
-      const handleForm = async(e: React.ChangeEvent<any>) => {
+    const handleForm = async(e: React.ChangeEvent<any>) => {
         e.preventDefault()
         try{
-            //whatsapp invoicing
-            // axios(config)
-            // .then(function (response: { data: any; }) {
-            // console.log(JSON.stringify(response.data));
-            // })
-            // .catch(function (error: any) {
-            // console.log(error);
-            // });
-            //whatsapp invoicing end
             const res = await axios(`${baseUrl}/api/invoice`, {
                 method: "POST",
                 headers:{
@@ -149,7 +138,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                     <Button label="print" onClick={handlePrint} className="bg-green-500 hover:bg-green-400 px-3"/>
                 </div>
                 <div className="p-4">
-                    <Button label="Send 1" onClick={handleSend} className="bg-yellow-500 hover:bg-yellow-400 px-3"/>
+                    <Button label="Send" onClick={handleSend} className="bg-yellow-500 hover:bg-yellow-400 px-3"/>
                 </div>
                 <div className="p-4">
                     <Button label="Back" onClick={() => history.back()} className="bg-gray-500 hover:bg-gray-400 px-3"/>
