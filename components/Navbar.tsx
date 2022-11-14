@@ -5,14 +5,6 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { styled, Theme, } from "@mui/material";
 
-// export const useStyles = makeStyles((theme: Theme) => ({
-//   menu: {
-//     "& .MuiPaper-root": {
-//       backgroundColor: "#a82824",
-//       color: "white",
-//     },
-//   },
-// }));
 interface Props {
   title: string;
 }
