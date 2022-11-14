@@ -1,4 +1,4 @@
-import baseUrl from '../../helper/baseUrl';
+import baseUrl from './baseUrl';
 const axios = require('axios').default;
 
 export async function getStaticProps(context) {
