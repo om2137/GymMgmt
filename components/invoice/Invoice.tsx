@@ -47,13 +47,14 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
     const dueYear = dueDate.getFullYear();
 
     const feesWord = converter.toWords(fees);
-    // const feesWord = converter.toWords(500);
 
     const handlePrint = () => {
         window.print();
     }
 
     const token2 = process.env.NEXT_PUBLIC_ACCESSTOKEN;
+    const testnum = process.env.NEXT_PUBLIC_TESTNUM;
+    const prodnum = process.env.NEXT_PUBLIC_PRODNUM;
     var data = JSON.stringify({
         "messaging_product": "whatsapp",
         "to": `918237610776`,
@@ -69,7 +70,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
     //   console.log(token2);
       var config = {
         method: 'post',
-        url: 'https://graph.facebook.com/v15.0/102442929315713/messages',
+        url: `https://graph.facebook.com/v15.0/${testnum}/messages`,
         headers: { 
           'Authorization': `Bearer ${token2}`,
           'Content-Type': 'application/json'
@@ -94,7 +95,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
             // console.log(JSON.stringify(response.data));
             })
             .catch(function (error: any) {
-            console.log(error);
+                console.log(error);
             });
             //whatsapp invoicing end
             console.log("sent");
@@ -147,16 +148,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                     {inNumber}
                 </div>
                 <form action="" onSubmit={handleForm} className="flex">
-                    <div className='py-4'>
-                        {/* <input type="text" autoComplete='none' required 
-                            onChange={handleChange} 
-                            name='invoiceNumber' value={form.invoiceNumber}
-                            className='py-2 rounded relative block w-full px-3 
-                            border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
-                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
-                            placeholder='firstname' 
-                        /> */}
-                    </div>
+                    
                     <div className='hidden'>
                         {form.invoiceNumber = inNum}
                         {form.Name = first+" "+middle+" "+last}
