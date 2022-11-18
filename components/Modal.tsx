@@ -64,7 +64,7 @@ const handleChange = (e: React.ChangeEvent<any>) => {
     })
     
 }
-const handleForm = async(e: React.ChangeEvent<any>) => {
+const handleInvoice = async(e: React.ChangeEvent<any>) => {
   e.preventDefault()
   try{
       
@@ -262,7 +262,7 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                   <label id="fees" className="block mb-2 text-sm font-medium text-black ">Select an plans</label>
                     <div className='sm:flex flex-col pb-2'>
                       {/* form */}
-                      <form className='flex flex-col ' onSubmit={handleForm}>
+                      <form className='flex flex-col ' onSubmit={handleInvoice}>
                         <div className="flex flex-col sm:flex-row">
                           <div className='pr-5 pb-4 sm:pb-0'>
                               <select id="fees" required 
@@ -291,9 +291,9 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                               </select> 
                           </div>
                           {/* <div className='pr-5 pb-4 sm:pb-0'>
-                              <select id="fees" required 
-                                onChange={(e) => setFacility(e.target.value)}
-                                // name='facility' value={form.PD}
+                              <select id="admfees" required 
+                                onChange={(e) => setadmfee(e.target.value)}
+                                // name='admfee' value={form.admfee}
                                 // facility * time = fees
                                 className="bg-white border border-gray-600 rounded-lg text-gray-900 
                                 text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
@@ -356,9 +356,6 @@ const handleForm = async(e: React.ChangeEvent<any>) => {
                         </Link>
                       </div>
 
-                      {/* <div className='flex justify-center sm:hidden pb-4  mx-2 '>
-                        <Button label="Close" onClick={handleClose} className="bg-red-500 hover:bg-red-400 px-3"/>
-                      </div> */}
                     </div>
                 </div>
                 
