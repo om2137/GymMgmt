@@ -60,17 +60,31 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
         "to": `918237610776`,
         "type": "template",
         "template": {
-          "name": "sfc_invoice",
+          "name": "sfc_welcome",
           "language": {
-            "code": "en_US"
-          }
+            "code": "en"
+          },
+          "components": [
+            {
+                "type": "header",
+                "parameters": [
+                {
+                    "type": "document",
+                    "document": {
+                        "link": "https://res.cloudinary.com/dqpsoptzm/image/upload/v1668677758/gym-mgmt-assets/invoice/invoice_esua3y.pdf",
+                        "filename":"invoice"
+                    }
+                }
+                ]
+            }
+            ]
         }
       });
       
     //   console.log(token2);
       var config = {
         method: 'post',
-        url: `https://graph.facebook.com/v15.0/${testnum}/messages`,
+        url: `https://graph.facebook.com/v15.0/${prodnum}/messages`,
         headers: { 
           'Authorization': `Bearer ${token2}`,
           'Content-Type': 'application/json'
