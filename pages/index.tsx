@@ -8,15 +8,18 @@ import baseUrl from '../helper/baseUrl';
 export async function getServerSideProps(context: any) {
   
   const res = await axios(`${baseUrl}/api/member`);
+  const res2 = await axios(`${baseUrl}/api/invoice`);
   const {member} = res.data;
+  const {invoice} = res2.data;
   return {
     props: {
       members: member,
+      invoices: invoice,
     },
   }
 }
 
-const Home: NextPage = ({members}:any) => {
+const Home: NextPage = ({members,invoices}:any) => {
   
   return (
     <>
@@ -27,60 +30,48 @@ const Home: NextPage = ({members}:any) => {
       
       {/* modal */}
       <div>
-        {/* <User/> */}
-        <div className='flex flex-wrap justify-center sm:justify-start'>
-          {
-            members.map((member : any) => {
-              const birth = new Date(member.DoB);
-              const age = new Date().getFullYear() - birth.getFullYear();
-              const month = birth.getMonth()+1;
-              const day = birth.getDate();
-              const year = birth.getFullYear();
-
-              const payDate = new Date(member.paidDate);
-              const payMonth = payDate.getMonth()+1;
-              const payDay = payDate.getDate();
-              const payYear = payDate.getFullYear();
-
-              const dueDate = new Date(member.dueDate);
-              const dueMonth = dueDate.getMonth()+1;
-              const dueDay = dueDate.getDate();
-              const dueYear = dueDate.getFullYear();
-
-              const AdmissionDate = new Date(member.admissionDate);
-              const admissionMonth = AdmissionDate.getMonth()+1;
-              const admissionDay = AdmissionDate.getDate();
-              const admissionYear = AdmissionDate.getFullYear();
-
-              return (
-                <div className='p-5'>
-                  
-                  <div className=' text-black'>
-                    <MediaCard
-                      image={member.Avatar}
-                      first={member.Firstname}
-                      middle={member.Middlename}
-                      last={member.Lastname}
-                      address={member.Address}
-                      phone={member.Contact}
-                      Dob={day+'/'+month+'/'+year}
-                      age={age}
-                      gender={member.Gender}
-                      marriage={member.Mstat}
-                      id={member._id}
-                      paid={payDay+'/'+payMonth+'/'+payYear}
-                      due={dueDay+'/'+dueMonth+'/'+dueYear}
-                      admission={admissionDay+'/'+admissionMonth+'/'+admissionYear}
-                      cardNo={member.cardNumber}
-                    />
-                    
-                  </div>
-                </div>
-                
-              )
-            })
-          }  
+        <div className='flex justify-center font-semibold text-4xl p-6 align-center'>
+          Welcome to the Dashboard of Sandys Fitness Care
         </div>
+        <div className='flex flex-col md:flex-row justify-center text-center p-5'>
+            <div className='md:p-6 p-3 '>
+              <a
+                  className="inline-block border border-gray-500 text-sm px-6 py-3 mr-2 rounded  mt-4 lg:inline-block lg:mt-0 font-bold"
+                  href="../profiles"
+                >
+                  Profiles
+                </a>
+            </div>
+            <div className='md:p-6 p-3'>
+              <a
+                  className="inline-block border border-gray-500 text-sm px-6 py-3 mr-2 rounded  mt-4 lg:inline-block lg:mt-0 font-bold"
+                  href="../invoice"
+                >
+                  Invoices
+                </a>
+            </div>
+            <div className='md:p-6 p-3'>
+              <a
+                  className="inline-block border border-gray-500 text-sm px-6 py-3 mr-2 rounded  mt-4 lg:inline-block lg:mt-0 font-bold"
+                  href="../admission"
+                >
+                  Admission
+                </a>
+            </div>
+        </div>
+        <div className='flex flex-col justify-center text-center p-5'>
+          <span className='text-2xl font-semibold'>Overview</span>
+          <div className='flex flex-col justify-center'>
+            <div className=''>
+              total members: {members.length}
+            </div>
+            <div className=''>
+              total invoices: {invoices.length}
+            </div>
+          </div>
+        </div>
+
+        {/* <User/> */}
       </div>
     </main>
     
