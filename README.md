@@ -1,8 +1,10 @@
 # **GYM Management System**
-
+## **Data storing and Invoicing app**
 This is a web application for pushing, managing and updating the clients information. (very initial thought) <br/>
+Automate and Deliever invoices(PDFs) of client through Whatsapp.<br/>
+Broadcasting alerts and personalized messages to clients through whatsapp.<br/>
 Other features will be added.<br/>
-Techstack used is MERN, NextJS as a react framework and Tailwind.CSS for styling.
+Techstack used is MERN, NextJS as a react framework and Tailwind.CSS for styling.<br/>
 MongoDB is used as a database and Cloudinary for storing files.
 
 ### Demo
