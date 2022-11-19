@@ -50,7 +50,7 @@ export default function EachMember({members}: any) {
         const deleteMember = await axios(`${baseUrl}/api/member/${memberId}`, {
           method: "DELETE",
         });
-        router.push('/');
+        router.push('/profiles');
     }catch(err){
       console.log(err);
     }
