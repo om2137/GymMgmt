@@ -13,7 +13,7 @@ type Props = {
     first: string;
     middle: string;
     last: string;
-    // phone: number;
+    phone: number;
     facility: string;
     gender: string;
     paid : string;
@@ -34,7 +34,7 @@ export async function getStaticProps(context: any) {
   }
     
 
-const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,facility,inNumber} ) => {
+const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,facility,inNumber,phone} ) => {
     
     const payDate = new Date(paid);
     const payMonth = payDate.getMonth()+1;
@@ -47,7 +47,6 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
     const dueYear = dueDate.getFullYear();
 
     const feesWord = converter.toWords(fees);
-
     const handlePrint = () => {
         window.print();
     }
@@ -57,7 +56,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
     const prodnum = process.env.NEXT_PUBLIC_PRODNUM;
     var data = JSON.stringify({
         "messaging_product": "whatsapp",
-        "to": `918237610776`,
+        "to": `91${phone}`,
         "type": "template",
         "template": {
           "name": "sfc_welcome",
@@ -106,7 +105,8 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
             //whatsapp invoicing
             axios(config)
             .then(function (response: { data: any; }) {
-            // console.log(JSON.stringify(response.data));
+                // console.log(JSON.stringify(response.data));
+                Router.push('/invoice');
             })
             .catch(function (error: any) {
                 console.log(error);
@@ -135,20 +135,16 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
         }
         
     }
-    const handleChange = (e: React.ChangeEvent<any>) => {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value,
-            
-        })
-        
-    }
+    
     var inNum = inNumber + 1;
     var paidDate = new Date(paid);
     return(
         
         <main className=' flex flex-col items-center justify-center '>
             <div className="flex">
+                <div className="p-4">
+                    {/* {phone} */}
+                </div>
                 <div className="p-4">
                     <Button label="print" onClick={handlePrint} className="bg-green-500 hover:bg-green-400 px-3"/>
                 </div>
