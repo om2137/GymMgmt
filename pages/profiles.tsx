@@ -37,14 +37,13 @@ const profiles: NextPage = ({members}:any) => {
         <div>
           {/* <User/> */}
           <div className='flex flex-wrap'>
-            {
-              members.map((member : any) => {
-                const birth = new Date(member.DoB);
-                const age = new Date().getFullYear() - birth.getFullYear();
-                const month = birth.getMonth()+1;
-                const day = birth.getDate();
-                const year = birth.getFullYear();
-
+          {
+            members.map((member : any) => {
+              const birth = new Date(member.DoB);
+              const age = new Date().getFullYear() - birth.getFullYear();
+              const month = birth.getMonth()+1;
+              const day = birth.getDate();
+              const year = birth.getFullYear();
                 
               const payDate = new Date(member.paidDate);
               const payMonth = payDate.getMonth()+1;
@@ -60,10 +59,10 @@ const profiles: NextPage = ({members}:any) => {
               const admissionMonth = AdmissionDate.getMonth()+1;
               const admissionDay = AdmissionDate.getDate();
               const admissionYear = AdmissionDate.getFullYear();
-                return (
+              return (
+                <div className='p-5'>
                   
-                  <div className='p-5 '>
-                    <div className=' text-black'>
+                  <div className=' text-black'>
                     <MediaCard
                       image={member.Avatar}
                       first={member.Firstname}
@@ -81,12 +80,13 @@ const profiles: NextPage = ({members}:any) => {
                       admission={admissionDay+'/'+admissionMonth+'/'+admissionYear}
                       cardNo={member.cardNumber}
                     />
-                    </div>
+                    
                   </div>
-                  
-                )
-              })
-            }  
+                </div>
+                
+              )
+            })
+          } 
           </div>
           
 
