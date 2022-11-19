@@ -52,32 +52,32 @@ export default function Navbar({ title }: Props) {
           </a>
         </div>
         <div className="sm:flex hidden">
-          <a className=" inline-block border border-gray-500 rounded py-2 px-4  font-semibold">
-            session expiry {expiry}
+          <a className=" inline-block capitalize  border border-gray-500 rounded py-2 px-4  font-bold">
+            Sandy's fitness care
           </a>
           
         </div>
 
-        <div className="hidden md:flex ">
+        <div className="hidden md:flex m-2">
           <div
             className="w-full block flex- md:flex lg:items-center font-semibold hidden lg:w-auto "
             id="menu"
           >
             <div className="text-sm lg:flex-">
               <a
-                className="inline-block border border-gray-500 text-sm px-6 py-3 mr-2 rounded  mt-4 lg:inline-block lg:mt-0 "
-                href="../"
+                className="inline-block border border-gray-500 text-sm px-6 py-3 mr-2 rounded  mt- lg:inline-block lg:mt-0 "
+                href="../profiles"
               >
                 Profiles
               </a>
               <a
-                className="inline-block border border-gray-500 text-sm px-6 py-3 mr-2 rounded  mt-4 lg:inline-block lg:mt-0 "
+                className="inline-block border border-gray-500 text-sm px-6 py-3 mr-2 rounded  mt- lg:inline-block lg:mt-0 "
                 href="../invoice"
               >
                 Invoices
               </a>
               <a
-                className="inline-block border border-gray-500 text-sm px-6 py-3 mr-2 rounded  mt-4 lg:inline-block lg:mt-0 "
+                className="inline-block border border-gray-500 text-sm px-6 py-3 mr-2 rounded  mt- lg:inline-block lg:mt-0 "
                 href="../admission"
               >
                 Admission
@@ -110,7 +110,6 @@ export default function Navbar({ title }: Props) {
             anchorEl={anchorEl}
             open={open}
             onClose={handleClose}
-            // className={classes.menu}
             MenuListProps={{
               "aria-labelledby": "basic-button",
             }}
@@ -126,7 +125,7 @@ export default function Navbar({ title }: Props) {
               </a>
             </StyledMenuItem>
             <StyledMenuItem onClick={handleClose}>
-            <a href="/">
+            <a href="/profiles">
                 Profiles
               </a>
             </StyledMenuItem>
