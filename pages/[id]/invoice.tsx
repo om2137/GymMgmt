@@ -34,6 +34,7 @@ export default function Invoice({members, invoices}: any) {
   const paid = members.paidDate;
   const due = members.dueDate;
   const facility = members.facility;
+  const phone = members.Contact;
 
   const payDate = new Date(paid);
   const payMonth = payDate.getMonth()+1;
@@ -58,6 +59,7 @@ export default function Invoice({members, invoices}: any) {
             due={dueDay + '/' + dueMonth + '/' + dueYear}
             facility={facility}
             inNumber={len}
+            phone={phone}
         />
     
     </>
