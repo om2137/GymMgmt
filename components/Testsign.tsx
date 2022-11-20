@@ -56,9 +56,9 @@ const SignUpForm: React.FC<Props> = (  ) => {
                 headers:{
                     "Content-Type": "application/json",
                 },
-                data: JSON.stringify(form),
+                data: JSON.stringify(form),                
             })
-            Router.push('/')
+            Router.push('/profiles')
             
         }catch(err){
             console.log(err)
