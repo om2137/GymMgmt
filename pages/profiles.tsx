@@ -7,7 +7,7 @@ import Router from 'next/router'
 const axios = require('axios').default;
 import baseUrl from '../helper/baseUrl';
 
-export async function getStaticProps(context: any) {
+export async function getServerSideProps(context: any) {
   
   const res = await axios(`${baseUrl}/api/member`);
   const {member} = res.data;
@@ -96,7 +96,11 @@ const profiles: NextPage = ({members}:any) => {
       </>
     )
   }
-  return <div>loading</div>
+  return( 
+    <div className='flex justify-center text-4xl font-semibold p-8'>
+      Loading...
+    </div>
+  )
 }
 
 export default profiles
