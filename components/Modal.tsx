@@ -267,8 +267,6 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                           <div className='pr-5 pb-4 sm:pb-0'>
                               <select id="fees" required 
                                 onChange={(e) => setFacility(e.target.value)}
-                                // name='facility' value={form.PD}
-                                // facility * time = fees
                                 className="bg-white border border-gray-600 rounded-lg text-gray-900 
                                 text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                                   <option className='hidden'>Choose Facility</option>
@@ -280,7 +278,6 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                           <div className='pr-5 pb-4 sm:pb-0'>
                               <select id="time" required 
                                 onChange={(e) => setTime(e.target.value)}
-                                // name='time' value={form.PD}
                                 className="bg-white border border-gray-600 rounded-lg text-gray-900 
                                 text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                                   <option className='hidden' >Choose Duration</option>

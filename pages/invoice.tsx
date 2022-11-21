@@ -28,6 +28,9 @@ const invoice: NextPage = ({invoices }:any) => {
       
       {/* modal */}
       <div>
+        <div>
+          test:{invoices.length}
+        </div>
         {/* <User/> */}
         <div className='flex flex-col justify-center sm:justify-start'>
           {

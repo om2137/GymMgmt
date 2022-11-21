@@ -43,7 +43,7 @@ export default function Navbar({ title }: Props) {
 
   return (
     <div className="flex w-full flex-1 flex-col justify-top">
-      <nav className="flex items-center justify-between rounded-b-lg border-b border-gray-500 flex-between p-6 xl:p-10 bg-gray-100 3xl:px-20">
+      <nav className="flex items-center justify-between rounded-b-lg border-b border-gray-500 flex-between p-6 xl:p-8 bg-gray-100 3xl:px-20">
         <div className="flex items-center flex-shrink-0  mr-6">
           <a className=" inline-block border border-red-600 rounded py-2 px-4 text-red-600 font-bold"
             href="/"
