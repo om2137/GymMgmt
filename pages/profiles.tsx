@@ -26,7 +26,7 @@ const profiles: NextPage = ({members}:any) => {
     }
   } , [status]);
   if(status === 'authenticated'){
-    return (
+  return (
       <>
       <Navbar 
         title="Profiles"
@@ -97,9 +97,9 @@ const profiles: NextPage = ({members}:any) => {
     )
   }
   return( 
-    <div className='flex justify-center text-4xl font-semibold p-8'>
-      Loading...
-    </div>
+  <div className='flex justify-center text-4xl font-semibold p-8'>
+    Loading...
+  </div>
   )
 }
 
