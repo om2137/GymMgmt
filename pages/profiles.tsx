@@ -8,7 +8,6 @@ const axios = require('axios').default;
 import baseUrl from '../helper/baseUrl';
 
 export async function getServerSideProps(context: any) {
-  
   const res = await axios(`${baseUrl}/api/member`);
   const {member} = res.data;
   return {
@@ -19,7 +18,7 @@ export async function getServerSideProps(context: any) {
 }
 
 const profiles: NextPage = ({members}:any) => {
-  const {status, data} = useSession();
+  const {status} = useSession();
   useEffect(() => {
     if( status === 'unauthenticated'){
       Router.replace('/auth/login');

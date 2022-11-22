@@ -23,9 +23,7 @@ import Button from './Button'
     }catch(err){
       console.log(err);
     }
-  }
-  
-  
+  }  
 
   /**
    * handleOnSubmit
@@ -36,6 +34,7 @@ import Button from './Button'
     event.preventDefault();
 
     const form = event.currentTarget;
+    //below is the input
     const fileInput = Array.from(form.elements).find(({ name }) => name === 'file');
 
     const formData = new FormData();
@@ -45,7 +44,7 @@ import Button from './Button'
     }
 
     formData.append('upload_preset', 'gym-mgmt-assets');
-    
+    // formData.append('upload_preset', 'invoice');
     const data = await fetch( cloudinary, {
       method: 'POST',
       body: formData

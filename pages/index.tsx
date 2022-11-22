@@ -5,10 +5,11 @@ const axios = require('axios').default;
 import MediaCard from '../components/cards'
 import baseUrl from '../helper/baseUrl';
 import SavePdf from '../components/SavePdf'
+import Button from '../components/Button';
 
 export async function getServerSideProps(context: any) {
   
-  const res = await axios(`${baseUrl}/api/member`);
+  const res = await axios(`${baseUrl}/api/member`,);
   const res2 = await axios(`${baseUrl}/api/invoice`);
   const {member} = res.data;
   const {invoice} = res2.data;
@@ -49,7 +50,7 @@ const Home: NextPage = ({members,invoices}:any) => {
             
             <div className='md:p-6 p-3 '>
               <a
-                  className="inline-block border border-gray-500 text-sm px-6 py-3 rounded  mt-4 lg:inline-block lg:mt-0 font-bold"
+                  className="inline-block border border-gray-500 hover:bg-gray-500 hover:text-white text-sm px-6 py-3 rounded  mt-4 lg:inline-block lg:mt-0 font-bold"
                   href="../profiles"
                 >
                   Profiles
@@ -57,7 +58,7 @@ const Home: NextPage = ({members,invoices}:any) => {
             </div>
             <div className='md:p-6 p-3'>
               <a
-                  className="inline-block border border-gray-500 text-sm px-6 py-3 rounded  mt-4 lg:inline-block lg:mt-0 font-bold"
+                  className="inline-block border border-gray-500 hover:bg-gray-500 hover:text-white text-sm px-6 py-3 rounded  mt-4 lg:inline-block lg:mt-0 font-bold"
                   href="../invoice"
                 >
                   Invoices
@@ -65,15 +66,14 @@ const Home: NextPage = ({members,invoices}:any) => {
             </div>
             <div className='md:p-6 p-3'>
               <a
-                  className="inline-block border border-gray-500 text-sm px-6 py-3  rounded  mt-4 lg:inline-block lg:mt-0 font-bold"
+                  className="inline-block border border-gray-500 hover:bg-gray-500 hover:text-white text-sm px-6 py-3  rounded  mt-4 lg:inline-block lg:mt-0 font-bold"
                   href="../admission"
                 >
                   Admission
                 </a>
             </div>
-            
+          
         </div>
-        
 
         {/* <User/> */}
       </div>
