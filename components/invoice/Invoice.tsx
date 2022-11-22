@@ -6,7 +6,7 @@ import Router, {useRouter} from 'next/router'
 import Button from '../Button';
 import baseUrl from '../../helper/baseUrl';
 import SavePdf from '../SavePdf';
-import Link from 'next/link';
+import SendPdf from '../SendPdf';
 var converter = require('number-to-words');
 
 type Props = {
@@ -48,50 +48,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
     const dueYear = dueDate.getFullYear();
 
     const feesWord = converter.toWords(fees);
-    const handlePrint = () => {
-        window.print();
-    }
 
-    const token2 = process.env.NEXT_PUBLIC_ACCESSTOKEN;
-    const testnum = process.env.NEXT_PUBLIC_TESTNUM;
-    const prodnum = process.env.NEXT_PUBLIC_PRODNUM;
-    var data = JSON.stringify({
-        "messaging_product": "whatsapp",
-        "to": `91${phone}`,
-        "type": "template",
-        "template": {
-          "name": "sfc_welcome",
-          "language": {
-            "code": "en"
-          },
-          "components": [
-            {
-                "type": "header",
-                "parameters": [
-                {
-                    "type": "document",
-                    "document": {
-                        "link": "https://res.cloudinary.com/dqpsoptzm/image/upload/v1668677758/gym-mgmt-assets/invoice/invoice_esua3y.pdf",
-                        "filename":"invoice"
-                    }
-                }
-                ]
-            }
-            ]
-        }
-      });
-      
-    //   console.log(token2);
-      var config = {
-        method: 'post',
-        url: `https://graph.facebook.com/v15.0/${prodnum}/messages`,
-        headers: { 
-          'Authorization': `Bearer ${token2}`,
-          'Content-Type': 'application/json'
-        },
-        data : data
-      };
-      
     // Invoice form
     const [form, setForm]= useState({
         Name: '',   
@@ -101,24 +58,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
         fees:0,
         invoiceNumber: 0,
     })
-    const handleSend = async() => {
-        try{
-            //whatsapp invoicing
-            axios(config)
-            .then(function (response: { data: any; }) {
-                // console.log(JSON.stringify(response.data));
-                Router.push('/invoice');
-            })
-            .catch(function (error: any) {
-                console.log(error);
-            });
-            //whatsapp invoicing end
-            console.log("sent");
-        }catch(err){
-            console.log(err)
-        }
-        
-    }
+    
     const handleForm = async(e: React.ChangeEvent<any>) => {
         e.preventDefault()
         try{
@@ -148,10 +88,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                     <SavePdf rootElementID="PDF" downloadFileName="testpage"/>
                 </div>
                 <div className="p-4">
-                    <Button label="print" onClick={handlePrint} className="bg-green-500 hover:bg-green-400 px-3"/>
-                </div>
-                <div className="p-4">
-                    <Button label="Send" onClick={handleSend} className="bg-yellow-500 hover:bg-yellow-400 px-3"/>
+                    <SendPdf rootElementID="PDF" phone={phone} />
                 </div>
                 <div className="p-4">
                     <Button label="Back" onClick={() => history.back()} className="bg-gray-500 hover:bg-gray-400 px-3"/>
