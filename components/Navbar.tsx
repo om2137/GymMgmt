@@ -4,12 +4,14 @@ import MenuItem from "@mui/material/MenuItem";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { styled, Theme, } from "@mui/material";
+import { signOut } from "next-auth/react"
 
 interface Props {
   title: string;
 }
 
 export default function Navbar({ title }: Props) {
+
   // const classes = useStyles();
   const StyledMenuItem = styled(MenuItem)(
     ` 
@@ -37,13 +39,10 @@ export default function Navbar({ title }: Props) {
       setExp(data.expires);
     }
   }, [status]);
-  const expi = new Date(exp);
-  const expiry = expi.toLocaleString();
-  console.log(expi);
 
   return (
     <div className="flex w-full flex-1 flex-col justify-top">
-      <nav className="flex items-center justify-between rounded-b-lg border-b border-gray-500 flex-between p-6 xl:p-8 bg-gray-100 3xl:px-20">
+      <nav className="flex flex-between items-center justify-between rounded-b-lg border-b border-gray-500 p-6 xl:p-8 bg-gray-100 3xl:px-20">
         <div className="flex items-center flex-shrink-0  mr-6">
           <a className=" inline-block border border-red-600 rounded py-2 px-4 text-red-600 font-bold"
             href="/"
@@ -52,7 +51,7 @@ export default function Navbar({ title }: Props) {
           </a>
         </div>
         <div className="sm:flex hidden">
-          <a className=" inline-block capitalize  border border-gray-500 rounded py-2 px-4  font-bold">
+          <a className="flex justify-center capitalize  border border-gray-500 rounded py-2 px-4  font-bold">
             Sandy's fitness care
           </a>
           
@@ -82,6 +81,12 @@ export default function Navbar({ title }: Props) {
               >
                 Admission
               </a>
+              <button 
+                onClick={() => signOut()} 
+                className="inline-block border border-red-500 hover:bg-red-500 hover:text-white text-sm text-red-500 px-6 py-3 mr-2 rounded  mt- lg:inline-block lg:mt-0 "
+              >
+                Sign out
+              </button>
             </div>
           </div>
         </div>
