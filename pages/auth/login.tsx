@@ -8,7 +8,7 @@ export default function login() {
   
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [message, setMessage] = useState<string>("Not logged in");
+  const [message, setMessage] = useState<string>("LogIn");
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,6 +25,8 @@ export default function login() {
     }
   };
 
+
+
   const style = {
     position: "absolute" as "absolute",
     top: "50%",
@@ -32,9 +34,9 @@ export default function login() {
     transform: "translate(-50%, -50%)",
     
     bgcolor: "background.paper",
-    border: "2px solid #9e9e9e",
-    borderRadius: "8px",
-    boxShadow: 24,
+    border: "1px solid #000000",
+    borderRadius: "4px",
+    boxShadow: 12,
     pt: 3,
     px: 2,
     pb: 3,
@@ -43,37 +45,40 @@ export default function login() {
     <>
       <Box
         sx={{ ...style }}
-        className="max-w-2xl justify-center align-center overflow-auto "
+        className=" md:w-[35rem] md:h-[40rem] flex justify-center my-auto items-center "
       >
-        <h1 className="flex justify-center items-center text-4xl font-semibold pt-10">
-          {message}
-        </h1>
-        <form
-          onSubmit={handleSubmit}
-          method="POST"
-          action="/api/login"
-          className="flex justify-center align-center items-center flex-col p-10"
-        >
-          <input
-            type="text"
-            name="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className=" border border-black rounded-lg p-2"
-          />
-          <br />
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className=" border border-black rounded-lg p-2"
-          />
-          <br />
+        <div className="w-64">
+          <h1 className="flex justify-center items-center text-4xl font-semibold ">
+            {message}
+          </h1>
+          <form
+            onSubmit={handleSubmit}
+            method="POST"
+            action="/api/login"
+            className="flex flex-col p-10"
+          >
+            <input
+              type="text"
+              name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className=" border border-black rounded-lg p-2 text-lg"
+            />
+            <br />
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className=" border border-black rounded-lg p-2"
+            />
+            <br />
 
-          <Button label="login" type="submit" className="flex justify-center items-center bg-blue-500 hover:bg-blue-400 px-3"/>
-          <br />
-        </form>
+            <Button label="login" type="submit" className="flex justify-center items-center bg-blue-500 hover:bg-blue-400 px-3"/>
+            <br />
+          </form>
+        </div>
+        
       </Box>
     </>
   );
