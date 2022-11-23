@@ -7,7 +7,7 @@ import Router, {useRouter} from 'next/router'
 
 const UploadPdf = ({rootElementID, phone}:any) => {
     const cloudinary = process.env.NEXT_PUBLIC_CLOUDINARY_URI;
-    const [pdfSrc, setpdfSrc] = useState();
+    const [pdfSrc, setpdfSrc] = useState('');
     const [Status, setStatus] = useState("not sent");
     const [uploadData, setUploadData] = useState();
     var pdfURL = "";
@@ -46,7 +46,10 @@ const UploadPdf = ({rootElementID, phone}:any) => {
                 console.log("err:"+error);
             }
             console.log("PDF: "+pdfURL);
-        
+            if(pdfSrc === undefined){
+              setStatus("not sent");
+              setpdfSrc("not sent");
+            }
         });
         }
         catch(e){
