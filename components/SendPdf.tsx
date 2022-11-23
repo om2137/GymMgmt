@@ -8,6 +8,7 @@ import Router, {useRouter} from 'next/router'
 const SendPdf = ({rootElementID, phone}:any) => {
     const cloudinary = process.env.NEXT_PUBLIC_CLOUDINARY_URI;
     const [pdfSrc, setpdfSrc] = useState();
+    const [Status, setStatus] = useState("not sent");
     const [uploadData, setUploadData] = useState();
     var pdfURL = "";
 
@@ -18,7 +19,10 @@ const SendPdf = ({rootElementID, phone}:any) => {
     async function UploadFileDocument(){
         try{
             const input  = document.getElementById(rootElementID) as HTMLElement;
+
             console.log("click")
+            setStatus("sending");
+            
             html2canvas(input).then(async (canvas) => {
             const imgData = canvas.toDataURL("image/png");
             const pdf = new jsPDF("l", "pt", "a4");
@@ -88,6 +92,7 @@ const SendPdf = ({rootElementID, phone}:any) => {
             .then(function (response: { data: any; }) {
                 // console.log(JSON.stringify(response.data));
                 // Router.push('/invoice');
+                setStatus("successful");
             })
             .catch(function (error: any) {
                 console.log("error: "+error);
@@ -104,8 +109,9 @@ const SendPdf = ({rootElementID, phone}:any) => {
     }
 
     return (
-      <div>
-              
+      <div className="flex justify-center item-center align-middle">
+        <span className="text-lg px-2 pr-4"> {Status} </span>
+        
         <div className='' onChange={handleChange} >
             {
                 !pdfSrc && !uploadData &&(
