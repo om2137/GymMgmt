@@ -7,6 +7,7 @@ import Button from '../Button';
 import baseUrl from '../../helper/baseUrl';
 import SavePdf from '../SavePdf';
 import SendPdf from '../SendPdf';
+import UploadPdf from '../UploadPdf';
 var converter = require('number-to-words');
 
 type Props = {
@@ -36,16 +37,6 @@ export async function getStaticProps(context: any) {
     
 
 const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,facility,inNumber,phone} ) => {
-    
-    const payDate = new Date(paid);
-    const payMonth = payDate.getMonth()+1;
-    const payDay = payDate.getDate();
-    const payYear = payDate.getFullYear();
-
-    const dueDate = new Date(due);
-    const dueMonth = dueDate.getMonth()+1;
-    const dueDay = dueDate.getDate();
-    const dueYear = dueDate.getFullYear();
 
     const feesWord = converter.toWords(fees);
 
@@ -111,7 +102,9 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                     </div>
                 </form>
             </div>
-            
+            <div>
+                <UploadPdf rootElementID="PDF" phone={phone}/>
+            </div>
             
             <div className='w-[45rem] lg:w-[66rem]  border-2 border-gray-400 py-10 rounded bg-white px-20 xl:px-28 xl:py-14' id='PDF'>
                 <div>
@@ -211,7 +204,6 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                                 Sign <br /> 
                             </span>
                             <span className='flex justify-center'>
-                                {/* [sign] */}
                                 <img src="../../Gym_assets/signature.png" className='w-28 pt-2 xl:pt-4' alt="" />
                             </span>
                         </div>
