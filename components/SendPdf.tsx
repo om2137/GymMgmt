@@ -22,7 +22,7 @@ const SendPdf = ({rootElementID, phone}:any) => {
 
             console.log("click")
             setStatus("sending");
-            
+
             html2canvas(input).then(async (canvas) => {
             const imgData = canvas.toDataURL("image/png");
             const pdf = new jsPDF("l", "pt", "a4");
@@ -41,7 +41,7 @@ const SendPdf = ({rootElementID, phone}:any) => {
               pdfURL = data.secure_url;
               setpdfSrc(data.secure_url);
               setUploadData(data);
-              
+              setStatus("uploaded");
             }catch(error){
                 console.log("err:"+error);
             }
