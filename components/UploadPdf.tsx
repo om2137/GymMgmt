@@ -38,7 +38,6 @@ const UploadPdf = ({rootElementID, phone}:any) => {
                 method: 'POST',
                 body: formData
               }).then(r => r.json());
-              pdfURL = data.secure_url;
               setpdfSrc(data.secure_url);
               setUploadData(data);
               setStatus("uploaded");
@@ -46,10 +45,7 @@ const UploadPdf = ({rootElementID, phone}:any) => {
                 console.log("err:"+error);
             }
             console.log("PDF: "+pdfURL);
-            if(pdfSrc === undefined){
-              setStatus("not sent");
-              setpdfSrc("not sent");
-            }
+            
         });
         }
         catch(e){
