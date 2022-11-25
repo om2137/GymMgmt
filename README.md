@@ -19,6 +19,9 @@ Link: https://www.youtube.com/watch?v=VYdAvcyAPDo
 **NextJS, TailwindCSS, MongoDB, Cloudinary, Node, Prettier**
 
 ## Functionality
+
+//FlowDiagram
+
 1. Client Information storage
   1. Creating, Reading ,Updating and Deleting per client's profile.(CRUD)
 2. Automated Invoice
