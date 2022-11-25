@@ -37,19 +37,23 @@ This is a NextJS project. it is majorly divided into 6 main folder
 5. pages is the main folder which consist of the frontend of the project which takes all the components from the other folder and presents it to user, it consist of all the api calls, authenticator etc.
 
 ## Installation 
-For local installation 
-first fork and then clone the repo
-then open it in VSCode and run npm install
+For local installation,
+ fork and then clone the repo to local machine,
+then open it in Code editor(VSCode) <br/>
+run `npm install` <br/>
 make .env.local file and add following 
 replace it with your links
 
-CLOUDINARY_URI= "your link" <br/>
-NEXTAUTH_SECRET = ' replace ' <br/>
-MONGO_URI= "your link <br/>
-USER="user" <br/>
-PASS="pass" <br/>
+`NEXT_PUBLIC_CLOUDINARY_URI= "your link" ` <br/>
+`NEXTAUTH_SECRET = ' replace ' ` <br/>
+`MONGO_URI= "your link"` <br/>
+`USER="user"` <br/>
+`PASS="pass"` <br/>
+`NEXT_PUBLIC_ACCESSTOKEN="WhatsApp Cloud API access token"` <br/>
+`NEXT_PUBLIC_TESTNUM="WhatsApp Cloud API test number"` <br/>
+`NEXT_PUBLIC_PRODNUM="WhatsApp Cloud API production number"` <br/>
 
 after adding the following run the project with, 
-npm run dev
+`npm run dev`
 and you will have the project running locally
 
