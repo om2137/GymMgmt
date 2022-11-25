@@ -130,9 +130,17 @@ export default function Navbar({ title }: Props) {
               </a>
             </StyledMenuItem>
             <StyledMenuItem onClick={handleClose}>
-            <a href="/profiles">
+              <a href="/profiles">
                 Profiles
               </a>
+            </StyledMenuItem>
+            <StyledMenuItem onClick={handleClose}>
+              <button 
+                onClick={() => signOut()} 
+                className="inline-block hover:bg-red-500 hover:text-white text-red-500 lg:inline-block lg:mt-0 "
+              >
+                Sign out
+              </button>
             </StyledMenuItem>
           </Menu>
         </div>
