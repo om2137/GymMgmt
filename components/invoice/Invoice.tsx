@@ -204,7 +204,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                                 Sign <br /> 
                             </span>
                             <span className='flex justify-center'>
-                                <img src="../../Gym_assets/signature.png" className='w-28 pt-2 xl:pt-4' alt="" />
+                                <img src="../../Gym_assets/signature.svg" className='w-28 pt-2 xl:pt-4' alt="" />
                             </span>
                         </div>
                     </div>
