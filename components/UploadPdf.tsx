@@ -31,7 +31,7 @@ const UploadPdf = ({rootElementID, phone}:any) => {
             var blob = pdf.output('blob');
             
             var formData = new FormData();
-            formData.append('file', blob);
+            formData.append('file', imgData);
             formData.append('upload_preset', 'invoice');
             try{
               const data = await fetch( `${cloudinary}`,{
