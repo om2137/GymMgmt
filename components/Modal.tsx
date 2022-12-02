@@ -23,6 +23,7 @@ interface Props {
     mstatus: string;
     id: number;
     paid: string;
+    paidOn: string;
     due: string;
     admission: string;
     card: string;
@@ -51,6 +52,7 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
   const [form, setForm] = useState({
     Name: '',   
     paidDate: '',
+    paidOn: '',
     dueDate: '',
     facility: '',
     fees:0,
@@ -93,8 +95,10 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
     form.facility = 'cardio';
   }else if (facility === '500') {
     form.facility = 'weights';
+  }else if (facility === '1000') {
+    form.facility = 'C + W';
   }else if (facility === '1200') {
-    form.facility = 'cardio + weights';
+    form.facility = 'C + W';
   }
 
   const router = useRouter();
@@ -272,7 +276,8 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                                   <option className='hidden'>Choose Facility</option>
                                   <option value={900}>Cardio</option>
                                   <option value={500}>Weight</option>
-                                  <option value={1200}>Cardio + Weight</option>
+                                  <option value={1000}>Cardio + Weight(womens)</option>
+                                  <option value={1200}>Cardio + Weight(mens)</option>
                               </select> 
                           </div>
                           <div className='pr-5 pb-4 sm:pb-0'>
@@ -287,9 +292,9 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                                   <option value={12}>Annually</option>
                               </select> 
                           </div>
-                          {/* <div className='pr-5 pb-4 sm:pb-0'>
+                          <div className='pr-5 pb-4 sm:pb-0'>
                               <select id="admfees" required 
-                                onChange={(e) => setadmfee(e.target.value)}
+                                // onChange={(e) => setadmfee(e.target.value)}
                                 // name='admfee' value={form.admfee}
                                 // facility * time = fees
                                 className="bg-white border border-gray-600 rounded-lg text-gray-900 
@@ -298,7 +303,7 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                                   <option value={100}>100</option>
                                   <option value={200}>200</option>
                               </select> 
-                          </div> */}
+                          </div>
                           <div 
                             className="hidden"
                             // fees and name
@@ -310,7 +315,18 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                         
                         <div className="flex flex-col sm:flex-row py-2">
                           <div className='pr-5 pb-4 sm:pb-0'>
-                            <span className='p-1'>From:</span>
+                            <span className='block mb-2 text-sm font-medium text-black '>Paid on(date):</span>
+                            <input type="date" autoComplete='none' required 
+                                  onChange={handleChange} 
+                                  name='paidOn' value={form.paidOn}
+                                  className='py-2 rounded-lg relative block w-full px-3 
+                                  border border-gray-600 placeholder-gray-500 text-gray-900 mb-2
+                                  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                                  placeholder='paid on' 
+                              />
+                          </div>
+                          <div className='pr-5 pb-4 sm:pb-0'>
+                            <span className='block mb-2 text-sm font-medium text-black '>From:</span>
                             <input type="date" autoComplete='none' required 
                                   onChange={handleChange} 
                                   name='paidDate' value={form.paidDate}
@@ -321,7 +337,7 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                               />
                           </div>
                           <div className='pr-5 pb-4 sm:pb-0'>
-                            <span className='p-1'>To:</span>
+                            <span className='block mb-2 text-sm font-medium text-black '>To:</span>
                             <input type="date" autoComplete='none' required 
                                   onChange={handleChange} 
                                   name='dueDate' value={form.dueDate}
