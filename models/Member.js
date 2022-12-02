@@ -41,6 +41,9 @@ const MemberSchema = new mongoose.Schema({
     dueDate: {
         type: Date,
     },
+    paidOn:{
+        type: Date,
+    },
     facility: {
         type: String,
     },
