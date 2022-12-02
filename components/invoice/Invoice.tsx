@@ -19,6 +19,7 @@ type Props = {
     facility: string;
     gender: string;
     paid : string;
+    paidOn : string;
     due : string;
     inNumber: number;
     fees : string;
@@ -36,7 +37,7 @@ export async function getStaticProps(context: any) {
   }
     
 
-const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,facility,inNumber,phone} ) => {
+const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,facility,inNumber,phone,paidOn} ) => {
 
     const feesWord = converter.toWords(fees);
 
@@ -44,6 +45,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
     const [form, setForm]= useState({
         Name: '',   
         paidDate: '',
+        paidOn: '',
         dueDate: '',
         facility: '',
         fees:0,
@@ -96,6 +98,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                         {form.dueDate = due}
                         {form.facility = facility}
                         {form.fees = Number(fees)}
+                        {form.paidOn = paidOn}
                     </div>
                     <div className="p-4">
                         <Button label="save" type='submit' className="bg-sky-500 hover:bg-sky-400 px-3"/>
@@ -111,13 +114,18 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                     <div className='my-4'>
                         <div className="flex justify-center align-end">
                             <div className=''>
-                               <img src="../../Gym_assets/mainlogo.webp" alt="" className='w-[24rem] xl:w-[37rem] content-center m-4 '/> 
+                               <img src="../../Gym_assets/mainlogo2.webp" alt="" className='w-[24rem] xl:w-[37rem] content-center m-2 '/> 
                             </div>
                             
-                            <div className="font-semibold text-center xl:text-3xl text-xl xl:pl-6 m-auto">
-                                <span className="font-semibold ">Recipt no: </span>
-                                
-                                <span className="font-normal ">{form.invoiceNumber}</span>
+                            <div className="font-semibold text-center xl:text-2xl text-xl xl:pl-6 m-auto">
+                                <div className='py-2'>
+                                    <span className="font-semibold ">Recipt no: </span>
+                                    <span className="font-normal ">{form.invoiceNumber}</span>
+                                </div>
+                                <div className='py-2'>
+                                    <span className="font-semibold ">Paid on: </span>
+                                    <span className="font-normal text-lg">{form.paidOn}</span>
+                                </div>
                             </div>
                             
                         </div>
@@ -168,13 +176,13 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                     
                     <div className='flex p-2'>
                         
-                        <div className=' flex flex-col px-6 w-2/3 xl:text-xl'>
+                        <div className=' flex flex-col px-6 w-4/5 xl:text-xl'>
                             <div className="flex">
                                 <div className='flex flex-col px-4 '>
                                     <span className='font-bold'>
                                         Facility 
                                     </span>
-                                    <span className='font-bold capitalize'>
+                                    <span className=' capitalize'>
                                         {facility}
                                         {/* cardio */}
                                     </span>
@@ -197,6 +205,15 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                                         {/* 23/2/2021 */}
                                     </span>
                                 </div>
+                                <div  className='flex flex-col px-4 '>
+                                    <span  className='font-bold'>
+                                        Adm. fee 
+                                    </span>
+                                    <span>
+                                        {/* {fees} */}
+                                        200
+                                    </span>
+                                </div>
                                 <div  className='flex flex-col px-4'>
                                     <span  className='font-bold'>
                                         Amount 
@@ -214,7 +231,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                                 </span>
                             </div>
                         </div>
-                        <div className='w-1/3 text-xl xl:text-3xl font-bold text-center'>
+                        <div className='w-1/4 text-xl xl:text-3xl font-bold text-center'>
                             <span>
                                 Sign <br /> 
                             </span>
