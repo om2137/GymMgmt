@@ -19,6 +19,9 @@ const InvoiceSchema = new mongoose.Schema({
     paidDate: {
         type: String,
     },
+    paidOn:{
+        type: String,
+    },
     dueDate: {
         type: String,
     },
