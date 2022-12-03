@@ -39,8 +39,8 @@ export async function getStaticProps(context: any) {
 
 const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,facility,inNumber,phone,submitted,admfee} ) => {
 
-    const feesWord = converter.toWords(fees);
     const total = (Number(fees)) + admfee;
+    const feesWord = converter.toWords(total);
     // Invoice form
     const [form, setForm]= useState({
         Name: '',   
@@ -220,7 +220,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                             
                             <div className='text-center font-bold p-4'>
                                 <span>
-                                    Total : {total}
+                                    Total Amount : {total}
                                 </span>
                             </div>
                         </div>
