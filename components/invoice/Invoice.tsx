@@ -7,7 +7,6 @@ import Button from '../Button';
 import baseUrl from '../../helper/baseUrl';
 import SavePdf from '../SavePdf';
 import SendPdf from '../SendPdf';
-import UploadPdf from '../UploadPdf';
 var converter = require('number-to-words');
 
 type Props = {
@@ -19,10 +18,11 @@ type Props = {
     facility: string;
     gender: string;
     paid : string;
-    paidOn : string;
+    submitted : string;
     due : string;
     inNumber: number;
     fees : string;
+    admfee : number;
 }
 
 export async function getStaticProps(context: any) {
@@ -37,10 +37,10 @@ export async function getStaticProps(context: any) {
   }
     
 
-const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,facility,inNumber,phone,paidOn} ) => {
+const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,facility,inNumber,phone,submitted,admfee} ) => {
 
     const feesWord = converter.toWords(fees);
-
+    const total = (Number(fees)) + admfee;
     // Invoice form
     const [form, setForm]= useState({
         Name: '',   
@@ -98,39 +98,36 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                         {form.dueDate = due}
                         {form.facility = facility}
                         {form.fees = Number(fees)}
-                        {form.paidOn = paidOn}
+                        {form.paidOn = submitted}
                     </div>
                     <div className="p-4">
                         <Button label="save" type='submit' className="bg-sky-500 hover:bg-sky-400 px-3"/>
                     </div>
                 </form>
             </div>
-            <div>
-                <UploadPdf rootElementID="PDF" phone={phone}/>
-            </div>
             
-            <div className='w-[45rem] lg:w-[66rem]  border-2 border-gray-400 py-10 rounded bg-white px-20 xl:px-28 xl:py-14' id='PDF'>
+            <div className='w-[45rem] ml:w-[66rem]  border-2 border-gray-400 py-10 rounded bg-white px-20 ml:px-28 ml:py-14' id='PDF'>
                 <div>
                     <div className='my-4'>
                         <div className="flex justify-center align-end">
                             <div className=''>
-                               <img src="../../Gym_assets/mainlogo2.webp" alt="" className='w-[24rem] xl:w-[37rem] content-center m-2 '/> 
+                               <img src="../../Gym_assets/mainlogo2.webp" alt="" className='w-[25rem] ml:w-[37rem] content-center m-2 '/> 
                             </div>
                             
-                            <div className="font-semibold text-center xl:text-2xl text-xl xl:pl-6 m-auto">
-                                <div className='py-2'>
-                                    <span className="font-semibold ">Recipt no: </span>
+                            <div className="font-semibold text-center ml:text-2xl text-xl ml:pl-6 m-auto">
+                                <div className='py-1 ml:py-2'>
+                                    <span className="font-semibold ml:text-xl text-base ">Recipt no: </span>
                                     <span className="font-normal ">{form.invoiceNumber}</span>
                                 </div>
-                                <div className='py-2'>
-                                    <span className="font-semibold ">Paid on: </span>
-                                    <span className="font-normal text-lg">{form.paidOn}</span>
+                                <div className='py-1 ml:py-2'>
+                                    <span className="font-semibold ml:text-xl text-base">Paid on: </span>
+                                    <span className="font-normal ml:text-lg text-sm">{form.paidOn}</span>
                                 </div>
                             </div>
                             
                         </div>
                         
-                        <div className="flex text-sm p-2 xl:text-xl">
+                        <div className="flex text-sm p-2 ml:text-xl">
                             <div className='w-2/3 '>
                                 <h3 className=' text-center px-4'>
                                 <span className="font-semibold">Address: </span>
@@ -138,7 +135,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                             </h3>
                             </div>
                             <div className='w-1/3 px-2'>
-                                <h2 className='font-semibold pl-14 xl:pl-28' >
+                                <h2 className='font-semibold pl-14 ml:pl-28' >
                                     M: 8888053456 <br/>
                                     M: 7350034888
                                 </h2> 
@@ -150,16 +147,16 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                     <h3 className="pl-6  text-center font-bold capitalize">
                         {
                             gender === "male" ? <div>
-                                <span className=' text-2xl xl:text-4xl '>Mr. {first+" "+middle+" "+last}</span>
+                                <span className=' text-2xl ml:text-4xl '>Mr. {first+" "+middle+" "+last}</span>
                             </div> : 
                             <div>
-                                <span className=' text-2xl xl:text-4xl '>Mrs. {first+" "+middle+" "+last}</span>
+                                <span className=' text-2xl ml:text-4xl '>Mrs. {first+" "+middle+" "+last}</span>
                             </div>
                         }
                     </h3>
                     
                     <div className='flex item-center'>
-                        <div className='flex justify-center xl:text-2xl p-4 ml-8 '>
+                        <div className='flex justify-center ml:text-2xl p-2 ml:p-4 ml-8 '>
                             <span className="text-center font-bold capitalize">
                                 A sum of Rupees  <br />
                                 (in words)  
@@ -168,15 +165,12 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                                 : {feesWord}  Rupees
                             </span>
                         </div>
-                        <div className='flex item-center font-bold capitalize px-auto'>
-                            paid on:
-                        </div>
                     </div>
                     
                     
                     <div className='flex p-2'>
                         
-                        <div className=' flex flex-col px-6 w-4/5 xl:text-xl'>
+                        <div className=' flex flex-col w-[70rem] ml:text-xl'>
                             <div className="flex">
                                 <div className='flex flex-col px-4 '>
                                     <span className='font-bold'>
@@ -207,11 +201,10 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                                 </div>
                                 <div  className='flex flex-col px-4 '>
                                     <span  className='font-bold'>
-                                        Adm. fee 
+                                        Adm.fee 
                                     </span>
                                     <span>
-                                        {/* {fees} */}
-                                        200
+                                        {admfee}
                                     </span>
                                 </div>
                                 <div  className='flex flex-col px-4'>
@@ -227,16 +220,16 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                             
                             <div className='text-center font-bold p-4'>
                                 <span>
-                                    Total : {fees}
+                                    Total : {total}
                                 </span>
                             </div>
                         </div>
-                        <div className='w-1/4 text-xl xl:text-3xl font-bold text-center'>
+                        <div className='w-[35rem] text-xl ml:text-3xl font-bold text-center '>
                             <span>
                                 Sign <br /> 
                             </span>
                             <span className='flex justify-center'>
-                                <img src="../../Gym_assets/signature.svg" className='w-28 pt-2 xl:pt-4' alt="" />
+                                <img src="../../Gym_assets/signature.svg" className='w-28 pt-2 lg:pt-4' alt="" />
                             </span>
                         </div>
                     </div>
