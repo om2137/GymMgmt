@@ -274,7 +274,7 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                                 className="bg-white border border-gray-600 rounded-lg text-gray-900 
                                 text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                                   <option className='hidden'>Choose Facility</option>
-                                  <option value={900}>Cardio</option>
+                                  <option value={1000}>Cardio</option>
                                   <option value={500}>Weight</option>
                                   <option value={1000}>Cardio + Weight(womens)</option>
                                   <option value={1200}>Cardio + Weight(mens)</option>
