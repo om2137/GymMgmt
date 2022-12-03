@@ -50,6 +50,9 @@ const MemberSchema = new mongoose.Schema({
     fees: {
         type: Number,
     },
+    admFee: {
+        type: Number,
+    },
     admissionDate: {
         type: Date,
     },
