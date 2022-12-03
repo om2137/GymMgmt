@@ -36,6 +36,7 @@ export default function Invoice({members, invoices}: any) {
   const facility = members.facility;
   const phone = members.Contact;
   const paidon = members.paidOn;
+  const admFee = members.admFee;
 
   const payDate = new Date(paid);
   const payMonth = payDate.getMonth()+1;
@@ -55,17 +56,18 @@ export default function Invoice({members, invoices}: any) {
   return (
     <>
         <InvoiceForm
-            first={first}
-            middle={middle}
-            last={last}
-            gender={gender}
-            fees={fee}
-            paid={payDay + '/' + payMonth + '/' + payYear}
-            due={dueDay + '/' + dueMonth + '/' + dueYear}
-            facility={facility}
-            inNumber={len}
-            phone={phone}
-            paidOn={paidOnDay + '/' + paidOnMonth + '/' + paidOnYear}
+        first={first}
+        middle={middle}
+        last={last}
+        gender={gender}
+        fees={fee}
+        paid={payDay + '/' + payMonth + '/' + payYear}
+        due={dueDay + '/' + dueMonth + '/' + dueYear}
+        facility={facility}
+        inNumber={len}
+        phone={phone}
+        submitted={paidOnDay + '/' + paidOnMonth + '/' + paidOnYear} 
+        admfee={admFee}            
         />
     
     </>

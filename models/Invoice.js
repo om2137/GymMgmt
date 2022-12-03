@@ -28,6 +28,9 @@ const InvoiceSchema = new mongoose.Schema({
     fees: {
         type: Number,
     },
+    admFee: {
+        type: Number,
+    },
     invoiceNumber: {
         type: Number,
         unique: [true,'Contact is already taken'],
