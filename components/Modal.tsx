@@ -53,6 +53,7 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
     Name: '',   
     paidDate: '',
     paidOn: '',
+    admFee: 0,
     dueDate: '',
     facility: '',
     fees:0,
@@ -88,10 +89,9 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
 
   const [facility , setFacility] = useState('');
   const [time, setTime] = useState('');
-  var [fee, setFee] = useState(0);
+  const [admFee, setAdmFee] = useState('');
 
-
-  if (facility === '900') {
+  if (facility === '1000') {
     form.facility = 'cardio';
   }else if (facility === '500') {
     form.facility = 'weights';
@@ -293,10 +293,8 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                               </select> 
                           </div>
                           <div className='pr-5 pb-4 sm:pb-0'>
-                              <select id="admfees" required 
-                                // onChange={(e) => setadmfee(e.target.value)}
-                                // name='admfee' value={form.admfee}
-                                // facility * time = fees
+                              <select id="admFee" required 
+                                onChange={(e) => setAdmFee(e.target.value)}
                                 className="bg-white border border-gray-600 rounded-lg text-gray-900 
                                 text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                                   <option className='hidden'>Admission fee</option>
@@ -308,6 +306,7 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                             className="hidden"
                             // fees and name
                           > 
+                            {form.admFee = (Number(admFee))}
                             {form.fees = (Number(facility) * Number(time))} 
                             {form.Name = first + ' ' + last}
                           </div>
