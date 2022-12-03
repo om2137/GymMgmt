@@ -46,7 +46,7 @@ const style = {
 };
 
 // main modal
-export default function TestModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus,id, paid, due, admission, card}:Props ) {
+export default function TestModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus,id, paid, due, admission, card, paidOn}:Props ) {
 
   // post invoice
   const [form, setForm] = useState({

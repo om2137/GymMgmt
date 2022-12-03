@@ -69,16 +69,17 @@ const profiles: NextPage = ({members}:any) => {
                       last={member.Lastname}
                       address={member.Address}
                       phone={member.Contact}
-                      Dob={day+'/'+month+'/'+year}
+                      Dob={day + '/' + month + '/' + year}
                       age={age}
                       gender={member.Gender}
                       marriage={member.Mstat}
                       id={member._id}
-                      paid={payDay+'/'+payMonth+'/'+payYear}
-                      due={dueDay+'/'+dueMonth+'/'+dueYear}
-                      admission={admissionDay+'/'+admissionMonth+'/'+admissionYear}
-                      cardNo={member.cardNumber}
-                    />
+                      paid={payDay + '/' + payMonth + '/' + payYear}
+                      due={dueDay + '/' + dueMonth + '/' + dueYear}
+                      admission={admissionDay + '/' + admissionMonth + '/' + admissionYear}
+                      cardNo={member.cardNumber} 
+                      paidOn={member.paidOn}                    
+                      />
                     
                   </div>
                 </div>
