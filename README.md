@@ -15,6 +15,10 @@ Link: https://www.youtube.com/watch?v=VYdAvcyAPDo
 2. Invoice generation into pdf.
 3. Sending invoice as whatsapp message automated.
 
+## Features done Recently
+1. Invoice generation into pdf.
+2. Sending invoice as whatsapp message automated.
+
 ## Technologies used
 **NextJS, TailwindCSS, MongoDB, Cloudinary, Node, Prettier**
 
@@ -22,7 +26,7 @@ Link: https://www.youtube.com/watch?v=VYdAvcyAPDo
 
 ![gymMgmtFlow drawio](https://user-images.githubusercontent.com/33827410/204362722-cefa0fce-a1fb-4a93-b17e-b6ee3d761c43.png)
 
-FlowDiagram
+**fig. FlowDiagram**
 
 1. Client Information storage
   1. Creating, Reading ,Updating and Deleting per client's profile.(CRUD)
@@ -32,7 +36,7 @@ FlowDiagram
 
 ## Architecture
 
-//diagram
+
 
 This is a NextJS project. it is majorly divided into 6 main folder 
 1. components consist the major components used in the project like invoice, Button, navbar etc.
