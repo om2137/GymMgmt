@@ -47,7 +47,9 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
         paidDate: '',
         paidOn: '',
         dueDate: '',
-        facility: '',
+        Facility: '',
+        Gender: '',
+        admFee: 0,
         fees:0,
         invoiceNumber: 0,
     })
@@ -96,8 +98,10 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                         {form.Name = first+" "+middle+" "+last}
                         {form.paidDate = paid}
                         {form.dueDate = due}
-                        {form.facility = facility}
+                        {form.Facility = facility}
                         {form.fees = Number(fees)}
+                        {form.admFee = Number(admfee)}
+                        {form.Gender = gender}
                         {form.paidOn = submitted}
                     </div>
                     <div className="p-4">
