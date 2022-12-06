@@ -12,12 +12,14 @@ Link: https://www.youtube.com/watch?v=VYdAvcyAPDo
 
 ## Features in pipeline
 1. UI Revamp.
-2. Invoice generation into pdf.
-3. Sending invoice as whatsapp message automated.
+2. Sending invoice as whatsapp message as(pdf) automated.
+
+## Features Planed
+1. Search bar to nav bar.
 
 ## Features done Recently
-1. Invoice generation into pdf.
-2. Sending invoice as whatsapp message automated.
+1. Invoice generation into pdf and saving as PDF locally.
+2. Sending invoice as whatsapp message (as png) automated.
 
 ## Technologies used
 **NextJS, TailwindCSS, MongoDB, Cloudinary, Node, Prettier**
