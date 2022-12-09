@@ -8,10 +8,10 @@ Techstack used is MERN, NextJS as a react framework and Tailwind.CSS for styling
 MongoDB is used as a database and Cloudinary for storing files.
 
 ### Demo
-Link: 
+Link: //youtube link
 
 ## Features in pipeline
-1. UI Revamp.
+1. **UI Revamp.**
 2. Sending invoice as whatsapp message as(pdf) automated.
 
 ## Features Planed
