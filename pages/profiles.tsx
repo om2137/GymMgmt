@@ -5,6 +5,7 @@ import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import Router from 'next/router'
 const axios = require('axios').default;
+import BackToTopoButton from '../components/BackToTopButton'
 import baseUrl from '../helper/baseUrl';
 
 export async function getServerSideProps(context: any) {
@@ -88,11 +89,17 @@ const profiles: NextPage = ({members}:any) => {
             })
           } 
           </div>
-          
+          <BackToTopoButton/>
 
         </div>
       </main>
-      
+      <div className='text-2xl font-bold text-center py-10'>
+        <footer>
+          <h2>
+            
+          </h2>
+        </footer>
+      </div>
       </>
     )
   }
