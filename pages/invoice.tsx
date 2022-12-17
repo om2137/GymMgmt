@@ -5,6 +5,7 @@ const axios = require('axios').default;
 import MediaCard from '../components/cards'
 import baseUrl from '../helper/baseUrl';
 import Button from '../components/Button';
+import BackToTopoButton from '../components/BackToTopButton'
 
 export async function getServerSideProps(context: any) {
   
@@ -71,6 +72,7 @@ const invoice: NextPage = ({invoices }:any) => {
             })
           }  
         </div>
+          <BackToTopoButton/>
       </div>
     </main>
     
