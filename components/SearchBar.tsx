@@ -1,6 +1,10 @@
-import React from 'react'
+import { FC } from 'react'
 
-export default function SearchBar() {
+interface Props {
+
+}
+
+const SearchBar: FC<Props> = (props): JSX.Element => {
   return (
     <div className='flex items-center justify-center'>
         <div>
@@ -23,3 +27,4 @@ export default function SearchBar() {
     </div>
   )
 }
+export default SearchBar;
