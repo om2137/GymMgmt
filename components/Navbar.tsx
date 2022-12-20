@@ -5,14 +5,15 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { styled, Theme, } from "@mui/material";
 import { signOut } from "next-auth/react"
+import SearchBar from "./SearchBar";
 
 interface Props {
   title: string;
+  members?: any;
 }
 
-export default function Navbar({ title }: Props) {
+export default function Navbar({ title, members }: Props) {
 
-  // const classes = useStyles();
   const StyledMenuItem = styled(MenuItem)(
     ` 
       &:hover, &.Mui-focusVisible {
@@ -29,6 +30,21 @@ export default function Navbar({ title }: Props) {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  // handlechange
+  const [results, setResults] = useState([]);
+  type changeHandler = React.ChangeEventHandler<HTMLInputElement>;
+
+  const handleChange: changeHandler = (e) => {
+    const { target } = e;
+    if (!target.value.trim()) return setResults([]);
+
+    const filteredValue = members.filter((members: { Firstname: string; Lastname:string; Contact: Number;}) =>
+      members.Firstname.toLowerCase().startsWith(target.value) || 
+      members.Lastname.toLowerCase().startsWith(target.value) || 
+      members.Contact.toString().startsWith(target.value)
+    );
+    setResults(filteredValue);
   };
 
   const { status, data } = useSession();
@@ -51,10 +67,17 @@ export default function Navbar({ title }: Props) {
           </a>
         </div>
         <div className="sm:flex hidden">
-          <a className="flex justify-center capitalize  border border-gray-500 rounded py-2 px-4  font-bold">
+          {/* <a className="flex justify-center capitalize  border border-gray-500 rounded py-2 px-4  font-bold">
             Sandy's fitness care
-          </a>
-          
+          </a> */}
+          <SearchBar results={results} onChange={handleChange} renderItem={(item: {
+              Firstname: string; 
+              Lastname:string;
+            })=>
+            <p className='capitalize'>
+              {item.Firstname+" "+item.Lastname}
+            </p>}
+          />
         </div>
 
         <div className="hidden md:flex m-2">
