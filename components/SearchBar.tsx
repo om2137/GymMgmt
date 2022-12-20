@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 
 interface Props<T> {
     results?: T[];
@@ -6,6 +7,15 @@ interface Props<T> {
 }
 
 const SearchBar = <T extends object>({results =[], renderItem,onChange}: Props<T>): JSX.Element => {
+    // result contianer visibility handler
+    const [showRes,setShowRes] = useState(false);
+    useEffect(() => {
+        if(results.length > 0){
+            setShowRes(true);
+        }else{
+            setShowRes(false);
+        }
+    }, [results]);
   return (
     <div className='flex items-center justify-center'>
         <div className="hidden lg:inline ">
@@ -15,19 +25,22 @@ const SearchBar = <T extends object>({results =[], renderItem,onChange}: Props<T
                 placeholder="Search"
             />
             {/* search results */}
-            <div 
-                className="lg:w-[400px] xl:w-[580px]  absolute mt-1 w-full text-lg p-2 bg-white rounded-bl rounded-br max-h-44 shadow-xl overflow-y-auto"
-            >
-                {
-                    results.map((item, index) => {
-                        return (
-                            <div key={index} className="courso-pointer rounded hover:bg-slate-400 hover:bg-opicity-10 p-2">
-                                {renderItem(item)}
-                            </div>
-                        )
-                    })
-                }
-            </div>
+            {showRes && 
+                <div 
+                    className="lg:w-[400px] xl:w-[580px]  absolute mt-1 w-full text-lg p-2 bg-white rounded-bl rounded-br max-h-44 shadow-xl overflow-y-auto"
+                >
+                    {
+                        results.map((item, index) => {
+                            return (
+                                <div key={index} className="courso-pointer rounded hover:bg-slate-400 hover:bg-opicity-10 p-2" >
+                                    {renderItem(item)} {index}
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+            }
+            
         </div>
         <div className="lg:hidden ">
             <input type="text" 
@@ -36,19 +49,21 @@ const SearchBar = <T extends object>({results =[], renderItem,onChange}: Props<T
                 placeholder="Search"
             />
             {/* search results */}
-            <div 
-                className="w-[50px] absolute mt-1 w-full text-lg p-2 bg-white rounded-bl rounded-br max-h-44 shadow-xl overflow-y-auto"
-            >
-                {
-                    results.map((item, index) => {
-                        return (
-                            <div key={index} className="courso-pointer rounded hover:bg-slate-400 hover:bg-opicity-10 p-2">
-                                {renderItem(item)}
-                            </div>
-                        )
-                    })
-                }
-            </div>
+            {showRes && 
+                <div 
+                    className="w-[200px] absolute mt-1 w-full text-lg p-2 bg-white rounded-bl rounded-br max-h-44 shadow-xl overflow-y-auto"
+                >
+                    {
+                        results.map((item, index) => {
+                            return (
+                                <div key={index} className="courso-pointer rounded hover:bg-slate-400 hover:bg-opicity-10 p-2">
+                                    {renderItem(item)} {index}
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+            }
         </div>
     </div>
   )
