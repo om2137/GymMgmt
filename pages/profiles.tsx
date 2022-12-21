@@ -30,6 +30,7 @@ const profiles: NextPage = ({members}:any) => {
       <>
       <Navbar 
         title="Profiles"
+        members={members}
       />
       <main className='px-6'>
         
