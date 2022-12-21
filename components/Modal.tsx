@@ -35,7 +35,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   maxWidth: 700,
-  minWidth: 380,
+  minWidth: 330,
   bgcolor: 'background.paper',
   border: '2px solid #9e9e9e',
   borderRadius: '8px',
@@ -125,7 +125,7 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
   
   // var card = '10';
   return (
-    <div>
+    <div className=''>
       
       <div className=''>
         <Button label="Details" onClick={handleOpen} className='bg-slate-600 hover:bg-slate-500 px-3 '/>
@@ -137,7 +137,7 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style }} className=' overflow-auto 2xl:h-[46rem] h-[35rem]'>
+        <Box sx={{ ...style }} className=' overflow-auto w-4/5 2xl:h-[46rem] h-[35rem]'>
           
             <div className='sm:flex w-full justify-end hidden pb-2'>
                 <Button label="Back" onClick={handleClose} className="bg-gray-500 hover:bg-gray-400 px-3"/>
