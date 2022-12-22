@@ -2,11 +2,12 @@ import type { NextPage } from 'next'
 import MediaCard from '../components/cards'
 import Navbar from '../components/Navbar'
 import { useSession } from 'next-auth/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Router from 'next/router'
 const axios = require('axios').default;
 import BackToTopoButton from '../components/BackToTopButton'
 import baseUrl from '../helper/baseUrl';
+import FilterCards from '../components/FilterCards';
 
 export async function getServerSideProps(context: any) {
   const res = await axios(`${baseUrl}/api/member`);
@@ -19,6 +20,31 @@ export async function getServerSideProps(context: any) {
 }
 
 const profiles: NextPage = ({members}:any) => {
+
+  // fliter users
+  const [results, setResults] = useState([]);
+  const [test, setTest] = useState(members);
+  type changeHandler = React.ChangeEventHandler<HTMLInputElement>;
+
+  const handleChange: changeHandler = (e) => {
+    const { target } = e;
+    if (!target.value.trim()){
+      return(
+        setResults([]),
+        setTest(members)
+      )
+    };
+    const filteredValue = members.filter((members: { Firstname: string; Lastname:string; Contact: Number; Gender:string;}) =>
+      members.Firstname.toLowerCase().startsWith(target.value.toLowerCase()) || 
+      members.Lastname.toLowerCase().startsWith(target.value.toLowerCase()) || 
+      members.Contact.toString().startsWith(target.value.toLowerCase()) ||
+      members.Gender.toLowerCase().toString().startsWith(target.value.toLowerCase())
+    );
+    setResults(filteredValue);
+    setTest(filteredValue);
+  };
+  
+  // session status
   const {status} = useSession();
   useEffect(() => {
     if( status === 'unauthenticated'){
@@ -34,12 +60,14 @@ const profiles: NextPage = ({members}:any) => {
       />
       <main className='px-6'>
         
+        
         {/* modal */}
         <div>
+            <FilterCards results={results} onChange={handleChange} />
           {/* <User/> */}
-          <div className='flex flex-wrap'>
+          <div className='flex flex-wrap items-center justify-center'>
           {
-            members.map((member : any) => {
+            test.map((member : any) => {
               const birth = new Date(member.DoB);
               const age = new Date().getFullYear() - birth.getFullYear();
               const month = birth.getMonth()+1;
