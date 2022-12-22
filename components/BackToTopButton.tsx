@@ -31,7 +31,7 @@ export default function BackToTopButton() {
                 height: '40px',
                 width: '40px',
               }}
-              className="bg-gray-500 hover:bg-gray-400 px-3 text-white uppercase py-2 rounded font-2xl text-sm select-none"
+              className="bg-gray-500 hover:bg-gray-400 text-white uppercase py-2 rounded-full text-xl select-none"
               onClick={scrollToTop}
           >
               ^
