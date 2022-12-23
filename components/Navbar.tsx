@@ -40,9 +40,9 @@ export default function Navbar({ title, members }: Props) {
     if (!target.value.trim()) return setResults([]);
 
     const filteredValue = members.filter((members: { Firstname: string; Lastname:string; Contact: Number;}) =>
-      members.Firstname.toLowerCase().startsWith(target.value) || 
-      members.Lastname.toLowerCase().startsWith(target.value) || 
-      members.Contact.toString().startsWith(target.value)
+      members.Firstname.toLowerCase().startsWith(target.value.toLowerCase()) || 
+      members.Lastname.toLowerCase().startsWith(target.value.toLowerCase()) || 
+      members.Contact.toString().startsWith(target.value.toLowerCase())
     );
     setResults(filteredValue);
   };
@@ -66,18 +66,28 @@ export default function Navbar({ title, members }: Props) {
             SFC
           </a>
         </div>
-        <div className="sm:flex hidden">
+        <div className="md:flex hidden">
           {/* <a className="flex justify-center capitalize  border border-gray-500 rounded py-2 px-4  font-bold">
             Sandy's fitness care
           </a> */}
-          <SearchBar results={results} onChange={handleChange} renderItem={(item: {
-              Firstname: string; 
-              Lastname:string;
-            })=>
-            <p className='capitalize'>
-              {item.Firstname+" "+item.Lastname}
-            </p>}
-          />
+          {members && 
+            <SearchBar results={results} onChange={handleChange} renderItem={(item: {
+                Firstname: string; 
+                Lastname:string;
+                Contact: Number;
+                Avatar: string;
+                _id: string;
+              })=>
+              <div className='flex capitalize'>
+                <img src={item.Avatar} alt="avatar" className='w-10  object-cover  h-10 rounded-full'/>
+                <span className="p-2">
+                  {item.Firstname+" "+item.Lastname}
+                </span>
+                
+              </div>}
+            />
+          }
+          
         </div>
 
         <div className="hidden md:flex m-2">
@@ -113,8 +123,27 @@ export default function Navbar({ title, members }: Props) {
             </div>
           </div>
         </div>
-
-        <div className="md:hidden">
+        <div  className="md:hidden">
+          {members && 
+            <SearchBar results={results} onChange={handleChange} renderItem={(item: {
+                Firstname: string; 
+                Lastname:string;
+                Contact: Number;
+                Avatar: string;
+                _id: string;
+              })=>
+              <div className='flex capitalize'>
+                <img src={item.Avatar} alt="avatar" className='w-10  object-cover  h-10 rounded-full'/>
+                <span className="p-2">
+                  {item.Firstname+" "+item.Lastname}
+                </span>
+                
+              </div>}
+            />
+          }
+          
+        </div>
+        <div className="md:hidden ml-6">
           <button
             id="basic-button"
             aria-controls={open ? "basic-menu" : undefined}
