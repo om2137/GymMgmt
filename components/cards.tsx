@@ -60,55 +60,75 @@ const ActionStyle={
   display: 'flex',
 }
 
-export default function MediaCard( {image, first, middle, last, address, phone, Dob, age, gender, marriage, id, paid, paidOn, due, admission, cardNo}: Props ) {
+export default function MediaCard( {
+    image, 
+    first, 
+    middle, 
+    last, 
+    address, 
+    phone, 
+    Dob, 
+    age, 
+    gender, 
+    marriage, 
+    id, 
+    paid, 
+    paidOn, 
+    due, 
+    admission, 
+    cardNo
+  }: Props ) {
   
   return (
-    <Card style={cardStyle}>
-      <Link href={`/${id}`}>
-        <CardMedia
-          style={imgStyle}
-          component="img"
-          image={image}
-          className="aspect-square object-cover"
-        />
-      </Link>
-      <CardContent >
-        <div className='font-bold capitalize'>
-          <h1 className='text-xl pb-1'>
-            {first} {last}
-          </h1>
-           <div className='flex relative pt-2'>
-              <Modal 
-              image={image}
-              first={first}
-              middle={middle}
-              last={last}
-              address={address}
-              phone={phone}
-              birthdate={Dob}
-              age={age}
-              gender={gender}
-              mstatus={marriage}
-              id={id}
-              paid={paid}
-              due={due}
-              admission={admission}
-              card={cardNo} 
-              paidOn={paidOn}              />
-              <div className='pl-4'>
-                <Link href={`/${id}`}>
-                  <Button label='view' className='text-white bg-sky-500 hover:bg-sky-400 px-4 '/>
-                </Link>
-              </div>
-           </div>
-           
-        </div>
-      </CardContent>
-      <CardActions style={ActionStyle} >
-        <ThemeProvider theme={theme} >
-          
-        </ThemeProvider>
-      </CardActions>
-    </Card>
+    <div className='transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none '>
+      <Card style={cardStyle}>
+        {/* <Link href={`/${id}`}> */}
+          <CardMedia
+            style={imgStyle}
+            component="img"
+            image={image}
+            className="aspect-square ?"
+          />
+        {/* </Link> */}
+        <CardContent >
+          <div className='font-bold capitalize'>
+            <h1 className='text-xl pb-1'>
+              {first} {last}
+            </h1>
+            <div className='flex relative pt-2'>
+                <Modal 
+                image={image}
+                first={first}
+                middle={middle}
+                last={last}
+                address={address}
+                phone={phone}
+                birthdate={Dob}
+                age={age}
+                gender={gender}
+                mstatus={marriage}
+                id={id}
+                paid={paid}
+                due={due}
+                admission={admission}
+                card={cardNo} 
+                paidOn={paidOn}              
+                />
+                <div className='pl-4'>
+                  <Link href={`/${id}`}>
+                    <Button label='view' className='text-white bg-sky-500 hover:bg-sky-400 px-4 '/>
+                  </Link>
+                </div>
+            </div>
+            
+          </div>
+        </CardContent>
+        <CardActions style={ActionStyle} >
+          <ThemeProvider theme={theme} >
+            
+          </ThemeProvider>
+        </CardActions>
+      </Card>
+    </div>
   );
 }
