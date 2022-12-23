@@ -11,9 +11,15 @@ const SendPdf = ({rootElementID, phone}:any) => {
     const [Status, setStatus] = useState("not sent");
     const [uploadData, setUploadData] = useState();
     var pdfURL = "";
+    const [country, setCountry] = useState("");
 
     function handleChange(e:any) {
         setpdfSrc(e.target.files[0]);
+    }
+
+    const handleCountry = (e: React.ChangeEvent<any>) => {
+        setCountry(e.target.value);
+        console.log(country);
     }
 
     async function UploadFileDocument(){
@@ -52,7 +58,7 @@ const SendPdf = ({rootElementID, phone}:any) => {
             const prodnum = process.env.NEXT_PUBLIC_PRODNUM;
             var data2 = JSON.stringify({
                 "messaging_product": "whatsapp",
-                "to": `91${phone}`,
+                "to": `${country}${phone}`,
                 "type": "template",
                 "template": {
                 "name": "sfc_welcome",
@@ -110,6 +116,13 @@ const SendPdf = ({rootElementID, phone}:any) => {
 
     return (
       <div className="flex justify-center item-center align-middle">
+        <input type="text" 
+            name="file" 
+            id="file" 
+            className="border rounded border-gray-800 px-2 w-12 text-center" 
+            placeholder="country code" 
+            onChange={handleCountry} 
+            value={country}/>
         <span className="text-lg px-2 pr-4"> {Status} </span>
         
         <div className='' onChange={handleChange} >
