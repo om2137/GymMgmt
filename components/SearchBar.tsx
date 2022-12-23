@@ -21,7 +21,7 @@ const SearchBar = <T extends object>({results =[], renderItem,onChange}: Props<T
         <div className="hidden lg:inline ">
             <input type="text" 
                 onChange={onChange}
-                className="lg:w-[420px] xl:w-[600px] px-5 py-3 text-lg rounded-full border-2 border-gray-500  focus:border-gray-700 outline-none transition"
+                className="lg:w-[420px] xl:w-[600px] px-5 py-3 text-lg rounded-2xl border focus:border-2 border-gray-500  focus:border-gray-700 outline-none transition"
                 placeholder="Search"
             />
             {/* search results */}
@@ -45,7 +45,7 @@ const SearchBar = <T extends object>({results =[], renderItem,onChange}: Props<T
         <div className="lg:hidden ">
             <input type="text" 
                 onChange={onChange}
-                className="w-[168px] ml:w-[250px] px-5 py-3 text-lg rounded-full border-2 border-gray-500  focus:border-gray-700 outline-none transition"
+                className="w-[168px] ml:w-[250px] px-5 py-3 text-lg rounded-2xl border focus:border-2 border-gray-500  focus:border-gray-700 outline-none transition"
                 placeholder="Search"
             />
             {/* search results */}
