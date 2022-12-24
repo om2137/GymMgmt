@@ -39,7 +39,9 @@ export async function getStaticProps(context: any) {
 
 const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,facility,inNumber,phone,submitted,admfee} ) => {
 
-    const total = (Number(fees)) + admfee;
+    const [discount,setDiscount] = useState(0);
+    const amount = (Number(fees)) - discount;
+    const total = amount + admfee;
     const feesWord = converter.toWords(total);
     // Invoice form
     const [form, setForm]= useState({
@@ -71,7 +73,9 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
         }
         
     }
-    
+    const handleDiscount = (e: React.ChangeEvent<any>) => {
+        setDiscount(e.target.value);
+    }
     var inNum = inNumber + 1;
     var paidDate = new Date(paid);
     return(
@@ -84,6 +88,9 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                 </div>
                 <div className="p-4">
                     <SendPdf rootElementID="PDF" phone={phone} />
+                </div>
+                <div className="p-4">
+                    <input type="text" placeholder='Discount' className='w-[80px] border border-slate-800 rounded p-1' onChange={handleDiscount}/>
                 </div>
                 <div className="p-4">
                     <Button label="Back" onClick={() => history.back()} className="bg-gray-500 hover:bg-gray-400 px-3"/>
@@ -216,7 +223,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                                         Amount 
                                     </span>
                                     <span>
-                                        {fees}
+                                        {amount}
                                         {/* 500 */}
                                     </span>
                                 </div>
