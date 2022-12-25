@@ -11,7 +11,7 @@ const SendPdf = ({rootElementID, phone}:any) => {
     const [Status, setStatus] = useState("not sent");
     const [uploadData, setUploadData] = useState();
     var pdfURL = "";
-    const [country, setCountry] = useState("");
+    const [country, setCountry] = useState("91");
 
     function handleChange(e:any) {
         setpdfSrc(e.target.files[0]);
@@ -115,12 +115,12 @@ const SendPdf = ({rootElementID, phone}:any) => {
     }
 
     return (
-      <div className="flex justify-center item-center align-middle">
+      <div className="flex justify-center item-center align-middle capitalize">
         <input type="text" 
             name="file" 
             id="file" 
             className="border rounded border-gray-800 px-2 w-12 text-center" 
-            placeholder="country code" 
+            placeholder="+91" 
             onChange={handleCountry} 
             value={country}/>
         <span className="text-lg px-2 pr-4"> {Status} </span>
