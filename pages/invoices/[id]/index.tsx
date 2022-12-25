@@ -4,6 +4,7 @@ import Button from '../../../components/Button';
 import baseUrl from '../../../helper/baseUrl';
 import Link from 'next/link';
 import ReactToPrint from 'react-to-print';
+import { useRouter } from 'next/router';
 var converter = require('number-to-words');
 
 export async function getServerSideProps(context: any) {
@@ -35,9 +36,20 @@ export default function EachInvoice({invoices}: any) {
         window.print();
     }
 
+    //delete function
+    const router = useRouter();
+    const invoiceId = router.query.id;
+    const handleDelete = async() => {
+        try{
+            const deleteMember = await axios(`${baseUrl}/api/member/${invoiceId}`, {
+              method: "DELETE",
+            });
+            router.push('/invoice');
+        }catch(err){
+          console.log(err);
+        }
+      }
     // Invoice form
-    
-    
     const inNumber = invoices.length;
     var paidDate = new Date(invoices.paidDate);
     console.log(paidDate);
@@ -51,7 +63,9 @@ export default function EachInvoice({invoices}: any) {
                 <div className="p-4">
                     <Button label="print" onClick={handlePrint} className="bg-green-500 hover:bg-green-400 px-3"/>
                 </div>
-                
+                <div className="p-4">
+                    <Button label="Delete" onClick={handleDelete} className="bg-red-500 hover:bg-red-400 px-3"/>
+                </div>
                 <div className="p-4">
                     <Link href={'/invoice'}>
                         <Button label="back" className="bg-gray-500 hover:bg-gray-400 px-3"/>
