@@ -4,19 +4,23 @@ import Button from '../../components/Button';
 const axios = require('axios').default;
 import baseUrl from '../../helper/baseUrl';
 import Link from 'next/link';
+import { useState } from 'react';
 
 export async function getServerSideProps(context: any) {
   const id = context.query.id;
   const res = await axios(`${baseUrl}/api/member/${id}`);
+  const res2 = await axios(`${baseUrl}/api/invoice`);
   const {member} = res.data;
+  const {invoice} = res2.data;
   return {
     props: {
       members: member,
+      invoices: invoice,
     },
   }
 }
-export default function EachMember({members}: any) {
-  console.log(members)
+export default function EachMember({members, invoices}: any) {
+  // console.log(members)
 
   const birth = new Date(members.DoB);
   const age = new Date().getFullYear() - birth.getFullYear();
@@ -44,7 +48,7 @@ export default function EachMember({members}: any) {
   
   const router = useRouter();
   const memberId = router.query.id;
-  console.log(memberId);
+  // console.log(memberId);
   const handleDelete = async() => {
     try{
         const deleteMember = await axios(`${baseUrl}/api/member/${memberId}`, {
@@ -55,7 +59,16 @@ export default function EachMember({members}: any) {
       console.log(err);
     }
   }
+  // filter
+  // const [results, setResults] = useState(invoices);
   
+  const target = members.Firstname;
+    console.log(target);
+    const filteredValue = invoices.filter((invoices: { Name: string}) =>
+      invoices.Name.toLowerCase().startsWith(target.toLowerCase()) 
+    );
+    // setResults(filteredValue);
+
   return (
     <>
     <Navbar 
@@ -212,9 +225,8 @@ export default function EachMember({members}: any) {
                     </div>
                     
                 </div>
-                
-                
             </div>
+            
             <div className="md:flex hidden">
               <div className='text-center p-4'>
                   <Button label="Delete" onClick={handleDelete} className="bg-red-500 hover:bg-red-400 px-3"/>
@@ -231,6 +243,45 @@ export default function EachMember({members}: any) {
                 </Link>
               </div>
                               
+            </div>
+            <div>
+            {
+              filteredValue.map((invoice : any) => {
+                
+                return (
+                  <div className='capitalize p-5'>
+                    <div className='flex text-black'>
+                      <div className="flex px-4">
+                          <span className="font-semibold ">number: </span> 
+                          {invoice.invoiceNumber}
+                      </div>
+                      <div className="px-4">
+                        <span className="font-semibold">Name: </span> 
+                        {invoice.Name}
+                      </div>
+                      <div className="px-4">
+                        <span className="font-semibold">Paid: </span> 
+                        {invoice.paidDate}
+                      </div>
+                      <div className="px-4">
+                        <span className="font-semibold">Due: </span> 
+                        {invoice.dueDate}
+                      </div>
+                      <div className="px-4">
+                        <span className="font-semibold">Fees: </span> 
+                        {invoice.fees}
+                      </div>
+                      <div className='pl-4'>
+                        <a href={`/invoices/${invoice._id}`} target="_blank">
+                          <Button label='view' className='text-white bg-sky-500 hover:bg-sky-400 px-4 '/>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                )
+              })
+            }  
             </div>
     </div>
     </>
