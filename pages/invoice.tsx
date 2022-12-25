@@ -30,7 +30,8 @@ const invoice: NextPage = ({invoices }:any) => {
       {/* modal */}
       <div>
         <div>
-          test:{invoices.length}
+          <h1 className='text-left capitalize text-xl font-bold px-10 pt-4'>Total invoices: {invoices.length}</h1>
+          
         </div>
         {/* <User/> */}
         <div className='flex flex-col justify-center sm:justify-start'>
