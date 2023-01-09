@@ -60,9 +60,8 @@ export default function EachMember({members, invoices}: any) {
     }
   }
   // filter
-  // const [results, setResults] = useState(invoices);
   
-  const target = members.Firstname;
+  const target = members.Firstname + ' ' + members.Middlename + ' ' + members.Lastname;
     console.log(target);
     const filteredValue = invoices.filter((invoices: { Name: string}) =>
       invoices.Name.toLowerCase().startsWith(target.toLowerCase()) 
