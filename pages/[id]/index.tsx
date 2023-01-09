@@ -237,13 +237,13 @@ export default function EachMember({members, invoices}: any) {
                 </Link>
               </div>
               <div className='text-center p-4'>
-                <Link href={`${memberId}/invoice`}>
-                  <Button label="invoice"  className="bg-green-500 hover:bg-green-400 px-3"/>
+                <Link href={`${memberId}/history`}>
+                  <Button label="history"  className="bg-amber-900 hover:bg-amber-800 px-3"/>
                 </Link>
               </div>
                               
             </div>
-            <div>
+            <div className='hidden'>
             {
               filteredValue.map((invoice : any) => {
                 
