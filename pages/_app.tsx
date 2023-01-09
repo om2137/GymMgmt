@@ -10,7 +10,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Component {...pageProps} preservescroll={preserveScroll} />
     </SessionProvider>
   ) 
-  
 }
 
 export default MyApp
