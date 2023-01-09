@@ -53,22 +53,54 @@ export default function Invoice({members, invoices}: any) {
   const paidOnDay = paidOnDate.getDate();
   const paidOnYear = paidOnDate.getFullYear();
   
+  // filter
+  
+  const target = members.Firstname + ' ' + members.Middlename + ' ' + members.Lastname;
+    console.log(target);
+    const filteredValue = invoices.filter((invoices: { Name: string}) =>
+      invoices.Name.toLowerCase().startsWith(target.toLowerCase()) 
+    );
   return (
     <>
-        <InvoiceForm
-        first={first}
-        middle={middle}
-        last={last}
-        gender={gender}
-        fees={fee}
-        paid={payDay + '/' + payMonth + '/' + payYear}
-        due={dueDay + '/' + dueMonth + '/' + dueYear}
-        facility={facility}
-        inNumber={len}
-        phone={phone}
-        submitted={paidOnDay + '/' + paidOnMonth + '/' + paidOnYear} 
-        admfee={admFee}            
-        />
+            <div>
+            {
+              filteredValue.map((invoice : any) => {
+                
+                return (
+                  <div className='capitalize p-5'>
+                    <div className='flex text-black'>
+                      <div className="flex px-4">
+                          <span className="font-semibold ">number: </span> 
+                          {invoice.invoiceNumber}
+                      </div>
+                      <div className="px-4">
+                        <span className="font-semibold">Name: </span> 
+                        {invoice.Name}
+                      </div>
+                      <div className="px-4">
+                        <span className="font-semibold">Paid: </span> 
+                        {invoice.paidDate}
+                      </div>
+                      <div className="px-4">
+                        <span className="font-semibold">Due: </span> 
+                        {invoice.dueDate}
+                      </div>
+                      <div className="px-4">
+                        <span className="font-semibold">Fees: </span> 
+                        {invoice.fees}
+                      </div>
+                      <div className='pl-4'>
+                        <a href={`/invoices/${invoice._id}`} target="_blank">
+                          <Button label='view' className='text-white bg-sky-500 hover:bg-sky-400 px-4 '/>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                )
+              })
+            }  
+            </div>
     
     </>
   )
