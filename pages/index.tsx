@@ -1,13 +1,7 @@
 import type { NextPage } from 'next'
-import React, { useState } from 'react'
-import Head from 'next/head'
 import Navbar from '../components/Navbar'
 const axios = require('axios').default;
-import MediaCard from '../components/cards'
 import baseUrl from '../helper/baseUrl';
-import SavePdf from '../components/SavePdf'
-import Button from '../components/Button';
-import SearchBar from '../components/SearchBar';
 
 export async function getServerSideProps(context: any) {
   
@@ -24,24 +18,6 @@ export async function getServerSideProps(context: any) {
 }
 
 const Home: NextPage = ({members,invoices}:any) => {
-
-  // const [id,setId] = useState<string>("");
-  // const [results, setResults] = useState([]);
-  // type changeHandler = React.ChangeEventHandler<HTMLInputElement>;
-
-  // const handleChange: changeHandler = (e) => {
-  //   const { target } = e;
-  //   if (!target.value.trim()) return setResults([]);
-
-  //   const filteredValue = members.filter((members: { Firstname: string; Lastname:string; Contact: Number;}) =>
-  //     members.Firstname.toLowerCase().startsWith(target.value) || 
-  //     members.Lastname.toLowerCase().startsWith(target.value) || 
-  //     members.Contact.toString().startsWith(target.value)
-  //   );
-  //   setResults(filteredValue);
-  // };
-
-  // console.log("ID:"+id);
   
   return (
     <>
@@ -56,23 +32,6 @@ const Home: NextPage = ({members,invoices}:any) => {
         <div className='flex justify-center font-semibold text-4xl p-6 m-4 text-center'>
           Welcome to the Dashboard of Sandys Fitness Care
         </div>
-        {/* <div>
-          <SearchBar results={results} onChange={handleChange} renderItem={(item: {
-              Firstname: string; 
-              Lastname:string;
-              _id: string;
-              Avatar: string;
-
-            })=>
-            <div className='flex capitalize'>
-              <img src={item.Avatar} alt="avatar" className='w-10  object-cover  h-10 rounded-full'/>
-              <span className="p-2">
-                {item.Firstname+" "+item.Lastname}
-              </span>
-              
-            </div>}
-          />
-        </div> */}
         <div className='flex flex-col justify-center text-center p-5'>
           <span className='text-2xl md:text-4xl font-semibold p-4'>Overview</span>
           <div className='flex flex-col capitalize justify-center'>
