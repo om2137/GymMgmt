@@ -6,6 +6,8 @@ import { useSession } from "next-auth/react";
 import { styled, Theme, } from "@mui/material";
 import { signOut } from "next-auth/react"
 import SearchBar from "./SearchBar";
+import  Router from 'next/router';
+import baseUrl from '../helper/baseUrl';
 
 interface Props {
   title: string;
@@ -23,6 +25,10 @@ export default function Navbar({ title, members }: Props) {
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
+  const handleRedirect = (id: string) => {
+    Router.push(`${baseUrl}/${id}`)
+  }
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -71,7 +77,10 @@ export default function Navbar({ title, members }: Props) {
             Sandy's fitness care
           </a> */}
           {members && 
-            <SearchBar results={results} onChange={handleChange} renderItem={(item: {
+            <SearchBar 
+              results={results} 
+              onChange={handleChange} 
+              renderItem={(item: {
                 Firstname: string; 
                 Lastname:string;
                 Contact: Number;
@@ -85,6 +94,9 @@ export default function Navbar({ title, members }: Props) {
                 </span>
                 
               </div>}
+              onSelect={(item) => {
+                handleRedirect(item._id)
+              }}
             />
           }
           
@@ -125,7 +137,10 @@ export default function Navbar({ title, members }: Props) {
         </div>
         <div  className="md:hidden">
           {members && 
-            <SearchBar results={results} onChange={handleChange} renderItem={(item: {
+            <SearchBar 
+              results={results} 
+              onChange={handleChange} 
+              renderItem={(item: {
                 Firstname: string; 
                 Lastname:string;
                 Contact: Number;
@@ -139,6 +154,9 @@ export default function Navbar({ title, members }: Props) {
                 </span>
                 
               </div>}
+              onSelect={(item) => {
+                handleRedirect(item._id)
+              }}
             />
           }
           
