@@ -17,6 +17,7 @@ Link: //youtube link
 
 ## Features Planed
 1. Search bar to nav bar.
+2. Automated checkin (scanner based).
 
 ## Features done Recently
 1. Invoice generation into pdf and saving as PDF locally.
