@@ -6,7 +6,7 @@ import Testsign from '../components/Testsign'
 const axios = require('axios').default;
 import baseUrl from '../helper/baseUrl';
 
-export async function getStaticProps(context: any) {
+export async function getServerSideProps(context: any) {
   
   const res = await axios(`${baseUrl}/api/member`);
   // console.log(res.data.member);
