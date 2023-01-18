@@ -6,6 +6,8 @@ import MediaCard from '../components/cards'
 import baseUrl from '../helper/baseUrl';
 import Button from '../components/Button';
 import BackToTopoButton from '../components/BackToTopButton'
+import { useState } from 'react';
+import FilterCards from '../components/FilterCards';
 
 export async function getServerSideProps(context: any) {
   
@@ -19,6 +21,32 @@ export async function getServerSideProps(context: any) {
 }
 
 const invoice: NextPage = ({invoices }:any) => {
+
+  // fliter users
+  const [results, setResults] = useState([]);
+  const [order, setOrder] = useState('');
+  const [test, setTest] = useState(invoices);
+  type changeHandler = React.ChangeEventHandler<HTMLInputElement>;
+
+  const handleChange: changeHandler = (e) => {
+    const { target } = e;
+    if (!target.value.trim()){
+      return(
+        setResults([]),
+        setTest(invoices)
+      )
+    };
+    const filteredValue = invoices.filter((invoices: { paidDate: string; }) =>
+      invoices.paidDate.toLowerCase().startsWith(target.value.toLowerCase())
+    );
+    setResults(filteredValue);
+    setTest(filteredValue);
+  };
+  
+
+  let dateSort = (a: any,b: any) => {
+    console.log(test);
+  }
   return (
     <>
     
@@ -29,14 +57,14 @@ const invoice: NextPage = ({invoices }:any) => {
       
       {/* modal */}
       <div>
-        <div>
+        <div className='flex flex-col items-center justify-center'>
           <h1 className='text-left capitalize text-xl font-bold px-10 pt-4'>Total invoices: {invoices.length}</h1>
-          
+          <FilterCards results={results} onChange={handleChange} />
         </div>
         {/* <User/> */}
         <div className='flex flex-col justify-center sm:justify-start'>
           {
-            invoices.map((invoice : any) => {
+            test.map((invoice : any) => {
               
               return (
                 <div className=' p-5'>
@@ -71,6 +99,7 @@ const invoice: NextPage = ({invoices }:any) => {
                 
               )
             })
+            
           }  
         </div>
           <BackToTopoButton/>
