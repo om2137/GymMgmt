@@ -8,6 +8,7 @@ import Button from '../components/Button';
 import BackToTopoButton from '../components/BackToTopButton'
 import { useState } from 'react';
 import FilterCards from '../components/FilterCards';
+import InvoiceOrder from '../components/InvoiceOrder';
 
 export async function getServerSideProps(context: any) {
   
@@ -24,10 +25,20 @@ const invoice: NextPage = ({invoices }:any) => {
 
   // fliter users
   const [results, setResults] = useState([]);
-  const [order, setOrder] = useState('');
+  const [order, setOrder] = useState('Reverse');
   const [test, setTest] = useState(invoices);
   type changeHandler = React.ChangeEventHandler<HTMLInputElement>;
 
+  const handleOrder = (e: React.ChangeEvent<any>) => {
+    if(!e.target.checked){
+      setTest(invoices.reverse());
+      setOrder('Reverse');
+    }else if(e.target.checked ){
+      setTest(invoices.reverse());
+      setOrder('Ascending');
+    }
+  }
+  
   const handleChange: changeHandler = (e) => {
     const { target } = e;
     if (!target.value.trim()){
@@ -43,10 +54,6 @@ const invoice: NextPage = ({invoices }:any) => {
     setTest(filteredValue);
   };
   
-
-  let dateSort = (a: any,b: any) => {
-    console.log(test);
-  }
   return (
     <>
     
@@ -59,7 +66,11 @@ const invoice: NextPage = ({invoices }:any) => {
       <div>
         <div className='flex flex-col items-center justify-center'>
           <h1 className='text-left capitalize text-xl font-bold px-10 pt-4'>Total invoices: {invoices.length}</h1>
-          <FilterCards results={results} onChange={handleChange} />
+          <div>
+            <FilterCards results={results} onChange={handleChange} />
+            <input type="checkbox" id='ord' onChange={handleOrder}/> {order}
+          </div>
+          
         </div>
         {/* <User/> */}
         <div className='flex flex-col justify-center sm:justify-start'>
