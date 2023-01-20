@@ -23,7 +23,7 @@ type Props = {
     selectedFile: string;
 }
 
-const SignUpForm: React.FC<Props> = (  ) => {
+const SignUpForm: React.FC<Props> = () => {
 
     const [form, setForm] = useState({
         Firstname:'',
