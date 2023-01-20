@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import MediaCard from "./cards";
 
 interface Props<T> {
     results?: T[];
