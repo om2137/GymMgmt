@@ -26,7 +26,7 @@ export default function BackToTopButton() {
               style={{
                 position: 'fixed', 
                 bottom: '40px', 
-                right: '60px',
+                right: '40px',
                 height: '40px',
                 width: '40px',
               }}
