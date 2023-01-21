@@ -24,6 +24,9 @@ const profiles: NextPage = ({members}:any) => {
   // fliter users
   const [results, setResults] = useState([]);
   const [test, setTest] = useState(members);
+  const [male, setMale] = useState('male');
+  const [female, setFemale] = useState('female');
+
   type changeHandler = React.ChangeEventHandler<HTMLInputElement>;
 
   const handleChange: changeHandler = (e) => {
@@ -44,6 +47,34 @@ const profiles: NextPage = ({members}:any) => {
     setTest(filteredValue);
   };
   
+  const sortMale = (e: React.ChangeEvent<any>) => {
+    if(e.target.checked){
+      setMale('male');
+      const filteredValue = members.filter((members: { Gender:string;}) =>
+        members.Gender.toLowerCase().toString().startsWith(male.toLowerCase())
+      );
+      console.log(male);
+      setResults(filteredValue);
+      setTest(filteredValue);
+    }else{
+      setResults([]);
+      setTest(members);
+    }
+  }
+  const sortFemale = (e: React.ChangeEvent<any>) => {
+     if(e.target.checked){
+      setFemale('female');
+      const filteredValue = members.filter((members: { Gender:string;}) =>
+        members.Gender.toLowerCase().toString().startsWith(female.toLowerCase())
+      );
+      console.log(female);
+      setResults(filteredValue);
+      setTest(filteredValue);
+    }else{
+      setResults([]);
+      setTest(members);
+    }
+  }
   // session status
   const {status} = useSession();
   useEffect(() => {
@@ -58,12 +89,20 @@ const profiles: NextPage = ({members}:any) => {
         title="Profiles"
         members={members}
       />
+      
       <main className='px-6'>
-        
         
         {/* modal */}
         <div>
             <FilterCards results={results} onChange={handleChange} />
+            <div className='flex hidden justify-center capitalize'>
+              <div className='px-4'>
+                <input type="checkbox" id='ord' onChange={sortMale}/> male
+              </div>
+              <div className=' px-4'>
+                <input type="checkbox" id='Sdate' onChange={sortFemale}/> female
+              </div>
+            </div>
           {/* <User/> */}
           <div className='flex flex-wrap items-center justify-center'>
           {
@@ -88,6 +127,9 @@ const profiles: NextPage = ({members}:any) => {
               const admissionMonth = AdmissionDate.getMonth()+1;
               const admissionDay = AdmissionDate.getDate();
               const admissionYear = AdmissionDate.getFullYear();
+
+
+
               return (
                 <div className='p-5'>
                   
@@ -139,4 +181,4 @@ const profiles: NextPage = ({members}:any) => {
   )
 }
 
-export default profiles
+export default profiles;
