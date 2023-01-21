@@ -100,45 +100,6 @@ const invoice: NextPage = ({invoices }:any) => {
           <div className='flex flex-col  ml:px-4'>
             <span className='flex font-bold justify-center'>Number</span>
             {
-              // test.map((invoice : any) => {
-                
-              //   return (
-              //     <div className=' p-5'>
-              //       <div className='flex justify-center text-black '>
-              //         <div className="flex px-4">
-              //             <span className="font-semibold ">number: </span> 
-              //             {invoice.invoiceNumber}
-              //         </div>
-              //         <div className="px-4">
-              //           <span className="font-semibold">Name: </span> 
-              //           {invoice.Name}
-              //         </div>
-              //         <div className="px-4">
-              //           <span className="font-semibold">Paid On: </span> 
-              //           {invoice.paidOn}
-              //         </div>
-              //         <div className="px-4">
-              //           <span className="font-semibold">Paid: </span> 
-              //           {invoice.paidDate}
-              //         </div>
-              //         <div className="px-4">
-              //           <span className="font-semibold">Due: </span> 
-              //           {invoice.dueDate}
-              //         </div>
-              //         <div className="px-4">
-              //           <span className="font-semibold">Fees: </span> 
-              //           {invoice.fees}
-              //         </div>
-              //         <div className='pl-4'>
-              //           <a href={`/invoices/${invoice._id}`} target="_blank">
-              //             <Button label='view' className='text-white bg-sky-500 hover:bg-sky-400 px-4 '/>
-              //           </a>
-              //         </div>
-              //       </div>
-              //     </div>
-                  
-              //   )
-              // })
               test.map((invoice : any) => {
                 return (
                   <div className='flex justify-center text-black py-1'>
