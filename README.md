@@ -8,7 +8,7 @@ Techstack used is MERN, NextJS as a react framework and Tailwind.CSS for styling
 MongoDB is used as a database and Cloudinary for storing files.
 
 ## Test project link
-
+https://testgym.vercel.app/
 
 ### Demo
 Link: //youtube link
