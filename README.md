@@ -8,7 +8,7 @@ Techstack used is MERN, NextJS as a react framework and Tailwind.CSS for styling
 MongoDB is used as a database and Cloudinary for storing files.
 
 ## Test project link
-
+https://testgym.vercel.app/
 
 ### Demo
 Link: //youtube link
@@ -17,6 +17,7 @@ Link: //youtube link
 1. **UI Revamp.**
 2. Sending invoice as whatsapp message as(pdf) automated.
 3. popup alerts notification (Toast notifications)
+4. Seperating members into Active and Archival section
 
 ## Features Planed
 1. Search bar to nav bar.
