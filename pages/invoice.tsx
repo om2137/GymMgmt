@@ -25,7 +25,7 @@ const invoice: NextPage = ({invoices }:any) => {
 
   // fliter users
   const [results, setResults] = useState([]);
-  const [order, setOrder] = useState('Reverse');
+  const [order, setOrder] = useState('Decending');
   const [test, setTest] = useState(invoices);
   const [sort, setSort] = useState('invoice');
   
@@ -34,7 +34,7 @@ const invoice: NextPage = ({invoices }:any) => {
   const handleOrder = (e: React.ChangeEvent<any>) => {
     if(!e.target.checked){
       setTest(invoices.reverse());
-      setOrder('Reverse');
+      setOrder('Decending');
     }else if(e.target.checked ){
       setTest(invoices.reverse());
       setOrder('Ascending');
