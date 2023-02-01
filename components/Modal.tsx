@@ -94,7 +94,7 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
 
   if (facility === '1000') {
     form.facility = 'cardio';
-  }else if (facility === '500') {
+  }else if (facility === '600') {
     form.facility = 'weights';
   }else if (facility === '1000') {
     form.facility = 'C + W';
@@ -276,7 +276,7 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                                 text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                                   <option className='hidden'>Choose Facility</option>
                                   <option value={1000}>Cardio</option>
-                                  <option value={500}>Weight</option>
+                                  <option value={600}>Weight</option>
                                   <option value={1000}>Cardio + Weight(womens)</option>
                                   <option value={1200}>Cardio + Weight(mens)</option>
                               </select> 
