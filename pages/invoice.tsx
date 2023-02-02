@@ -169,6 +169,18 @@ const invoice: NextPage = ({invoices }:any) => {
             }  
           </div>
           <div className='flex flex-col justify-center ml:px-4'>
+            <span className='flex font-bold  justify-center'>Total Fees</span>
+            {
+              test.map((invoice : any) => {
+                return (
+                  <div className='flex justify-center text-black p-1 px-2'>
+                    {invoice.fees + invoice.admFee}
+                  </div>   
+                )
+              })
+            }  
+          </div>
+          <div className='flex flex-col justify-center ml:px-4'>
             <span className='flex font-bold  justify-center'>view</span>
             {
               test.map((invoice : any) => {
