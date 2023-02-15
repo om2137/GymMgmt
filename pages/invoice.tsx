@@ -113,7 +113,7 @@ const invoice: NextPage = ({invoices }:any) => {
             {
               test.map((invoice : any) => {
                 return (
-                  <div className='flex justify-center text-black py-1'>
+                  <div className='flex justify-center truncate w-40 text-black py-1'>
                     {invoice.Name}
                   </div>   
                 )
@@ -121,7 +121,7 @@ const invoice: NextPage = ({invoices }:any) => {
             }  
           </div>
           <div className='flex flex-col justify-center ml:px-4'>
-            <span className='flex font-bold  justify-center'>PaidOn</span>
+            <span className='flex font-bold  truncate w-36 justify-center'>PaidOn</span>
             {
               test.map((invoice : any) => {
                 return (
