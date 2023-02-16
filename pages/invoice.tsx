@@ -77,7 +77,7 @@ const invoice: NextPage = ({invoices }:any) => {
     <main className='px-6'>
       
       {/* modal */}
-      <div>
+      <div className=' overflow-scroll'>
         <div className='flex flex-col items-center justify-center'>
           <h1 className='text-left capitalize text-xl font-bold px-10 pt-4'>Total invoices: {invoices.length}</h1>
           <div className=''>
@@ -95,7 +95,7 @@ const invoice: NextPage = ({invoices }:any) => {
           
         </div>
         {/* <User/> */}
-        <div className='hidden md:flex justify-center capitalize'>
+        <div className='flex overflow-scroll md:justify-center capitalize'>
           <div className='flex flex-col  ml:px-4'>
             <span className='flex font-bold justify-center'>Number</span>
             {
