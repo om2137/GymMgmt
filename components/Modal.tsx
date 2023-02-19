@@ -362,9 +362,6 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                       <div className='pb-4  mx-2 sm:pb-4  sm:mx-5 '>
                         <Button label="delete" onClick={handleDelete} className="bg-red-500 hover:bg-red-400 px-3"/>
                       </div>
-                      <div className='pb-4  mx-2 sm:pb-4  sm:mx-5 hidden'>
-                        <MoveToArchive id={id}/>
-                      </div>
                       <div className='pb-4  mx-2 sm:pb-4  sm:mx-5 '>
                         <Link href={`/${id}/edit`}>
                           <Button label="edit"  className="bg-yellow-500 hover:bg-yellow-400 px-3"/>
