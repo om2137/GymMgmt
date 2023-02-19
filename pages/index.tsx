@@ -43,31 +43,51 @@ const Home: NextPage = ({members,invoices}:any) => {
             </div>
           </div>
         </div>
-        <div className='flex flex-col sm:flex-row justify-center items-center p-5'>
-            
-            <div className='md:p-6 p-3 '>
-              <a
-                  className="inline-block border border-gray-500 hover:bg-gray-500 hover:text-white text-sm px-6 py-3 rounded  mt-4 lg:inline-block lg:mt-0 font-bold"
-                  href="../profiles"
-                >
-                  Profiles
-                </a>
+        <div className='flex flex-col justify-center items-center p-5'>
+            <div className='flex flex-col sm:flex-row '>
+              <div className='md:p-6 p-3 '>
+                <a
+                    className="inline-block border border-gray-500 hover:bg-gray-500 hover:text-white text-sm px-6 py-3 rounded  mt-4 lg:inline-block lg:mt-0 font-bold"
+                    href="../profiles"
+                  >
+                    Profiles
+                  </a>
+              </div>
+              <div className='md:p-6 p-3'>
+                <a
+                    className="inline-block border border-gray-500 hover:bg-gray-500 hover:text-white text-sm px-6 py-3 rounded  mt-4 lg:inline-block lg:mt-0 font-bold"
+                    href="../invoice"
+                  >
+                    Invoices
+                  </a>
+              </div>
+              <div className='md:p-6 p-3'>
+                <a
+                    className="inline-block border border-gray-500 hover:bg-gray-500 hover:text-white text-sm px-6 py-3  rounded  mt-4 lg:inline-block lg:mt-0 font-bold"
+                    href="../admission"
+                  >
+                    Admission
+                  </a>
+              </div>
             </div>
-            <div className='md:p-6 p-3'>
-              <a
-                  className="inline-block border border-gray-500 hover:bg-gray-500 hover:text-white text-sm px-6 py-3 rounded  mt-4 lg:inline-block lg:mt-0 font-bold"
-                  href="../invoice"
-                >
-                  Invoices
-                </a>
-            </div>
-            <div className='md:p-6 p-3'>
-              <a
-                  className="inline-block border border-gray-500 hover:bg-gray-500 hover:text-white text-sm px-6 py-3  rounded  mt-4 lg:inline-block lg:mt-0 font-bold"
-                  href="../admission"
-                >
-                  Admission
-                </a>
+            <div className='flex'>
+              
+              <div className='md:p-6 p-3'>
+                <a
+                    className="inline-block border border-gray-500 hover:bg-gray-500 hover:text-white text-sm px-6 py-3 rounded  mt-4 lg:inline-block lg:mt-0 font-bold"
+                    href="../profiles/active"
+                  >
+                    Active
+                  </a>
+              </div>
+              <div className='md:p-6 p-3'>
+                <a
+                    className="inline-block border border-gray-500 hover:bg-gray-500 hover:text-white text-sm px-6 py-3  rounded  mt-4 lg:inline-block lg:mt-0 font-bold"
+                    href="../profiles/archive"
+                  >
+                    Archive
+                  </a>
+              </div>
             </div>
           
         </div>
