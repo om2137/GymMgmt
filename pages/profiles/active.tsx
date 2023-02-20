@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import MediaCard from '../../components/cards'
 import Navbar from '../../components/Navbar'
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
@@ -8,22 +7,24 @@ const axios = require('axios').default;
 import BackToTopoButton from '../../components/BackToTopButton'
 import baseUrl from '../../helper/baseUrl';
 import FilterCards from '../../components/FilterCards';
+import ArchivalCard from '../../components/archival/ArchivalCards';
+import ActiveCard from '../../components/active/ActiveCards';
 
 export async function getServerSideProps(context: any) {
-  const res = await axios(`${baseUrl}/api/member`);
-  const {member} = res.data;
+  const res = await axios(`${baseUrl}/api/active`);
+  const {active} = res.data;
   return {
     props: {
-      members: member,
+      actives: active,
     }, 
   }
 }
 
-const profiles: NextPage = ({members}:any) => {
+const profiles: NextPage = ({actives}:any) => {
 
   // fliter users
   const [results, setResults] = useState([]);
-  const [test, setTest] = useState(members);
+  const [test, setTest] = useState(actives);
   type changeHandler = React.ChangeEventHandler<HTMLInputElement>;
 
   const handleChange: changeHandler = (e) => {
@@ -31,14 +32,14 @@ const profiles: NextPage = ({members}:any) => {
     if (!target.value.trim()){
       return(
         setResults([]),
-        setTest(members)
+        setTest(actives)
       )
     };
-    const filteredValue = members.filter((members: { Firstname: string; Lastname:string; Contact: Number; Gender:string;}) =>
-      members.Firstname.toLowerCase().startsWith(target.value.toLowerCase()) || 
-      members.Lastname.toLowerCase().startsWith(target.value.toLowerCase()) || 
-      members.Contact.toString().startsWith(target.value.toLowerCase()) ||
-      members.Gender.toLowerCase().toString().startsWith(target.value.toLowerCase())
+    const filteredValue = actives.filter((actives: { Firstname: string; Lastname:string; Contact: Number; Gender:string;}) =>
+      actives.Firstname.toLowerCase().startsWith(target.value.toLowerCase()) || 
+      actives.Lastname.toLowerCase().startsWith(target.value.toLowerCase()) || 
+      actives.Contact.toString().startsWith(target.value.toLowerCase()) ||
+      actives.Gender.toLowerCase().toString().startsWith(target.value.toLowerCase())
     );
     setResults(filteredValue);
     setTest(filteredValue);
@@ -56,7 +57,7 @@ const profiles: NextPage = ({members}:any) => {
       <>
       <Navbar 
         title="Profiles"
-        members={members}
+        members={actives}
       />
       <main className='px-6'>
         
@@ -92,7 +93,7 @@ const profiles: NextPage = ({members}:any) => {
                 <div className='p-5'>
                   
                   <div className=' text-black'>
-                    <MediaCard
+                    <ActiveCard
                       image={member.Avatar}
                       first={member.Firstname}
                       middle={member.Middlename}
