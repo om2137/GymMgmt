@@ -17,7 +17,7 @@ const authOptions: NextAuthOptions ={
             authorize(credentials, req){
                 const { username, password } = credentials as { username: string, password: string };
                 if(username !== user || password !== pass ){
-                    throw new Error("Login Failed, boooooooo "+username+" "+password);
+                    throw new Error("Login Failed"+username+" "+password);
                 };
                 return {
                     id: 'admin', 
