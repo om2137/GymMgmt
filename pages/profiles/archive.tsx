@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import MediaCard from '../../components/cards'
 import Navbar from '../../components/Navbar'
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
@@ -8,22 +7,23 @@ const axios = require('axios').default;
 import BackToTopoButton from '../../components/BackToTopButton'
 import baseUrl from '../../helper/baseUrl';
 import FilterCards from '../../components/FilterCards';
+import ArchivalCard from '../../components/archival/ArchivalCards';
 
 export async function getServerSideProps(context: any) {
-  const res = await axios(`${baseUrl}/api/member`);
-  const {member} = res.data;
+  const res = await axios(`${baseUrl}/api/archive`);
+  const {archive} = res.data;
   return {
     props: {
-      members: member,
+      archives: archive,
     }, 
   }
 }
 
-const profiles: NextPage = ({members}:any) => {
+const profiles: NextPage = ({archives}:any) => {
 
   // fliter users
   const [results, setResults] = useState([]);
-  const [test, setTest] = useState(members);
+  const [test, setTest] = useState(archives);
   type changeHandler = React.ChangeEventHandler<HTMLInputElement>;
 
   const handleChange: changeHandler = (e) => {
@@ -31,14 +31,14 @@ const profiles: NextPage = ({members}:any) => {
     if (!target.value.trim()){
       return(
         setResults([]),
-        setTest(members)
+        setTest(archives)
       )
     };
-    const filteredValue = members.filter((members: { Firstname: string; Lastname:string; Contact: Number; Gender:string;}) =>
-      members.Firstname.toLowerCase().startsWith(target.value.toLowerCase()) || 
-      members.Lastname.toLowerCase().startsWith(target.value.toLowerCase()) || 
-      members.Contact.toString().startsWith(target.value.toLowerCase()) ||
-      members.Gender.toLowerCase().toString().startsWith(target.value.toLowerCase())
+    const filteredValue = archives.filter((archives: { Firstname: string; Lastname:string; Contact: Number; Gender:string;}) =>
+      archives.Firstname.toLowerCase().startsWith(target.value.toLowerCase()) || 
+      archives.Lastname.toLowerCase().startsWith(target.value.toLowerCase()) || 
+      archives.Contact.toString().startsWith(target.value.toLowerCase()) ||
+      archives.Gender.toLowerCase().toString().startsWith(target.value.toLowerCase())
     );
     setResults(filteredValue);
     setTest(filteredValue);
@@ -56,7 +56,7 @@ const profiles: NextPage = ({members}:any) => {
       <>
       <Navbar 
         title="Profiles"
-        members={members}
+        members={archives}
       />
       <main className='px-6'>
         
@@ -92,7 +92,7 @@ const profiles: NextPage = ({members}:any) => {
                 <div className='p-5'>
                   
                   <div className=' text-black'>
-                    <MediaCard
+                    <ArchivalCard
                       image={member.Avatar}
                       first={member.Firstname}
                       middle={member.Middlename}
