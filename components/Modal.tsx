@@ -49,6 +49,42 @@ const style = {
 // main modal
 export default function TestModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus,id, paid, due, admission, card, paidOn}:Props ) {
 
+
+  //move to active
+  const [archiform, setArchiForm] = useState({
+    Firstname:first,
+    Middlename: middle,
+    Lastname: last,
+    Address: address,
+    Contact:phone,
+    // DoB: birthdate,
+    Gender:gender,
+    Mstat:mstatus,
+    Avatar: image,
+    // admissionDate: admission,
+    cardNumber: card,
+})
+
+const handleArchiForm = async(e: React.ChangeEvent<any>) => {
+    e.preventDefault()
+    try{
+        
+        const res = await axios(`${baseUrl}/api/active`, {
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json",
+            },
+            data: JSON.stringify(archiform),                
+        })
+        Router.push(`${baseUrl}/profiles/active`)
+        
+    }catch(err){
+        console.log(err)
+    }
+    
+}
+  //move to active end
+
   // post invoice
   const [form, setForm] = useState({
     Name: '',   
@@ -367,6 +403,27 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                           <Button label="edit"  className="bg-yellow-500 hover:bg-yellow-400 px-3"/>
                         </Link>
                       </div>
+                      <div className='hidden'>
+                                <form action="" onSubmit={handleArchiForm} className="flex justify-center">
+                                    <div className='hidden'>
+                                        {archiform.Firstname = first}
+                                        {archiform.Middlename = middle}
+                                        {archiform.Lastname = last}
+                                        {archiform.Address = address}
+                                        {archiform.Contact = phone}
+                                        {archiform.Gender = gender}
+                                        {archiform.Mstat = mstatus}
+                                        {archiform.Avatar = image}
+                                        {archiform.cardNumber = card}
+                                        {/* DoB: birthdate,
+                                        admissionDate: admission, */}
+                                    </div>
+                                    <div className="px-3">
+                                        <Button label="Active" type='submit' className="bg-green-500 hover:bg-green-400 px-3"/>
+                                    </div>
+                                </form>
+                              
+                              </div>
 
                     </div>
                 </div>
