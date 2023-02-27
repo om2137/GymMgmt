@@ -1,5 +1,5 @@
 import dbConnect from "../../../db/dbconnect";
-import Archival from "../../../models/Archival";
+import Archival from "../../../models/Archive";
 
 dbConnect();
 

@@ -1,5 +1,5 @@
 import dbConnect from "../../../db/dbconnect";
-import Archival from "../../../models/Archival";
+import Archive from "../../../models/Archive";
 
 dbConnect();
 
@@ -11,7 +11,7 @@ export default async (req, res) => {
   switch (method) {
     case "GET":
       try{
-        const archives = await Archival.find({});
+        const archives = await Archive.find({});
         res.status(200).json({success:true, archive:archives});
       }catch(err){
         res.status(400).json({success:false})
@@ -20,7 +20,7 @@ export default async (req, res) => {
 
     case "POST":
       try{
-        const archive = await Archival.create(req.body);
+        const archive = await Archive.create(req.body);
         res.status(200).json({success:true, archive:archive});
       }catch(err){
         res.status(400).json({success:false+err+"text"})
