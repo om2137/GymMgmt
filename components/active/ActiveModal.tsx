@@ -74,7 +74,7 @@ const handleArchiForm = async(e: React.ChangeEvent<any>) => {
             },
             data: JSON.stringify(archiform),                
         })
-        Router.push('/profiles/archive')
+        Router.push(`${baseUrl}/profiles/archive`)
         
     }catch(err){
         console.log(err)
@@ -211,7 +211,7 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                               </div>
                               <div className=''>
                         <div>
-                        <form action="" onSubmit={handleArchiForm} className="flex justify-center">
+                        <form action="" onSubmit={handleArchiForm} className="justify-center">
                             <div className='hidden'>
                                 {archiform.Firstname = first}
                                 {archiform.Middlename = middle}
@@ -228,7 +228,11 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                             <div className="p-4">
                                 <Button label="archive" type='submit' className="bg-red-500 hover:bg-red-400 px-3"/>
                             </div>
+                            <div className="p-4">
+                                <Button label="delete" onClick={handleDelete} className="bg-red-500 hover:bg-red-400 px-3"/>
+                            </div>
                         </form>
+                            
                         </div>
                       </div>
                             </div>
