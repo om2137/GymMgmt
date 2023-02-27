@@ -74,7 +74,7 @@ const handleArchiForm = async(e: React.ChangeEvent<any>) => {
             },
             data: JSON.stringify(archiform),                
         })
-        Router.push('/profiles/active')
+        Router.push(`${baseUrl}/profiles/active`)
         
     }catch(err){
         console.log(err)
@@ -93,15 +93,6 @@ const handleArchiForm = async(e: React.ChangeEvent<any>) => {
     fees:0,
   })
 
-const handleChange = (e: React.ChangeEvent<any>) => {
-    setForm({
-        ...form,
-        [e.target.name]: e.target.value,
-        
-    })
-    
-}
-
   const router = useRouter();
 
   const handleDelete = async() => {
@@ -109,7 +100,7 @@ const handleChange = (e: React.ChangeEvent<any>) => {
         const deleteMember = await axios( `${baseUrl}/api/archive/${id}` , {
           method: "DELETE",
         });
-        router.push('/profiles/archive');
+        router.push(`${baseUrl}/profiles/archive`);
     }catch(err){
       console.log(err);
     }
@@ -179,30 +170,30 @@ const handleChange = (e: React.ChangeEvent<any>) => {
                                 <a>{due}</a>
                               </div>
                               <div className=''>
-                        <div>
-                        <form action="" onSubmit={handleArchiForm} className="flex justify-center">
-                            <div className='hidden'>
-                                {archiform.Firstname = first}
-                                {archiform.Middlename = middle}
-                                {archiform.Lastname = last}
-                                {archiform.Address = address}
-                                {archiform.Contact = phone}
-                                {archiform.Gender = gender}
-                                {archiform.Mstat = mstatus}
-                                {archiform.Avatar = image}
-                                {archiform.cardNumber = card}
-                                {/* DoB: birthdate,
-                                admissionDate: admission, */}
-                            </div>
-                            <div className="p-4">
-                                <Button label="Active" type='submit' className="bg-green-500 hover:bg-green-400 px-3"/>
-                            </div>
-                            <div className="p-4">
-                                <Button label="delete" onClick={handleDelete} className="bg-red-500 hover:bg-red-400 px-3"/>
-                            </div>
-                        </form>
-                        
-                        </div>
+                              <div>
+                                <form action="" onSubmit={handleArchiForm} className="flex justify-center">
+                                    <div className='hidden'>
+                                        {archiform.Firstname = first}
+                                        {archiform.Middlename = middle}
+                                        {archiform.Lastname = last}
+                                        {archiform.Address = address}
+                                        {archiform.Contact = phone}
+                                        {archiform.Gender = gender}
+                                        {archiform.Mstat = mstatus}
+                                        {archiform.Avatar = image}
+                                        {archiform.cardNumber = card}
+                                        {/* DoB: birthdate,
+                                        admissionDate: admission, */}
+                                    </div>
+                                    <div className="p-4">
+                                        <Button label="Active" type='submit' className="bg-green-500 hover:bg-green-400 px-3"/>
+                                    </div>
+                                    
+                                </form>
+                                <div className="p-4">
+                                  <Button label="delete" onClick={handleDelete} className="bg-red-500 hover:bg-red-400 px-3"/>
+                                </div>
+                              </div>
                       </div>
                             </div>
                           </div>
