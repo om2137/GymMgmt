@@ -40,7 +40,9 @@ export async function getStaticProps(context: any) {
 const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,facility,inNumber,phone,submitted,admfee} ) => {
 
     const [discount,setDiscount] = useState(0);
-    const amount = (Number(fees)) - discount;
+    const [add,setAdd] = useState(0);
+
+    const amount = (Number(fees)) - discount + (Number(add));
     const total = amount + admfee;
     const feesWord = converter.toWords(total);
     // Invoice form
@@ -76,6 +78,9 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
     const handleDiscount = (e: React.ChangeEvent<any>) => {
         setDiscount(e.target.value);
     }
+    const handleAdd = (e: React.ChangeEvent<any>) => {
+        setAdd(e.target.value);
+    }
     var inNum = inNumber + 1;
     var paidDate = new Date(paid);
     return(
@@ -91,6 +96,9 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                 </div>
                 <div className="p-4">
                     <input type="text" placeholder='Discount' className='w-[80px] border border-slate-800 rounded p-1' onChange={handleDiscount}/>
+                </div>
+                <div className="p-4">
+                    <input type="text" placeholder='Add' className='w-[80px] border border-slate-800 rounded p-1' onChange={handleAdd}/>
                 </div>
                 <div className="p-4">
                     <Button label="Back" onClick={() => history.back()} className="bg-gray-500 hover:bg-gray-400 px-3"/>
