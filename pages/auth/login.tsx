@@ -45,7 +45,7 @@ export default function login() {
     <>
       <Box
         sx={{ ...style }}
-        className=" md:w-[35rem] md:h-[40rem] flex justify-center my-auto items-center "
+        className="md:w-[35rem] md:h-[30rem]  flex justify-center my-auto items-center "
       >
         <div className="w-64">
           <h1 className="flex justify-center items-center text-4xl font-semibold ">
