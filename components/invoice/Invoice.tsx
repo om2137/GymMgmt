@@ -7,6 +7,7 @@ import Button from '../Button';
 import baseUrl from '../../helper/baseUrl';
 import SavePdf from '../SavePdf';
 import SendPdf from '../SendPdf';
+import SendIOS from '../SendIOS';
 var converter = require('number-to-words');
 
 type Props = {
@@ -93,6 +94,9 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                 </div>
                 <div className="p-4">
                     <SendPdf rootElementID="PDF" phone={phone} />
+                </div>
+                <div className="p-4">
+                    <SendIOS rootElementID="PDF" phone={phone} />
                 </div>
                 <div className="p-4">
                     <input type="text" placeholder='Discount' className='w-[80px] border border-slate-800 rounded p-1' onChange={handleDiscount}/>
