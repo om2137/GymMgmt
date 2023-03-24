@@ -214,7 +214,6 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                                 <a className='font-semibold'>Due Date:<br /></a>
                                 <a>{due}</a>
                               </div>
-                              
                             </div>
                           </div>
                         </div>
@@ -242,6 +241,11 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                                 <div>
                                   <a className='font-semibold'>Due Date:</a>
                                   <a>{due}</a>
+                                </div>
+                                <div>
+                                  <a className='font-semibold'>Balance:</a>
+                                  <a></a>
+
                                 </div>
                               </div>
                             </div>
@@ -288,6 +292,12 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                                 <span className='font-semibold text-lg' >marriage status:</span> <br />
                                 <span className='ml-2'>{mstatus}</span>
                             </div>
+                            <div className='mt-2'>
+                                <a className='font-semibold'>Balance:<br /></a>
+                                <a>Jan/2023-</a>
+                                <a> 200</a>
+                                
+                              </div>
                         </div>
                         
                         
