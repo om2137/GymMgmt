@@ -214,6 +214,10 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                                 <a className='font-semibold'>Due Date:<br /></a>
                                 <a>{due}</a>
                               </div>
+                              <div>
+                                <a className='font-semibold'>Balance:<br /></a>
+                                <input type="text" className='border rounded border-black w-24'/>
+                              </div>
                             </div>
                           </div>
                         </div>
