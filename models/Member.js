@@ -58,6 +58,9 @@ const MemberSchema = new mongoose.Schema({
     },
     cardNumber: {
         type: String,
+    },
+    Balance: {
+        type: String,
     }
 })
 
