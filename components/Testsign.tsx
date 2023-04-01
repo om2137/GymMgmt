@@ -73,7 +73,6 @@ const SignUpForm: React.FC<Props> = () => {
     form.Avatar = '';
     const [avatar, setAvatar] = useState('');
     const printUrl = (arg: string) => {
-        // console.log(arg)
         setAvatar(arg)
     }
     form.Avatar = avatar;
