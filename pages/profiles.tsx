@@ -149,9 +149,10 @@ const profiles: NextPage = ({members}:any) => {
                       paid={payDay + '/' + payMonth + '/' + payYear}
                       due={dueDay + '/' + dueMonth + '/' + dueYear}
                       admission={admissionDay + '/' + admissionMonth + '/' + admissionYear}
-                      cardNo={member.cardNumber} 
-                      paidOn={member.paidOn}                    
-                      />
+                      cardNo={member.cardNumber}
+                      paidOn={member.paidOn} 
+                      balance={member.Balance}                      
+                    />
                     
                   </div>
                 </div>
