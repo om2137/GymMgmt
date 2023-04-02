@@ -40,6 +40,7 @@ interface Props {
   admission: string;
   cardNo: string;
   paidOn: string;
+  balance: string;
 }
 const imgStyle = {
   minWidth: '200px',
@@ -76,7 +77,8 @@ export default function MediaCard( {
     paidOn, 
     due, 
     admission, 
-    cardNo
+    cardNo,
+    balance
   }: Props ) {
   
   return (
@@ -112,7 +114,8 @@ export default function MediaCard( {
                 due={due}
                 admission={admission}
                 card={cardNo} 
-                paidOn={paidOn}              
+                paidOn={paidOn}
+                balancep={balance}              
                 />
                 <div className='pl-4'>
                   <Link href={`/${id}`}>
