@@ -28,6 +28,7 @@ interface Props {
     due: string;
     admission: string;
     card: string;
+    balancep: string;
   }
 
 const style = {
@@ -47,7 +48,7 @@ const style = {
 };
 
 // main modal
-export default function TestModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus,id, paid, due, admission, card, paidOn}:Props ) {
+export default function TestModal( {first,middle,last,image,address,phone,birthdate,age,gender,mstatus,id, paid, due, admission, card, paidOn, balancep}:Props ) {
 
 
   //move to active
@@ -95,7 +96,15 @@ const handleArchiForm = async(e: React.ChangeEvent<any>) => {
     facility: '',
     fees:0,
   })
-
+  const [balance, setBalance] = useState({Balance: '',})
+  const handleBalanceChange = (e: React.ChangeEvent<any>) => {
+    setBalance({
+        ...balance,
+        [e.target.name]: e.target.value,
+        
+    })
+    console.log(balance);
+  }
 const handleChange = (e: React.ChangeEvent<any>) => {
     setForm({
         ...form,
@@ -103,6 +112,24 @@ const handleChange = (e: React.ChangeEvent<any>) => {
         
     })
     
+}
+const handleBalance = async(e: React.ChangeEvent<any>) => {
+  e.preventDefault()
+  try{
+      
+      const res = await axios(`${baseUrl}/api/member/${id}`, {
+          method: "PUT",
+          headers:{
+              "Content-Type": "application/json",
+          },
+          data: JSON.stringify(balance),
+      })
+      Router.push(`${baseUrl}/`)
+      
+  }catch(err){
+      console.log(err)
+  }
+  
 }
 const handleInvoice = async(e: React.ChangeEvent<any>) => {
   e.preventDefault()
@@ -214,10 +241,17 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                                 <a className='font-semibold'>Due Date:<br /></a>
                                 <a>{due}</a>
                               </div>
-                              <div>
+                              <form onSubmit={handleBalance}>
                                 <a className='font-semibold'>Balance:<br /></a>
-                                <input type="text" className='border rounded border-black w-24'/>
-                              </div>
+                                <div className='flex justify-center py-2'>
+                                  <input type="text"  value={balance.Balance} name="Balance" onChange={handleBalanceChange} className='border rounded border-black w-16 '/>
+                                  <div className='px-2'>
+                                    <Button label="set" type='submit'  className="bg-green-500 text-xsm hover:bg-green-400 px-3"/>
+                                  </div>
+                                  
+                                </div>
+                                
+                              </form>
                             </div>
                           </div>
                         </div>
@@ -298,8 +332,7 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                             </div>
                             <div className='mt-2'>
                                 <a className='font-semibold'>Balance:<br /></a>
-                                <a>Jan/2023-</a>
-                                <a> 200</a>
+                                <a>{balancep}</a>
                                 
                               </div>
                         </div>
