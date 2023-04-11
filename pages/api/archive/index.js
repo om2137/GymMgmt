@@ -1,7 +1,7 @@
-import dbConnect from "../../../db/dbconnect";
+// import dbConnect from "../../../db/dbconnect";
 import Archive from "../../../models/Archive";
 
-dbConnect();
+// dbConnect();
 
 // get, post records
 
