@@ -1,7 +1,7 @@
-import dbConnect from "../../../db/dbconnect";
+// import dbConnect from "../../../db/dbconnect";
 import Archival from "../../../models/Archive";
 
-dbConnect();
+// dbConnect();
 
 //unique record: get, edit, delete
 
