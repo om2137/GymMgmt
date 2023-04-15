@@ -95,7 +95,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                 <div className="p-4">
                     <SendPdf rootElementID="PDF" phone={phone} />
                 </div>
-                <div className="p-4">
+                <div className="p-4 hidden">
                     <SendIOS rootElementID="PDF" phone={phone} />
                 </div>
                 <div className="p-4">
