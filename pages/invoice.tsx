@@ -9,6 +9,7 @@ import BackToTopoButton from '../components/BackToTopButton'
 import { useState } from 'react';
 import FilterCards from '../components/FilterCards';
 import moment from 'moment';
+import SendLater from '../components/SendLater';
 
 export async function getServerSideProps(context: any) {
   
@@ -176,6 +177,21 @@ const invoice: NextPage = ({invoices }:any) => {
                   <div className='flex justify-center text-black p-1 px-2'>
                     {invoice.fees + invoice.admFee}
                   </div>   
+                )
+              })
+            }  
+          </div>
+          <div className='flex flex-col justify-center ml:px-4'>
+            <span className='flex font-bold  justify-center'>Send</span>
+            {
+              test.map((invoice : any) => {
+                return (
+                  <div className='flex justify-center text-black p-1 px-2'>
+                      
+                     <a >
+                        <SendLater label="send" url={`${baseUrl}/invoices/${invoice._id}`}  phone={invoice.Contact} />
+                     </a> 
+                   </div>   
                 )
               })
             }  
