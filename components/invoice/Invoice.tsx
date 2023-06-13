@@ -48,7 +48,8 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
     const feesWord = converter.toWords(total);
     // Invoice form
     const [form, setForm]= useState({
-        Name: '',   
+        Name: '',  
+        Contact: 0, 
         paidDate: '',
         paidOn: '',
         dueDate: '',
@@ -122,6 +123,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                         {form.admFee = Number(admfee)}
                         {form.Gender = gender}
                         {form.paidOn = submitted}
+                        {form.Contact = phone}
                     </div>
                     <div className="p-4">
                         <Button label="save" type='submit' className="bg-sky-500 hover:bg-sky-400 px-3"/>
