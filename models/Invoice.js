@@ -6,6 +6,13 @@ const InvoiceSchema = new mongoose.Schema({
         type: String,
         required: [true,'Firstname is required'],
     },
+    Contact: {
+        type: Number,
+        required: [true,'Contact is required'],
+        unique: [true,'Contact is already taken'],
+        min: 1000000000,
+        max: 9999999999
+    },
     Facility: {
         type: String,
     },
