@@ -5,7 +5,7 @@ import Button from "./Button";
 const axios = require('axios').default;
 import Router, {useRouter} from 'next/router'
 
-const SendIOS = ({rootElementID, phone}:any) => {
+const SendIOS = ({rootElementID, url, phone}:any) => {
     const cloudinary = process.env.NEXT_PUBLIC_CLOUDINARY_URI;
     const [pdfSrc, setpdfSrc] = useState();
     const [Status, setStatus] = useState("not sent");
@@ -16,7 +16,7 @@ const SendIOS = ({rootElementID, phone}:any) => {
     function handleChange(e:any) {
         setpdfSrc(e.target.files[0]);
     }
-
+    console.log("url: "+url);
     const handleCountry = (e: React.ChangeEvent<any>) => {
         setCountry(e.target.value);
         console.log(country);
@@ -53,44 +53,90 @@ const SendIOS = ({rootElementID, phone}:any) => {
             }
             console.log("PDF: "+pdfURL);
             //whatsapp api start
-            const token2 = process.env.NEXT_PUBLIC_ACCESSTOKEN;
-            const testnum = process.env.NEXT_PUBLIC_TESTNUM;
-            const prodnum = process.env.NEXT_PUBLIC_PRODNUM;
-            var data2 = JSON.stringify({
-                "messaging_product": "whatsapp",
-                "to": `${country}${phone}`,
-                "type": "template",
-                "template": {
-                "name": "ios_invoice_test",
-                "language": {
-                    "code": "en_US"
-                }
-                }
-            });
+            // const token2 = process.env.NEXT_PUBLIC_ACCESSTOKEN;
+            // const testnum = process.env.NEXT_PUBLIC_TESTNUM;
+            // const prodnum = process.env.NEXT_PUBLIC_PRODNUM;
+            // var data2 = JSON.stringify({
+            //     "messaging_product": "whatsapp",
+            //     "to": `${country}${phone}`,
+            //     "type": "template",
+            //     "template": {
+            //     "name": "ios_invoice_test",
+            //     "language": {
+            //         "code": "en_US"
+            //     },
+            //     "components": [
+            //         {
+            //             "type": "body",
+            //             "parameters": [{
+            //                 "type": "text",
+            //                 "text":`${pdfURL}`
+            //             }]
+            //         }],
+            //     }
+            // });
             
-                //   console.log(token2);
-                var config = {
-                    method: 'post',
-                    url: `https://graph.facebook.com/v15.0/${prodnum}/messages`,
-                    headers: { 
-                    'Authorization': `Bearer ${token2}`,
-                    'Content-Type': 'application/json'
-                    },
-                    data : data2
-                };
+            //     //   console.log(token2);
+            //     var config = {
+            //         method: 'post',
+            //         url: `https://graph.facebook.com/v15.0/${prodnum}/messages`,
+            //         headers: { 
+            //         'Authorization': `Bearer ${token2}`,
+            //         'Content-Type': 'application/json'
+            //         },
+            //         data : data2
+            //     };
                 //whatsapp api end
+                
 
-            axios(config)
-            .then(function (response: { data: any; }) {
-                // console.log(JSON.stringify(response.data));
-                // Router.push('/invoice');
-                setStatus("successful");
-            })
-            .catch(function (error: any) {
-                console.log("error: "+error);
-            });
-            //whatsapp invoicing end
-            console.log("sent");
+                // const sendMessage = async () => {
+                    const url = 'https://api.gupshup.io/wa/api/v1/msg';
+                    const apiKey = 'hxhwqn1fkegzultwocnwt8s6jgtfmqo2';
+                  
+                    const data = {
+                      channel: 'whatsapp',
+                      source: '918888063456',
+                      destination: '918237610776',
+                      message: `{"type":"text","text":"Invoice\\nYou can download the invoice for your payment from here ${pdfURL}\\nSFC gym"}`,
+                      'src.name': 'SFCGym',
+                    };
+                  
+                    try {
+                      const response = await fetch(url, {
+                        method: 'POST',
+                        headers: {
+                          'Cache-Control': 'no-cache',
+                          'Content-Type': 'application/x-www-form-urlencoded',
+                          'apikey': apiKey,
+                        },
+                        body: new URLSearchParams(data).toString(),
+                      });
+                  
+                      if (response.ok) {
+                        const responseData = await response.json();
+                        setStatus("successful");
+                        console.log('Message sent successfully:', responseData);
+                      } else {
+                        console.error('Failed to send message:', response.status, response.statusText);
+                      }
+                    } catch (error) {
+                        console.log("error: "+error);
+                      console.error('An error occurred:', error);
+                    }
+                //   };
+
+
+            // axios(config)
+            // .then(function (response: { data: any; }) {
+            //     // console.log(JSON.stringify(response.data));
+            //     // Router.push('/invoice');
+            //     setStatus("successful");
+            // })
+            // .catch(function (error: any) {
+            //     console.log("error: "+error);
+            // });
+            // //whatsapp invoicing end
+            // console.log("sent");
 
         });
         }
@@ -98,7 +144,7 @@ const SendIOS = ({rootElementID, phone}:any) => {
             console.log("err:"+e);
         }
 
-    }
+    } 
 
     return (
       <div className="flex justify-center item-center align-middle capitalize">
