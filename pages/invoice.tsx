@@ -189,7 +189,7 @@ const invoice: NextPage = ({invoices }:any) => {
                   <div className='flex justify-center text-black p-1 px-2'>
                       
                      <a >
-                        <SendLater label="send" url={`${baseUrl}/invoices/${invoice._id}`}  phone={invoice.Contact} />
+                        <SendLater label="send" url={`https://sfcgym.vercel.app/invoices/${invoice._id}`}  phone={invoice.Contact} />
                      </a> 
                    </div>   
                 )
