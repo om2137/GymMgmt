@@ -16,6 +16,6 @@
     "jsxImportSource": "@emotion/react",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/member/index.js", "components/Testsign.tsx", "components/cloudinary.jsx", "pages/middleware.js", "components/SavePdf.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/member/index.js", "components/Testsign.tsx", "components/cloudinary.jsx", "pages/middleware.js", "components/SavePdf.tsx", "models/Member.js", "models/Invoice.js", "models/Archive.js", "models/Active.js"],
   "exclude": ["node_modules"]
 }
