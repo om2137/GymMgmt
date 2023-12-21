@@ -25,6 +25,8 @@ const SendPdf = ({rootElementID, phone}:any) => {
     async function UploadFileDocument(){
         try{
             const input  = document.getElementById(rootElementID) as HTMLElement;
+            const apiUrl = 'https://api.gupshup.io/wa/api/v1/template/msg';
+            const apiKey = 'hxhwqn1fkegzultwocnwt8s6jgtfmqo2';
 
             console.log("click")
             setStatus("sending");
@@ -53,58 +55,97 @@ const SendPdf = ({rootElementID, phone}:any) => {
             }
             console.log("PDF: "+pdfURL);
             //whatsapp api start
-            const token2 = process.env.NEXT_PUBLIC_ACCESSTOKEN;
-            const testnum = process.env.NEXT_PUBLIC_TESTNUM;
-            const prodnum = process.env.NEXT_PUBLIC_PRODNUM;
-            var data2 = JSON.stringify({
-                "messaging_product": "whatsapp",
-                "to": `${country}${phone}`,
-                "type": "template",
-                "template": {
-                "name": "sfc_welcome",
-                "language": {
-                    "code": "en"
-                },
-                "components": [
-                    {
-                        "type": "header",
-                        "parameters": [
-                        {
-                            "type": "document",
-                            "document": {
-                                "link": `${pdfURL}`,
-                                "filename":"invoice"
-                            }
-                        }
-                        ]
-                    }
-                    ]
-                }
-            });
+            // const token2 = process.env.NEXT_PUBLIC_ACCESSTOKEN;
+            // const testnum = process.env.NEXT_PUBLIC_TESTNUM;
+            // const prodnum = process.env.NEXT_PUBLIC_PRODNUM;
+            // var data2 = JSON.stringify({
+            //     "messaging_product": "whatsapp",
+            //     "to": `${country}${phone}`,
+            //     // "type": "template",
+            //     // "template": {
+            //     // "name": "sfc_welcome",
+            //     // "language": {
+            //     //     "code": "en"
+            //     // },
+            //     // "components": [
+            //     //     {
+            //     //         "type": "header",
+            //     //         "parameters": [
+            //     //         {
+            //     //             "type": "document",
+            //     //             "document": {
+            //     //                 "link": `${pdfURL}`,
+            //     //                 "filename":"invoice"
+            //     //             }
+            //     //         }
+            //     //         ]
+            //     //     }
+            //     //     ]
+            //     // }
+            //     "type": "text",
+            //     "text": { // the text object
+            //         "body": "test"
+            //     }
+            // });
             
-                //   console.log(token2);
-                var config = {
-                    method: 'post',
-                    url: `https://graph.facebook.com/v15.0/${prodnum}/messages`,
-                    headers: { 
-                    'Authorization': `Bearer ${token2}`,
-                    'Content-Type': 'application/json'
-                    },
-                    data : data2
-                };
+            //     //   console.log(token2);
+            //     var config = {
+            //         method: 'post',
+            //         url: `https://graph.facebook.com/v15.0/${prodnum}/messages`,
+            //         headers: { 
+            //         'Authorization': `Bearer ${token2}`,
+            //         'Content-Type': 'application/json'
+            //         },
+            //         data : data2
+            //     };
                 //whatsapp api end
 
-            axios(config)
-            .then(function (response: { data: any; }) {
-                // console.log(JSON.stringify(response.data));
-                // Router.push('/invoice');
-                setStatus("successful");
-            })
-            .catch(function (error: any) {
-                console.log("error: "+error);
-            });
-            //whatsapp invoicing end
-            console.log("sent");
+                const requestOptions = {
+                    method: 'POST',
+                    headers: {
+                      'Cache-Control': 'no-cache',
+                      'Content-Type': 'application/x-www-form-urlencoded',
+                      'apikey': apiKey,
+                    },
+                    body: new URLSearchParams({
+                      channel: 'whatsapp',
+                      source: '918888063456',
+                      destination: '918237610776',
+                      'src.name': 'SFCGym',
+                      template: '{"id":"52dfec70-15bc-4a57-a398-09724602f6dc","params":[]}',
+                      message: '{"document":{"id":"872f1751-878b-40d9-bf8b-42ce075a81b8"},"type":"document"}',
+                    }).toString(),
+                  };
+                  
+                  fetch(apiUrl, requestOptions)
+                    .then(response => {
+                      if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                      }
+                      
+                      return response.json();
+                    })
+                    .then(data => {
+                      setStatus("successful");  
+                      console.log('Success:', data);
+                      // Handle the response data as needed
+                    })
+                    .catch(error => {
+                      console.error('Error:', error.message);
+                      // Handle errors here
+                    });
+
+            // axios(config)
+            // .then(function (response: { data: any; }) {
+            //     // console.log(JSON.stringify(response.data));
+            //     // Router.push('/invoice');
+            //     setStatus("successful");
+            // })
+            // .catch(function (error: any) {
+            //     console.log("error: "+error);
+            // });
+            // //whatsapp invoicing end
+            // console.log("sent");
 
         });
         }
