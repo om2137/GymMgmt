@@ -37,7 +37,10 @@ const InvoiceSchema = new mongoose.Schema({
     invoiceNumber: {
         type: Number,
         unique: [true,'Contact is already taken'],
-    }
+    },
+    PaymentType: {
+        type: String,
+    },
     
 })
 

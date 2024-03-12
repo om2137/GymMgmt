@@ -61,6 +61,9 @@ const MemberSchema = new mongoose.Schema({
     },
     Balance: {
         type: String,
+    },
+    PaymentType: {
+        type: String,
     }
 })
 
