@@ -163,7 +163,7 @@ const invoice: NextPage = ({invoices }:any) => {
           test.map((invoice : any) => {
             return (
               <div className='flex justify-center text-black p-1 px-2'>
-                {invoice.PaymentType ? invoice.PaymentType : 'No data'}
+                {invoice.PaymentType ? invoice.PaymentType : 'NoData'}
               </div>   
             )
           })
