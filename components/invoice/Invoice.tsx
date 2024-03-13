@@ -24,6 +24,7 @@ type Props = {
     inNumber: number;
     fees : string;
     admfee : number;
+    PaymentType : string;
 }
 
 export async function getStaticProps(context: any) {
@@ -38,7 +39,7 @@ export async function getStaticProps(context: any) {
   }
     
 
-const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,facility,inNumber,phone,submitted,admfee} ) => {
+const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,facility,inNumber,phone,submitted,admfee,PaymentType} ) => {
 
     const [discount,setDiscount] = useState(0);
     const [add,setAdd] = useState(0);
@@ -58,6 +59,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
         admFee: 0,
         fees:0,
         invoiceNumber: 0,
+        PaymentType:''
     })
     
     const handleForm = async(e: React.ChangeEvent<any>) => {
@@ -85,6 +87,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
     }
     var inNum = inNumber + 1;
     var paidDate = new Date(paid);
+    // console.log(form)
     return(
         
         <main className=' flex flex-col items-center justify-center '>
@@ -109,7 +112,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                     <Button label="Back" onClick={() => history.back()} className="bg-gray-500 hover:bg-gray-400 px-3"/>
                 </div>
                 <div className='font-bold p-5 '>
-                    {inNumber}
+                    {inNumber} 
                 </div>
                 <form action="" onSubmit={handleForm} className="flex">
                     
@@ -124,6 +127,7 @@ const InvoiceForm: React.FC<Props> = ( {first,middle,last,gender,fees,paid,due,f
                         {form.Gender = gender}
                         {form.paidOn = submitted}
                         {form.Contact = phone}
+                        {form.PaymentType =PaymentType}
                     </div>
                     <div className="p-4">
                         <Button label="save" type='submit' className="bg-sky-500 hover:bg-sky-400 px-3"/>

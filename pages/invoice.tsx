@@ -68,7 +68,7 @@ const invoice: NextPage = ({invoices }:any) => {
     setResults(filteredValue);
     setTest(filteredValue);
   };
-  
+  // console.log(invoices)
   return (
     <>
     
@@ -97,120 +97,132 @@ const invoice: NextPage = ({invoices }:any) => {
         </div>
         {/* <User/> */}
         <div className='flex overflow-scroll md:justify-center capitalize'>
-          <div className='flex flex-col  ml:px-4'>
-            <span className='flex font-bold justify-center'>Number</span>
-            {
-              test.map((invoice : any) => {
-                return (
-                  <div className='flex justify-center text-black py-1'>
-                    {invoice.invoiceNumber}
-                  </div>   
-                )
-              })
-            }  
-          </div>
-          <div className='flex flex-col justify-center ml:px-4'>
-            <span className='flex font-bold  justify-center'>Name</span>
-            {
-              test.map((invoice : any) => {
-                return (
-                  <div className='flex justify-center truncate w-40 text-black py-1'>
-                    {invoice.Name}
-                  </div>   
-                )
-              })
-            }  
-          </div>
-          <div className='flex flex-col justify-center ml:px-4'>
-            <span className='flex font-bold  truncate w-36 justify-center'>PaidOn</span>
-            {
-              test.map((invoice : any) => {
-                return (
-                  <div className='flex justify-center text-black py-1'>
-                    {invoice.paidOn === 'N/A' ? '': moment(invoice.paidOn, 'DD/MM/YYYY').format('DD/MM/YYYY')}
-                  </div>   
-                )
-              })
-            }  
-          </div>
-          <div className='flex flex-col justify-center ml:px-4'>
-            <span className='flex font-bold  justify-center'>Paid Date</span>
-            {
-              test.map((invoice : any) => {
-                return (
-                  <div className='flex justify-center text-black p-1 px-2'>
-                    {invoice.paidDate}
-                  </div>   
-                )
-              })
-            }  
-          </div>
-          <div className='flex flex-col justify-center ml:px-4'>
-            <span className='flex font-bold  justify-center'>Due Date</span>
-            {
-              test.map((invoice : any) => {
-                return (
-                  <div className='flex justify-center text-black p-1 px-2'>
-                    {invoice.dueDate}
-                  </div>   
-                )
-              })
-            }  
-          </div>
-          <div className='flex hidden flex-col justify-center ml:px-4'>
-            <span className='flex font-bold  justify-center'>Fees</span>
-            {
-              test.map((invoice : any) => {
-                return (
-                  <div className='flex justify-center text-black p-1 px-2'>
-                    {invoice.fees}
-                  </div>   
-                )
-              })
-            }  
-          </div>
-          <div className='flex flex-col justify-center ml:px-4'>
-            <span className='flex font-bold w-20 justify-center'>Total Fees</span>
-            {
-              test.map((invoice : any) => {
-                return (
-                  <div className='flex justify-center text-black p-1 px-2'>
-                    {invoice.fees + invoice.admFee}
-                  </div>   
-                )
-              })
-            }  
-          </div>
-          <div className='flex flex-col justify-center ml:px-4'>
-            <span className='flex font-bold  justify-center'>Send</span>
-            {
-              test.map((invoice : any) => {
-                return (
-                  <div className='flex justify-center text-black p-1 px-2'>
-                      
-                     <a >
-                        <SendLater label="send" url={`https://sfcgym.vercel.app/invoices/${invoice._id}`}  phone={invoice.Contact} />
-                     </a> 
-                   </div>   
-                )
-              })
-            }  
-          </div>
-          <div className='flex flex-col justify-center ml:px-4'>
-            <span className='flex font-bold  justify-center'>view</span>
-            {
-              test.map((invoice : any) => {
-                return (
-                  <div className='flex justify-center text-black p-1 px-2'>
-                      <a href={`/invoices/${invoice._id}`} target="_blank">
-                        <button className='text-blue-500 uppercase'>view</button>
-                     </a> 
-                   </div>   
-                )
-              })
-            }  
-          </div>
-        </div>
+      <div className='flex flex-col  ml:px-4'>
+        <span className='flex font-bold justify-center'>Number</span>
+        {
+          test.map((invoice : any) => {
+            return (
+              <div className='flex justify-center text-black py-1'>
+                {invoice.invoiceNumber}
+              </div>   
+            )
+          })
+        }  
+      </div>
+      <div className='flex flex-col justify-center ml:px-4'>
+        <span className='flex font-bold  justify-center'>Name</span>
+        {
+          test.map((invoice : any) => {
+            return (
+              <div className='flex justify-center truncate w-40 text-black py-1'>
+                {invoice.Name}
+              </div>   
+            )
+          })
+        }  
+      </div>
+      <div className='flex flex-col justify-center ml:px-4'>
+        <span className='flex font-bold  truncate w-36 justify-center'>PaidOn</span>
+        {
+          test.map((invoice : any) => {
+            return (
+              <div className='flex justify-center text-black py-1'>
+                {invoice.paidOn === 'N/A' ? '': moment(invoice.paidOn, 'DD/MM/YYYY').format('DD/MM/YYYY')}
+              </div>   
+            )
+          })
+        }  
+      </div>
+      <div className='flex flex-col justify-center ml:px-4'>
+        <span className='flex font-bold  justify-center'>Paid Date</span>
+        {
+          test.map((invoice : any) => {
+            return (
+              <div className='flex justify-center text-black p-1 px-2'>
+                {invoice.paidDate}
+              </div>   
+            )
+          })
+        }  
+      </div>
+      <div className='flex flex-col justify-center ml:px-4'>
+        <span className='flex font-bold  justify-center'>Due Date</span>
+        {
+          test.map((invoice : any) => {
+            return (
+              <div className='flex justify-center text-black p-1 px-2'>
+                {invoice.dueDate}
+              </div>   
+            )
+          })
+        }  
+      </div>
+      <div className='flex flex-col justify-center ml:px-4'>
+        <span className='flex font-bold  justify-center'>Payment Type</span>
+        {
+          test.map((invoice : any) => {
+            return (
+              <div className='flex justify-center text-black p-1 px-2'>
+                {invoice.PaymentType ? invoice.PaymentType : 'No data'}
+              </div>   
+            )
+          })
+        }  
+      </div>
+      <div className='flex hidden flex-col justify-center ml:px-4'>
+        <span className='flex font-bold  justify-center'>Fees</span>
+        {
+          test.map((invoice : any) => {
+            return (
+              <div className='flex justify-center text-black p-1 px-2'>
+                {invoice.fees}
+              </div>   
+            )
+          })
+        }  
+      </div>
+      <div className='flex flex-col justify-center ml:px-4'>
+        <span className='flex font-bold w-20 justify-center'>Total Fees</span>
+        {
+          test.map((invoice : any) => {
+            return (
+              <div className='flex justify-center text-black p-1 px-2'>
+                {invoice.fees + invoice.admFee}
+              </div>   
+            )
+          })
+        }  
+      </div>
+      <div className='flex flex-col justify-center ml:px-4'>
+        <span className='flex font-bold  justify-center'>Send</span>
+        {
+          test.map((invoice : any) => {
+            return (
+              <div className='flex justify-center text-black p-1 px-2'>
+                <a >
+                  <SendLater label="send" url={`https://sfcgym.vercel.app/invoices/${invoice._id}`}  phone={invoice.Contact} />
+                </a> 
+              </div>   
+            )
+          })
+        }  
+      </div>
+      <div className='flex flex-col justify-center ml:px-4'>
+        <span className='flex font-bold  justify-center'>view</span>
+        {
+          test.map((invoice : any) => {
+            return (
+              <div className='flex justify-center text-black p-1 px-2'>
+                <a href={`/invoices/${invoice._id}`} target="_blank">
+                  <button className='text-blue-500 uppercase'>view</button>
+                </a> 
+              </div>   
+            )
+          })
+        }  
+      </div>
+    </div>
+
         
           <BackToTopoButton/>
       </div>

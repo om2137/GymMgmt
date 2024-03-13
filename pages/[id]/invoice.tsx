@@ -24,8 +24,7 @@ export async function getServerSideProps(context: any) {
 export default function Invoice({members, invoices}: any) {
 
   const len = invoices.length;
-  // console.log("No of invoices"+len);
-
+  
   const first = members.Firstname ;
   const middle = members.Middlename ;
   const last = members.Lastname;
@@ -37,6 +36,7 @@ export default function Invoice({members, invoices}: any) {
   const phone = members.Contact;
   const paidon = members.paidOn;
   const admFee = members.admFee;
+  const PaymentType = members.PaymentType;
 
   const payDate = new Date(paid);
   const payMonth = payDate.getMonth()+1;
@@ -67,7 +67,8 @@ export default function Invoice({members, invoices}: any) {
         inNumber={len}
         phone={phone}
         submitted={paidOnDay + '/' + paidOnMonth + '/' + paidOnYear} 
-        admfee={admFee}            
+        admfee={admFee} 
+        PaymentType={PaymentType}          
         />
     </>
   )
