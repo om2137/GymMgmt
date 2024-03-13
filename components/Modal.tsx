@@ -58,12 +58,11 @@ export default function TestModal( {first,middle,last,image,address,phone,birthd
     Lastname: last,
     Address: address,
     Contact:phone,
-    // DoB: birthdate,
     Gender:gender,
     Mstat:mstatus,
     Avatar: image,
-    // admissionDate: admission,
     cardNumber: card,
+    
 })
 
 const handleArchiForm = async(e: React.ChangeEvent<any>) => {
@@ -95,6 +94,7 @@ const handleArchiForm = async(e: React.ChangeEvent<any>) => {
     dueDate: '',
     facility: '',
     fees:0,
+    PaymentType:''
   })
   const [balance, setBalance] = useState({Balance: '',})
   const handleBalanceChange = (e: React.ChangeEvent<any>) => {
@@ -154,7 +154,7 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
   const [facility , setFacility] = useState('');
   const [time, setTime] = useState('');
   const [admFee, setAdmFee] = useState('');
-
+  const [paymentType, setPaymentType] = useState('');
   if (facility === '1000') {
     form.facility = 'cardio';
   }else if (facility === '600') {
@@ -164,7 +164,8 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
   }else if (facility === '1200') {
     form.facility = 'C + W';
   }
-
+  console.log(paymentType);
+  console.log(form);
   const router = useRouter();
 
   const handleDelete = async() => {
@@ -393,6 +394,7 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                             {form.admFee = (Number(admFee))}
                             {form.fees = (Number(facility) * Number(time))} 
                             {form.Name = first + ' ' + last}
+                            {form.PaymentType = paymentType}
                           </div>
                         </div>
                         
@@ -429,6 +431,17 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                                   focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
                                   placeholder='due date' 
                               />
+                          </div>
+                          <div className='pr-5 pb-4 sm:pb-0'>
+                              <span className='block mb-2 text-sm font-medium text-black '>Pym. Type:</span>
+                              <select id="admFee" required 
+                                onChange={(e) => setPaymentType(e.target.value)}
+                                className="bg-white border border-gray-600 rounded-lg text-gray-900 
+                                text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                                  <option className='hidden'>Payment Type</option>
+                                  <option value={'online'}>online</option>
+                                  <option value={'cash'}>Cash</option>
+                              </select> 
                           </div>
                         </div>
                         <div className='sm:pb-2 flex justify-center '>
@@ -469,15 +482,10 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                                         <Button label="Active" type='submit' className="bg-green-500 hover:bg-green-400 px-3"/>
                                     </div>
                                 </form>
-                              
                               </div>
-
                     </div>
                 </div>
-                
-
             </div>
-            
         </Box>
       </Modal>
     </div>
