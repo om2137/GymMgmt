@@ -103,7 +103,7 @@ const handleArchiForm = async(e: React.ChangeEvent<any>) => {
         [e.target.name]: e.target.value,
         
     })
-    console.log(balance);
+    // console.log(balance);
   }
 const handleChange = (e: React.ChangeEvent<any>) => {
     setForm({
@@ -164,8 +164,8 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
   }else if (facility === '1200') {
     form.facility = 'C + W';
   }
-  console.log(paymentType);
-  console.log(form);
+  // console.log(paymentType);
+  // console.log(form);
   const router = useRouter();
 
   const handleDelete = async() => {
@@ -372,6 +372,7 @@ const handleInvoice = async(e: React.ChangeEvent<any>) => {
                                 text-sm rounded-lg focus:ring-blue-500 hover:border-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                                   <option className='hidden' >Choose Duration</option>
                                   <option value={1}>Montly</option>
+                                  <option value={2}>2 months</option>
                                   <option value={3}>Quarterly</option>
                                   <option value={6}>Half Yearly</option>
                                   <option value={12}>Annually</option>
