@@ -91,7 +91,7 @@ const SendIOS = ({rootElementID, url, phone}:any) => {
 
                 // const sendMessage = async () => {
                     const url = 'https://api.gupshup.io/wa/api/v1/msg';
-                    const apiKey = 'hxhwqn1fkegzultwocnwt8s6jgtfmqo2';
+                    const apiKey = process.env.NEXT_PUBLIC_GUPSHUP_KEY;
                   
                     const data = {
                       channel: 'whatsapp',
